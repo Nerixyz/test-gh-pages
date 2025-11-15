@@ -1,0 +1,2418 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Troubleshooting" href="troubleshooting.html" /><link rel="prev" title="Model Context Protocol (MCP)" href="mcp.html" />
+
+    <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
+        <title>Settings - 🐛 LLDB</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="../_static/lldb-setting.css?v=52c082f4" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f0f0f0;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">🐛 LLDB</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">🐛 LLDB</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Using LLDB</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="map.html">GDB to LLDB command map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formatting.html">Frame and Thread Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variable.html">Variable Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbolication.html">Symbolication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbols.html">Symbols on macOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remote.html">Remote Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intel_pt.html">Tracing with Intel Processor Trace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ondemand.html">On Demand Symbols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aarch64-linux.html">Using LLDB On AArch64 Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbolfilejson.html">JSON Symbol File Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcp.html">Model Context Protocol (MCP)</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="links.html">Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../man/lldb.html">Man Page</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Scripting LLDB</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="python-reference.html">Python Reference</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Python Reference</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/accessing-documentation.html">Accessing Script Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/python-embedded-interpreter.html">Embedded Python Interpreter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/script-driven-debugging.html">Script-Driven Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/breakpoint-triggered-scripts.html">Breakpoint-Triggered Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/creating-custom-breakpoints.html">Custom Breakpoint Resolvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/automating-stepping-logic.html">Automating Stepping Logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/writing-custom-commands.html">Writing Custom Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/implementing-standalone-scripts.html">Implementing Standalone Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/custom-frame-recognizers.html">Detecting Patterns With Recognizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/extending-target-stop-hooks.html">Extending Target Stop-Hooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../python_api.html">Python API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_extensions.html">Python Extensions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developing LLDB</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/build.html">Building</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/test.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/qemu-testing.html">Testing LLDB using QEMU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/fuzzing.html">Fuzzing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/sbapi.html">Scripting Bridge API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/dataformatters.html">Data Formatters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/formatterbytecode.html">Formatter Bytecode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/extensions.html">DWARF Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/lldbgdbremote.html">GDB Remote Protocol Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/lldbplatformpackets.html">LLDB Platform Packets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/caveats.html">Caveats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/projects.html">Open Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/lldbdap.html">Contributing to LLDB-DAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/addinglanguagesupport.html">Adding Programming Language Support</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/namespacelldb.html">Public C++ API</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/index.html">Private C++ API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/llvm/llvm-project">Source Code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/llvm/llvm-project/releases">Releases</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://discord.gg/xS7Z362">Join the Discord</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://discord.com/channels/636084430946959380/636732809708306432">Discord Channel</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://discourse.llvm.org/c/subprojects/lldb/8">Discussion Forums</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://llvm.org/docs/DeveloperPolicy.html">Developer Policy</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/llvm/llvm-project/issues?q=is%3Aissue+label%3Alldb+is%3Aopen">Bug Reports</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/llvm/llvm-project/pulls?q=is%3Apr+label%3Alldb+is%3Aopen">Code Reviews</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/llvm/llvm-project/edit/main/lldb/docs/use/settings.md" title="Edit this page">
+    <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
+      <line x1="13.5" y1="6.5" x2="17.5" y2="10.5" />
+    </svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="settings">
+<h1>Settings<a class="headerlink" href="#settings" title="Link to this heading">#</a></h1>
+<p>This page lists all available settings in LLDB.
+Settings can be set using <code class="docutils literal notranslate"><span class="pre">settings</span> <span class="pre">set</span> <span class="pre">&lt;name&gt;</span> <span class="pre">&lt;value&gt;</span></code>.
+Values can be added to arrays and dictionaries with <code class="docutils literal notranslate"><span class="pre">settings</span> <span class="pre">append</span> <span class="pre">--</span> <span class="pre">&lt;name&gt;</span> <span class="pre">&lt;value&gt;</span></code>.</p>
+<section id="root">
+<h2>Root<a class="headerlink" href="#root" title="Link to this heading">#</a></h2>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="auto-confirm">
+<span class="sig-name descname"><span class="pre">auto-confirm</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#auto-confirm" title="Link to this definition">#</a></dt>
+<dd><p>If true all confirmation prompts will receive their default reply.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="auto-indent">
+<span class="sig-name descname"><span class="pre">auto-indent</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#auto-indent" title="Link to this definition">#</a></dt>
+<dd><p>If true, LLDB will auto indent/outdent code. Currently only supported in the REPL (default: true).</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="auto-one-line-summaries">
+<span class="sig-name descname"><span class="pre">auto-one-line-summaries</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#auto-one-line-summaries" title="Link to this definition">#</a></dt>
+<dd><p>If true, LLDB will automatically display small structs in one-liner format (default: true).</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="dwim-print-verbosity">
+<span class="sig-name descname"><span class="pre">dwim-print-verbosity</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">enum</span></span></span><a class="headerlink" href="#dwim-print-verbosity" title="Link to this definition">#</a></dt>
+<dd><p>The verbosity level used by dwim-print.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>none</strong> – Use no verbosity when running dwim-print.</p></li>
+<li><p><strong>expression</strong> – Use partial verbosity when running dwim-print - display a message when <code class="docutils literal notranslate"><span class="pre">expression</span></code> evaluation is used.</p></li>
+<li><p><strong>full</strong> – Use full verbosity when running dwim-print.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><code class="docutils literal notranslate"><span class="pre">none</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="disassembly-format">
+<span class="sig-name descname"><span class="pre">disassembly-format</span><span class="lldb-setting-type lldb-setting-type-format-string"><span class="pre">format-string</span></span></span><a class="headerlink" href="#disassembly-format" title="Link to this definition">#</a></dt>
+<dd><p>The default disassembly format string to use when disassembling instruction sequences.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">{${function.initial-function}{${module.file.basename}`}{${function.name-without-args}}:\n}{${function.changed}\n{${module.file.basename}`}{${function.name-without-args}}:\n}{${ansi.fg.yellow}${current-pc-arrow}${ansi.normal}</span> <span class="pre">}${addr-file-or-load}{</span> <span class="pre">&lt;${function.concrete-only-addr-offset-no-padding}&gt;}:</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="escape-non-printables">
+<span class="sig-name descname"><span class="pre">escape-non-printables</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#escape-non-printables" title="Link to this definition">#</a></dt>
+<dd><p>If true, LLDB will automatically escape non-printable and escape characters when formatting strings.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="external-editor">
+<span class="sig-name descname"><span class="pre">external-editor</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#external-editor" title="Link to this definition">#</a></dt>
+<dd><p>External editor to use when use-external-editor is enabled.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="frame-format">
+<span class="sig-name descname"><span class="pre">frame-format</span><span class="lldb-setting-type lldb-setting-type-format-string"><span class="pre">format-string</span></span></span><a class="headerlink" href="#frame-format" title="Link to this definition">#</a></dt>
+<dd><p>The default frame format string to use when displaying stack frame information for threads.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">frame</span> <span class="pre">#${frame.index}:</span> <span class="pre">${ansi.fg.cyan}${frame.pc}${ansi.normal}{</span> <span class="pre">${module.file.basename}{`${function.name-with-args}{${frame.no-debug}${function.pc-offset}}}}{</span> <span class="pre">at</span> <span class="pre">${ansi.fg.cyan}${line.file.basename}${ansi.normal}:${ansi.fg.yellow}${line.number}${ansi.normal}{:${ansi.fg.yellow}${line.column}${ansi.normal}}}${frame.kind}{${function.is-optimized}</span> <span class="pre">[opt]}{${function.is-inlined}</span> <span class="pre">[inlined]}{${frame.is-artificial}</span> <span class="pre">[artificial]}\n</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="frame-format-unique">
+<span class="sig-name descname"><span class="pre">frame-format-unique</span><span class="lldb-setting-type lldb-setting-type-format-string"><span class="pre">format-string</span></span></span><a class="headerlink" href="#frame-format-unique" title="Link to this definition">#</a></dt>
+<dd><p>The default frame format string to use when displaying stack frame information for threads from thread backtrace unique.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">frame</span> <span class="pre">#${frame.index}:</span> <span class="pre">${ansi.fg.cyan}${frame.pc}${ansi.normal}{</span> <span class="pre">${module.file.basename}{`${function.name-without-args}{${frame.no-debug}${function.pc-offset}}}}{</span> <span class="pre">at</span> <span class="pre">${ansi.fg.cyan}${line.file.basename}${ansi.normal}:${ansi.fg.yellow}${line.number}${ansi.normal}{:${ansi.fg.yellow}${line.column}${ansi.normal}}}${frame.kind}{${function.is-optimized}</span> <span class="pre">[opt]}{${function.is-inlined}</span> <span class="pre">[inlined]}{${frame.is-artificial}</span> <span class="pre">[artificial]}\n</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="highlight-source">
+<span class="sig-name descname"><span class="pre">highlight-source</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#highlight-source" title="Link to this definition">#</a></dt>
+<dd><p>If true, LLDB will highlight the displayed source code.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="notify-void">
+<span class="sig-name descname"><span class="pre">notify-void</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#notify-void" title="Link to this definition">#</a></dt>
+<dd><p>Notify the user explicitly if an expression returns void (default: false).</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="print-decls">
+<span class="sig-name descname"><span class="pre">print-decls</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#print-decls" title="Link to this definition">#</a></dt>
+<dd><p>If true, LLDB will print the values of variables declared in an expression. Currently only supported in the REPL (default: true).</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="prompt">
+<span class="sig-name descname"><span class="pre">prompt</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#prompt" title="Link to this definition">#</a></dt>
+<dd><p>The debugger command line prompt displayed for the user.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">(lldb)</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="prompt-ansi-prefix">
+<span class="sig-name descname"><span class="pre">prompt-ansi-prefix</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#prompt-ansi-prefix" title="Link to this definition">#</a></dt>
+<dd><p>When in a color-enabled terminal, use the ANSI terminal code specified in this format immediately before the prompt.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">${ansi.faint}</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="prompt-ansi-suffix">
+<span class="sig-name descname"><span class="pre">prompt-ansi-suffix</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#prompt-ansi-suffix" title="Link to this definition">#</a></dt>
+<dd><p>When in a color-enabled terminal, use the ANSI terminal code specified in this format immediately after the prompt.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">${ansi.normal}</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="repl-lang">
+<span class="sig-name descname"><span class="pre">repl-lang</span><span class="lldb-setting-type lldb-setting-type-language"><span class="pre">language</span></span></span><a class="headerlink" href="#repl-lang" title="Link to this definition">#</a></dt>
+<dd><p>The language to use for the REPL.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">unknown</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="script-lang">
+<span class="sig-name descname"><span class="pre">script-lang</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">enum</span></span></span><a class="headerlink" href="#script-lang" title="Link to this definition">#</a></dt>
+<dd><p>The script language to be used for evaluating user-written scripts.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>none</strong> – Disable scripting languages.</p></li>
+<li><p><strong>python</strong> – Select python as the default scripting language.</p></li>
+<li><p><strong>default</strong> – Select the lldb default as the default scripting language.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><code class="docutils literal notranslate"><span class="pre">default</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="separator">
+<span class="sig-name descname"><span class="pre">separator</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#separator" title="Link to this definition">#</a></dt>
+<dd><p>A separator used, e.g., in the status line.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">│</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="show-autosuggestion">
+<span class="sig-name descname"><span class="pre">show-autosuggestion</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#show-autosuggestion" title="Link to this definition">#</a></dt>
+<dd><p>If true, LLDB will show suggestions to complete the command the user typed. Suggestions may be accepted using Ctrl-F.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="show-autosuggestion-ansi-prefix">
+<span class="sig-name descname"><span class="pre">show-autosuggestion-ansi-prefix</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#show-autosuggestion-ansi-prefix" title="Link to this definition">#</a></dt>
+<dd><p>When displaying suggestion in a color-enabled terminal, use the ANSI terminal code specified in this format immediately before the suggestion.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">${ansi.faint}</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="show-autosuggestion-ansi-suffix">
+<span class="sig-name descname"><span class="pre">show-autosuggestion-ansi-suffix</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#show-autosuggestion-ansi-suffix" title="Link to this definition">#</a></dt>
+<dd><p>When displaying suggestion in a color-enabled terminal, use the ANSI terminal code specified in this format immediately after the suggestion.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">${ansi.normal}</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="disable-ansi-prefix">
+<span class="sig-name descname"><span class="pre">disable-ansi-prefix</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#disable-ansi-prefix" title="Link to this definition">#</a></dt>
+<dd><p>If something has been disabled in a color-enabled terminal, use the ANSI terminal code specified immediately before whatever has been disabled.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">${ansi.faint}</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="disable-ansi-suffix">
+<span class="sig-name descname"><span class="pre">disable-ansi-suffix</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#disable-ansi-suffix" title="Link to this definition">#</a></dt>
+<dd><p>When somehing has been disabled in a color-enabled terminal, use the ANSI terminal code specified immediately after whatever has been disabled.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">${ansi.normal}</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="show-dont-use-po-hint">
+<span class="sig-name descname"><span class="pre">show-dont-use-po-hint</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#show-dont-use-po-hint" title="Link to this definition">#</a></dt>
+<dd><p>If true, and object description was requested for a type that does not implement it, LLDB will print a hint telling the user to consider using p instead.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="show-inline-diagnostics">
+<span class="sig-name descname"><span class="pre">show-inline-diagnostics</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#show-inline-diagnostics" title="Link to this definition">#</a></dt>
+<dd><p>Controls whether diagnostics can refer directly to the command input, drawing arrows to it. If false, diagnostics will echo the input.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="show-progress">
+<span class="sig-name descname"><span class="pre">show-progress</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#show-progress" title="Link to this definition">#</a></dt>
+<dd><p>Whether to show progress using Operating System Command (OSC) Sequences in supporting terminal emulators.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="show-progress-ansi-prefix">
+<span class="sig-name descname"><span class="pre">show-progress-ansi-prefix</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#show-progress-ansi-prefix" title="Link to this definition">#</a></dt>
+<dd><p>When displaying progress in a color-enabled terminal, use the ANSI terminal code specified in this format immediately before the progress message.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">${ansi.faint}</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="show-progress-ansi-suffix">
+<span class="sig-name descname"><span class="pre">show-progress-ansi-suffix</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#show-progress-ansi-suffix" title="Link to this definition">#</a></dt>
+<dd><p>When displaying progress in a color-enabled terminal, use the ANSI terminal code specified in this format immediately after the progress message.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">${ansi.normal}</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="show-regex-match-ansi-prefix">
+<span class="sig-name descname"><span class="pre">show-regex-match-ansi-prefix</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#show-regex-match-ansi-prefix" title="Link to this definition">#</a></dt>
+<dd><p>When displaying a regex match in a color-enabled terminal, use the ANSI terminal code specified in this format immediately before the match.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">${ansi.fg.red}</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="show-regex-match-ansi-suffix">
+<span class="sig-name descname"><span class="pre">show-regex-match-ansi-suffix</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#show-regex-match-ansi-suffix" title="Link to this definition">#</a></dt>
+<dd><p>When displaying a regex match in a color-enabled terminal, use the ANSI terminal code specified in this format immediately after the match.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">${ansi.normal}</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="show-statusline">
+<span class="sig-name descname"><span class="pre">show-statusline</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#show-statusline" title="Link to this definition">#</a></dt>
+<dd><p>Whether to show a statusline at the bottom of the terminal (not supported on Windows).</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="statusline-format">
+<span class="sig-name descname"><span class="pre">statusline-format</span><span class="lldb-setting-type lldb-setting-type-format-string"><span class="pre">format-string</span></span></span><a class="headerlink" href="#statusline-format" title="Link to this definition">#</a></dt>
+<dd><p>The default statusline format string.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">${ansi.negative}{${target.file.basename}|no</span> <span class="pre">target}{</span> <span class="pre">${separator}${line.file.basename}:${line.number}:${line.column}}{</span> <span class="pre">${separator}${thread.stop-reason}}{</span> <span class="pre">${separator}{${progress.count}</span> <span class="pre">}${progress.message}}</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="stop-disassembly-count">
+<span class="sig-name descname"><span class="pre">stop-disassembly-count</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#stop-disassembly-count" title="Link to this definition">#</a></dt>
+<dd><p>The number of disassembly lines to show when displaying a stopped context.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">4</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="stop-disassembly-display">
+<span class="sig-name descname"><span class="pre">stop-disassembly-display</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">enum</span></span></span><a class="headerlink" href="#stop-disassembly-display" title="Link to this definition">#</a></dt>
+<dd><p>Control when to display disassembly when displaying a stopped context.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>never</strong> – Never show disassembly when displaying a stop context.</p></li>
+<li><p><strong>no-debuginfo</strong> – Show disassembly when there is no debug information.</p></li>
+<li><p><strong>no-source</strong> – Show disassembly when there is no source information, or the source file is missing when displaying a stop context.</p></li>
+<li><p><strong>always</strong> – Always show disassembly when displaying a stop context.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><code class="docutils literal notranslate"><span class="pre">no-debuginfo</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="stop-disassembly-max-size">
+<span class="sig-name descname"><span class="pre">stop-disassembly-max-size</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#stop-disassembly-max-size" title="Link to this definition">#</a></dt>
+<dd><p>The size limit to use when disassembling large functions (default: 32KB).</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">32000</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="stop-line-count-after">
+<span class="sig-name descname"><span class="pre">stop-line-count-after</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#stop-line-count-after" title="Link to this definition">#</a></dt>
+<dd><p>The number of sources lines to display that come after the current source line when displaying a stopped context.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">3</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="stop-line-count-before">
+<span class="sig-name descname"><span class="pre">stop-line-count-before</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#stop-line-count-before" title="Link to this definition">#</a></dt>
+<dd><p>The number of sources lines to display that come before the current source line when displaying a stopped context.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">3</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="stop-show-column">
+<span class="sig-name descname"><span class="pre">stop-show-column</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">enum</span></span></span><a class="headerlink" href="#stop-show-column" title="Link to this definition">#</a></dt>
+<dd><p>If true, LLDB will use the column information from the debug info to mark the current position when displaying a stopped context.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>none</strong> – Do not highlight the stop column.</p></li>
+<li><p><strong>ansi-or-caret</strong> – Highlight the stop column with ANSI terminal codes when color/ANSI mode is enabled; otherwise, fall back to using a text-only caret (^) as if “caret-only” mode was selected.</p></li>
+<li><p><strong>ansi</strong> – Highlight the stop column with ANSI terminal codes when running LLDB with color/ANSI enabled.</p></li>
+<li><p><strong>caret</strong> – Highlight the stop column with a caret character (^) underneath the stop column. This method introduces a new line in source listings that display thread stop locations.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><code class="docutils literal notranslate"><span class="pre">ansi-or-caret</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="stop-show-column-ansi-prefix">
+<span class="sig-name descname"><span class="pre">stop-show-column-ansi-prefix</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#stop-show-column-ansi-prefix" title="Link to this definition">#</a></dt>
+<dd><p>When displaying the column marker in a color-enabled terminal, use the ANSI terminal code specified in this format at the immediately before the column to be marked.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">${ansi.underline}</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="stop-show-column-ansi-suffix">
+<span class="sig-name descname"><span class="pre">stop-show-column-ansi-suffix</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#stop-show-column-ansi-suffix" title="Link to this definition">#</a></dt>
+<dd><p>When displaying the column marker in a color-enabled terminal, use the ANSI terminal code specified in this format immediately after the column to be marked.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">${ansi.normal}</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="stop-show-line-ansi-prefix">
+<span class="sig-name descname"><span class="pre">stop-show-line-ansi-prefix</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#stop-show-line-ansi-prefix" title="Link to this definition">#</a></dt>
+<dd><p>When displaying the line marker in a color-enabled terminal, use the ANSI terminal code specified in this format at the immediately before the line to be marked.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">${ansi.fg.yellow}</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="stop-show-line-ansi-suffix">
+<span class="sig-name descname"><span class="pre">stop-show-line-ansi-suffix</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#stop-show-line-ansi-suffix" title="Link to this definition">#</a></dt>
+<dd><p>When displaying the line marker in a color-enabled terminal, use the ANSI terminal code specified in this format immediately after the line to be marked.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">${ansi.normal}</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="tab-size">
+<span class="sig-name descname"><span class="pre">tab-size</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#tab-size" title="Link to this definition">#</a></dt>
+<dd><p>The tab size to use when indenting code in multi-line input mode (default: 2).</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">2</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="term-height">
+<span class="sig-name descname"><span class="pre">term-height</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#term-height" title="Link to this definition">#</a></dt>
+<dd><p>The number of rows used for displaying text.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">24</span></code></dd>
+<dt class="field-even">Minimum<span class="colon">:</span></dt>
+<dd class="field-even"><code class="docutils literal notranslate"><span class="pre">10</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="term-width">
+<span class="sig-name descname"><span class="pre">term-width</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#term-width" title="Link to this definition">#</a></dt>
+<dd><p>The maximum number of columns to use for displaying text.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">80</span></code></dd>
+<dt class="field-even">Minimum<span class="colon">:</span></dt>
+<dd class="field-even"><code class="docutils literal notranslate"><span class="pre">10</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="thread-format">
+<span class="sig-name descname"><span class="pre">thread-format</span><span class="lldb-setting-type lldb-setting-type-format-string"><span class="pre">format-string</span></span></span><a class="headerlink" href="#thread-format" title="Link to this definition">#</a></dt>
+<dd><p>The default thread format string to use when displaying thread information.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">thread</span> <span class="pre">#${thread.index}:</span> <span class="pre">tid</span> <span class="pre">=</span> <span class="pre">${thread.id%tid}{,</span> <span class="pre">${frame.pc}}{</span> <span class="pre">${module.file.basename}{`${function.name-with-args}{${frame.no-debug}${function.pc-offset}}}}{</span> <span class="pre">at</span> <span class="pre">${ansi.fg.cyan}${line.file.basename}${ansi.normal}:${ansi.fg.yellow}${line.number}${ansi.normal}{:${ansi.fg.yellow}${line.column}${ansi.normal}}}{,</span> <span class="pre">name</span> <span class="pre">=</span> <span class="pre">${ansi.fg.green}'${thread.name}'${ansi.normal}}{,</span> <span class="pre">queue</span> <span class="pre">=</span> <span class="pre">${ansi.fg.green}'${thread.queue}'${ansi.normal}}{,</span> <span class="pre">activity</span> <span class="pre">=</span> <span class="pre">${ansi.fg.green}'${thread.info.activity.name}'${ansi.normal}}{,</span> <span class="pre">${thread.info.trace_messages}</span> <span class="pre">messages}{,</span> <span class="pre">stop</span> <span class="pre">reason</span> <span class="pre">=</span> <span class="pre">${ansi.fg.red}${thread.stop-reason}${ansi.normal}}{\nReturn</span> <span class="pre">value:</span> <span class="pre">${thread.return-value}}{\nCompleted</span> <span class="pre">expression:</span> <span class="pre">${thread.completed-expression}}\n</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="thread-stop-format">
+<span class="sig-name descname"><span class="pre">thread-stop-format</span><span class="lldb-setting-type lldb-setting-type-format-string"><span class="pre">format-string</span></span></span><a class="headerlink" href="#thread-stop-format" title="Link to this definition">#</a></dt>
+<dd><p>The default thread format  string to use when displaying thread information as part of the stop display.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">thread</span> <span class="pre">#${thread.index}{,</span> <span class="pre">name</span> <span class="pre">=</span> <span class="pre">'${thread.name}'}{,</span> <span class="pre">queue</span> <span class="pre">=</span> <span class="pre">${ansi.fg.green}'${thread.queue}'${ansi.normal}}{,</span> <span class="pre">activity</span> <span class="pre">=</span> <span class="pre">${ansi.fg.green}'${thread.info.activity.name}'${ansi.normal}}{,</span> <span class="pre">${thread.info.trace_messages}</span> <span class="pre">messages}{,</span> <span class="pre">stop</span> <span class="pre">reason</span> <span class="pre">=</span> <span class="pre">${ansi.fg.red}${thread.stop-reason}${ansi.normal}}{\nReturn</span> <span class="pre">value:</span> <span class="pre">${thread.return-value}}{\nCompleted</span> <span class="pre">expression:</span> <span class="pre">${thread.completed-expression}}\n</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="use-color">
+<span class="sig-name descname"><span class="pre">use-color</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#use-color" title="Link to this definition">#</a></dt>
+<dd><p>Whether to use Ansi color codes or not.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="use-external-editor">
+<span class="sig-name descname"><span class="pre">use-external-editor</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#use-external-editor" title="Link to this definition">#</a></dt>
+<dd><p>Whether to use an external editor or not.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="use-source-cache">
+<span class="sig-name descname"><span class="pre">use-source-cache</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#use-source-cache" title="Link to this definition">#</a></dt>
+<dd><p>Whether to cache source files in memory or not.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<section id="target">
+<h3>target<a class="headerlink" href="#target" title="Link to this heading">#</a></h3>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.arg0">
+<span class="sig-name descname"><span class="pre">target.arg0</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#target.arg0" title="Link to this definition">#</a></dt>
+<dd><p>The first argument passed to the program in the argument array which can be different from the executable itself.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.auto-apply-fixits">
+<span class="sig-name descname"><span class="pre">target.auto-apply-fixits</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.auto-apply-fixits" title="Link to this definition">#</a></dt>
+<dd><p>Automatically apply fix-it hints to expressions.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.auto-import-clang-modules">
+<span class="sig-name descname"><span class="pre">target.auto-import-clang-modules</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.auto-import-clang-modules" title="Link to this definition">#</a></dt>
+<dd><p>Automatically load Clang modules referred to by the program.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.auto-install-main-executable">
+<span class="sig-name descname"><span class="pre">target.auto-install-main-executable</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.auto-install-main-executable" title="Link to this definition">#</a></dt>
+<dd><p>Always install the main executable when connected to a remote platform.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.auto-source-map-relative">
+<span class="sig-name descname"><span class="pre">target.auto-source-map-relative</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.auto-source-map-relative" title="Link to this definition">#</a></dt>
+<dd><p>Automatically deduce source path mappings based on source file breakpoint resolution. It only deduces source mapping if source file breakpoint request is using full path and if the debug info contains relative paths.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.breakpoints-use-platform-avoid-list">
+<span class="sig-name descname"><span class="pre">target.breakpoints-use-platform-avoid-list</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.breakpoints-use-platform-avoid-list" title="Link to this definition">#</a></dt>
+<dd><p>Consult the platform module avoid list when setting non-module specific breakpoints.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.clang-module-search-paths">
+<span class="sig-name descname"><span class="pre">target.clang-module-search-paths</span><span class="lldb-setting-type lldb-setting-type-file-list"><span class="pre">file-list</span></span></span><a class="headerlink" href="#target.clang-module-search-paths" title="Link to this definition">#</a></dt>
+<dd><p>List of directories to be searched when locating modules for Clang.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.debug-file-search-paths">
+<span class="sig-name descname"><span class="pre">target.debug-file-search-paths</span><span class="lldb-setting-type lldb-setting-type-file-list"><span class="pre">file-list</span></span></span><a class="headerlink" href="#target.debug-file-search-paths" title="Link to this definition">#</a></dt>
+<dd><p>List of directories to be searched when locating debug symbol files. See also symbols.enable-external-lookup.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.debug-utility-expression">
+<span class="sig-name descname"><span class="pre">target.debug-utility-expression</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.debug-utility-expression" title="Link to this definition">#</a></dt>
+<dd><p>Enable debugging of LLDB-internal utility expressions.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.default-arch">
+<span class="sig-name descname"><span class="pre">target.default-arch</span><span class="lldb-setting-type lldb-setting-type-arch"><span class="pre">arch</span></span></span><a class="headerlink" href="#target.default-arch" title="Link to this definition">#</a></dt>
+<dd><p>Default architecture to choose, when there’s a choice.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">unknown</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.detach-on-error">
+<span class="sig-name descname"><span class="pre">target.detach-on-error</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.detach-on-error" title="Link to this definition">#</a></dt>
+<dd><p>debugserver will detach (rather than killing) a process if it loses connection with lldb.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.disable-aslr">
+<span class="sig-name descname"><span class="pre">target.disable-aslr</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.disable-aslr" title="Link to this definition">#</a></dt>
+<dd><p>Disable Address Space Layout Randomization (ASLR)</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.disable-stdio">
+<span class="sig-name descname"><span class="pre">target.disable-stdio</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.disable-stdio" title="Link to this definition">#</a></dt>
+<dd><p>Disable stdin/stdout for process (e.g. for a GUI application)</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.disassembly-cpu">
+<span class="sig-name descname"><span class="pre">target.disassembly-cpu</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#target.disassembly-cpu" title="Link to this definition">#</a></dt>
+<dd><p>Override the CPU for disassembling. Takes the same values as the -mcpu clang flag.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.disassembly-features">
+<span class="sig-name descname"><span class="pre">target.disassembly-features</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#target.disassembly-features" title="Link to this definition">#</a></dt>
+<dd><p>Specify additional CPU features for disassembling.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.x86-disassembly-flavor">
+<span class="sig-name descname"><span class="pre">target.x86-disassembly-flavor</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">enum</span></span></span><a class="headerlink" href="#target.x86-disassembly-flavor" title="Link to this definition">#</a></dt>
+<dd><p>The default disassembly flavor to use for x86 or x86-64 targets.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>default</strong> – Disassembler default (currently att).</p></li>
+<li><p><strong>intel</strong> – Intel disassembler flavor.</p></li>
+<li><p><strong>att</strong> – AT&amp;T disassembler flavor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><code class="docutils literal notranslate"><span class="pre">default</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.display-expression-in-crashlogs">
+<span class="sig-name descname"><span class="pre">target.display-expression-in-crashlogs</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.display-expression-in-crashlogs" title="Link to this definition">#</a></dt>
+<dd><p>Expressions that crash will show up in crash logs if the host system supports executable specific crash log strings and this setting is set to true.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.display-recognized-arguments">
+<span class="sig-name descname"><span class="pre">target.display-recognized-arguments</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.display-recognized-arguments" title="Link to this definition">#</a></dt>
+<dd><p>Show recognized arguments in variable listings by default.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.display-runtime-support-values">
+<span class="sig-name descname"><span class="pre">target.display-runtime-support-values</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.display-runtime-support-values" title="Link to this definition">#</a></dt>
+<dd><p>If true, LLDB will show variables that are meant to support the operation of a language’s runtime support.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.objc-dynamic-class-extractor">
+<span class="sig-name descname"><span class="pre">target.objc-dynamic-class-extractor</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">enum</span></span></span><a class="headerlink" href="#target.objc-dynamic-class-extractor" title="Link to this definition">#</a></dt>
+<dd><p>Configure how LLDB parses dynamic Objective-C class metadata. By default LLDB will choose the most appropriate method for the target OS.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>auto</strong> – Automatically determine the most appropriate method for the target OS.</p></li>
+<li><p><strong>GetRealizedClassList</strong> – Prefer using the GetRealizedClassList API.</p></li>
+<li><p><strong>CopyRealizedClassList</strong> – Prefer using the CopyRealizedClassList API.</p></li>
+<li><p><strong>RealizedClassesStruct</strong> – Prefer using the realized classes struct.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><code class="docutils literal notranslate"><span class="pre">auto</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.enable-synthetic-value">
+<span class="sig-name descname"><span class="pre">target.enable-synthetic-value</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.enable-synthetic-value" title="Link to this definition">#</a></dt>
+<dd><p>Should synthetic values be used by default whenever available.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.env-vars">
+<span class="sig-name descname"><span class="pre">target.env-vars</span><span class="lldb-setting-type lldb-setting-type-dictionary"><span class="pre">dictionary</span></span></span><a class="headerlink" href="#target.env-vars" title="Link to this definition">#</a></dt>
+<dd><p>A list of user provided environment variables to be passed to the executable’s environment, and their values.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.error-path">
+<span class="sig-name descname"><span class="pre">target.error-path</span><span class="lldb-setting-type lldb-setting-type-file"><span class="pre">file</span></span></span><a class="headerlink" href="#target.error-path" title="Link to this definition">#</a></dt>
+<dd><p>The file/path to be used by the executable program for writing its standard error.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.exec-search-paths">
+<span class="sig-name descname"><span class="pre">target.exec-search-paths</span><span class="lldb-setting-type lldb-setting-type-file-list"><span class="pre">file-list</span></span></span><a class="headerlink" href="#target.exec-search-paths" title="Link to this definition">#</a></dt>
+<dd><p>Executable search paths to use when locating executable files whose paths don’t match the local file system.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.expr-alloc-address">
+<span class="sig-name descname"><span class="pre">target.expr-alloc-address</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#target.expr-alloc-address" title="Link to this definition">#</a></dt>
+<dd><p>Start address within the process address space of memory allocation for expression evaluation.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">0</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.expr-alloc-align">
+<span class="sig-name descname"><span class="pre">target.expr-alloc-align</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#target.expr-alloc-align" title="Link to this definition">#</a></dt>
+<dd><p>Alignment for each memory allocation for expression evaluation.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">0</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.expr-alloc-size">
+<span class="sig-name descname"><span class="pre">target.expr-alloc-size</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#target.expr-alloc-size" title="Link to this definition">#</a></dt>
+<dd><p>Amount of memory in bytes to allocate for expression evaluation.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">0</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.expr-error-limit">
+<span class="sig-name descname"><span class="pre">target.expr-error-limit</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#target.expr-error-limit" title="Link to this definition">#</a></dt>
+<dd><p>The maximum amount of errors to emit while parsing an expression. A value of 0 means to always continue parsing if possible.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">5</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.expr-prefix">
+<span class="sig-name descname"><span class="pre">target.expr-prefix</span><span class="lldb-setting-type lldb-setting-type-file"><span class="pre">file</span></span></span><a class="headerlink" href="#target.expr-prefix" title="Link to this definition">#</a></dt>
+<dd><p>Path to a file containing expressions to be prepended to all expressions.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.hex-immediate-style">
+<span class="sig-name descname"><span class="pre">target.hex-immediate-style</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">enum</span></span></span><a class="headerlink" href="#target.hex-immediate-style" title="Link to this definition">#</a></dt>
+<dd><p>Which style to use for printing hexadecimal disassembly values.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>c</strong> – C-style (0xffff).</p></li>
+<li><p><strong>asm</strong> – Asm-style (0ffffh).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><code class="docutils literal notranslate"><span class="pre">c</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.import-std-module">
+<span class="sig-name descname"><span class="pre">target.import-std-module</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">enum</span></span></span><a class="headerlink" href="#target.import-std-module" title="Link to this definition">#</a></dt>
+<dd><p>Import the ‘std’ C++ module to improve expression parsing involving  C++ standard library types.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>false</strong> – Never import the ‘std’ C++ module in the expression parser.</p></li>
+<li><p><strong>fallback</strong> – Retry evaluating expressions with an imported ‘std’ C++ module if they failed to parse without the module. This allows evaluating more complex expressions involving C++ standard library types.</p></li>
+<li><p><strong>true</strong> – Always import the ‘std’ C++ module. This allows evaluating more complex expressions involving C++ standard library types. This feature is experimental.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.inherit-env">
+<span class="sig-name descname"><span class="pre">target.inherit-env</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.inherit-env" title="Link to this definition">#</a></dt>
+<dd><p>Inherit the environment from the process that is running LLDB.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.inherit-tcc">
+<span class="sig-name descname"><span class="pre">target.inherit-tcc</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.inherit-tcc" title="Link to this definition">#</a></dt>
+<dd><p>Inherit the TCC permissions from the inferior’s parent instead of making the process itself responsible.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.inline-breakpoint-strategy">
+<span class="sig-name descname"><span class="pre">target.inline-breakpoint-strategy</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">enum</span></span></span><a class="headerlink" href="#target.inline-breakpoint-strategy" title="Link to this definition">#</a></dt>
+<dd><p>The strategy to use when settings breakpoints by file and line. Breakpoint locations can end up being inlined by the compiler, so that a compile unit ‘a.c’ might contain an inlined function from another source file. Usually this is limited to breakpoint locations from inlined functions from header or other include files, or more accurately non-implementation source files. Sometimes code might #include implementation files and cause inlined breakpoint locations in inlined implementation files. Always checking for inlined breakpoint locations can be expensive (memory and time), so if you have a project with many headers and find that setting breakpoints is slow, then you can change this setting to headers. This setting allows you to control exactly which strategy is used when setting file and line breakpoints.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>never</strong> – Never look for inline breakpoint locations (fastest). This setting should only be used if you know that no inlining occurs in yourprograms.</p></li>
+<li><p><strong>always</strong> – Always look for inline breakpoint locations when setting file and line breakpoints (slower but most accurate).</p></li>
+<li><p><strong>headers</strong> – Only check for inline breakpoint locations when setting breakpoints in header files, but not when setting breakpoint in implementation source files (default).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><code class="docutils literal notranslate"><span class="pre">always</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.input-path">
+<span class="sig-name descname"><span class="pre">target.input-path</span><span class="lldb-setting-type lldb-setting-type-file"><span class="pre">file</span></span></span><a class="headerlink" href="#target.input-path" title="Link to this definition">#</a></dt>
+<dd><p>The file/path to be used by the executable program for reading its standard input.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.language">
+<span class="sig-name descname"><span class="pre">target.language</span><span class="lldb-setting-type lldb-setting-type-language"><span class="pre">language</span></span></span><a class="headerlink" href="#target.language" title="Link to this definition">#</a></dt>
+<dd><p>The language to use when interpreting expressions entered in commands.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">unknown</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.launch-working-dir">
+<span class="sig-name descname"><span class="pre">target.launch-working-dir</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#target.launch-working-dir" title="Link to this definition">#</a></dt>
+<dd><p>A default value for the working directory to use when launching processes. It is ignored when empty. This setting is only used when the target is launched. If you change this setting, the new value will only apply to subsequent launches. Commands that take an explicit working directory will override this setting.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.load-cwd-lldbinit">
+<span class="sig-name descname"><span class="pre">target.load-cwd-lldbinit</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">enum</span></span></span><a class="headerlink" href="#target.load-cwd-lldbinit" title="Link to this definition">#</a></dt>
+<dd><p>Allow LLDB to .lldbinit files from the current directory automatically.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>false</strong> – Do not load .lldbinit files from current directory</p></li>
+<li><p><strong>warn</strong> – Warn about loading .lldbinit files from current directory</p></li>
+<li><p><strong>true</strong> – Load .lldbinit files from current directory</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><code class="docutils literal notranslate"><span class="pre">warn</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.load-script-from-symbol-file">
+<span class="sig-name descname"><span class="pre">target.load-script-from-symbol-file</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">enum</span></span></span><a class="headerlink" href="#target.load-script-from-symbol-file" title="Link to this definition">#</a></dt>
+<dd><p>Allow LLDB to load scripting resources embedded in symbol files when available.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>false</strong> – Do not load debug scripts inside symbol files.</p></li>
+<li><p><strong>warn</strong> – Warn about debug scripts inside symbol files but do not load them.</p></li>
+<li><p><strong>true</strong> – Load debug scripts inside symbol files</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><code class="docutils literal notranslate"><span class="pre">warn</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.max-children-count">
+<span class="sig-name descname"><span class="pre">target.max-children-count</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#target.max-children-count" title="Link to this definition">#</a></dt>
+<dd><p>Maximum number of children to expand in any level of depth.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">24</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.max-children-depth">
+<span class="sig-name descname"><span class="pre">target.max-children-depth</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#target.max-children-depth" title="Link to this definition">#</a></dt>
+<dd><p>Maximum depth to expand children.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">4</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.max-memory-read-size">
+<span class="sig-name descname"><span class="pre">target.max-memory-read-size</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#target.max-memory-read-size" title="Link to this definition">#</a></dt>
+<dd><p>Maximum number of bytes that ‘memory read’ will fetch before –force must be specified.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">4294967295</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.max-string-summary-length">
+<span class="sig-name descname"><span class="pre">target.max-string-summary-length</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#target.max-string-summary-length" title="Link to this definition">#</a></dt>
+<dd><p>Maximum number of characters to show when using %s in summary strings.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">1024</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.max-zero-padding-in-float-format">
+<span class="sig-name descname"><span class="pre">target.max-zero-padding-in-float-format</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#target.max-zero-padding-in-float-format" title="Link to this definition">#</a></dt>
+<dd><p>The maximum number of zeroes to insert when displaying a very small float before falling back to scientific notation.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">6</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.memory-module-load-level">
+<span class="sig-name descname"><span class="pre">target.memory-module-load-level</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">enum</span></span></span><a class="headerlink" href="#target.memory-module-load-level" title="Link to this definition">#</a></dt>
+<dd><p>Loading modules from memory can be slow as reading the symbol tables and other data can take a long time depending on your connection to the debug target. This setting helps users control how much information gets loaded when loading modules from memory.’complete’ is the default value for this setting which will load all sections and symbols by reading them from memory (slowest, most accurate). ‘partial’ will load sections and attempt to find function bounds without downloading the symbol table (faster, still accurate, missing symbol names). ‘minimal’ is the fastest setting and will load section data with no symbols, but should rarely be used as stack frames in these memory regions will be inaccurate and not provide any context (fastest).</p>
+<dl class="myst field-list">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>minimal</strong> – Load minimal information when loading modules from memory. Currently this setting loads sections only.</p></li>
+<li><p><strong>complete</strong> – Load complete information when loading modules from memory. Currently this setting loads sections and all symbols.</p></li>
+<li><p><strong>partial</strong> – Load partial information when loading modules from memory. Currently this setting loads sections and function bounds.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><code class="docutils literal notranslate"><span class="pre">complete</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.move-to-nearest-code">
+<span class="sig-name descname"><span class="pre">target.move-to-nearest-code</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.move-to-nearest-code" title="Link to this definition">#</a></dt>
+<dd><p>Move breakpoints to nearest code.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.notify-about-fixits">
+<span class="sig-name descname"><span class="pre">target.notify-about-fixits</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.notify-about-fixits" title="Link to this definition">#</a></dt>
+<dd><p>Print the fixed expression text.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.object-map">
+<span class="sig-name descname"><span class="pre">target.object-map</span><span class="lldb-setting-type lldb-setting-type-path-map"><span class="pre">path-map</span></span></span><a class="headerlink" href="#target.object-map" title="Link to this definition">#</a></dt>
+<dd><p>Object path remappings apply substitutions to the paths of object files, typically needed to debug from a different host than the one that built the target.  The object-map property consists of an array of pairs, the first element is a path prefix, and the second is its replacement.  The syntax is <code class="docutils literal notranslate"><span class="pre">prefix1</span> <span class="pre">replacement1</span> <span class="pre">prefix2</span> <span class="pre">replacement2...</span></code>.  The pairs are checked in order, the first prefix that matches is used, and that prefix is substituted with the replacement.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.output-path">
+<span class="sig-name descname"><span class="pre">target.output-path</span><span class="lldb-setting-type lldb-setting-type-file"><span class="pre">file</span></span></span><a class="headerlink" href="#target.output-path" title="Link to this definition">#</a></dt>
+<dd><p>The file/path to be used by the executable program for writing its standard output.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.parallel-module-load">
+<span class="sig-name descname"><span class="pre">target.parallel-module-load</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.parallel-module-load" title="Link to this definition">#</a></dt>
+<dd><p>Enable loading of modules in parallel for the dynamic loader.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.prefer-dynamic-value">
+<span class="sig-name descname"><span class="pre">target.prefer-dynamic-value</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">enum</span></span></span><a class="headerlink" href="#target.prefer-dynamic-value" title="Link to this definition">#</a></dt>
+<dd><p>Should printed values be shown as their dynamic value.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>no-dynamic-values</strong> – Don’t calculate the dynamic type of values</p></li>
+<li><p><strong>run-target</strong> – Calculate the dynamic type of values even if you have to run the target.</p></li>
+<li><p><strong>no-run-target</strong> – Calculate the dynamic type of values, but don’t run the target.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><code class="docutils literal notranslate"><span class="pre">no-run-target</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.preload-symbols">
+<span class="sig-name descname"><span class="pre">target.preload-symbols</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.preload-symbols" title="Link to this definition">#</a></dt>
+<dd><p>Enable loading of symbol tables before they are needed.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.require-hardware-breakpoint">
+<span class="sig-name descname"><span class="pre">target.require-hardware-breakpoint</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.require-hardware-breakpoint" title="Link to this definition">#</a></dt>
+<dd><p>Require all breakpoints to be hardware breakpoints.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.retries-with-fixits">
+<span class="sig-name descname"><span class="pre">target.retries-with-fixits</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#target.retries-with-fixits" title="Link to this definition">#</a></dt>
+<dd><p>Maximum number of attempts to fix an expression with Fix-Its</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">1</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.run-args">
+<span class="sig-name descname"><span class="pre">target.run-args</span><span class="lldb-setting-type lldb-setting-type-arguments"><span class="pre">arguments</span></span></span><a class="headerlink" href="#target.run-args" title="Link to this definition">#</a></dt>
+<dd><p>A list containing all the arguments to be passed to the executable when it is run. Note that this does NOT include the argv[0] which is in target.arg0.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.save-jit-objects-dir">
+<span class="sig-name descname"><span class="pre">target.save-jit-objects-dir</span><span class="lldb-setting-type lldb-setting-type-file"><span class="pre">file</span></span></span><a class="headerlink" href="#target.save-jit-objects-dir" title="Link to this definition">#</a></dt>
+<dd><p>If specified, the directory to save intermediate object files generated by the LLVM JIT</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.show-hex-variable-values-with-leading-zeroes">
+<span class="sig-name descname"><span class="pre">target.show-hex-variable-values-with-leading-zeroes</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.show-hex-variable-values-with-leading-zeroes" title="Link to this definition">#</a></dt>
+<dd><p>Whether to display leading zeroes when printing variable values in hex format.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.skip-prologue">
+<span class="sig-name descname"><span class="pre">target.skip-prologue</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.skip-prologue" title="Link to this definition">#</a></dt>
+<dd><p>Skip function prologues when setting breakpoints by name.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.source-map">
+<span class="sig-name descname"><span class="pre">target.source-map</span><span class="lldb-setting-type lldb-setting-type-path-map"><span class="pre">path-map</span></span></span><a class="headerlink" href="#target.source-map" title="Link to this definition">#</a></dt>
+<dd><p>Source path remappings apply substitutions to the paths of source files, typically needed to debug from a different host than the one that built the target.  The source-map property consists of an array of pairs, the first element is a path prefix, and the second is its replacement.  The syntax is <code class="docutils literal notranslate"><span class="pre">prefix1</span> <span class="pre">replacement1</span> <span class="pre">prefix2</span> <span class="pre">replacement2...</span></code>.  The pairs are checked in order, the first prefix that matches is used, and that prefix is substituted with the replacement.  A common pattern is to use source-map in conjunction with the clang -fdebug-prefix-map flag.  In the build, use <code class="docutils literal notranslate"><span class="pre">-fdebug-prefix-map=/path/to/build_dir=.</span></code> to rewrite the host specific build directory to <code class="docutils literal notranslate"><span class="pre">.</span></code>.  Then for debugging, use <code class="docutils literal notranslate"><span class="pre">settings</span> <span class="pre">set</span> <span class="pre">target.source-map</span> <span class="pre">.</span> <span class="pre">/path/to/local_dir</span></code> to convert <code class="docutils literal notranslate"><span class="pre">.</span></code> to a valid local path.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.source-realpath-prefixes">
+<span class="sig-name descname"><span class="pre">target.source-realpath-prefixes</span><span class="lldb-setting-type lldb-setting-type-file-list"><span class="pre">file-list</span></span></span><a class="headerlink" href="#target.source-realpath-prefixes" title="Link to this definition">#</a></dt>
+<dd><p>Realpath any source paths that start with one of these prefixes. If the debug info contains symlinks which match the original source file’s basename but don’t match its location that the user will use to set breakpoints, then this setting can help resolve breakpoints correctly. This handles both symlinked files and directories. Wild card prefixes: An empty string matches all paths. A forward slash matches absolute paths.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.trap-handler-names">
+<span class="sig-name descname"><span class="pre">target.trap-handler-names</span><span class="lldb-setting-type lldb-setting-type-array"><span class="pre">array</span></span></span><a class="headerlink" href="#target.trap-handler-names" title="Link to this definition">#</a></dt>
+<dd><p>A list of trap handler function names, e.g. a common Unix user process one is _sigtramp.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.unset-env-vars">
+<span class="sig-name descname"><span class="pre">target.unset-env-vars</span><span class="lldb-setting-type lldb-setting-type-array"><span class="pre">array</span></span></span><a class="headerlink" href="#target.unset-env-vars" title="Link to this definition">#</a></dt>
+<dd><p>A list of environment variable names to be unset in the inferior’s environment. This is most useful to unset some host environment variables when target.inherit-env is true. target.env-vars takes precedence over target.unset-env-vars.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.use-fast-stepping">
+<span class="sig-name descname"><span class="pre">target.use-fast-stepping</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.use-fast-stepping" title="Link to this definition">#</a></dt>
+<dd><p>Use a fast stepping algorithm based on running from branch to branch rather than instruction single-stepping.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.use-hex-immediates">
+<span class="sig-name descname"><span class="pre">target.use-hex-immediates</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.use-hex-immediates" title="Link to this definition">#</a></dt>
+<dd><p>Show immediates in disassembly as hexadecimal.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<section id="experimental">
+<h4>experimental<a class="headerlink" href="#experimental" title="Link to this heading">#</a></h4>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.experimental.inject-local-vars">
+<span class="sig-name descname"><span class="pre">target.experimental.inject-local-vars</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.experimental.inject-local-vars" title="Link to this definition">#</a></dt>
+<dd><p>If true, inject local variables explicitly into the expression text. This will fix symbol resolution when there are name collisions between ivars and local variables. But it can make expressions run much more slowly.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.experimental.use-DIL">
+<span class="sig-name descname"><span class="pre">target.experimental.use-DIL</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.experimental.use-DIL" title="Link to this definition">#</a></dt>
+<dd><p>If true, use the DIL implementation for frame variable evaluation.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="process">
+<h4>process<a class="headerlink" href="#process" title="Link to this heading">#</a></h4>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.detach-keeps-stopped">
+<span class="sig-name descname"><span class="pre">target.process.detach-keeps-stopped</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.process.detach-keeps-stopped" title="Link to this definition">#</a></dt>
+<dd><p>If true, detach will attempt to keep the process stopped.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.disable-language-runtime-unwindplans">
+<span class="sig-name descname"><span class="pre">target.process.disable-language-runtime-unwindplans</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.process.disable-language-runtime-unwindplans" title="Link to this definition">#</a></dt>
+<dd><p>If true, language runtime augmented/overridden backtraces will not be used when printing a stack trace.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.disable-memory-cache">
+<span class="sig-name descname"><span class="pre">target.process.disable-memory-cache</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.process.disable-memory-cache" title="Link to this definition">#</a></dt>
+<dd><p>Disable reading and caching of memory in fixed-size units.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.extra-startup-command">
+<span class="sig-name descname"><span class="pre">target.process.extra-startup-command</span><span class="lldb-setting-type lldb-setting-type-array"><span class="pre">array</span></span></span><a class="headerlink" href="#target.process.extra-startup-command" title="Link to this definition">#</a></dt>
+<dd><p>A list containing extra commands understood by the particular process plugin used.  For instance, to turn on debugserver logging set this to ‘QSetLogging:bitmask=LOG_DEFAULT;’</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.follow-fork-mode">
+<span class="sig-name descname"><span class="pre">target.process.follow-fork-mode</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">enum</span></span></span><a class="headerlink" href="#target.process.follow-fork-mode" title="Link to this definition">#</a></dt>
+<dd><p>Debugger’s behavior upon fork or vfork.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> – Continue tracing the parent process and detach the child.</p></li>
+<li><p><strong>child</strong> – Trace the child process and detach the parent.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><code class="docutils literal notranslate"><span class="pre">parent</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.highmem-virtual-addressable-bits">
+<span class="sig-name descname"><span class="pre">target.process.highmem-virtual-addressable-bits</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#target.process.highmem-virtual-addressable-bits" title="Link to this definition">#</a></dt>
+<dd><p>The number of bits used for addressing high memory, when it differs from low memory in the same Process. When this is non-zero, target.process.virtual-addressable-bits will be the value for low memory (0x000… addresses) and this setting will be the value for high memory (0xfff… addresses). When this is zero, target.process.virtual-addressable-bits applies to all addresses. It is very uncommon to use this setting.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">0</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.ignore-breakpoints-in-expressions">
+<span class="sig-name descname"><span class="pre">target.process.ignore-breakpoints-in-expressions</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.process.ignore-breakpoints-in-expressions" title="Link to this definition">#</a></dt>
+<dd><p>If true, breakpoints will be ignored during expression evaluation.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.interrupt-timeout">
+<span class="sig-name descname"><span class="pre">target.process.interrupt-timeout</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#target.process.interrupt-timeout" title="Link to this definition">#</a></dt>
+<dd><p>The time in seconds to wait for an interrupt succeed in stopping the target.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">20</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.memory-cache-line-size">
+<span class="sig-name descname"><span class="pre">target.process.memory-cache-line-size</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#target.process.memory-cache-line-size" title="Link to this definition">#</a></dt>
+<dd><p>The memory cache line size</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">512</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.python-os-plugin-path">
+<span class="sig-name descname"><span class="pre">target.process.python-os-plugin-path</span><span class="lldb-setting-type lldb-setting-type-file"><span class="pre">file</span></span></span><a class="headerlink" href="#target.process.python-os-plugin-path" title="Link to this definition">#</a></dt>
+<dd><p>A path to a python OS plug-in module file that contains a OperatingSystemPlugIn class.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.run-all-threads">
+<span class="sig-name descname"><span class="pre">target.process.run-all-threads</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.process.run-all-threads" title="Link to this definition">#</a></dt>
+<dd><p>If true, stepping operations will run all threads.  This is equivalent to setting the run-mode option to ‘all-threads’.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.stop-on-exec">
+<span class="sig-name descname"><span class="pre">target.process.stop-on-exec</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.process.stop-on-exec" title="Link to this definition">#</a></dt>
+<dd><p>If true, stop when the inferior exec’s.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.stop-on-sharedlibrary-events">
+<span class="sig-name descname"><span class="pre">target.process.stop-on-sharedlibrary-events</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.process.stop-on-sharedlibrary-events" title="Link to this definition">#</a></dt>
+<dd><p>If true, stop when a shared library is loaded or unloaded.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.track-memory-cache-changes">
+<span class="sig-name descname"><span class="pre">target.process.track-memory-cache-changes</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.process.track-memory-cache-changes" title="Link to this definition">#</a></dt>
+<dd><p>If true, memory cache modifications (which happen often during expressions evaluation) will bump process state ID (and invalidate all synthetic children). Disabling this option helps to avoid synthetic children reevaluation when pretty printers heavily use expressions. The downside of disabled setting is that convenience variables won’t reevaluate synthetic children automatically.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.unwind-on-error-in-expressions">
+<span class="sig-name descname"><span class="pre">target.process.unwind-on-error-in-expressions</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.process.unwind-on-error-in-expressions" title="Link to this definition">#</a></dt>
+<dd><p>If true, errors in expression evaluation will unwind the stack back to the state before the call.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.utility-expression-timeout">
+<span class="sig-name descname"><span class="pre">target.process.utility-expression-timeout</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#target.process.utility-expression-timeout" title="Link to this definition">#</a></dt>
+<dd><p>The time in seconds to wait for LLDB-internal utility expressions.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">15</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.virtual-addressable-bits">
+<span class="sig-name descname"><span class="pre">target.process.virtual-addressable-bits</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#target.process.virtual-addressable-bits" title="Link to this definition">#</a></dt>
+<dd><p>The number of bits used for addressing. If the value is 39, then bits 0..38 are used for addressing. The default value of 0 means unspecified.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">0</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.optimization-warnings">
+<span class="sig-name descname"><span class="pre">target.process.optimization-warnings</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.process.optimization-warnings" title="Link to this definition">#</a></dt>
+<dd><p>If true, warn when stopped in code that is optimized where stepping and variable availability may not behave as expected.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.unsupported-language-warnings">
+<span class="sig-name descname"><span class="pre">target.process.unsupported-language-warnings</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.process.unsupported-language-warnings" title="Link to this definition">#</a></dt>
+<dd><p>If true, warn when stopped in code that is written in a source language that LLDB does not support.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<section id="thread">
+<h5>thread<a class="headerlink" href="#thread" title="Link to this heading">#</a></h5>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.thread.trace-thread">
+<span class="sig-name descname"><span class="pre">target.process.thread.trace-thread</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.process.thread.trace-thread" title="Link to this definition">#</a></dt>
+<dd><p>If true, this thread will single-step and log execution.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.thread.max-backtrace-depth">
+<span class="sig-name descname"><span class="pre">target.process.thread.max-backtrace-depth</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#target.process.thread.max-backtrace-depth" title="Link to this definition">#</a></dt>
+<dd><p>Maximum number of frames to backtrace.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">600000</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.thread.single-thread-plan-timeout">
+<span class="sig-name descname"><span class="pre">target.process.thread.single-thread-plan-timeout</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#target.process.thread.single-thread-plan-timeout" title="Link to this definition">#</a></dt>
+<dd><p>The time in milliseconds to wait for single thread ThreadPlan to move forward before resuming all threads to resolve any potential deadlock. Specify value 0 to disable timeout.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">1000</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.thread.step-avoid-libraries">
+<span class="sig-name descname"><span class="pre">target.process.thread.step-avoid-libraries</span><span class="lldb-setting-type lldb-setting-type-file-list"><span class="pre">file-list</span></span></span><a class="headerlink" href="#target.process.thread.step-avoid-libraries" title="Link to this definition">#</a></dt>
+<dd><p>A list of libraries that source stepping won’t stop in.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.thread.step-avoid-regexp">
+<span class="sig-name descname"><span class="pre">target.process.thread.step-avoid-regexp</span><span class="lldb-setting-type lldb-setting-type-regex"><span class="pre">regex</span></span></span><a class="headerlink" href="#target.process.thread.step-avoid-regexp" title="Link to this definition">#</a></dt>
+<dd><p>A regular expression defining functions step-in won’t stop in.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">^std::</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.thread.step-in-avoid-nodebug">
+<span class="sig-name descname"><span class="pre">target.process.thread.step-in-avoid-nodebug</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.process.thread.step-in-avoid-nodebug" title="Link to this definition">#</a></dt>
+<dd><p>If true, step-in will not stop in functions with no debug information.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.thread.step-out-avoid-nodebug">
+<span class="sig-name descname"><span class="pre">target.process.thread.step-out-avoid-nodebug</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.process.thread.step-out-avoid-nodebug" title="Link to this definition">#</a></dt>
+<dd><p>If true, when step-in/step-out/step-over leave the current frame, they will continue to step out till they come to a function with debug information. Passing a frame argument to step-out will override this option.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id1">
+<h5>experimental<a class="headerlink" href="#id1" title="Link to this heading">#</a></h5>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.experimental.os-plugin-reports-all-threads">
+<span class="sig-name descname"><span class="pre">target.process.experimental.os-plugin-reports-all-threads</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#target.process.experimental.os-plugin-reports-all-threads" title="Link to this definition">#</a></dt>
+<dd><p>Set to False if your Python OS Plugin doesn’t report all threads on each stop.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+</section>
+<section id="platform">
+<h3>platform<a class="headerlink" href="#platform" title="Link to this heading">#</a></h3>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="platform.module-cache-directory">
+<span class="sig-name descname"><span class="pre">platform.module-cache-directory</span><span class="lldb-setting-type lldb-setting-type-file"><span class="pre">file</span></span></span><a class="headerlink" href="#platform.module-cache-directory" title="Link to this definition">#</a></dt>
+<dd><p>Root directory for cached modules.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">~/.lldb/module_cache</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="platform.use-module-cache">
+<span class="sig-name descname"><span class="pre">platform.use-module-cache</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#platform.use-module-cache" title="Link to this definition">#</a></dt>
+<dd><p>Use module cache.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<section id="plugin">
+<h4>plugin<a class="headerlink" href="#plugin" title="Link to this heading">#</a></h4>
+<section id="remote-android">
+<h5>remote-android<a class="headerlink" href="#remote-android" title="Link to this heading">#</a></h5>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="platform.plugin.remote-android.package-name">
+<span class="sig-name descname"><span class="pre">platform.plugin.remote-android.package-name</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#platform.plugin.remote-android.package-name" title="Link to this definition">#</a></dt>
+<dd><p>Specify package name to run adb shell command with ‘run-as’ as the package user when necessary (e.g. to get file with ‘cat’ and ‘dd’).</p>
+</dd></dl>
+
+</section>
+<section id="darwin">
+<h5>darwin<a class="headerlink" href="#darwin" title="Link to this heading">#</a></h5>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="platform.plugin.darwin.ignored-exceptions">
+<span class="sig-name descname"><span class="pre">platform.plugin.darwin.ignored-exceptions</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#platform.plugin.darwin.ignored-exceptions" title="Link to this definition">#</a></dt>
+<dd><p>List the mach exceptions to ignore, separated by ‘|’ (e.g. ‘EXC_BAD_ACCESS|EXC_BAD_INSTRUCTION’). lldb will instead stop on the BSD signal the exception was converted into, if there is one.</p>
+</dd></dl>
+
+</section>
+<section id="qemu-user">
+<h5>qemu-user<a class="headerlink" href="#qemu-user" title="Link to this heading">#</a></h5>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="platform.plugin.qemu-user.architecture">
+<span class="sig-name descname"><span class="pre">platform.plugin.qemu-user.architecture</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#platform.plugin.qemu-user.architecture" title="Link to this definition">#</a></dt>
+<dd><p>Architecture to emulate.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="platform.plugin.qemu-user.emulator-args">
+<span class="sig-name descname"><span class="pre">platform.plugin.qemu-user.emulator-args</span><span class="lldb-setting-type lldb-setting-type-arguments"><span class="pre">arguments</span></span></span><a class="headerlink" href="#platform.plugin.qemu-user.emulator-args" title="Link to this definition">#</a></dt>
+<dd><p>Extra arguments to pass to the emulator.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="platform.plugin.qemu-user.emulator-env-vars">
+<span class="sig-name descname"><span class="pre">platform.plugin.qemu-user.emulator-env-vars</span><span class="lldb-setting-type lldb-setting-type-dictionary"><span class="pre">dictionary</span></span></span><a class="headerlink" href="#platform.plugin.qemu-user.emulator-env-vars" title="Link to this definition">#</a></dt>
+<dd><p>Extra variables to add to the emulator environment.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="platform.plugin.qemu-user.emulator-path">
+<span class="sig-name descname"><span class="pre">platform.plugin.qemu-user.emulator-path</span><span class="lldb-setting-type lldb-setting-type-file"><span class="pre">file</span></span></span><a class="headerlink" href="#platform.plugin.qemu-user.emulator-path" title="Link to this definition">#</a></dt>
+<dd><p>Path to the emulator binary. If the path does not contain a directory separator, the filename is looked up in the PATH environment variable. If empty, the filename is derived from the architecture setting.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="platform.plugin.qemu-user.target-env-vars">
+<span class="sig-name descname"><span class="pre">platform.plugin.qemu-user.target-env-vars</span><span class="lldb-setting-type lldb-setting-type-dictionary"><span class="pre">dictionary</span></span></span><a class="headerlink" href="#platform.plugin.qemu-user.target-env-vars" title="Link to this definition">#</a></dt>
+<dd><p>Extra variables to add to emulated target environment.</p>
+</dd></dl>
+
+</section>
+</section>
+</section>
+<section id="symbols">
+<h3>symbols<a class="headerlink" href="#symbols" title="Link to this heading">#</a></h3>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="symbols.auto-download">
+<span class="sig-name descname"><span class="pre">symbols.auto-download</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">enum</span></span></span><a class="headerlink" href="#symbols.auto-download" title="Link to this definition">#</a></dt>
+<dd><p>On macOS, automatically download symbols with dsymForUUID (or an equivalent script/binary) for relevant images in the debug session.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>off</strong> – Disable automatically downloading symbols.</p></li>
+<li><p><strong>background</strong> – Download symbols in the background for images as they appear in the backtrace.</p></li>
+<li><p><strong>foreground</strong> – Download symbols in the foreground for images as they appear in the backtrace.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><code class="docutils literal notranslate"><span class="pre">off</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="symbols.clang-modules-cache-path">
+<span class="sig-name descname"><span class="pre">symbols.clang-modules-cache-path</span><span class="lldb-setting-type lldb-setting-type-file"><span class="pre">file</span></span></span><a class="headerlink" href="#symbols.clang-modules-cache-path" title="Link to this definition">#</a></dt>
+<dd><p>The path to the clang modules cache directory (-fmodules-cache-path).</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="symbols.enable-background-lookup">
+<span class="sig-name descname"><span class="pre">symbols.enable-background-lookup</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#symbols.enable-background-lookup" title="Link to this definition">#</a></dt>
+<dd><p>Alias for backward compatibility: when enabled this is the equivalent to ‘symbols.auto-download background’.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="symbols.enable-external-lookup">
+<span class="sig-name descname"><span class="pre">symbols.enable-external-lookup</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#symbols.enable-external-lookup" title="Link to this definition">#</a></dt>
+<dd><p>Control the use of external tools and repositories to locate symbol files. Directories listed in target.debug-file-search-paths and directory of the executable are always checked first for separate debug info files. Then depending on this setting: On macOS, Spotlight would be also used to locate a matching .dSYM bundle based on the UUID of the executable. On NetBSD, directory /usr/libdata/debug would be also searched. On platforms other than NetBSD directory /usr/lib/debug would be also searched. If all other methods fail there may be symbol-locator plugins that, if configured properly, will also attempt to acquire symbols. The debuginfod plugin defaults to the DEGUFINFOD_URLS environment variable which is configurable through the ‘plugin.symbol-locator.debuginfod.server_urls’ setting.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="symbols.enable-lldb-index-cache">
+<span class="sig-name descname"><span class="pre">symbols.enable-lldb-index-cache</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#symbols.enable-lldb-index-cache" title="Link to this definition">#</a></dt>
+<dd><p>Enable caching for debug sessions in LLDB. LLDB can cache data for each module for improved performance in subsequent debug sessions.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="symbols.lldb-index-cache-expiration-days">
+<span class="sig-name descname"><span class="pre">symbols.lldb-index-cache-expiration-days</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#symbols.lldb-index-cache-expiration-days" title="Link to this definition">#</a></dt>
+<dd><p>The expiration time in days for a file. When a file hasn’t been accessed for the specified amount of days, it is removed from the cache. A value of 0 disables the expiration-based pruning.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">7</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="symbols.lldb-index-cache-max-byte-size">
+<span class="sig-name descname"><span class="pre">symbols.lldb-index-cache-max-byte-size</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#symbols.lldb-index-cache-max-byte-size" title="Link to this definition">#</a></dt>
+<dd><p>The maximum size for the LLDB index cache directory in bytes. A value over the amount of available space on the disk will be reduced to the amount of available space. A value of 0 disables the absolute size-based pruning.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">0</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="symbols.lldb-index-cache-max-percent">
+<span class="sig-name descname"><span class="pre">symbols.lldb-index-cache-max-percent</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#symbols.lldb-index-cache-max-percent" title="Link to this definition">#</a></dt>
+<dd><p>The maximum size for the cache directory in terms of percentage of the available space on the disk. Set to 100 to indicate no limit, 50 to indicate that the cache size will not be left over half the available disk space. A value over 100 will be reduced to 100. A value of 0 disables the percentage size-based pruning.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">0</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="symbols.lldb-index-cache-path">
+<span class="sig-name descname"><span class="pre">symbols.lldb-index-cache-path</span><span class="lldb-setting-type lldb-setting-type-file"><span class="pre">file</span></span></span><a class="headerlink" href="#symbols.lldb-index-cache-path" title="Link to this definition">#</a></dt>
+<dd><p>The path to the LLDB index cache directory.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="symbols.load-on-demand">
+<span class="sig-name descname"><span class="pre">symbols.load-on-demand</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#symbols.load-on-demand" title="Link to this definition">#</a></dt>
+<dd><p>Enable on demand symbol loading in LLDB. LLDB will load debug info on demand for each module based on various conditions (e.g. matched breakpoint, resolved stack frame addresses and matched global variables/function symbols in symbol table) to improve performance. Please refer to docs/use/ondemand.rst for details.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="symbols.debug-info-symlink-paths">
+<span class="sig-name descname"><span class="pre">symbols.debug-info-symlink-paths</span><span class="lldb-setting-type lldb-setting-type-file-list"><span class="pre">file-list</span></span></span><a class="headerlink" href="#symbols.debug-info-symlink-paths" title="Link to this definition">#</a></dt>
+<dd><p>Debug info path which should be resolved while parsing, relative to the host filesystem.</p>
+</dd></dl>
+
+</section>
+<section id="language">
+<h3>language<a class="headerlink" href="#language" title="Link to this heading">#</a></h3>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="language.enable-filter-for-line-breakpoints">
+<span class="sig-name descname"><span class="pre">language.enable-filter-for-line-breakpoints</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#language.enable-filter-for-line-breakpoints" title="Link to this definition">#</a></dt>
+<dd><p>If true, allow Language plugins to filter locations when setting breakpoints by line number or regex.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="interpreter">
+<h3>interpreter<a class="headerlink" href="#interpreter" title="Link to this heading">#</a></h3>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="interpreter.echo-commands">
+<span class="sig-name descname"><span class="pre">interpreter.echo-commands</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#interpreter.echo-commands" title="Link to this definition">#</a></dt>
+<dd><p>If true, commands will be echoed before they are evaluated.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="interpreter.echo-comment-commands">
+<span class="sig-name descname"><span class="pre">interpreter.echo-comment-commands</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#interpreter.echo-comment-commands" title="Link to this definition">#</a></dt>
+<dd><p>If true, commands will be echoed even if they are pure comment lines.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="interpreter.expand-regex-aliases">
+<span class="sig-name descname"><span class="pre">interpreter.expand-regex-aliases</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#interpreter.expand-regex-aliases" title="Link to this definition">#</a></dt>
+<dd><p>If true, regular expression alias commands will show the expanded command that will be executed. This can be used to debug new regular expression alias commands.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="interpreter.open-transcript-in-editor">
+<span class="sig-name descname"><span class="pre">interpreter.open-transcript-in-editor</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#interpreter.open-transcript-in-editor" title="Link to this definition">#</a></dt>
+<dd><p>If true, LLDB will open the saved session’s transcripts in the external editor.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="interpreter.prompt-on-quit">
+<span class="sig-name descname"><span class="pre">interpreter.prompt-on-quit</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#interpreter.prompt-on-quit" title="Link to this definition">#</a></dt>
+<dd><p>If true, LLDB will prompt you before quitting if there are any live processes being debugged. If false, LLDB will quit without asking in any case.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="interpreter.repeat-previous-command">
+<span class="sig-name descname"><span class="pre">interpreter.repeat-previous-command</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#interpreter.repeat-previous-command" title="Link to this definition">#</a></dt>
+<dd><p>If true, LLDB will repeat the previous command if no command was passed to the interpreter. If false, LLDB won’t repeat the previous command but only return a new prompt.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="interpreter.require-overwrite">
+<span class="sig-name descname"><span class="pre">interpreter.require-overwrite</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#interpreter.require-overwrite" title="Link to this definition">#</a></dt>
+<dd><p>If true, require –overwrite in ‘command script add’ before overwriting existing user commands.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="interpreter.save-session-directory">
+<span class="sig-name descname"><span class="pre">interpreter.save-session-directory</span><span class="lldb-setting-type lldb-setting-type-file"><span class="pre">file</span></span></span><a class="headerlink" href="#interpreter.save-session-directory" title="Link to this definition">#</a></dt>
+<dd><p>A path where LLDB will save the session’s transcripts. This is particularly useful when you can’t set the session file, for example when using <code class="docutils literal notranslate"><span class="pre">save-session-on-quit</span></code>.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="interpreter.save-session-on-quit">
+<span class="sig-name descname"><span class="pre">interpreter.save-session-on-quit</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#interpreter.save-session-on-quit" title="Link to this definition">#</a></dt>
+<dd><p>If true, LLDB will save the session’s transcripts before quitting. Note: transcripts will only be saved if interpreter.save-transcript is true.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="interpreter.save-transcript">
+<span class="sig-name descname"><span class="pre">interpreter.save-transcript</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#interpreter.save-transcript" title="Link to this definition">#</a></dt>
+<dd><p>If true, commands will be saved into a transcript buffer for user access.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="interpreter.space-repl-prompts">
+<span class="sig-name descname"><span class="pre">interpreter.space-repl-prompts</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#interpreter.space-repl-prompts" title="Link to this definition">#</a></dt>
+<dd><p>If true, blank lines will be printed between REPL submissions.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="interpreter.stop-command-source-on-error">
+<span class="sig-name descname"><span class="pre">interpreter.stop-command-source-on-error</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#interpreter.stop-command-source-on-error" title="Link to this definition">#</a></dt>
+<dd><p>If true, LLDB will stop running a ‘command source’ script upon encountering an error.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id2">
+<h3>plugin<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<section id="dynamic-loader">
+<h4>dynamic-loader<a class="headerlink" href="#dynamic-loader" title="Link to this heading">#</a></h4>
+<section id="darwin-kernel">
+<h5>darwin-kernel<a class="headerlink" href="#darwin-kernel" title="Link to this heading">#</a></h5>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="plugin.dynamic-loader.darwin-kernel.load-kexts">
+<span class="sig-name descname"><span class="pre">plugin.dynamic-loader.darwin-kernel.load-kexts</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#plugin.dynamic-loader.darwin-kernel.load-kexts" title="Link to this definition">#</a></dt>
+<dd><p>Automatically loads kext images when attaching to a kernel.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="plugin.dynamic-loader.darwin-kernel.scan-type">
+<span class="sig-name descname"><span class="pre">plugin.dynamic-loader.darwin-kernel.scan-type</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">enum</span></span></span><a class="headerlink" href="#plugin.dynamic-loader.darwin-kernel.scan-type" title="Link to this definition">#</a></dt>
+<dd><p>Control how many reads lldb will make while searching for a Darwin kernel on attach.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>none</strong> – Do not read memory looking for a Darwin kernel when attaching.</p></li>
+<li><p><strong>basic</strong> – Check for the Darwin kernel’s load addr in the lowglo page (boot-args=debug) only.</p></li>
+<li><p><strong>exhaustive-scan</strong> – Scan through the entire potential address range of Darwin kernel (only on 32-bit targets).</p></li>
+<li><p><strong>fast-scan</strong> – Scan near the pc value on attach to find the Darwin kernel’s load address.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><code class="docutils literal notranslate"><span class="pre">fast-scan</span></code></dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="jit-loader">
+<h4>jit-loader<a class="headerlink" href="#jit-loader" title="Link to this heading">#</a></h4>
+<section id="gdb">
+<h5>gdb<a class="headerlink" href="#gdb" title="Link to this heading">#</a></h5>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="plugin.jit-loader.gdb.enable">
+<span class="sig-name descname"><span class="pre">plugin.jit-loader.gdb.enable</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">enum</span></span></span><a class="headerlink" href="#plugin.jit-loader.gdb.enable" title="Link to this definition">#</a></dt>
+<dd><p>Enable GDB’s JIT compilation interface (default: enabled on all platforms except macOS)</p>
+<dl class="myst field-list">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>off</strong> – Disable JIT compilation interface</p></li>
+<li><p><strong>default</strong> – Enable JIT compilation interface for all platforms except macOS</p></li>
+<li><p><strong>on</strong> – Enable JIT compilation interface</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><code class="docutils literal notranslate"><span class="pre">default</span></code></dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="object-file">
+<h4>object-file<a class="headerlink" href="#object-file" title="Link to this heading">#</a></h4>
+<section id="pe-coff">
+<h5>pe-coff<a class="headerlink" href="#pe-coff" title="Link to this heading">#</a></h5>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="plugin.object-file.pe-coff.abi">
+<span class="sig-name descname"><span class="pre">plugin.object-file.pe-coff.abi</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">enum</span></span></span><a class="headerlink" href="#plugin.object-file.pe-coff.abi" title="Link to this definition">#</a></dt>
+<dd><p>ABI to use when loading a PE/COFF module. This configures the C++ ABI used, which affects things like the handling of class layout. Accepted values are: <code class="docutils literal notranslate"><span class="pre">msvc</span></code> for the MSVC ABI, <code class="docutils literal notranslate"><span class="pre">gnu</span></code> for the MinGW / Itanium ABI, and <code class="docutils literal notranslate"><span class="pre">default</span></code> to follow the default target if it is a Windows triple or use the MSVC ABI by default.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>default</strong> – Use default target (if it is Windows) or MSVC</p></li>
+<li><p><strong>msvc</strong> – MSVC ABI</p></li>
+<li><p><strong>gnu</strong> – MinGW / Itanium ABI</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><code class="docutils literal notranslate"><span class="pre">default</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="plugin.object-file.pe-coff.module-abi">
+<span class="sig-name descname"><span class="pre">plugin.object-file.pe-coff.module-abi</span><span class="lldb-setting-type lldb-setting-type-dictionary"><span class="pre">dictionary</span></span></span><a class="headerlink" href="#plugin.object-file.pe-coff.module-abi" title="Link to this definition">#</a></dt>
+<dd><p>A mapping of ABI override to use for specific modules. The module name is matched by its file name with extension. These versions are checked in sequence: exact, lowercase, exact with ‘.debug’ suffix stripped, lowercase with ‘.debug’ suffix stripped. Accepted values are: <code class="docutils literal notranslate"><span class="pre">msvc</span></code> for the MSVC ABI, <code class="docutils literal notranslate"><span class="pre">gnu</span></code> for the MinGW / Itanium ABI, and <code class="docutils literal notranslate"><span class="pre">default</span></code> to follow the default target if it is a Windows triple or use the MSVC ABI by default.</p>
+</dd></dl>
+
+</section>
+</section>
+<section id="id3">
+<h4>process<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<section id="gdb-remote">
+<h5>gdb-remote<a class="headerlink" href="#gdb-remote" title="Link to this heading">#</a></h5>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="plugin.process.gdb-remote.packet-timeout">
+<span class="sig-name descname"><span class="pre">plugin.process.gdb-remote.packet-timeout</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#plugin.process.gdb-remote.packet-timeout" title="Link to this definition">#</a></dt>
+<dd><p>Specify the default packet timeout in seconds.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">5</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="plugin.process.gdb-remote.target-definition-file">
+<span class="sig-name descname"><span class="pre">plugin.process.gdb-remote.target-definition-file</span><span class="lldb-setting-type lldb-setting-type-file"><span class="pre">file</span></span></span><a class="headerlink" href="#plugin.process.gdb-remote.target-definition-file" title="Link to this definition">#</a></dt>
+<dd><p>The file that provides the description for remote target registers.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="plugin.process.gdb-remote.use-g-packet-for-reading">
+<span class="sig-name descname"><span class="pre">plugin.process.gdb-remote.use-g-packet-for-reading</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#plugin.process.gdb-remote.use-g-packet-for-reading" title="Link to this definition">#</a></dt>
+<dd><p>Specify if the server should use ‘g’ packets to read registers.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="plugin.process.gdb-remote.use-libraries-svr4">
+<span class="sig-name descname"><span class="pre">plugin.process.gdb-remote.use-libraries-svr4</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#plugin.process.gdb-remote.use-libraries-svr4" title="Link to this definition">#</a></dt>
+<dd><p>If true, the libraries-svr4 feature will be used to get a hold of the process’s loaded modules. This setting is only effective if lldb was build with xml support.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="symbol-file">
+<h4>symbol-file<a class="headerlink" href="#symbol-file" title="Link to this heading">#</a></h4>
+<section id="dwarf">
+<h5>dwarf<a class="headerlink" href="#dwarf" title="Link to this heading">#</a></h5>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="plugin.symbol-file.dwarf.ignore-file-indexes">
+<span class="sig-name descname"><span class="pre">plugin.symbol-file.dwarf.ignore-file-indexes</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#plugin.symbol-file.dwarf.ignore-file-indexes" title="Link to this definition">#</a></dt>
+<dd><p>Ignore indexes present in the object files and always index DWARF manually.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="pdb">
+<h5>pdb<a class="headerlink" href="#pdb" title="Link to this heading">#</a></h5>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="plugin.symbol-file.pdb.reader">
+<span class="sig-name descname"><span class="pre">plugin.symbol-file.pdb.reader</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">enum</span></span></span><a class="headerlink" href="#plugin.symbol-file.pdb.reader" title="Link to this definition">#</a></dt>
+<dd><p>Selects the reader for PDB symbol files. The native PDB reader that uses LLVM’s PDB support is always available (value: ‘native’). Secondly, the DIA PDB reader is only available if LLVM was comppiled with Microsoft’s DIA SDK on Windows (value: ‘DIA’). By default, the DIA PDB reader is used if available. The LLDB_USE_NATIVE_PDB_READER environment variable can be used to switch to the native reader when this setting has the default value. Otherwise, the setting always has priority.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>default</strong> – Use native PDB reader unless LLDB_USE_NATIVE_PDB_READER environment is set to 0</p></li>
+<li><p><strong>native</strong> – Use native PDB reader</p></li>
+<li><p><strong>dia</strong> – Use DIA PDB reader</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><code class="docutils literal notranslate"><span class="pre">default</span></code></dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="symbol-locator">
+<h4>symbol-locator<a class="headerlink" href="#symbol-locator" title="Link to this heading">#</a></h4>
+<section id="debuginfod">
+<h5>debuginfod<a class="headerlink" href="#debuginfod" title="Link to this heading">#</a></h5>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="plugin.symbol-locator.debuginfod.server-urls">
+<span class="sig-name descname"><span class="pre">plugin.symbol-locator.debuginfod.server-urls</span><span class="lldb-setting-type lldb-setting-type-array"><span class="pre">array</span></span></span><a class="headerlink" href="#plugin.symbol-locator.debuginfod.server-urls" title="Link to this definition">#</a></dt>
+<dd><p>An ordered list of Debuginfod server URLs to query for symbols. This defaults to the contents of the DEBUGINFOD_URLS environment variable.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="plugin.symbol-locator.debuginfod.cache-path">
+<span class="sig-name descname"><span class="pre">plugin.symbol-locator.debuginfod.cache-path</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#plugin.symbol-locator.debuginfod.cache-path" title="Link to this definition">#</a></dt>
+<dd><p>The path where symbol files should be cached. This defaults to LLDB’s system cache location.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="plugin.symbol-locator.debuginfod.timeout">
+<span class="sig-name descname"><span class="pre">plugin.symbol-locator.debuginfod.timeout</span><span class="lldb-setting-type lldb-setting-type-unsigned"><span class="pre">unsigned</span></span></span><a class="headerlink" href="#plugin.symbol-locator.debuginfod.timeout" title="Link to this definition">#</a></dt>
+<dd><p>Timeout (in seconds) for requests made to a DEBUGINFOD server. A value of zero means we use the debuginfod default timeout: DEBUGINFOD_TIMEOUT if the environment variable is set and 90 seconds otherwise.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">0</span></code></dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="structured-data">
+<h4>structured-data<a class="headerlink" href="#structured-data" title="Link to this heading">#</a></h4>
+<section id="darwin-log">
+<h5>darwin-log<a class="headerlink" href="#darwin-log" title="Link to this heading">#</a></h5>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="plugin.structured-data.darwin-log.auto-enable-options">
+<span class="sig-name descname"><span class="pre">plugin.structured-data.darwin-log.auto-enable-options</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">string</span></span></span><a class="headerlink" href="#plugin.structured-data.darwin-log.auto-enable-options" title="Link to this definition">#</a></dt>
+<dd><p>Specify the options to ‘plugin structured-data darwin-log enable’ that should be applied when automatically enabling logging on startup/attach.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="plugin.structured-data.darwin-log.enable-on-startup">
+<span class="sig-name descname"><span class="pre">plugin.structured-data.darwin-log.enable-on-startup</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">boolean</span></span></span><a class="headerlink" href="#plugin.structured-data.darwin-log.enable-on-startup" title="Link to this definition">#</a></dt>
+<dd><p>Enable Darwin os_log collection when debugged process is launched or attached.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="cplusplus">
+<h4>cplusplus<a class="headerlink" href="#cplusplus" title="Link to this heading">#</a></h4>
+<section id="display">
+<h5>display<a class="headerlink" href="#display" title="Link to this heading">#</a></h5>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="plugin.cplusplus.display.function-name-format">
+<span class="sig-name descname"><span class="pre">plugin.cplusplus.display.function-name-format</span><span class="lldb-setting-type lldb-setting-type-format-string"><span class="pre">format-string</span></span></span><a class="headerlink" href="#plugin.cplusplus.display.function-name-format" title="Link to this definition">#</a></dt>
+<dd><p>C++ specific frame format string to use when displaying stack frame information for threads.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">${function.return-left}${function.scope}${ansi.fg.yellow}${function.basename}${ansi.normal}${function.template-arguments}${function.formatted-arguments}${function.return-right}${function.qualifiers}${function.suffix}</span></code></dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="troubleshooting.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Troubleshooting</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="mcp.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Model Context Protocol (MCP)</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2007-2025, The LLDB Team
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            <div class="last-updated">
+              Last updated on Nov 15, 2025</div>
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Settings</a><ul>
+<li><a class="reference internal" href="#root">Root</a><ul>
+<li><a class="reference internal" href="#target">target</a><ul>
+<li><a class="reference internal" href="#experimental">experimental</a></li>
+<li><a class="reference internal" href="#process">process</a><ul>
+<li><a class="reference internal" href="#thread">thread</a></li>
+<li><a class="reference internal" href="#id1">experimental</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#platform">platform</a><ul>
+<li><a class="reference internal" href="#plugin">plugin</a><ul>
+<li><a class="reference internal" href="#remote-android">remote-android</a></li>
+<li><a class="reference internal" href="#darwin">darwin</a></li>
+<li><a class="reference internal" href="#qemu-user">qemu-user</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#symbols">symbols</a></li>
+<li><a class="reference internal" href="#language">language</a></li>
+<li><a class="reference internal" href="#interpreter">interpreter</a></li>
+<li><a class="reference internal" href="#id2">plugin</a><ul>
+<li><a class="reference internal" href="#dynamic-loader">dynamic-loader</a><ul>
+<li><a class="reference internal" href="#darwin-kernel">darwin-kernel</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#jit-loader">jit-loader</a><ul>
+<li><a class="reference internal" href="#gdb">gdb</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#object-file">object-file</a><ul>
+<li><a class="reference internal" href="#pe-coff">pe-coff</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3">process</a><ul>
+<li><a class="reference internal" href="#gdb-remote">gdb-remote</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#symbol-file">symbol-file</a><ul>
+<li><a class="reference internal" href="#dwarf">dwarf</a></li>
+<li><a class="reference internal" href="#pdb">pdb</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#symbol-locator">symbol-locator</a><ul>
+<li><a class="reference internal" href="#debuginfod">debuginfod</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#structured-data">structured-data</a><ul>
+<li><a class="reference internal" href="#darwin-log">darwin-log</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cplusplus">cplusplus</a><ul>
+<li><a class="reference internal" href="#display">display</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=d42a975f"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+    </body>
+</html>
