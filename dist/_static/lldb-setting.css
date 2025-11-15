@@ -1,3 +1,7 @@
+/* 
+  Terms use normal weight and upper case by default.
+  For settings, the term should be bold and use the original case.
+*/
 dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(
     .simple
   ).lldbsetting
@@ -75,11 +79,4 @@ body[data-theme="dark"] .lldb-setting-type {
 .lldb-setting-type-enum {
   --dark-color: 255, 87, 73;
   --light-color: 191, 3, 10;
-}
-
-.lldb-setting-default {
-  font-size: 0.9em;
-}
-.lldb-setting-default > strong {
-  padding-right: 1em;
 }
