@@ -10,7 +10,7 @@
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
-    <link rel="stylesheet" type="text/css" href="../_static/lldb-setting.css?v=1b5296ba" />
+    <link rel="stylesheet" type="text/css" href="../_static/lldb-setting.css?v=47390f8b" />
     
     
 
@@ -990,9 +990,9 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 <dt class="field-odd">Enumerations<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>auto</strong> – Automatically determine the most appropriate method for the target OS.</p></li>
-<li><p><strong>CopyRealizedClassList</strong> – Prefer using the CopyRealizedClassList API.</p></li>
-<li><p><strong>RealizedClassesStruct</strong> – Prefer using the realized classes struct.</p></li>
 <li><p><strong>GetRealizedClassList</strong> – Prefer using the GetRealizedClassList API.</p></li>
+<li><p><strong>RealizedClassesStruct</strong> – Prefer using the realized classes struct.</p></li>
+<li><p><strong>CopyRealizedClassList</strong> – Prefer using the CopyRealizedClassList API.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Default<span class="colon">:</span></dt>
@@ -1173,9 +1173,9 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 <dl class="myst field-list">
 <dt class="field-odd">Enumerations<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>warn</strong> – Warn about loading .lldbinit files from current directory</p></li>
 <li><p><strong>false</strong> – Do not load .lldbinit files from current directory</p></li>
 <li><p><strong>true</strong> – Load .lldbinit files from current directory</p></li>
-<li><p><strong>warn</strong> – Warn about loading .lldbinit files from current directory</p></li>
 </ul>
 </dd>
 <dt class="field-even">Default<span class="colon">:</span></dt>
@@ -1190,9 +1190,9 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 <dl class="myst field-list">
 <dt class="field-odd">Enumerations<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>warn</strong> – Warn about debug scripts inside symbol files but do not load them.</p></li>
 <li><p><strong>false</strong> – Do not load debug scripts inside symbol files.</p></li>
 <li><p><strong>true</strong> – Load debug scripts inside symbol files</p></li>
-<li><p><strong>warn</strong> – Warn about debug scripts inside symbol files but do not load them.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Default<span class="colon">:</span></dt>
@@ -1257,9 +1257,9 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 <dl class="myst field-list">
 <dt class="field-odd">Enumerations<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>minimal</strong> – Load minimal information when loading modules from memory. Currently this setting loads sections only.</p></li>
 <li><p><strong>partial</strong> – Load partial information when loading modules from memory. Currently this setting loads sections and function bounds.</p></li>
 <li><p><strong>complete</strong> – Load complete information when loading modules from memory. Currently this setting loads sections and all symbols.</p></li>
-<li><p><strong>minimal</strong> – Load minimal information when loading modules from memory. Currently this setting loads sections only.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Default<span class="colon">:</span></dt>
@@ -1500,8 +1500,8 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 <dl class="myst field-list">
 <dt class="field-odd">Enumerations<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>child</strong> – Trace the child process and detach the parent.</p></li>
 <li><p><strong>parent</strong> – Continue tracing the parent process and detach the child.</p></li>
+<li><p><strong>child</strong> – Trace the child process and detach the parent.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Default<span class="colon">:</span></dt>
@@ -1816,8 +1816,8 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 <dt class="field-odd">Enumerations<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>off</strong> – Disable automatically downloading symbols.</p></li>
-<li><p><strong>foreground</strong> – Download symbols in the foreground for images as they appear in the backtrace.</p></li>
 <li><p><strong>background</strong> – Download symbols in the background for images as they appear in the backtrace.</p></li>
+<li><p><strong>foreground</strong> – Download symbols in the foreground for images as they appear in the backtrace.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Default<span class="colon">:</span></dt>

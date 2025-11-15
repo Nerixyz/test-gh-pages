@@ -58,13 +58,13 @@ body[data-theme="dark"] .lldb-setting-type {
 /* map-like */
 .lldb-setting-type-dictionary,
 .lldb-setting-type-path-map {
-  --dark-color: 191, 2, 219;
+  --dark-color: 243, 0, 255;
   --light-color: 157, 0, 183;
 }
 
 /* boolean */
 .lldb-setting-type-boolean {
-  --dark-color: 3, 146, 57;
+  --dark-color: 29, 180, 8;
   --light-color: 0, 123, 33;
 }
 
