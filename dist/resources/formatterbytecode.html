@@ -168,6 +168,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../use/ondemand.html">On Demand Symbols</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../use/aarch64-linux.html">Using LLDB On AArch64 Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../use/symbolfilejson.html">JSON Symbol File Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../use/lldbdap.html">Getting started with <code class="docutils literal notranslate"><span class="pre">lldb-dap</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../use/mcp.html">Model Context Protocol (MCP)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../use/settings.html">Settings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../use/troubleshooting.html">Troubleshooting</a></li>
@@ -209,7 +210,7 @@
 <li class="toctree-l1"><a class="reference internal" href="lldbplatformpackets.html">LLDB Platform Packets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caveats.html">Caveats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="projects.html">Open Projects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lldbdap.html">Contributing to LLDB-DAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lldbdap-contributing.html">Contributing to LLDB-DAP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="addinglanguagesupport.html">Adding Programming Language Support</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/namespacelldb.html">Public C++ API</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/index.html">Private C++ API</a></li>
@@ -270,8 +271,8 @@
 <h1>Formatter Bytecode<a class="headerlink" href="#formatter-bytecode" title="Link to this heading">#</a></h1>
 <section id="background">
 <h2>Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h2>
-<p>LLDB provides rich customization options to display data types (see <a class="reference internal" href="../use/variable.html"><span class="doc">Variable Formatting</span></a>). To use custom data formatters, developers need to edit the global <code class="xref any docutils literal notranslate"><span class="pre">~/.lldbinit</span></code> file to make sure they are found and loaded. In addition to this rather manual workflow, developers or library authors can ship ship data formatters with their code in a format that allows LLDB automatically find them and run them securely.</p>
-<p>An end-to-end example of such a workflow is the Swift <code class="xref any docutils literal notranslate"><span class="pre">DebugDescription</span></code> macro (see <a class="reference external" href="https://www.swift.org/blog/announcing-swift-6/#debugging">https://www.swift.org/blog/announcing-swift-6/#debugging</a> ) that translates Swift string interpolation into LLDB summary strings, and puts them into a <code class="xref any docutils literal notranslate"><span class="pre">.lldbsummaries</span></code> section, where LLDB can find them.</p>
+<p>LLDB provides rich customization options to display data types (see <a class="reference internal" href="../use/variable.html"><span class="doc">Variable Formatting</span></a>). To use custom data formatters, developers need to edit the global <code class="docutils literal notranslate"><span class="pre">~/.lldbinit</span></code> file to make sure they are found and loaded. In addition to this rather manual workflow, developers or library authors can ship ship data formatters with their code in a format that allows LLDB automatically find them and run them securely.</p>
+<p>An end-to-end example of such a workflow is the Swift <code class="docutils literal notranslate"><span class="pre">DebugDescription</span></code> macro (see <a class="reference external" href="https://www.swift.org/blog/announcing-swift-6/#debugging">https://www.swift.org/blog/announcing-swift-6/#debugging</a> ) that translates Swift string interpolation into LLDB summary strings, and puts them into a <code class="docutils literal notranslate"><span class="pre">.lldbsummaries</span></code> section, where LLDB can find them.</p>
 <p>This document describes a minimal bytecode tailored to running LLDB formatters. It defines a human-readable assembler representation for the language, an efficient binary encoding, a virtual machine for evaluating it, and format for embedding formatters into binary containers.</p>
 <section id="goals">
 <h3>Goals<a class="headerlink" href="#goals" title="Link to this heading">#</a></h3>
@@ -293,11 +294,11 @@
 <li><p><em>String</em> (UTF-8)</p></li>
 <li><p><em>Int</em> (64 bit)</p></li>
 <li><p><em>UInt</em> (64 bit)</p></li>
-<li><p><em>Object</em> (Basically an <code class="xref any docutils literal notranslate"><span class="pre">SBValue</span></code>)</p></li>
-<li><p><em>Type</em> (Basically an <code class="xref any docutils literal notranslate"><span class="pre">SBType</span></code>)</p></li>
+<li><p><em>Object</em> (Basically an <code class="docutils literal notranslate"><span class="pre">SBValue</span></code>)</p></li>
+<li><p><em>Type</em> (Basically an <code class="docutils literal notranslate"><span class="pre">SBType</span></code>)</p></li>
 <li><p><em>Selector</em> (One of the predefine functions)</p></li>
 </ul>
-<p><em>Object</em> and <em>Type</em> are opaque, they can only be used as a parameters of <code class="xref any docutils literal notranslate"><span class="pre">call</span></code>.</p>
+<p><em>Object</em> and <em>Type</em> are opaque, they can only be used as a parameters of <code class="docutils literal notranslate"><span class="pre">call</span></code>.</p>
 </section>
 </section>
 <section id="instruction-set">
@@ -313,28 +314,28 @@
 <td><p>Stack effect</p></td>
 </tr>
 <tr class="row-even"><td><p>0x00</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">dup</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(x</span> <span class="pre">-&gt;</span> <span class="pre">x</span> <span class="pre">x)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dup</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(x</span> <span class="pre">-&gt;</span> <span class="pre">x</span> <span class="pre">x)</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>0x01</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">drop</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(x</span> <span class="pre">y</span> <span class="pre">-&gt;</span> <span class="pre">x)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">drop</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(x</span> <span class="pre">y</span> <span class="pre">-&gt;</span> <span class="pre">x)</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>0x02</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">pick</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(x</span> <span class="pre">...</span> <span class="pre">UInt</span> <span class="pre">-&gt;</span> <span class="pre">x</span> <span class="pre">...</span> <span class="pre">x)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pick</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(x</span> <span class="pre">...</span> <span class="pre">UInt</span> <span class="pre">-&gt;</span> <span class="pre">x</span> <span class="pre">...</span> <span class="pre">x)</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>0x03</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">over</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(x</span> <span class="pre">y</span> <span class="pre">-&gt;</span> <span class="pre">x</span> <span class="pre">y</span> <span class="pre">x)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">over</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(x</span> <span class="pre">y</span> <span class="pre">-&gt;</span> <span class="pre">x</span> <span class="pre">y</span> <span class="pre">x)</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>0x04</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">swap</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(x</span> <span class="pre">y</span> <span class="pre">-&gt;</span> <span class="pre">y</span> <span class="pre">x)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">swap</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(x</span> <span class="pre">y</span> <span class="pre">-&gt;</span> <span class="pre">y</span> <span class="pre">x)</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>0x05</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">rot</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(x</span> <span class="pre">y</span> <span class="pre">z</span> <span class="pre">-&gt;</span> <span class="pre">z</span> <span class="pre">x</span> <span class="pre">y)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rot</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(x</span> <span class="pre">y</span> <span class="pre">z</span> <span class="pre">-&gt;</span> <span class="pre">z</span> <span class="pre">x</span> <span class="pre">y)</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -342,7 +343,7 @@
 </section>
 <section id="control-flow">
 <h3>Control flow<a class="headerlink" href="#control-flow" title="Link to this heading">#</a></h3>
-<p>These manipulate the control stack and program counter. Both <code class="xref any docutils literal notranslate"><span class="pre">if</span></code> and <code class="xref any docutils literal notranslate"><span class="pre">ifelse</span></code> expect a <code class="xref any docutils literal notranslate"><span class="pre">UInt</span></code> at the top of the data stack to represent the condition.</p>
+<p>These manipulate the control stack and program counter. Both <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">ifelse</span></code> expect a <code class="docutils literal notranslate"><span class="pre">UInt</span></code> at the top of the data stack to represent the condition.</p>
 <div class="table-wrapper docutils container">
 <table class="docutils align-default">
 <tbody>
@@ -351,26 +352,26 @@
 <td><p>Description</p></td>
 </tr>
 <tr class="row-even"><td><p>0x10</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">{</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{</span></code></p></td>
 <td><p>push a code block address onto the control stack</p></td>
 </tr>
 <tr class="row-odd"><td><p>–</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">}</span></code></p></td>
 <td><p>(technically not an opcode) syntax for end of code block</p></td>
 </tr>
 <tr class="row-even"><td><p>0x11</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">if</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(UInt</span> <span class="pre">-&gt;</span> <span class="pre">)</span></code> pop a block from the control stack,
+<td><p><code class="docutils literal notranslate"><span class="pre">if</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(UInt</span> <span class="pre">-&gt;</span> <span class="pre">)</span></code> pop a block from the control stack,
 if the top of the data stack is nonzero, execute it</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x12</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">ifelse</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(UInt</span> <span class="pre">-&gt;</span> <span class="pre">)</span></code> pop two blocks from the control stack, if
+<td><p><code class="docutils literal notranslate"><span class="pre">ifelse</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(UInt</span> <span class="pre">-&gt;</span> <span class="pre">)</span></code> pop two blocks from the control stack, if
 the top of the data stack is nonzero, execute the first,
 otherwise the second.</p></td>
 </tr>
 <tr class="row-even"><td><p>0x13</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">return</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">return</span></code></p></td>
 <td><p>pop the entire control stack and return</p></td>
 </tr>
 </tbody>
@@ -387,21 +388,21 @@ otherwise the second.</p></td>
 <td><p>Description</p></td>
 </tr>
 <tr class="row-even"><td><p>0x20</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">123u</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(</span> <span class="pre">-&gt;</span> <span class="pre">UInt)</span></code> push an unsigned 64-bit host integer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">123u</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">-&gt;</span> <span class="pre">UInt)</span></code> push an unsigned 64-bit host integer</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x21</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">123</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(</span> <span class="pre">-&gt;</span> <span class="pre">Int)</span></code> push a signed 64-bit host integer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">123</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">-&gt;</span> <span class="pre">Int)</span></code> push a signed 64-bit host integer</p></td>
 </tr>
 <tr class="row-even"><td><p>0x22</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">&quot;abc&quot;</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(</span> <span class="pre">-&gt;</span> <span class="pre">String)</span></code> push a UTF-8 host string</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;abc&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">-&gt;</span> <span class="pre">String)</span></code> push a UTF-8 host string</p></td>
 </tr>
 <tr class="row-odd"><td><p>0x23</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">&#64;strlen</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(</span> <span class="pre">-&gt;</span> <span class="pre">Selector)</span></code> push one of the predefined function
-selectors. See <code class="xref any docutils literal notranslate"><span class="pre">call</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;strlen</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">-&gt;</span> <span class="pre">Selector)</span></code> push one of the predefined function
+selectors. See <code class="docutils literal notranslate"><span class="pre">call</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -409,10 +410,32 @@ selectors. See <code class="xref any docutils literal notranslate"><span class="
 </section>
 <section id="conversion-operations">
 <h3>Conversion operations<a class="headerlink" href="#conversion-operations" title="Link to this heading">#</a></h3>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Opcode</p></td>
+<td><p>Mnemonic</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>0x2a</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">as_int</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">UInt</span> <span class="pre">-&gt;</span> <span class="pre">Int)</span></code> reinterpret a UInt as an Int</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x2b</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">as_uint</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">Int</span> <span class="pre">-&gt;</span> <span class="pre">UInt)</span></code> reinterpret an Int as a UInt</p></td>
+</tr>
+<tr class="row-even"><td><p>0x2c</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">is_null</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">Object</span> <span class="pre">-&gt;</span> <span class="pre">UInt</span> <span class="pre">)</span></code> check an object for null <code class="docutils literal notranslate"><span class="pre">(object</span> <span class="pre">?</span> <span class="pre">0</span> <span class="pre">:</span> <span class="pre">1)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="arithmetic-logic-and-comparison-operations">
 <h3>Arithmetic, logic, and comparison operations<a class="headerlink" href="#arithmetic-logic-and-comparison-operations" title="Link to this heading">#</a></h3>
-<p>All of these operations are only defined for <code class="xref any docutils literal notranslate"><span class="pre">Int</span></code> and <code class="xref any docutils literal notranslate"><span class="pre">UInt</span></code> and both operands need to be of the same type. The <code class="xref any docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> operator is an arithmetic shift if the parameters are of type <code class="xref any docutils literal notranslate"><span class="pre">Int</span></code>, otherwise it’s a logical shift to the right.</p>
+<p>All of these operations are only defined for <code class="docutils literal notranslate"><span class="pre">Int</span></code> and <code class="docutils literal notranslate"><span class="pre">UInt</span></code> and both operands need to be of the same type. The <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> operator is an arithmetic shift if the parameters are of type <code class="docutils literal notranslate"><span class="pre">Int</span></code>, otherwise it’s a logical shift to the right.</p>
 <div class="table-wrapper docutils container">
 <table class="docutils align-default">
 <tbody>
@@ -421,67 +444,67 @@ selectors. See <code class="xref any docutils literal notranslate"><span class="
 <td><p>Stack effect</p></td>
 </tr>
 <tr class="row-even"><td><p>0x30</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">+</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(x</span> <span class="pre">y</span> <span class="pre">-&gt;</span> <span class="pre">[x+y])</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(x</span> <span class="pre">y</span> <span class="pre">-&gt;</span> <span class="pre">[x+y])</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>0x31</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">-</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
 <td><p>etc …</p></td>
 </tr>
 <tr class="row-even"><td><p>0x32</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">*</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>0x33</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">/</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/</span></code></p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>0x34</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">%</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">%</span></code></p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>0x35</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">&lt;&lt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;&lt;</span></code></p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>0x36</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">&gt;&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code></p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>0x40</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">~</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">~</span></code></p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>0x41</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">|</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">|</span></code></p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>0x42</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">^</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">^</span></code></p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>0x50</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">=</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">=</span></code></p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>0x51</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">=</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">!=</span></code></p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>0x52</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>0x53</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>0x54</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">=&lt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">=&lt;</span></code></p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>0x55</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
 <td></td>
 </tr>
 </tbody>
@@ -490,7 +513,7 @@ selectors. See <code class="xref any docutils literal notranslate"><span class="
 </section>
 <section id="function-calls">
 <h3>Function calls<a class="headerlink" href="#function-calls" title="Link to this heading">#</a></h3>
-<p>For security reasons the list of functions callable with <code class="xref any docutils literal notranslate"><span class="pre">call</span></code> is predefined. The supported functions are either existing methods on <code class="xref any docutils literal notranslate"><span class="pre">SBValue</span></code>, or string formatting operations.</p>
+<p>For security reasons the list of functions callable with <code class="docutils literal notranslate"><span class="pre">call</span></code> is predefined. The supported functions are either existing methods on <code class="docutils literal notranslate"><span class="pre">SBValue</span></code>, or string formatting operations.</p>
 <div class="table-wrapper docutils container">
 <table class="docutils align-default">
 <tbody>
@@ -499,8 +522,8 @@ selectors. See <code class="xref any docutils literal notranslate"><span class="
 <td><p>Stack effect</p></td>
 </tr>
 <tr class="row-even"><td><p>0x60</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">call</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">argN</span> <span class="pre">...</span> <span class="pre">arg0</span> <span class="pre">Selector</span> <span class="pre">-&gt;</span> <span class="pre">retval)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">call</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">argN</span> <span class="pre">...</span> <span class="pre">arg0</span> <span class="pre">Selector</span> <span class="pre">-&gt;</span> <span class="pre">retval)</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -515,119 +538,119 @@ selectors. See <code class="xref any docutils literal notranslate"><span class="
 <td><p>Description</p></td>
 </tr>
 <tr class="row-even"><td><p>0x00</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">summary</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">&#64;summary</span> <span class="pre">-&gt;</span> <span class="pre">String)</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">SBValue::GetSummary</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">summary</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">&#64;summary</span> <span class="pre">-&gt;</span> <span class="pre">String)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SBValue::GetSummary</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>0x01</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">type_summary</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">&#64;type_summary</span> <span class="pre">-&gt;</span> <span class="pre">String)</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">SBValue::GetTypeSummary</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">type_summary</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">&#64;type_summary</span> <span class="pre">-&gt;</span> <span class="pre">String)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SBValue::GetTypeSummary</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>0x10</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">get_num_children</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">&#64;get_num_children</span> <span class="pre">-&gt;</span> <span class="pre">UInt)</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">SBValue::GetNumChildren</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">get_num_children</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">&#64;get_num_children</span> <span class="pre">-&gt;</span> <span class="pre">UInt)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SBValue::GetNumChildren</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>0x11</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">get_child_at_index</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">UInt</span> <span class="pre">&#64;get_child_at_index</span> <span class="pre">-&gt;</span> <span class="pre">Object)</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">SBValue::GetChildAtIndex</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">get_child_at_index</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">UInt</span> <span class="pre">&#64;get_child_at_index</span> <span class="pre">-&gt;</span> <span class="pre">Object)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SBValue::GetChildAtIndex</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>0x12</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">get_child_with_name</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">String</span> <span class="pre">&#64;get_child_with_name</span> <span class="pre">-&gt;</span> <span class="pre">Object)</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">SBValue::GetChildAtIndex</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">get_child_with_name</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">String</span> <span class="pre">&#64;get_child_with_name</span> <span class="pre">-&gt;</span> <span class="pre">Object)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SBValue::GetChildAtIndex</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>0x13</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">get_child_index</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">String</span> <span class="pre">&#64;get_child_index</span> <span class="pre">-&gt;</span> <span class="pre">UInt)</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">SBValue::GetChildIndex</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">get_child_index</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">String</span> <span class="pre">&#64;get_child_index</span> <span class="pre">-&gt;</span> <span class="pre">UInt)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SBValue::GetChildIndex</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>0x15</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">get_type</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">&#64;get_type</span> <span class="pre">-&gt;</span> <span class="pre">Type)</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">SBValue::GetType</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">get_type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">&#64;get_type</span> <span class="pre">-&gt;</span> <span class="pre">Type)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SBValue::GetType</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>0x16</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">get_template_argument_type</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">UInt</span> <span class="pre">&#64;get_template_argument_type</span> <span class="pre">-&gt;</span> <span class="pre">Type)</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">SBValue::GetTemplateArgumentType</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">get_template_argument_type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">UInt</span> <span class="pre">&#64;get_template_argument_type</span> <span class="pre">-&gt;</span> <span class="pre">Type)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SBValue::GetTemplateArgumentType</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>0x17</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">cast</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">Type</span> <span class="pre">&#64;cast</span> <span class="pre">-&gt;</span> <span class="pre">Object)</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">SBValue::Cast</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cast</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">Type</span> <span class="pre">&#64;cast</span> <span class="pre">-&gt;</span> <span class="pre">Object)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SBValue::Cast</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>0x20</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">get_value</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">&#64;get_value</span> <span class="pre">-&gt;</span> <span class="pre">Object)</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">SBValue::GetValue</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">get_value</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">&#64;get_value</span> <span class="pre">-&gt;</span> <span class="pre">Object)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SBValue::GetValue</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>0x21</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">get_value_as_unsigned</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">&#64;get_value_as_unsigned</span> <span class="pre">-&gt;</span> <span class="pre">UInt)</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">SBValue::GetValueAsUnsigned</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">get_value_as_unsigned</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">&#64;get_value_as_unsigned</span> <span class="pre">-&gt;</span> <span class="pre">UInt)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SBValue::GetValueAsUnsigned</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>0x22</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">get_value_as_signed</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">&#64;get_value_as_signed</span> <span class="pre">-&gt;</span> <span class="pre">Int)</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">SBValue::GetValueAsSigned</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">get_value_as_signed</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">&#64;get_value_as_signed</span> <span class="pre">-&gt;</span> <span class="pre">Int)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SBValue::GetValueAsSigned</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>0x23</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">get_value_as_address</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">&#64;get_value_as_address</span> <span class="pre">-&gt;</span> <span class="pre">UInt)</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">SBValue::GetValueAsAddress</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">get_value_as_address</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">&#64;get_value_as_address</span> <span class="pre">-&gt;</span> <span class="pre">UInt)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SBValue::GetValueAsAddress</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>0x40</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">read_memory_byte</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(UInt</span> <span class="pre">&#64;read_memory_byte</span> <span class="pre">-&gt;</span> <span class="pre">UInt)</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">Target::ReadMemory</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">read_memory_byte</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(UInt</span> <span class="pre">&#64;read_memory_byte</span> <span class="pre">-&gt;</span> <span class="pre">UInt)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Target::ReadMemory</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>0x41</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">read_memory_uint32</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(UInt</span> <span class="pre">&#64;read_memory_uint32</span> <span class="pre">-&gt;</span> <span class="pre">UInt)</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">Target::ReadMemory</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">read_memory_uint32</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(UInt</span> <span class="pre">&#64;read_memory_uint32</span> <span class="pre">-&gt;</span> <span class="pre">UInt)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Target::ReadMemory</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>0x42</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">read_memory_int32</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(UInt</span> <span class="pre">&#64;read_memory_int32</span> <span class="pre">-&gt;</span> <span class="pre">Int)</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">Target::ReadMemory</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">read_memory_int32</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(UInt</span> <span class="pre">&#64;read_memory_int32</span> <span class="pre">-&gt;</span> <span class="pre">Int)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Target::ReadMemory</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>0x43</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">read_memory_uint64</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(UInt</span> <span class="pre">&#64;read_memory_uint64</span> <span class="pre">-&gt;</span> <span class="pre">UInt)</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">Target::ReadMemory</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">read_memory_uint64</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(UInt</span> <span class="pre">&#64;read_memory_uint64</span> <span class="pre">-&gt;</span> <span class="pre">UInt)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Target::ReadMemory</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>0x44</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">read_memory_int64</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(UInt</span> <span class="pre">&#64;read_memory_int64</span> <span class="pre">-&gt;</span> <span class="pre">Int)</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">Target::ReadMemory</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">read_memory_int64</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(UInt</span> <span class="pre">&#64;read_memory_int64</span> <span class="pre">-&gt;</span> <span class="pre">Int)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Target::ReadMemory</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>0x45</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">read_memory_address</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(UInt</span> <span class="pre">&#64;read_memory_uint64</span> <span class="pre">-&gt;</span> <span class="pre">UInt)</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">Target::ReadMemory</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">read_memory_address</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(UInt</span> <span class="pre">&#64;read_memory_uint64</span> <span class="pre">-&gt;</span> <span class="pre">UInt)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Target::ReadMemory</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>0x46</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">read_memory</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(UInt</span> <span class="pre">Type</span> <span class="pre">&#64;read_memory</span> <span class="pre">-&gt;</span> <span class="pre">Object)</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">Target::ReadMemory</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">read_memory</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(UInt</span> <span class="pre">Type</span> <span class="pre">&#64;read_memory</span> <span class="pre">-&gt;</span> <span class="pre">Object)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Target::ReadMemory</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>0x50</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">fmt</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(String</span> <span class="pre">arg0</span> <span class="pre">...</span> <span class="pre">&#64;fmt</span> <span class="pre">-&gt;</span> <span class="pre">String)</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">llvm::format</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">fmt</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(String</span> <span class="pre">arg0</span> <span class="pre">...</span> <span class="pre">&#64;fmt</span> <span class="pre">-&gt;</span> <span class="pre">String)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">llvm::format</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>0x51</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">sprintf</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(String</span> <span class="pre">arg0</span> <span class="pre">...</span> <span class="pre">sprintf</span> <span class="pre">-&gt;</span> <span class="pre">String)</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">sprintf</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sprintf</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(String</span> <span class="pre">arg0</span> <span class="pre">...</span> <span class="pre">sprintf</span> <span class="pre">-&gt;</span> <span class="pre">String)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sprintf</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>0x52</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">strlen</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(String</span> <span class="pre">strlen</span> <span class="pre">-&gt;</span> <span class="pre">String)</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">strlen</span> <span class="pre">in</span> <span class="pre">bytes</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">strlen</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(String</span> <span class="pre">strlen</span> <span class="pre">-&gt;</span> <span class="pre">String)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">strlen</span> <span class="pre">in</span> <span class="pre">bytes</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -645,7 +668,7 @@ selectors. See <code class="xref any docutils literal notranslate"><span class="
 </section>
 <section id="embedding">
 <h3>Embedding<a class="headerlink" href="#embedding" title="Link to this heading">#</a></h3>
-<p>Expression programs are embedded into an <code class="xref any docutils literal notranslate"><span class="pre">.lldbformatters</span></code> section (an evolution of the Swift <code class="xref any docutils literal notranslate"><span class="pre">.lldbsummaries</span></code> section) that is a dictionary of type names/regexes and descriptions. It consists of a list of records. Each record starts with the following header:</p>
+<p>Expression programs are embedded into an <code class="docutils literal notranslate"><span class="pre">.lldbformatters</span></code> section (an evolution of the Swift <code class="docutils literal notranslate"><span class="pre">.lldbsummaries</span></code> section) that is a dictionary of type names/regexes and descriptions. It consists of a list of records. Each record starts with the following header:</p>
 <ul class="simple">
 <li><p>Version number (ULEB128)</p></li>
 <li><p>Remaining size of the record (minus the header) (ULEB128)</p></li>
@@ -657,8 +680,8 @@ selectors. See <code class="xref any docutils literal notranslate"><span class="
 <li><p>Length of the key in bytes (ULEB128)</p></li>
 <li><p>The key (UTF-8)</p></li>
 </ul>
-<p>A regex has to start with <code class="xref any docutils literal notranslate"><span class="pre">^</span></code>, which is part of the regular expression.</p>
-<p>After this comes a flag bitfield, which is a ULEB-encoded <code class="xref any docutils literal notranslate"><span class="pre">lldb::TypeOptions</span></code> bitfield.</p>
+<p>A regex has to start with <code class="docutils literal notranslate"><span class="pre">^</span></code>, which is part of the regular expression.</p>
+<p>After this comes a flag bitfield, which is a ULEB-encoded <code class="docutils literal notranslate"><span class="pre">lldb::TypeOptions</span></code> bitfield.</p>
 <ul class="simple">
 <li><p>Flags (ULEB128)</p></li>
 </ul>
@@ -677,38 +700,38 @@ selectors. See <code class="xref any docutils literal notranslate"><span class="
 <td><p>Stack Effect</p></td>
 </tr>
 <tr class="row-even"><td><p>0x00</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">&#64;summary</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">-&gt;</span> <span class="pre">String)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;summary</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">-&gt;</span> <span class="pre">String)</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>0x01</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">&#64;init</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">-&gt;</span> <span class="pre">Object+)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;init</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">-&gt;</span> <span class="pre">Object+)</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>0x02</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">&#64;get_num_children</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(Object+</span> <span class="pre">-&gt;</span> <span class="pre">UInt)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;get_num_children</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(Object+</span> <span class="pre">-&gt;</span> <span class="pre">UInt)</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>0x03</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">&#64;get_child_index</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(Object+</span> <span class="pre">String</span> <span class="pre">-&gt;</span> <span class="pre">UInt)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;get_child_index</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(Object+</span> <span class="pre">String</span> <span class="pre">-&gt;</span> <span class="pre">UInt)</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>0x04</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">&#64;get_child_at_index</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(Object+</span> <span class="pre">UInt</span> <span class="pre">-&gt;</span> <span class="pre">Object)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;get_child_at_index</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(Object+</span> <span class="pre">UInt</span> <span class="pre">-&gt;</span> <span class="pre">Object)</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>0x05</p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">&#64;get_value</span></code></p></td>
-<td><p><code class="xref any docutils literal notranslate"><span class="pre">(Object+</span> <span class="pre">-&gt;</span> <span class="pre">String)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;get_value</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(Object+</span> <span class="pre">-&gt;</span> <span class="pre">String)</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>If not specified, the init function defaults to an empty function that just passes the Object along. Its results may be cached and allow common prep work to be done for an Object that can be reused by subsequent calls to the other methods. This way subsequent calls to <code class="xref any docutils literal notranslate"><span class="pre">&#64;get_child_at_index</span></code> can avoid recomputing shared information, for example.</p>
+<p>If not specified, the init function defaults to an empty function that just passes the Object along. Its results may be cached and allow common prep work to be done for an Object that can be reused by subsequent calls to the other methods. This way subsequent calls to <code class="docutils literal notranslate"><span class="pre">&#64;get_child_at_index</span></code> can avoid recomputing shared information, for example.</p>
 <p>While it is more efficient to store multiple programs per type key, this is not a requirement. LLDB will merge all entries. If there are conflicts the result is undefined.</p>
 </section>
 <section id="execution-model">
 <h3>Execution model<a class="headerlink" href="#execution-model" title="Link to this heading">#</a></h3>
-<p>Execution begins at the first byte in the program. The program counter of the virtual machine starts at offset 0 of the bytecode and may never move outside the range of the program as defined in the header. The data stack starts with one Object or the result of the <code class="xref any docutils literal notranslate"><span class="pre">&#64;init</span></code> function (<code class="xref any docutils literal notranslate"><span class="pre">Object+</span></code> in the table above).</p>
+<p>Execution begins at the first byte in the program. The program counter of the virtual machine starts at offset 0 of the bytecode and may never move outside the range of the program as defined in the header. The data stack starts with one Object or the result of the <code class="docutils literal notranslate"><span class="pre">&#64;init</span></code> function (<code class="docutils literal notranslate"><span class="pre">Object+</span></code> in the table above).</p>
 </section>
 <section id="error-handling">
 <h3>Error handling<a class="headerlink" href="#error-handling" title="Link to this heading">#</a></h3>
@@ -746,13 +769,13 @@ selectors. See <code class="xref any docutils literal notranslate"><span class="
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2007-2025, The LLDB Team
+                Copyright &#169; 2007-2026, The LLDB Team
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Nov 15, 2025</div>
+              Last updated on Feb 10, 2026</div>
           </div>
           <div class="right-details">
             

@@ -168,6 +168,7 @@
 <li class="toctree-l1"><a class="reference internal" href="ondemand.html">On Demand Symbols</a></li>
 <li class="toctree-l1"><a class="reference internal" href="aarch64-linux.html">Using LLDB On AArch64 Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="symbolfilejson.html">JSON Symbol File Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lldbdap.html">Getting started with <code class="docutils literal notranslate"><span class="pre">lldb-dap</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="mcp.html">Model Context Protocol (MCP)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
@@ -209,7 +210,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../resources/lldbplatformpackets.html">LLDB Platform Packets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/caveats.html">Caveats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/projects.html">Open Projects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../resources/lldbdap.html">Contributing to LLDB-DAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/lldbdap-contributing.html">Contributing to LLDB-DAP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/addinglanguagesupport.html">Adding Programming Language Support</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/namespacelldb.html">Public C++ API</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/index.html">Private C++ API</a></li>
@@ -936,7 +937,7 @@ frame<span class="w"> </span><span class="c1">#2: 0x00007fff8ac9c7e1 libdyld.dyl
 </div>
 <p>LLDB does this automatically if determining the dynamic type does not require
 running the target (in C++, running the target is never needed). This default is
-controlled by the <code class="xref any docutils literal notranslate"><span class="pre">target.prefer-dynamic-value</span></code> setting. If that is disabled, it
+controlled by the <code class="docutils literal notranslate"><span class="pre">target.prefer-dynamic-value</span></code> setting. If that is disabled, it
 can be re-enabled on a per-command basis:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>lldb<span class="o">)</span><span class="w"> </span>settings<span class="w"> </span><span class="nb">set</span><span class="w"> </span>target.prefer-dynamic-value<span class="w"> </span>no-dynamic-values
 <span class="o">(</span>lldb<span class="o">)</span><span class="w"> </span>frame<span class="w"> </span>variable<span class="w"> </span>-d<span class="w"> </span>no-run-target<span class="w"> </span>someCPPObjectPtrOrReference
@@ -944,7 +945,7 @@ can be re-enabled on a per-command basis:</p>
 </pre></div>
 </div>
 <p>Note that printing of the dynamic type of references is not possible with the
-<code class="xref any docutils literal notranslate"><span class="pre">expr</span></code> command. The workaround is to take the address of the reference and
+<code class="docutils literal notranslate"><span class="pre">expr</span></code> command. The workaround is to take the address of the reference and
 instruct lldb to print the children of the resulting pointer.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>lldb<span class="o">)</span><span class="w"> </span>expr<span class="w"> </span>-P1<span class="w"> </span>-d<span class="w"> </span>no-run-target<span class="w"> </span>--<span class="w"> </span><span class="p">&amp;</span>someCPPObjectReference
 </pre></div>
@@ -1476,13 +1477,13 @@ file path instead of the build system’s file path.</p>
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2007-2025, The LLDB Team
+                Copyright &#169; 2007-2026, The LLDB Team
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Nov 15, 2025</div>
+              Last updated on Feb 10, 2026</div>
           </div>
           <div class="right-details">
             

@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Settings" href="settings.html" /><link rel="prev" title="JSON Symbol File Format" href="symbolfilejson.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Settings" href="settings.html" /><link rel="prev" title="Getting started with lldb-dap" href="lldbdap.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
         <title>Model Context Protocol (MCP) - 🐛 LLDB</title>
@@ -168,6 +168,7 @@
 <li class="toctree-l1"><a class="reference internal" href="ondemand.html">On Demand Symbols</a></li>
 <li class="toctree-l1"><a class="reference internal" href="aarch64-linux.html">Using LLDB On AArch64 Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="symbolfilejson.html">JSON Symbol File Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lldbdap.html">Getting started with <code class="docutils literal notranslate"><span class="pre">lldb-dap</span></code></a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Model Context Protocol (MCP)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
@@ -209,7 +210,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../resources/lldbplatformpackets.html">LLDB Platform Packets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/caveats.html">Caveats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/projects.html">Open Projects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../resources/lldbdap.html">Contributing to LLDB-DAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/lldbdap-contributing.html">Contributing to LLDB-DAP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/addinglanguagesupport.html">Adding Programming Language Support</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/namespacelldb.html">Public C++ API</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/index.html">Private C++ API</a></li>
@@ -318,15 +319,13 @@ forward communication over stdio over the network connection.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Configuration example for <a class="reference external" href="https://code.visualstudio.com/docs/copilot/chat/mcp-servers">Visual Studio Code</a>:</p>
+<p>Configuration example (<code class="docutils literal notranslate"><span class="pre">mcp.json</span></code>) for <a class="reference external" href="https://code.visualstudio.com/docs/copilot/chat/mcp-servers">Visual Studio Code</a>:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;servers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;lldb&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stdio&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/bin/nc&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;59999&quot;</span><span class="p">]</span>
-<span class="w">      </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;servers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;lldb&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stdio&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/bin/nc&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;59999&quot;</span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -410,14 +409,14 @@ stable and may be reused when a target is removed and a new target is added.</p>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="symbolfilejson.html">
+          <a class="prev-page" href="lldbdap.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">JSON Symbol File Format</div>
+                <div class="title">Getting started with <code class="docutils literal notranslate"><span class="pre">lldb-dap</span></code></div>
                 
               </div>
             </a>
@@ -425,13 +424,13 @@ stable and may be reused when a target is removed and a new target is added.</p>
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2007-2025, The LLDB Team
+                Copyright &#169; 2007-2026, The LLDB Team
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Nov 15, 2025</div>
+              Last updated on Feb 10, 2026</div>
           </div>
           <div class="right-details">
             

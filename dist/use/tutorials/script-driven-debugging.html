@@ -168,6 +168,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../ondemand.html">On Demand Symbols</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../aarch64-linux.html">Using LLDB On AArch64 Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../symbolfilejson.html">JSON Symbol File Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lldbdap.html">Getting started with <code class="docutils literal notranslate"><span class="pre">lldb-dap</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mcp.html">Model Context Protocol (MCP)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../settings.html">Settings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
@@ -209,7 +210,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../resources/lldbplatformpackets.html">LLDB Platform Packets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resources/caveats.html">Caveats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resources/projects.html">Open Projects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../resources/lldbdap.html">Contributing to LLDB-DAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/lldbdap-contributing.html">Contributing to LLDB-DAP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resources/addinglanguagesupport.html">Adding Programming Language Support</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/namespacelldb.html">Public C++ API</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/index.html">Private C++ API</a></li>
@@ -429,28 +430,28 @@ tree_utils.py) and then importing it into your LLDB Python interpreter.</p>
 <p>At this point we are ready to use the DFS function to see if the word “Romeo”
 is in our tree or not. To actually use it in LLDB on our dictionary program,
 you would do something like this:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">lldb</span>
-<span class="p">(</span><span class="n">lldb</span><span class="p">)</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">attach</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="s">&quot;dictionary&quot;</span>
-<span class="n">Architecture</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="n">to</span><span class="o">:</span><span class="w"> </span><span class="n">x86_64</span><span class="p">.</span>
-<span class="n">Process</span><span class="w"> </span><span class="mi">521</span><span class="w"> </span><span class="n">stopped</span>
-<span class="o">*</span><span class="w"> </span><span class="kr">thread</span><span class="w"> </span><span class="err">#</span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="n">tid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x2c03</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00007fff86c8bea0</span><span class="w"> </span><span class="n">libSystem</span><span class="p">.</span><span class="n">B</span><span class="p">.</span><span class="n">dylib</span><span class="err">`</span><span class="n">read$NOCANCEL</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="n">stop</span><span class="w"> </span><span class="n">reason</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">signal</span><span class="w"> </span><span class="n">SIGSTOP</span>
-<span class="n">frame</span><span class="w"> </span><span class="err">#</span><span class="mi">0</span><span class="o">:</span><span class="w"> </span><span class="mh">0x00007fff86c8bea0</span><span class="w"> </span><span class="n">libSystem</span><span class="p">.</span><span class="n">B</span><span class="p">.</span><span class="n">dylib</span><span class="err">`</span><span class="n">read$NOCANCEL</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">8</span>
-<span class="p">(</span><span class="n">lldb</span><span class="p">)</span><span class="w"> </span><span class="n">breakpoint</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="n">find_word</span>
-<span class="n">Breakpoint</span><span class="w"> </span><span class="n">created</span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">&#39;</span><span class="n">find_word</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">locations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">resolved</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="p">(</span><span class="n">lldb</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span>
-<span class="n">Process</span><span class="w"> </span><span class="mi">521</span><span class="w"> </span><span class="n">resuming</span>
-<span class="n">Process</span><span class="w"> </span><span class="mi">521</span><span class="w"> </span><span class="n">stopped</span>
-<span class="o">*</span><span class="w"> </span><span class="kr">thread</span><span class="w"> </span><span class="err">#</span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="n">tid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x2c03</span><span class="p">,</span><span class="w"> </span><span class="mh">0x0000000100001830</span><span class="w"> </span><span class="n">dictionary</span><span class="err">`</span><span class="n">find_word</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">16</span>
-<span class="n">at</span><span class="w"> </span><span class="n">dictionary</span><span class="p">.</span><span class="n">c</span><span class="o">:</span><span class="mi">105</span><span class="p">,</span><span class="w"> </span><span class="n">stop</span><span class="w"> </span><span class="n">reason</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">breakpoint</span><span class="w"> </span><span class="mf">1.1</span>
-<span class="n">frame</span><span class="w"> </span><span class="err">#</span><span class="mi">0</span><span class="o">:</span><span class="w"> </span><span class="mh">0x0000000100001830</span><span class="w"> </span><span class="n">dictionary</span><span class="err">`</span><span class="n">find_word</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">dictionary</span><span class="p">.</span><span class="n">c</span><span class="o">:</span><span class="mi">105</span>
-<span class="mi">102</span><span class="w"> </span><span class="kt">int</span>
-<span class="mi">103</span><span class="w"> </span><span class="n">find_word</span><span class="w"> </span><span class="p">(</span><span class="n">tree_node</span><span class="w"> </span><span class="o">*</span><span class="n">dictionary</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">word</span><span class="p">)</span>
-<span class="mi">104</span><span class="w"> </span><span class="p">{</span>
-<span class="o">-&gt;</span><span class="w"> </span><span class="mi">105</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">word</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="n">dictionary</span><span class="p">)</span>
-<span class="mi">106</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="mi">107</span>
-<span class="mi">108</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">compare_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strcmp</span><span class="w"> </span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">dictionary</span><span class="o">-&gt;</span><span class="n">word</span><span class="p">);</span>
-<span class="p">(</span><span class="n">lldb</span><span class="p">)</span><span class="w"> </span><span class="n">script</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ lldb
+(lldb) process attach -n &quot;dictionary&quot;
+Architecture set to: x86_64.
+Process 521 stopped
+* thread #1: tid = 0x2c03, 0x00007fff86c8bea0 libSystem.B.dylib`read$NOCANCEL + 8, stop reason = signal SIGSTOP
+frame #0: 0x00007fff86c8bea0 libSystem.B.dylib`read$NOCANCEL + 8
+(lldb) breakpoint set -n find_word
+Breakpoint created: 1: name = &#39;find_word&#39;, locations = 1, resolved = 1
+(lldb) continue
+Process 521 resuming
+Process 521 stopped
+* thread #1: tid = 0x2c03, 0x0000000100001830 dictionary`find_word + 16
+at dictionary.c:105, stop reason = breakpoint 1.1
+frame #0: 0x0000000100001830 dictionary`find_word + 16 at dictionary.c:105
+102 int
+103 find_word (tree_node *dictionary, char *word)
+104 {
+-&gt; 105 if (!word || !dictionary)
+106 return 0;
+107
+108 int compare_value = strcmp (word, dictionary-&gt;word);
+(lldb) script
 </pre></div>
 </div>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Python</span> <span class="n">Interactive</span> <span class="n">Interpreter</span><span class="o">.</span> <span class="n">To</span> <span class="n">exit</span><span class="p">,</span> <span class="nb">type</span> <span class="s1">&#39;quit()&#39;</span><span class="p">,</span> <span class="s1">&#39;exit()&#39;</span> <span class="ow">or</span> <span class="n">Ctrl</span><span class="o">-</span><span class="n">D</span><span class="o">.</span>
@@ -657,20 +658,20 @@ want to set our breakpoints on lines 113 and 115:</p>
 <span class="o">&gt;</span> <span class="n">DONE</span>
 </pre></div>
 </div>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span>
-<span class="n">Process</span><span class="w"> </span><span class="mi">696</span><span class="w"> </span><span class="n">resuming</span>
-<span class="n">Here</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">problem</span><span class="p">.</span><span class="w"> </span><span class="n">Going</span><span class="w"> </span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">go</span><span class="w"> </span><span class="n">left</span><span class="o">!</span>
-<span class="n">Process</span><span class="w"> </span><span class="mi">696</span><span class="w"> </span><span class="n">stopped</span>
-<span class="o">*</span><span class="w"> </span><span class="kr">thread</span><span class="w"> </span><span class="err">#</span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="n">tid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x2d03</span><span class="p">,</span><span class="w"> </span><span class="mh">0x000000010000189f</span><span class="w"> </span><span class="n">dictionary</span><span class="err">`</span><span class="n">find_word</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">127</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">dictionary</span><span class="p">.</span><span class="n">c</span><span class="o">:</span><span class="mi">115</span><span class="p">,</span><span class="w"> </span><span class="n">stop</span><span class="w"> </span><span class="n">reason</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">breakpoint</span><span class="w"> </span><span class="mf">3.1</span>
-<span class="n">frame</span><span class="w"> </span><span class="err">#</span><span class="mi">0</span><span class="o">:</span><span class="w"> </span><span class="mh">0x000000010000189f</span><span class="w"> </span><span class="n">dictionary</span><span class="err">`</span><span class="n">find_word</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">127</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">dictionary</span><span class="p">.</span><span class="n">c</span><span class="o">:</span><span class="mi">115</span>
-<span class="w">   </span><span class="mi">112</span><span class="w">   </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">compare_value</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-<span class="w">   </span><span class="mi">113</span><span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="n">find_word</span><span class="w"> </span><span class="p">(</span><span class="n">dictionary</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">word</span><span class="p">);</span>
-<span class="w">   </span><span class="mi">114</span><span class="w">   </span><span class="k">else</span>
-<span class="o">-&gt;</span><span class="w"> </span><span class="mi">115</span><span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="n">find_word</span><span class="w"> </span><span class="p">(</span><span class="n">dictionary</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="n">word</span><span class="p">);</span>
-<span class="w">   </span><span class="mi">116</span><span class="w"> </span><span class="p">}</span>
-<span class="w">   </span><span class="mi">117</span>
-<span class="w">   </span><span class="mi">118</span><span class="w"> </span><span class="kt">void</span>
-<span class="p">(</span><span class="n">lldb</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(lldb) continue
+Process 696 resuming
+Here is the problem. Going right, should go left!
+Process 696 stopped
+* thread #1: tid = 0x2d03, 0x000000010000189f dictionary`find_word + 127 at dictionary.c:115, stop reason = breakpoint 3.1
+frame #0: 0x000000010000189f dictionary`find_word + 127 at dictionary.c:115
+   112   else if (compare_value &lt; 0)
+   113     return find_word (dictionary-&gt;left, word);
+   114   else
+-&gt; 115     return find_word (dictionary-&gt;right, word);
+   116 }
+   117
+   118 void
+(lldb)
 </pre></div>
 </div>
 <p>After setting our breakpoints, adding our breakpoint commands and continuing,
@@ -748,13 +749,13 @@ available below.</p>
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2007-2025, The LLDB Team
+                Copyright &#169; 2007-2026, The LLDB Team
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Nov 15, 2025</div>
+              Last updated on Feb 10, 2026</div>
           </div>
           <div class="right-details">
             

@@ -168,6 +168,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../ondemand.html">On Demand Symbols</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../aarch64-linux.html">Using LLDB On AArch64 Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../symbolfilejson.html">JSON Symbol File Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lldbdap.html">Getting started with <code class="docutils literal notranslate"><span class="pre">lldb-dap</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mcp.html">Model Context Protocol (MCP)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../settings.html">Settings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
@@ -209,7 +210,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../resources/lldbplatformpackets.html">LLDB Platform Packets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resources/caveats.html">Caveats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resources/projects.html">Open Projects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../resources/lldbdap.html">Contributing to LLDB-DAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/lldbdap-contributing.html">Contributing to LLDB-DAP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resources/addinglanguagesupport.html">Adding Programming Language Support</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/namespacelldb.html">Public C++ API</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/index.html">Private C++ API</a></li>
@@ -650,18 +651,18 @@ given the following program:</p>
 <p>you may want a <code class="docutils literal notranslate"><span class="pre">pofoo</span></code> X command, that equates po [ModifyString(X)
 capitalizedString]. The following debugger interaction shows how to achieve
 that goal:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">script</span>
-<span class="n">Python</span> <span class="n">Interactive</span> <span class="n">Interpreter</span><span class="o">.</span> <span class="n">To</span> <span class="n">exit</span><span class="p">,</span> <span class="nb">type</span> <span class="s1">&#39;quit()&#39;</span><span class="p">,</span> <span class="s1">&#39;exit()&#39;</span> <span class="ow">or</span> <span class="n">Ctrl</span><span class="o">-</span><span class="n">D</span><span class="o">.</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span><span class="w"> </span><span class="nf">pofoo_funct</span><span class="p">(</span><span class="n">debugger</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">internal_dict</span><span class="p">):</span>
-<span class="o">...</span>	<span class="n">cmd</span> <span class="o">=</span> <span class="s2">&quot;po [ModifyString(&quot;</span> <span class="o">+</span> <span class="n">command</span> <span class="o">+</span> <span class="s2">&quot;) capitalizedString]&quot;</span>
-<span class="o">...</span>	<span class="n">debugger</span><span class="o">.</span><span class="n">HandleCommand</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
-<span class="o">...</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="o">^</span><span class="n">D</span>
-<span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">command</span> <span class="n">script</span> <span class="n">add</span> <span class="n">pofoo</span> <span class="o">-</span><span class="n">f</span> <span class="n">pofoo_funct</span>
-<span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">pofoo</span> <span class="n">aString</span>
-<span class="err">$</span><span class="mi">1</span> <span class="o">=</span> <span class="mh">0x000000010010aa00</span> <span class="n">Hello</span> <span class="n">Worldfoobar</span>
-<span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">pofoo</span> <span class="n">anotherString</span>
-<span class="err">$</span><span class="mi">2</span> <span class="o">=</span> <span class="mh">0x000000010010aba0</span> <span class="n">Let</span><span class="s1">&#39;s Be Friendsfoobar</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(lldb) script
+Python Interactive Interpreter. To exit, type &#39;quit()&#39;, &#39;exit()&#39; or Ctrl-D.
+&gt;&gt;&gt; def pofoo_funct(debugger, command, result, internal_dict):
+...	cmd = &quot;po [ModifyString(&quot; + command + &quot;) capitalizedString]&quot;
+...	debugger.HandleCommand(cmd)
+...
+&gt;&gt;&gt; ^D
+(lldb) command script add pofoo -f pofoo_funct
+(lldb) pofoo aString
+$1 = 0x000000010010aa00 Hello Worldfoobar
+(lldb) pofoo anotherString
+$2 = 0x000000010010aba0 Let&#39;s Be Friendsfoobar
 </pre></div>
 </div>
 </section>
@@ -696,13 +697,13 @@ that goal:</p>
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2007-2025, The LLDB Team
+                Copyright &#169; 2007-2026, The LLDB Team
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Nov 15, 2025</div>
+              Last updated on Feb 10, 2026</div>
           </div>
           <div class="right-details">
             

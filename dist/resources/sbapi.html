@@ -168,6 +168,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../use/ondemand.html">On Demand Symbols</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../use/aarch64-linux.html">Using LLDB On AArch64 Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../use/symbolfilejson.html">JSON Symbol File Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../use/lldbdap.html">Getting started with <code class="docutils literal notranslate"><span class="pre">lldb-dap</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../use/mcp.html">Model Context Protocol (MCP)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../use/settings.html">Settings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../use/troubleshooting.html">Troubleshooting</a></li>
@@ -209,7 +210,7 @@
 <li class="toctree-l1"><a class="reference internal" href="lldbplatformpackets.html">LLDB Platform Packets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caveats.html">Caveats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="projects.html">Open Projects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lldbdap.html">Contributing to LLDB-DAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lldbdap-contributing.html">Contributing to LLDB-DAP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="addinglanguagesupport.html">Adding Programming Language Support</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/namespacelldb.html">Public C++ API</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/index.html">Private C++ API</a></li>
@@ -287,9 +288,9 @@ or remove ivars without breaking binary compatibility. In some cases, the SB
 class is a thin wrapper around an internal lldb_private object. In that case,
 the class can have a single ivar, which is either a pointer, shared_ptr or
 unique_ptr to the object in the lldb_private API. All the lldb_private classes
-that get used this way are declared as opaque classes in lldb_forward.h, which
+that get used this way are declared as opaque classes in lldb-forward.h, which
 is included in SBDefines.h. So if you need an SB class to wrap an lldb_private
-class that isn’t in lldb_forward.h, add it there rather than making a direct
+class that isn’t in lldb-forward.h, add it there rather than making a direct
 opaque declaration in the SB classes .h file.</p>
 <p>If the SB Class needs some state of its own, as well as the backing object,
 don’t include that as a direct ivar in the SB Class. Instead, make an Impl
@@ -306,6 +307,16 @@ or other, this can easily be done, but it means all the methods must be
 prepared to handle their opaque implementation pointer being empty, and doing
 something reasonable. We also always have an “IsValid” method on all the SB
 classes to report whether the object is empty or not.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The implication of an object being “empty” can vary by class.</p>
+<p>For most classes, the lack of anything backing the class means that it
+would not be valid to interact with it by calling any other methods
+on it.</p>
+<p>One exception to this is <code class="docutils literal notranslate"><span class="pre">SBError</span></code>, which can provide valid
+information even when empty. This is because it does not need an
+underlying object to be able to represent a success state.</p>
+</div>
 <p>Another piece of the SB API infrastructure is the Python (or other script
 interpreter) customization. SWIG allows you to add property access, iterators
 and documentation to classes. We place the property accessors and iterators in
@@ -409,13 +420,13 @@ it emitted a corresponding <code class="docutils literal notranslate"><span clas
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2007-2025, The LLDB Team
+                Copyright &#169; 2007-2026, The LLDB Team
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Nov 15, 2025</div>
+              Last updated on Feb 10, 2026</div>
           </div>
           <div class="right-details">
             

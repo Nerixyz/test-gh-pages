@@ -168,6 +168,7 @@
 <li class="toctree-l1"><a class="reference internal" href="ondemand.html">On Demand Symbols</a></li>
 <li class="toctree-l1"><a class="reference internal" href="aarch64-linux.html">Using LLDB On AArch64 Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="symbolfilejson.html">JSON Symbol File Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lldbdap.html">Getting started with <code class="docutils literal notranslate"><span class="pre">lldb-dap</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="mcp.html">Model Context Protocol (MCP)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Troubleshooting</a></li>
@@ -209,7 +210,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../resources/lldbplatformpackets.html">LLDB Platform Packets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/caveats.html">Caveats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/projects.html">Open Projects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../resources/lldbdap.html">Contributing to LLDB-DAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/lldbdap-contributing.html">Contributing to LLDB-DAP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/addinglanguagesupport.html">Adding Programming Language Support</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/namespacelldb.html">Public C++ API</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/index.html">Private C++ API</a></li>
@@ -350,6 +351,171 @@ for any source file and line breakpoints that the IDE set using:</p>
 </pre></div>
 </div>
 </section>
+<section id="how-do-i-find-out-which-features-my-copy-of-lldb-has">
+<h2>How Do I Find Out Which Features My Copy Of LLDB Has?<a class="headerlink" href="#how-do-i-find-out-which-features-my-copy-of-lldb-has" title="Link to this heading">#</a></h2>
+<p>Some features such as XML parsing are optional and must be enabled when LLDB is
+built. To check which features your copy of LLDB has enabled, use the <code class="docutils literal notranslate"><span class="pre">version</span></code>
+command from within LLDB:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">version</span> <span class="o">-</span><span class="n">v</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This feature was added in LLDB 22. If you are using an earlier version, you
+can use one of the methods below.</p>
+</div>
+<p>If your LLDB has a scripting langauge enabled, you can also use this command to
+print the same information:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">script</span> <span class="n">lldb</span><span class="o">.</span><span class="n">debugger</span><span class="o">.</span><span class="n">GetBuildConfiguration</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This command will fail if no scripting langauge was enabled. In that case, you
+can instead check the shared library dependencies of LLDB.</p>
+<p>For example on Linux you can use the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ readelf -d &lt;path-to-lldb&gt; | grep NEEDED
+0x0000000000000001 (NEEDED)             Shared library: [liblldb.so.22.0git]
+0x0000000000000001 (NEEDED)             Shared library: [libxml2.so.2]
+0x0000000000000001 (NEEDED)             Shared library: [libedit.so.2]
+&lt;...&gt;
+</pre></div>
+</div>
+<p>The output above shows us that this particular copy of LLDB has XML parsing
+(<code class="docutils literal notranslate"><span class="pre">libxml2</span></code>) and editline (<code class="docutils literal notranslate"><span class="pre">libedit</span></code>) enabled.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">readelf</span> <span class="pre">-d</span></code> as used above only shows direct dependencies of the binary.
+Libraries loaded by a library will not be shown. An example of this is Python.
+<code class="docutils literal notranslate"><span class="pre">lldb</span></code> requires <code class="docutils literal notranslate"><span class="pre">liblldb</span></code> and it is <code class="docutils literal notranslate"><span class="pre">liblldb</span></code> that would require <code class="docutils literal notranslate"><span class="pre">libpython</span></code>.
+The same <code class="docutils literal notranslate"><span class="pre">readelf</span></code> command can be used on <code class="docutils literal notranslate"><span class="pre">liblldb</span></code> to see if it does
+depend on Python.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ldd</span></code> will show you the full dependency tree of <code class="docutils literal notranslate"><span class="pre">lldb</span></code> but <strong>do not</strong>
+use it unless you trust the <code class="docutils literal notranslate"><span class="pre">lldb</span></code> binary. As some versions of <code class="docutils literal notranslate"><span class="pre">ldd</span></code> may
+execute the binary in the process of inspecting it.</p>
+</div>
+<p>On Windows, use <code class="docutils literal notranslate"><span class="pre">dumpbin</span> <span class="pre">/dependents</span> <span class="pre">&lt;path-to-lldb&gt;</span></code>. The same caveat from
+Linux applies to Windows. To find dependencies like Python, you need to run
+<code class="docutils literal notranslate"><span class="pre">dumpbin</span></code> on <code class="docutils literal notranslate"><span class="pre">liblldb.dll</span></code> too.</p>
+<p>On MacOS, use <code class="docutils literal notranslate"><span class="pre">otool</span> <span class="pre">-l</span> <span class="pre">&lt;path-to-lldb&gt;</span></code>.</p>
+</section>
+<section id="why-do-i-see-more-less-or-different-registers-than-i-expected">
+<h2>Why Do I See More, Less, Or Different Registers Than I Expected?<a class="headerlink" href="#why-do-i-see-more-less-or-different-registers-than-i-expected" title="Link to this heading">#</a></h2>
+<p>The registers you see in LLDB are defined by information either provided by the
+debug server you are connected to, or in some cases, guessed by LLDB.</p>
+<p>If you are not seeing the registers you expect, the first step is to figure out
+which method is being used to read the register information. They are presented
+here in the order that LLDB will try them.</p>
+<section id="target-definition-script">
+<h3>Target Definition Script<a class="headerlink" href="#target-definition-script" title="Link to this heading">#</a></h3>
+<p>These scripts tell LLDB what registers exist on the debug server without having
+to ask it. You can check if you are using one by checking the setting:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">settings</span> <span class="n">show</span> <span class="n">plugin</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">gdb</span><span class="o">-</span><span class="n">remote</span><span class="o">.</span><span class="n">target</span><span class="o">-</span><span class="n">definition</span><span class="o">-</span><span class="n">file</span>
+</pre></div>
+</div>
+<p>In most cases you will not be using such a script.</p>
+<p>If you are using one, or want to write one, you can learn about them by reading
+the <code class="docutils literal notranslate"><span class="pre">*_target_definition.py</span></code> files in the
+<a class="reference external" href="https://github.com/llvm/llvm-project/tree/main/lldb/examples/python">Python examples folder</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>We recommend that before attempting to write a target definition script to solve
+your issues, you look into the other methods first.</p>
+</div>
+</section>
+<section id="target-description-format-xml">
+<h3>Target Description Format XML<a class="headerlink" href="#target-description-format-xml" title="Link to this heading">#</a></h3>
+<p>The most commonly used method is the debug server sending LLDB an XML
+document in the
+<a class="reference external" href="https://sourceware.org/gdb/current/onlinedocs/gdb.html/Target-Description-Format.html">Target Description Format</a>.</p>
+<p>LLDB can only process this if XML parsing was enabled when it was built. A
+previous section of this document explains how to check this. If XML is not
+enabled and the debug server has offered an XML document, we highly recommend
+switching to a build of LLDB with XML parsing enabled.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If LLDB was offered an XML document but could not use it, you will see a
+warning in your debug session to alert you to this situation.</p>
+</div>
+<p>If your LLDB has XML support, next check whether the debug server offered this
+XML document. Enable the GDB remote packet log, then connect to the debug server
+as you normally would.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">log</span> <span class="n">enable</span> <span class="n">gdb</span><span class="o">-</span><span class="n">remote</span> <span class="n">packets</span>
+</pre></div>
+</div>
+<p>This will produce a lot of output. Scroll back to just after you connected to
+the debug server. Look for lines like these:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>lldb             &lt; 104&gt; send packet: $qSupported:xmlRegisters=&lt;...&gt;
+lldb             &lt; 260&gt; read packet: $&lt;...&gt;qXfer:features:read+&lt;...&gt;
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">sent</span></code> packet is LLDB telling the debug server that it can parse XML
+definitions. The <code class="docutils literal notranslate"><span class="pre">read</span></code> (received) packet is the debug server telling LLDB
+that it is allowed to request Target Description XML.</p>
+<p>If you do not see either of these, then one or both of LLDB or the debug server
+does not support XML. This is not a fatal problem but may result in degraded
+register information.</p>
+<p>Switching to a debug server with XML support may not be possible. For example if
+you have hardware debug tools that cannot be changed. Consult your local experts
+for advice on this.</p>
+<p>If you did see those packets, scroll further down to confirm that the XML was
+read. You should see output that looks like an XML document:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>lldb             &lt;  43&gt; send packet: $qXfer:features:read:target.xml&lt;...&gt;
+lldb             &lt;27583&gt; read packet: $l&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;target version=&quot;1.0&quot;&gt;
+&lt;...&gt;
+</pre></div>
+</div>
+<p>Even if the XML document was read by LLDB, it, or parts of it may not be valid.
+LLDB is permissive when parsing, so you will not get a fatal error. You need to
+check the GDB Remote process log for details of any parsing problems:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">log</span> <span class="n">enable</span> <span class="n">gdb</span><span class="o">-</span><span class="n">remote</span> <span class="n">process</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There will always be some messages about register information because we log
+details of successful parsing too. If registers are present but presented in
+an unexpected way, check these log messages to see if LLDB has misinterpreted
+the register information.</p>
+</div>
+<p>If those messages do not tell you what is wrong, your last option is to read the
+document yourself by copying it out of the <code class="docutils literal notranslate"><span class="pre">gdb-remote</span> <span class="pre">packets</span></code> output.
+Start by checking the basic XML structure of nested elements and begin/end markers
+are correct, then compare it to the Target Description specification.</p>
+<p>If reading XML is not possible, or it fails to produce any valid register
+information, LLDB falls back to the next method.</p>
+</section>
+<section id="qregisterinfo">
+<h3>qRegisterInfo<a class="headerlink" href="#qregisterinfo" title="Link to this heading">#</a></h3>
+<p>When XML reading fails, LLDB will try an <code class="docutils literal notranslate"><span class="pre">lldb-server</span></code> specific packet
+called <code class="docutils literal notranslate"><span class="pre">qRegisterInfo</span></code>. This packet contains all the same register information
+as the XML would, except advanced formatting information. That information tells
+LLDB how to format registers as complex types like structures.</p>
+<p>So if you are using <code class="docutils literal notranslate"><span class="pre">lldb</span></code> connected to <code class="docutils literal notranslate"><span class="pre">lldb-server</span></code> or <code class="docutils literal notranslate"><span class="pre">debugserver</span></code>,
+it is likely you will not notice the lack of XML. Connected to anything else,
+<code class="docutils literal notranslate"><span class="pre">qRegisterInfo</span></code> will not work and LLDB will fall back to the final method.</p>
+<p>To check if LLDB is using <code class="docutils literal notranslate"><span class="pre">qRegisterInfo</span></code> you can check the
+<code class="docutils literal notranslate"><span class="pre">gdb-remote</span> <span class="pre">packets</span></code> and <code class="docutils literal notranslate"><span class="pre">gdb-remote</span> <span class="pre">process</span></code> logs.</p>
+</section>
+<section id="fallback-register-layouts">
+<h3>Fallback Register Layouts<a class="headerlink" href="#fallback-register-layouts" title="Link to this heading">#</a></h3>
+<p>The final method is that LLDB will assume that it can use the general register
+read packet and make an assumption about the offset of each register in the
+response.</p>
+<p>This is often done with older debug servers, or ones running with very limited
+resources such as those inside of operating system kernels.</p>
+<p>This requires that LLDB and the debug server be in sync which is not always
+the case if you are connecting LLDB to anything but <code class="docutils literal notranslate"><span class="pre">lldb-server</span></code> or
+<code class="docutils literal notranslate"><span class="pre">debugserver</span></code>. Work has been done to make LLDB more compatible, but it is
+impossible to predict what might be in use in the wild.</p>
+<p>Symptoms of a mismatch are missing, overlapping or incorrect register values.
+Often this will cause other features like backtracing to fail.</p>
+<p>In this case, assuming you cannot change the debug server, you do not have much
+choice but to find a debug client that does match up. Often GDB will work better,
+it has a longer history of compatability fixes.</p>
+<p>If you must use LLDB, you could patch it to match the debug server. The fallback
+layouts are stored in <code class="docutils literal notranslate"><span class="pre">lldb/source/Plugins/Process/gdb-remote/GDBRemoteRegisterFallback.cpp</span></code>.</p>
+</section>
+</section>
 </section>
 
         </article>
@@ -381,13 +547,13 @@ for any source file and line breakpoints that the IDE set using:</p>
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2007-2025, The LLDB Team
+                Copyright &#169; 2007-2026, The LLDB Team
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Nov 15, 2025</div>
+              Last updated on Feb 10, 2026</div>
           </div>
           <div class="right-details">
             
@@ -411,6 +577,14 @@ for any source file and line breakpoints that the IDE set using:</p>
 <li><a class="reference internal" href="#">Troubleshooting</a><ul>
 <li><a class="reference internal" href="#file-and-line-breakpoints-are-not-getting-hit">File and Line Breakpoints Are Not Getting Hit</a></li>
 <li><a class="reference internal" href="#how-do-i-check-if-i-have-debug-symbols">How Do I Check If I Have Debug Symbols?</a></li>
+<li><a class="reference internal" href="#how-do-i-find-out-which-features-my-copy-of-lldb-has">How Do I Find Out Which Features My Copy Of LLDB Has?</a></li>
+<li><a class="reference internal" href="#why-do-i-see-more-less-or-different-registers-than-i-expected">Why Do I See More, Less, Or Different Registers Than I Expected?</a><ul>
+<li><a class="reference internal" href="#target-definition-script">Target Definition Script</a></li>
+<li><a class="reference internal" href="#target-description-format-xml">Target Description Format XML</a></li>
+<li><a class="reference internal" href="#qregisterinfo">qRegisterInfo</a></li>
+<li><a class="reference internal" href="#fallback-register-layouts">Fallback Register Layouts</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
