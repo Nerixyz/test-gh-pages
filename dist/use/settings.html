@@ -10,7 +10,7 @@
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
-    <link rel="stylesheet" type="text/css" href="../_static/lldb-setting.css?v=47390f8b" />
+    <link rel="stylesheet" type="text/css" href="../_static/lldb-setting.css?v=90455d01" />
     
     
 
@@ -269,11 +269,14 @@
         <article role="main">
           <section id="settings">
 <h1>Settings<a class="headerlink" href="#settings" title="Link to this heading">#</a></h1>
-<p>This page lists all available settings in LLDB.
+<p>This page lists all possible settings in LLDB.
 Settings can be set using <code class="docutils literal notranslate"><span class="pre">settings</span> <span class="pre">set</span> <span class="pre">&lt;name&gt;</span> <span class="pre">&lt;value&gt;</span></code>.
 Values can be added to arrays and dictionaries with <code class="docutils literal notranslate"><span class="pre">settings</span> <span class="pre">append</span> <span class="pre">--</span> <span class="pre">&lt;name&gt;</span> <span class="pre">&lt;value&gt;</span></code>.</p>
-<section id="root">
-<h2>Root<a class="headerlink" href="#root" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some settings only exist for particular LLDB build configurations and so will
+not be present in all copies of LLDB.</p>
+</div>
 <dl class="lldbsetting">
 <dt class="sig sig-object" id="auto-confirm">
 <span class="sig-name descname"><span class="pre">auto-confirm</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#auto-confirm" title="Link to this definition">#</a></dt>
@@ -454,7 +457,7 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 <dd><p>A separator used, e.g., in the status line.</p>
 <dl class="myst field-list">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
-<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">│</span></code></dd>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">â”‚</span></code></dd>
 </dl>
 </dd></dl>
 
@@ -751,7 +754,7 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </dd></dl>
 
 <section id="interpreter">
-<h3>interpreter<a class="headerlink" href="#interpreter" title="Link to this heading">#</a></h3>
+<h2>interpreter<a class="headerlink" href="#interpreter" title="Link to this heading">#</a></h2>
 <dl class="lldbsetting">
 <dt class="sig sig-object" id="interpreter.echo-commands">
 <span class="sig-name descname"><span class="pre">interpreter.echo-commands</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#interpreter.echo-commands" title="Link to this definition">#</a></dt>
@@ -870,7 +873,7 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 
 </section>
 <section id="language">
-<h3>language<a class="headerlink" href="#language" title="Link to this heading">#</a></h3>
+<h2>language<a class="headerlink" href="#language" title="Link to this heading">#</a></h2>
 <dl class="lldbsetting">
 <dt class="sig sig-object" id="language.enable-filter-for-line-breakpoints">
 <span class="sig-name descname"><span class="pre">language.enable-filter-for-line-breakpoints</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#language.enable-filter-for-line-breakpoints" title="Link to this definition">#</a></dt>
@@ -883,7 +886,7 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 
 </section>
 <section id="platform">
-<h3>platform<a class="headerlink" href="#platform" title="Link to this heading">#</a></h3>
+<h2>platform<a class="headerlink" href="#platform" title="Link to this heading">#</a></h2>
 <dl class="lldbsetting">
 <dt class="sig sig-object" id="platform.module-cache-directory">
 <span class="sig-name descname"><span class="pre">platform.module-cache-directory</span><span class="lldb-setting-type lldb-setting-type-filespec"><span class="pre">FileSpec</span></span></span><a class="headerlink" href="#platform.module-cache-directory" title="Link to this definition">#</a></dt>
@@ -901,84 +904,84 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </dd></dl>
 
 <section id="plugin">
-<h4>plugin<a class="headerlink" href="#plugin" title="Link to this heading">#</a></h4>
+<h3>plugin<a class="headerlink" href="#plugin" title="Link to this heading">#</a></h3>
 <section id="darwin">
-<h5>darwin<a class="headerlink" href="#darwin" title="Link to this heading">#</a></h5>
+<h4>darwin<a class="headerlink" href="#darwin" title="Link to this heading">#</a></h4>
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="plugin.darwin.ignored-exceptions">
-<span class="sig-name descname"><span class="pre">plugin.darwin.ignored-exceptions</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">String</span></span></span><a class="headerlink" href="#plugin.darwin.ignored-exceptions" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="platform.plugin.darwin.ignored-exceptions">
+<span class="sig-name descname"><span class="pre">platform.plugin.darwin.ignored-exceptions</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">String</span></span></span><a class="headerlink" href="#platform.plugin.darwin.ignored-exceptions" title="Link to this definition">#</a></dt>
 <dd><p>List the mach exceptions to ignore, separated by ‘|’ (e.g. ‘EXC_BAD_ACCESS|EXC_BAD_INSTRUCTION’). lldb will instead stop on the BSD signal the exception was converted into, if there is one.</p>
 </dd></dl>
 
 </section>
 <section id="darwin-kernel">
-<h5>darwin-kernel<a class="headerlink" href="#darwin-kernel" title="Link to this heading">#</a></h5>
+<h4>darwin-kernel<a class="headerlink" href="#darwin-kernel" title="Link to this heading">#</a></h4>
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="plugin.darwin-kernel.kext-directories">
-<span class="sig-name descname"><span class="pre">plugin.darwin-kernel.kext-directories</span><span class="lldb-setting-type lldb-setting-type-filespeclist"><span class="pre">FileSpecList</span></span></span><a class="headerlink" href="#plugin.darwin-kernel.kext-directories" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="platform.plugin.darwin-kernel.kext-directories">
+<span class="sig-name descname"><span class="pre">platform.plugin.darwin-kernel.kext-directories</span><span class="lldb-setting-type lldb-setting-type-filespeclist"><span class="pre">FileSpecList</span></span></span><a class="headerlink" href="#platform.plugin.darwin-kernel.kext-directories" title="Link to this definition">#</a></dt>
 <dd><p>Directories/KDKs to search for kexts in when starting a kernel debug session.</p>
 </dd></dl>
 
 </section>
 <section id="qemu-user">
-<h5>qemu-user<a class="headerlink" href="#qemu-user" title="Link to this heading">#</a></h5>
+<h4>qemu-user<a class="headerlink" href="#qemu-user" title="Link to this heading">#</a></h4>
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="plugin.qemu-user.architecture">
-<span class="sig-name descname"><span class="pre">plugin.qemu-user.architecture</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">String</span></span></span><a class="headerlink" href="#plugin.qemu-user.architecture" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="platform.plugin.qemu-user.architecture">
+<span class="sig-name descname"><span class="pre">platform.plugin.qemu-user.architecture</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">String</span></span></span><a class="headerlink" href="#platform.plugin.qemu-user.architecture" title="Link to this definition">#</a></dt>
 <dd><p>Architecture to emulate.</p>
 </dd></dl>
 
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="plugin.qemu-user.emulator-args">
-<span class="sig-name descname"><span class="pre">plugin.qemu-user.emulator-args</span><span class="lldb-setting-type lldb-setting-type-args"><span class="pre">Args</span></span></span><a class="headerlink" href="#plugin.qemu-user.emulator-args" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="platform.plugin.qemu-user.emulator-args">
+<span class="sig-name descname"><span class="pre">platform.plugin.qemu-user.emulator-args</span><span class="lldb-setting-type lldb-setting-type-args"><span class="pre">Args</span></span></span><a class="headerlink" href="#platform.plugin.qemu-user.emulator-args" title="Link to this definition">#</a></dt>
 <dd><p>Extra arguments to pass to the emulator.</p>
 </dd></dl>
 
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="plugin.qemu-user.emulator-env-vars">
-<span class="sig-name descname"><span class="pre">plugin.qemu-user.emulator-env-vars</span><span class="lldb-setting-type lldb-setting-type-dictionary"><span class="pre">Dictionary</span></span></span><a class="headerlink" href="#plugin.qemu-user.emulator-env-vars" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="platform.plugin.qemu-user.emulator-env-vars">
+<span class="sig-name descname"><span class="pre">platform.plugin.qemu-user.emulator-env-vars</span><span class="lldb-setting-type lldb-setting-type-dictionary"><span class="pre">Dictionary</span></span></span><a class="headerlink" href="#platform.plugin.qemu-user.emulator-env-vars" title="Link to this definition">#</a></dt>
 <dd><p>Extra variables to add to the emulator environment.</p>
 </dd></dl>
 
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="plugin.qemu-user.emulator-path">
-<span class="sig-name descname"><span class="pre">plugin.qemu-user.emulator-path</span><span class="lldb-setting-type lldb-setting-type-filespec"><span class="pre">FileSpec</span></span></span><a class="headerlink" href="#plugin.qemu-user.emulator-path" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="platform.plugin.qemu-user.emulator-path">
+<span class="sig-name descname"><span class="pre">platform.plugin.qemu-user.emulator-path</span><span class="lldb-setting-type lldb-setting-type-filespec"><span class="pre">FileSpec</span></span></span><a class="headerlink" href="#platform.plugin.qemu-user.emulator-path" title="Link to this definition">#</a></dt>
 <dd><p>Path to the emulator binary. If the path does not contain a directory separator, the filename is looked up in the PATH environment variable. If empty, the filename is derived from the architecture setting.</p>
 </dd></dl>
 
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="plugin.qemu-user.target-env-vars">
-<span class="sig-name descname"><span class="pre">plugin.qemu-user.target-env-vars</span><span class="lldb-setting-type lldb-setting-type-dictionary"><span class="pre">Dictionary</span></span></span><a class="headerlink" href="#plugin.qemu-user.target-env-vars" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="platform.plugin.qemu-user.target-env-vars">
+<span class="sig-name descname"><span class="pre">platform.plugin.qemu-user.target-env-vars</span><span class="lldb-setting-type lldb-setting-type-dictionary"><span class="pre">Dictionary</span></span></span><a class="headerlink" href="#platform.plugin.qemu-user.target-env-vars" title="Link to this definition">#</a></dt>
 <dd><p>Extra variables to add to emulated target environment.</p>
 </dd></dl>
 
 </section>
 <section id="remote-android">
-<h5>remote-android<a class="headerlink" href="#remote-android" title="Link to this heading">#</a></h5>
+<h4>remote-android<a class="headerlink" href="#remote-android" title="Link to this heading">#</a></h4>
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="plugin.remote-android.package-name">
-<span class="sig-name descname"><span class="pre">plugin.remote-android.package-name</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">String</span></span></span><a class="headerlink" href="#plugin.remote-android.package-name" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="platform.plugin.remote-android.package-name">
+<span class="sig-name descname"><span class="pre">platform.plugin.remote-android.package-name</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">String</span></span></span><a class="headerlink" href="#platform.plugin.remote-android.package-name" title="Link to this definition">#</a></dt>
 <dd><p>Specify package name to run adb shell command with ‘run-as’ as the package user when necessary (e.g. to get file with ‘cat’ and ‘dd’).</p>
 </dd></dl>
 
 </section>
 <section id="wasm">
-<h5>wasm<a class="headerlink" href="#wasm" title="Link to this heading">#</a></h5>
+<h4>wasm<a class="headerlink" href="#wasm" title="Link to this heading">#</a></h4>
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="plugin.wasm.port-arg">
-<span class="sig-name descname"><span class="pre">plugin.wasm.port-arg</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">String</span></span></span><a class="headerlink" href="#plugin.wasm.port-arg" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="platform.plugin.wasm.port-arg">
+<span class="sig-name descname"><span class="pre">platform.plugin.wasm.port-arg</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">String</span></span></span><a class="headerlink" href="#platform.plugin.wasm.port-arg" title="Link to this definition">#</a></dt>
 <dd><p>Argument to the WebAssembly runtime to specify the GDB remote port. The port number chosen by LLDB will be concatenated to this argument. For example: <code class="docutils literal notranslate"><span class="pre">-g=127.0.0.1:</span></code> or <code class="docutils literal notranslate"><span class="pre">--debugger-port</span> </code>.</p>
 </dd></dl>
 
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="plugin.wasm.runtime-args">
-<span class="sig-name descname"><span class="pre">plugin.wasm.runtime-args</span><span class="lldb-setting-type lldb-setting-type-args"><span class="pre">Args</span></span></span><a class="headerlink" href="#plugin.wasm.runtime-args" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="platform.plugin.wasm.runtime-args">
+<span class="sig-name descname"><span class="pre">platform.plugin.wasm.runtime-args</span><span class="lldb-setting-type lldb-setting-type-args"><span class="pre">Args</span></span></span><a class="headerlink" href="#platform.plugin.wasm.runtime-args" title="Link to this definition">#</a></dt>
 <dd><p>Extra arguments to pass to the WebAssembly runtime. For the argument that specifies the GDB remote port, use port-arg instead.</p>
 </dd></dl>
 
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="plugin.wasm.runtime-path">
-<span class="sig-name descname"><span class="pre">plugin.wasm.runtime-path</span><span class="lldb-setting-type lldb-setting-type-filespec"><span class="pre">FileSpec</span></span></span><a class="headerlink" href="#plugin.wasm.runtime-path" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="platform.plugin.wasm.runtime-path">
+<span class="sig-name descname"><span class="pre">platform.plugin.wasm.runtime-path</span><span class="lldb-setting-type lldb-setting-type-filespec"><span class="pre">FileSpec</span></span></span><a class="headerlink" href="#platform.plugin.wasm.runtime-path" title="Link to this definition">#</a></dt>
 <dd><p>Path to the WebAssembly runtime binary. If the path does not contain a directory separator, the filename is looked up in the PATH environment variable.</p>
 </dd></dl>
 
@@ -986,14 +989,14 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </section>
 </section>
 <section id="id1">
-<h3>plugin<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h2>plugin<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <section id="cplusplus">
-<h4>cplusplus<a class="headerlink" href="#cplusplus" title="Link to this heading">#</a></h4>
+<h3>cplusplus<a class="headerlink" href="#cplusplus" title="Link to this heading">#</a></h3>
 <section id="display">
-<h5>display<a class="headerlink" href="#display" title="Link to this heading">#</a></h5>
+<h4>display<a class="headerlink" href="#display" title="Link to this heading">#</a></h4>
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="cplusplus.display.function-name-format">
-<span class="sig-name descname"><span class="pre">cplusplus.display.function-name-format</span><span class="lldb-setting-type lldb-setting-type-formatentity"><span class="pre">FormatEntity</span></span></span><a class="headerlink" href="#cplusplus.display.function-name-format" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="plugin.cplusplus.display.function-name-format">
+<span class="sig-name descname"><span class="pre">plugin.cplusplus.display.function-name-format</span><span class="lldb-setting-type lldb-setting-type-formatentity"><span class="pre">FormatEntity</span></span></span><a class="headerlink" href="#plugin.cplusplus.display.function-name-format" title="Link to this definition">#</a></dt>
 <dd><p>C++ specific frame format string to use when displaying stack frame information for threads.</p>
 <dl class="myst field-list">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
@@ -1004,12 +1007,12 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </section>
 </section>
 <section id="dynamic-loader">
-<h4>dynamic-loader<a class="headerlink" href="#dynamic-loader" title="Link to this heading">#</a></h4>
+<h3>dynamic-loader<a class="headerlink" href="#dynamic-loader" title="Link to this heading">#</a></h3>
 <section id="id2">
-<h5>darwin-kernel<a class="headerlink" href="#id2" title="Link to this heading">#</a></h5>
+<h4>darwin-kernel<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="dynamic-loader.darwin-kernel.load-kexts">
-<span class="sig-name descname"><span class="pre">dynamic-loader.darwin-kernel.load-kexts</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#dynamic-loader.darwin-kernel.load-kexts" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="plugin.dynamic-loader.darwin-kernel.load-kexts">
+<span class="sig-name descname"><span class="pre">plugin.dynamic-loader.darwin-kernel.load-kexts</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#plugin.dynamic-loader.darwin-kernel.load-kexts" title="Link to this definition">#</a></dt>
 <dd><p>Automatically loads kext images when attaching to a kernel.</p>
 <dl class="myst field-list">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
@@ -1018,50 +1021,50 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </dd></dl>
 
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="dynamic-loader.darwin-kernel.scan-type">
-<span class="sig-name descname"><span class="pre">dynamic-loader.darwin-kernel.scan-type</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#dynamic-loader.darwin-kernel.scan-type" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="plugin.dynamic-loader.darwin-kernel.scan-type">
+<span class="sig-name descname"><span class="pre">plugin.dynamic-loader.darwin-kernel.scan-type</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#plugin.dynamic-loader.darwin-kernel.scan-type" title="Link to this definition">#</a></dt>
 <dd><p>Control how many reads lldb will make while searching for a Darwin kernel on attach.</p>
 </dd></dl>
 
 </section>
 </section>
 <section id="jit-loader">
-<h4>jit-loader<a class="headerlink" href="#jit-loader" title="Link to this heading">#</a></h4>
+<h3>jit-loader<a class="headerlink" href="#jit-loader" title="Link to this heading">#</a></h3>
 <section id="gdb">
-<h5>gdb<a class="headerlink" href="#gdb" title="Link to this heading">#</a></h5>
+<h4>gdb<a class="headerlink" href="#gdb" title="Link to this heading">#</a></h4>
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="jit-loader.gdb.enable">
-<span class="sig-name descname"><span class="pre">jit-loader.gdb.enable</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#jit-loader.gdb.enable" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="plugin.jit-loader.gdb.enable">
+<span class="sig-name descname"><span class="pre">plugin.jit-loader.gdb.enable</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#plugin.jit-loader.gdb.enable" title="Link to this definition">#</a></dt>
 <dd><p>Enable GDB’s JIT compilation interface (default: enabled on all platforms except macOS)</p>
 </dd></dl>
 
 </section>
 </section>
 <section id="object-file">
-<h4>object-file<a class="headerlink" href="#object-file" title="Link to this heading">#</a></h4>
+<h3>object-file<a class="headerlink" href="#object-file" title="Link to this heading">#</a></h3>
 <section id="pe-coff">
-<h5>pe-coff<a class="headerlink" href="#pe-coff" title="Link to this heading">#</a></h5>
+<h4>pe-coff<a class="headerlink" href="#pe-coff" title="Link to this heading">#</a></h4>
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="object-file.pe-coff.abi">
-<span class="sig-name descname"><span class="pre">object-file.pe-coff.abi</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#object-file.pe-coff.abi" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="plugin.object-file.pe-coff.abi">
+<span class="sig-name descname"><span class="pre">plugin.object-file.pe-coff.abi</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#plugin.object-file.pe-coff.abi" title="Link to this definition">#</a></dt>
 <dd><p>ABI to use when loading a PE/COFF module. This configures the C++ ABI used, which affects things like the handling of class layout. Accepted values are: <code class="docutils literal notranslate"><span class="pre">msvc</span></code> for the MSVC ABI, <code class="docutils literal notranslate"><span class="pre">gnu</span></code> for the MinGW / Itanium ABI, and <code class="docutils literal notranslate"><span class="pre">default</span></code> to follow the default target if it is a Windows triple or use the MSVC ABI by default.</p>
 </dd></dl>
 
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="object-file.pe-coff.module-abi">
-<span class="sig-name descname"><span class="pre">object-file.pe-coff.module-abi</span><span class="lldb-setting-type lldb-setting-type-dictionary"><span class="pre">Dictionary</span></span></span><a class="headerlink" href="#object-file.pe-coff.module-abi" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="plugin.object-file.pe-coff.module-abi">
+<span class="sig-name descname"><span class="pre">plugin.object-file.pe-coff.module-abi</span><span class="lldb-setting-type lldb-setting-type-dictionary"><span class="pre">Dictionary</span></span></span><a class="headerlink" href="#plugin.object-file.pe-coff.module-abi" title="Link to this definition">#</a></dt>
 <dd><p>A mapping of ABI override to use for specific modules. The module name is matched by its file name with extension. These versions are checked in sequence: exact, lowercase, exact with ‘.debug’ suffix stripped, lowercase with ‘.debug’ suffix stripped. Accepted values are: <code class="docutils literal notranslate"><span class="pre">msvc</span></code> for the MSVC ABI, <code class="docutils literal notranslate"><span class="pre">gnu</span></code> for the MinGW / Itanium ABI, and <code class="docutils literal notranslate"><span class="pre">default</span></code> to follow the default target if it is a Windows triple or use the MSVC ABI by default.</p>
 </dd></dl>
 
 </section>
 </section>
 <section id="process">
-<h4>process<a class="headerlink" href="#process" title="Link to this heading">#</a></h4>
+<h3>process<a class="headerlink" href="#process" title="Link to this heading">#</a></h3>
 <section id="gdb-remote">
-<h5>gdb-remote<a class="headerlink" href="#gdb-remote" title="Link to this heading">#</a></h5>
+<h4>gdb-remote<a class="headerlink" href="#gdb-remote" title="Link to this heading">#</a></h4>
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="process.gdb-remote.packet-timeout">
-<span class="sig-name descname"><span class="pre">process.gdb-remote.packet-timeout</span><span class="lldb-setting-type lldb-setting-type-uint64"><span class="pre">UInt64</span></span></span><a class="headerlink" href="#process.gdb-remote.packet-timeout" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="plugin.process.gdb-remote.packet-timeout">
+<span class="sig-name descname"><span class="pre">plugin.process.gdb-remote.packet-timeout</span><span class="lldb-setting-type lldb-setting-type-uint64"><span class="pre">UInt64</span></span></span><a class="headerlink" href="#plugin.process.gdb-remote.packet-timeout" title="Link to this definition">#</a></dt>
 <dd><p>Specify the default packet timeout in seconds.</p>
 <dl class="myst field-list">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
@@ -1070,14 +1073,14 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </dd></dl>
 
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="process.gdb-remote.target-definition-file">
-<span class="sig-name descname"><span class="pre">process.gdb-remote.target-definition-file</span><span class="lldb-setting-type lldb-setting-type-filespec"><span class="pre">FileSpec</span></span></span><a class="headerlink" href="#process.gdb-remote.target-definition-file" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="plugin.process.gdb-remote.target-definition-file">
+<span class="sig-name descname"><span class="pre">plugin.process.gdb-remote.target-definition-file</span><span class="lldb-setting-type lldb-setting-type-filespec"><span class="pre">FileSpec</span></span></span><a class="headerlink" href="#plugin.process.gdb-remote.target-definition-file" title="Link to this definition">#</a></dt>
 <dd><p>The file that provides the description for remote target registers.</p>
 </dd></dl>
 
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="process.gdb-remote.use-g-packet-for-reading">
-<span class="sig-name descname"><span class="pre">process.gdb-remote.use-g-packet-for-reading</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#process.gdb-remote.use-g-packet-for-reading" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="plugin.process.gdb-remote.use-g-packet-for-reading">
+<span class="sig-name descname"><span class="pre">plugin.process.gdb-remote.use-g-packet-for-reading</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#plugin.process.gdb-remote.use-g-packet-for-reading" title="Link to this definition">#</a></dt>
 <dd><p>Specify if the server should use ‘g’ packets to read registers.</p>
 <dl class="myst field-list">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
@@ -1086,8 +1089,8 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </dd></dl>
 
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="process.gdb-remote.use-libraries-svr4">
-<span class="sig-name descname"><span class="pre">process.gdb-remote.use-libraries-svr4</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#process.gdb-remote.use-libraries-svr4" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="plugin.process.gdb-remote.use-libraries-svr4">
+<span class="sig-name descname"><span class="pre">plugin.process.gdb-remote.use-libraries-svr4</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#plugin.process.gdb-remote.use-libraries-svr4" title="Link to this definition">#</a></dt>
 <dd><p>If true, the libraries-svr4 feature will be used to get a hold of the process’s loaded modules. This setting is only effective if lldb was build with xml support.</p>
 <dl class="myst field-list">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
@@ -1097,10 +1100,10 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 
 </section>
 <section id="kdp-remote">
-<h5>kdp-remote<a class="headerlink" href="#kdp-remote" title="Link to this heading">#</a></h5>
+<h4>kdp-remote<a class="headerlink" href="#kdp-remote" title="Link to this heading">#</a></h4>
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="process.kdp-remote.packet-timeout">
-<span class="sig-name descname"><span class="pre">process.kdp-remote.packet-timeout</span><span class="lldb-setting-type lldb-setting-type-uint64"><span class="pre">UInt64</span></span></span><a class="headerlink" href="#process.kdp-remote.packet-timeout" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="plugin.process.kdp-remote.packet-timeout">
+<span class="sig-name descname"><span class="pre">plugin.process.kdp-remote.packet-timeout</span><span class="lldb-setting-type lldb-setting-type-uint64"><span class="pre">UInt64</span></span></span><a class="headerlink" href="#plugin.process.kdp-remote.packet-timeout" title="Link to this definition">#</a></dt>
 <dd><p>Specify the default packet timeout in seconds.</p>
 <dl class="myst field-list">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
@@ -1111,18 +1114,18 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </section>
 </section>
 <section id="structured-data">
-<h4>structured-data<a class="headerlink" href="#structured-data" title="Link to this heading">#</a></h4>
+<h3>structured-data<a class="headerlink" href="#structured-data" title="Link to this heading">#</a></h3>
 <section id="darwin-log">
-<h5>darwin-log<a class="headerlink" href="#darwin-log" title="Link to this heading">#</a></h5>
+<h4>darwin-log<a class="headerlink" href="#darwin-log" title="Link to this heading">#</a></h4>
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="structured-data.darwin-log.auto-enable-options">
-<span class="sig-name descname"><span class="pre">structured-data.darwin-log.auto-enable-options</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">String</span></span></span><a class="headerlink" href="#structured-data.darwin-log.auto-enable-options" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="plugin.structured-data.darwin-log.auto-enable-options">
+<span class="sig-name descname"><span class="pre">plugin.structured-data.darwin-log.auto-enable-options</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">String</span></span></span><a class="headerlink" href="#plugin.structured-data.darwin-log.auto-enable-options" title="Link to this definition">#</a></dt>
 <dd><p>Specify the options to ‘plugin structured-data darwin-log enable’ that should be applied when automatically enabling logging on startup/attach.</p>
 </dd></dl>
 
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="structured-data.darwin-log.enable-on-startup">
-<span class="sig-name descname"><span class="pre">structured-data.darwin-log.enable-on-startup</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#structured-data.darwin-log.enable-on-startup" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="plugin.structured-data.darwin-log.enable-on-startup">
+<span class="sig-name descname"><span class="pre">plugin.structured-data.darwin-log.enable-on-startup</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#plugin.structured-data.darwin-log.enable-on-startup" title="Link to this definition">#</a></dt>
 <dd><p>Enable Darwin os_log collection when debugged process is launched or attached.</p>
 <dl class="myst field-list">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
@@ -1133,12 +1136,12 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </section>
 </section>
 <section id="symbol-file">
-<h4>symbol-file<a class="headerlink" href="#symbol-file" title="Link to this heading">#</a></h4>
+<h3>symbol-file<a class="headerlink" href="#symbol-file" title="Link to this heading">#</a></h3>
 <section id="dwarf">
-<h5>dwarf<a class="headerlink" href="#dwarf" title="Link to this heading">#</a></h5>
+<h4>dwarf<a class="headerlink" href="#dwarf" title="Link to this heading">#</a></h4>
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="symbol-file.dwarf.ignore-file-indexes">
-<span class="sig-name descname"><span class="pre">symbol-file.dwarf.ignore-file-indexes</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#symbol-file.dwarf.ignore-file-indexes" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="plugin.symbol-file.dwarf.ignore-file-indexes">
+<span class="sig-name descname"><span class="pre">plugin.symbol-file.dwarf.ignore-file-indexes</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#plugin.symbol-file.dwarf.ignore-file-indexes" title="Link to this definition">#</a></dt>
 <dd><p>Ignore indexes present in the object files and always index DWARF manually.</p>
 <dl class="myst field-list">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
@@ -1148,34 +1151,34 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 
 </section>
 <section id="pdb">
-<h5>pdb<a class="headerlink" href="#pdb" title="Link to this heading">#</a></h5>
+<h4>pdb<a class="headerlink" href="#pdb" title="Link to this heading">#</a></h4>
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="symbol-file.pdb.reader">
-<span class="sig-name descname"><span class="pre">symbol-file.pdb.reader</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#symbol-file.pdb.reader" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="plugin.symbol-file.pdb.reader">
+<span class="sig-name descname"><span class="pre">plugin.symbol-file.pdb.reader</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#plugin.symbol-file.pdb.reader" title="Link to this definition">#</a></dt>
 <dd><p>Selects the reader for PDB symbol files. The native PDB reader that uses LLVM’s PDB support is always available (value: ‘native’). Secondly, the DIA PDB reader is only available if LLVM was compiled with Microsoft’s DIA SDK on Windows (value: ‘DIA’). By default, the DIA PDB reader is used if available. The LLDB_USE_NATIVE_PDB_READER environment variable can be used to switch to the native reader when this setting has the default value. Otherwise, the setting always has priority.</p>
 </dd></dl>
 
 </section>
 </section>
 <section id="symbol-locator">
-<h4>symbol-locator<a class="headerlink" href="#symbol-locator" title="Link to this heading">#</a></h4>
+<h3>symbol-locator<a class="headerlink" href="#symbol-locator" title="Link to this heading">#</a></h3>
 <section id="debuginfod">
-<h5>debuginfod<a class="headerlink" href="#debuginfod" title="Link to this heading">#</a></h5>
+<h4>debuginfod<a class="headerlink" href="#debuginfod" title="Link to this heading">#</a></h4>
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="symbol-locator.debuginfod.cache-path">
-<span class="sig-name descname"><span class="pre">symbol-locator.debuginfod.cache-path</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">String</span></span></span><a class="headerlink" href="#symbol-locator.debuginfod.cache-path" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="plugin.symbol-locator.debuginfod.cache-path">
+<span class="sig-name descname"><span class="pre">plugin.symbol-locator.debuginfod.cache-path</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">String</span></span></span><a class="headerlink" href="#plugin.symbol-locator.debuginfod.cache-path" title="Link to this definition">#</a></dt>
 <dd><p>The path where symbol files should be cached. This defaults to LLDB’s system cache location.</p>
 </dd></dl>
 
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="symbol-locator.debuginfod.server-urls">
-<span class="sig-name descname"><span class="pre">symbol-locator.debuginfod.server-urls</span><span class="lldb-setting-type lldb-setting-type-array"><span class="pre">Array</span></span></span><a class="headerlink" href="#symbol-locator.debuginfod.server-urls" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="plugin.symbol-locator.debuginfod.server-urls">
+<span class="sig-name descname"><span class="pre">plugin.symbol-locator.debuginfod.server-urls</span><span class="lldb-setting-type lldb-setting-type-array"><span class="pre">Array</span></span></span><a class="headerlink" href="#plugin.symbol-locator.debuginfod.server-urls" title="Link to this definition">#</a></dt>
 <dd><p>An ordered list of Debuginfod server URLs to query for symbols. This defaults to the contents of the DEBUGINFOD_URLS environment variable.</p>
 </dd></dl>
 
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="symbol-locator.debuginfod.timeout">
-<span class="sig-name descname"><span class="pre">symbol-locator.debuginfod.timeout</span><span class="lldb-setting-type lldb-setting-type-uint64"><span class="pre">UInt64</span></span></span><a class="headerlink" href="#symbol-locator.debuginfod.timeout" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="plugin.symbol-locator.debuginfod.timeout">
+<span class="sig-name descname"><span class="pre">plugin.symbol-locator.debuginfod.timeout</span><span class="lldb-setting-type lldb-setting-type-uint64"><span class="pre">UInt64</span></span></span><a class="headerlink" href="#plugin.symbol-locator.debuginfod.timeout" title="Link to this definition">#</a></dt>
 <dd><p>Timeout (in seconds) for requests made to a DEBUGINFOD server. A value of zero means we use the debuginfod default timeout: DEBUGINFOD_TIMEOUT if the environment variable is set and 90 seconds otherwise.</p>
 <dl class="myst field-list">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
@@ -1186,12 +1189,12 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </section>
 </section>
 <section id="trace">
-<h4>trace<a class="headerlink" href="#trace" title="Link to this heading">#</a></h4>
+<h3>trace<a class="headerlink" href="#trace" title="Link to this heading">#</a></h3>
 <section id="intel-pt">
-<h5>intel-pt<a class="headerlink" href="#intel-pt" title="Link to this heading">#</a></h5>
+<h4>intel-pt<a class="headerlink" href="#intel-pt" title="Link to this heading">#</a></h4>
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="trace.intel-pt.extremely-large-decoding-threshold">
-<span class="sig-name descname"><span class="pre">trace.intel-pt.extremely-large-decoding-threshold</span><span class="lldb-setting-type lldb-setting-type-uint64"><span class="pre">UInt64</span></span></span><a class="headerlink" href="#trace.intel-pt.extremely-large-decoding-threshold" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="plugin.trace.intel-pt.extremely-large-decoding-threshold">
+<span class="sig-name descname"><span class="pre">plugin.trace.intel-pt.extremely-large-decoding-threshold</span><span class="lldb-setting-type lldb-setting-type-uint64"><span class="pre">UInt64</span></span></span><a class="headerlink" href="#plugin.trace.intel-pt.extremely-large-decoding-threshold" title="Link to this definition">#</a></dt>
 <dd><p>Specify how many instructions following an individual Intel PT packet must have been decoded before stopping the decoding of the corresponding PSB block. An error is hence emitted in the trace and decoding is resumed in the next PSB block.</p>
 <dl class="myst field-list">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
@@ -1200,8 +1203,8 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </dd></dl>
 
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="trace.intel-pt.infinite-decoding-loop-verification-threshold">
-<span class="sig-name descname"><span class="pre">trace.intel-pt.infinite-decoding-loop-verification-threshold</span><span class="lldb-setting-type lldb-setting-type-uint64"><span class="pre">UInt64</span></span></span><a class="headerlink" href="#trace.intel-pt.infinite-decoding-loop-verification-threshold" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="plugin.trace.intel-pt.infinite-decoding-loop-verification-threshold">
+<span class="sig-name descname"><span class="pre">plugin.trace.intel-pt.infinite-decoding-loop-verification-threshold</span><span class="lldb-setting-type lldb-setting-type-uint64"><span class="pre">UInt64</span></span></span><a class="headerlink" href="#plugin.trace.intel-pt.infinite-decoding-loop-verification-threshold" title="Link to this definition">#</a></dt>
 <dd><p>Specify how many instructions following an individual Intel PT packet must have been decoded before triggering the verification of infinite decoding loops. If no decoding loop has been found after this threshold T, another attempt will be done after 2T instructions, then 4T, 8T and so on, which guarantees a total linear time spent checking this anomaly. If a loop is found, then decoding of the corresponding PSB block is stopped. An error is hence emitted in the trace and decoding is resumed in the next PSB block.</p>
 <dl class="myst field-list">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
@@ -1213,7 +1216,7 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </section>
 </section>
 <section id="symbols">
-<h3>symbols<a class="headerlink" href="#symbols" title="Link to this heading">#</a></h3>
+<h2>symbols<a class="headerlink" href="#symbols" title="Link to this heading">#</a></h2>
 <dl class="lldbsetting">
 <dt class="sig sig-object" id="symbols.auto-download">
 <span class="sig-name descname"><span class="pre">symbols.auto-download</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#symbols.auto-download" title="Link to this definition">#</a></dt>
@@ -1320,7 +1323,7 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 
 </section>
 <section id="target">
-<h3>target<a class="headerlink" href="#target" title="Link to this heading">#</a></h3>
+<h2>target<a class="headerlink" href="#target" title="Link to this heading">#</a></h2>
 <dl class="lldbsetting">
 <dt class="sig sig-object" id="target.arg0">
 <span class="sig-name descname"><span class="pre">target.arg0</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">String</span></span></span><a class="headerlink" href="#target.arg0" title="Link to this definition">#</a></dt>
@@ -1842,7 +1845,7 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </dd></dl>
 
 <section id="experimental">
-<h4>experimental<a class="headerlink" href="#experimental" title="Link to this heading">#</a></h4>
+<h3>experimental<a class="headerlink" href="#experimental" title="Link to this heading">#</a></h3>
 <dl class="lldbsetting">
 <dt class="sig sig-object" id="target.experimental.inject-local-vars">
 <span class="sig-name descname"><span class="pre">target.experimental.inject-local-vars</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#target.experimental.inject-local-vars" title="Link to this definition">#</a></dt>
@@ -1865,7 +1868,7 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 
 </section>
 <section id="id3">
-<h4>process<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<h3>process<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <dl class="lldbsetting">
 <dt class="sig sig-object" id="target.process.detach-keeps-stopped">
 <span class="sig-name descname"><span class="pre">target.process.detach-keeps-stopped</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#target.process.detach-keeps-stopped" title="Link to this definition">#</a></dt>
@@ -2049,10 +2052,10 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </dd></dl>
 
 <section id="id4">
-<h5>experimental<a class="headerlink" href="#id4" title="Link to this heading">#</a></h5>
+<h4>experimental<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="process.experimental.os-plugin-reports-all-threads">
-<span class="sig-name descname"><span class="pre">process.experimental.os-plugin-reports-all-threads</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#process.experimental.os-plugin-reports-all-threads" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="target.process.experimental.os-plugin-reports-all-threads">
+<span class="sig-name descname"><span class="pre">target.process.experimental.os-plugin-reports-all-threads</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#target.process.experimental.os-plugin-reports-all-threads" title="Link to this definition">#</a></dt>
 <dd><p>Set to False if your Python OS Plugin doesn’t report all threads on each stop.</p>
 <dl class="myst field-list">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
@@ -2062,10 +2065,10 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 
 </section>
 <section id="thread">
-<h5>thread<a class="headerlink" href="#thread" title="Link to this heading">#</a></h5>
+<h4>thread<a class="headerlink" href="#thread" title="Link to this heading">#</a></h4>
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="process.thread.max-backtrace-depth">
-<span class="sig-name descname"><span class="pre">process.thread.max-backtrace-depth</span><span class="lldb-setting-type lldb-setting-type-uint64"><span class="pre">UInt64</span></span></span><a class="headerlink" href="#process.thread.max-backtrace-depth" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="target.process.thread.max-backtrace-depth">
+<span class="sig-name descname"><span class="pre">target.process.thread.max-backtrace-depth</span><span class="lldb-setting-type lldb-setting-type-uint64"><span class="pre">UInt64</span></span></span><a class="headerlink" href="#target.process.thread.max-backtrace-depth" title="Link to this definition">#</a></dt>
 <dd><p>Maximum number of frames to backtrace.</p>
 <dl class="myst field-list">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
@@ -2074,8 +2077,8 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </dd></dl>
 
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="process.thread.single-thread-plan-timeout">
-<span class="sig-name descname"><span class="pre">process.thread.single-thread-plan-timeout</span><span class="lldb-setting-type lldb-setting-type-uint64"><span class="pre">UInt64</span></span></span><a class="headerlink" href="#process.thread.single-thread-plan-timeout" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="target.process.thread.single-thread-plan-timeout">
+<span class="sig-name descname"><span class="pre">target.process.thread.single-thread-plan-timeout</span><span class="lldb-setting-type lldb-setting-type-uint64"><span class="pre">UInt64</span></span></span><a class="headerlink" href="#target.process.thread.single-thread-plan-timeout" title="Link to this definition">#</a></dt>
 <dd><p>The time in milliseconds to wait for single thread ThreadPlan to move forward before resuming all threads to resolve any potential deadlock. Specify value 0 to disable timeout.</p>
 <dl class="myst field-list">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
@@ -2084,14 +2087,14 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </dd></dl>
 
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="process.thread.step-avoid-libraries">
-<span class="sig-name descname"><span class="pre">process.thread.step-avoid-libraries</span><span class="lldb-setting-type lldb-setting-type-filespeclist"><span class="pre">FileSpecList</span></span></span><a class="headerlink" href="#process.thread.step-avoid-libraries" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="target.process.thread.step-avoid-libraries">
+<span class="sig-name descname"><span class="pre">target.process.thread.step-avoid-libraries</span><span class="lldb-setting-type lldb-setting-type-filespeclist"><span class="pre">FileSpecList</span></span></span><a class="headerlink" href="#target.process.thread.step-avoid-libraries" title="Link to this definition">#</a></dt>
 <dd><p>A list of libraries that source stepping won’t stop in.</p>
 </dd></dl>
 
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="process.thread.step-avoid-regexp">
-<span class="sig-name descname"><span class="pre">process.thread.step-avoid-regexp</span><span class="lldb-setting-type lldb-setting-type-regex"><span class="pre">Regex</span></span></span><a class="headerlink" href="#process.thread.step-avoid-regexp" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="target.process.thread.step-avoid-regexp">
+<span class="sig-name descname"><span class="pre">target.process.thread.step-avoid-regexp</span><span class="lldb-setting-type lldb-setting-type-regex"><span class="pre">Regex</span></span></span><a class="headerlink" href="#target.process.thread.step-avoid-regexp" title="Link to this definition">#</a></dt>
 <dd><p>A regular expression defining functions step-in won’t stop in.</p>
 <dl class="myst field-list">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
@@ -2100,8 +2103,8 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </dd></dl>
 
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="process.thread.step-in-avoid-nodebug">
-<span class="sig-name descname"><span class="pre">process.thread.step-in-avoid-nodebug</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#process.thread.step-in-avoid-nodebug" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="target.process.thread.step-in-avoid-nodebug">
+<span class="sig-name descname"><span class="pre">target.process.thread.step-in-avoid-nodebug</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#target.process.thread.step-in-avoid-nodebug" title="Link to this definition">#</a></dt>
 <dd><p>If true, step-in will not stop in functions with no debug information.</p>
 <dl class="myst field-list">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
@@ -2110,8 +2113,8 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </dd></dl>
 
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="process.thread.step-out-avoid-nodebug">
-<span class="sig-name descname"><span class="pre">process.thread.step-out-avoid-nodebug</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#process.thread.step-out-avoid-nodebug" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="target.process.thread.step-out-avoid-nodebug">
+<span class="sig-name descname"><span class="pre">target.process.thread.step-out-avoid-nodebug</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#target.process.thread.step-out-avoid-nodebug" title="Link to this definition">#</a></dt>
 <dd><p>If true, when step-in/step-out/step-over leave the current frame, they will continue to step out till they come to a function with debug information. Passing a frame argument to step-out will override this option.</p>
 <dl class="myst field-list">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
@@ -2120,8 +2123,8 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </dd></dl>
 
 <dl class="lldbsetting">
-<dt class="sig sig-object" id="process.thread.trace-thread">
-<span class="sig-name descname"><span class="pre">process.thread.trace-thread</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#process.thread.trace-thread" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object" id="target.process.thread.trace-thread">
+<span class="sig-name descname"><span class="pre">target.process.thread.trace-thread</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#target.process.thread.trace-thread" title="Link to this definition">#</a></dt>
 <dd><p>If true, this thread will single-step and log execution.</p>
 <dl class="myst field-list">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
@@ -2133,7 +2136,7 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </section>
 </section>
 <section id="testing">
-<h3>testing<a class="headerlink" href="#testing" title="Link to this heading">#</a></h3>
+<h2>testing<a class="headerlink" href="#testing" title="Link to this heading">#</a></h2>
 <dl class="lldbsetting">
 <dt class="sig sig-object" id="testing.inject-variable-location-error">
 <span class="sig-name descname"><span class="pre">testing.inject-variable-location-error</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#testing.inject-variable-location-error" title="Link to this definition">#</a></dt>
@@ -2144,7 +2147,6 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </dl>
 </dd></dl>
 
-</section>
 </section>
 </section>
 
@@ -2205,7 +2207,6 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Settings</a><ul>
-<li><a class="reference internal" href="#root">Root</a><ul>
 <li><a class="reference internal" href="#interpreter">interpreter</a></li>
 <li><a class="reference internal" href="#language">language</a></li>
 <li><a class="reference internal" href="#platform">platform</a><ul>
@@ -2271,8 +2272,6 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </ul>
 </li>
 <li><a class="reference internal" href="#testing">testing</a></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
