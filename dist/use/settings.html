@@ -1096,6 +1096,19 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </dd></dl>
 
 </section>
+<section id="kdp-remote">
+<h5>kdp-remote<a class="headerlink" href="#kdp-remote" title="Link to this heading">#</a></h5>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="process.kdp-remote.packet-timeout">
+<span class="sig-name descname"><span class="pre">process.kdp-remote.packet-timeout</span><span class="lldb-setting-type lldb-setting-type-uint64"><span class="pre">UInt64</span></span></span><a class="headerlink" href="#process.kdp-remote.packet-timeout" title="Link to this definition">#</a></dt>
+<dd><p>Specify the default packet timeout in seconds.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">5</span></code></dd>
+</dl>
+</dd></dl>
+
+</section>
 </section>
 <section id="structured-data">
 <h4>structured-data<a class="headerlink" href="#structured-data" title="Link to this heading">#</a></h4>
@@ -1167,6 +1180,32 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 <dl class="myst field-list">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
 <dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">0</span></code></dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="trace">
+<h4>trace<a class="headerlink" href="#trace" title="Link to this heading">#</a></h4>
+<section id="intel-pt">
+<h5>intel-pt<a class="headerlink" href="#intel-pt" title="Link to this heading">#</a></h5>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="trace.intel-pt.extremely-large-decoding-threshold">
+<span class="sig-name descname"><span class="pre">trace.intel-pt.extremely-large-decoding-threshold</span><span class="lldb-setting-type lldb-setting-type-uint64"><span class="pre">UInt64</span></span></span><a class="headerlink" href="#trace.intel-pt.extremely-large-decoding-threshold" title="Link to this definition">#</a></dt>
+<dd><p>Specify how many instructions following an individual Intel PT packet must have been decoded before stopping the decoding of the corresponding PSB block. An error is hence emitted in the trace and decoding is resumed in the next PSB block.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">500000</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="trace.intel-pt.infinite-decoding-loop-verification-threshold">
+<span class="sig-name descname"><span class="pre">trace.intel-pt.infinite-decoding-loop-verification-threshold</span><span class="lldb-setting-type lldb-setting-type-uint64"><span class="pre">UInt64</span></span></span><a class="headerlink" href="#trace.intel-pt.infinite-decoding-loop-verification-threshold" title="Link to this definition">#</a></dt>
+<dd><p>Specify how many instructions following an individual Intel PT packet must have been decoded before triggering the verification of infinite decoding loops. If no decoding loop has been found after this threshold T, another attempt will be done after 2T instructions, then 4T, 8T and so on, which guarantees a total linear time spent checking this anomaly. If a loop is found, then decoding of the corresponding PSB block is stopped. An error is hence emitted in the trace and decoding is resumed in the next PSB block.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">10000</span></code></dd>
 </dl>
 </dd></dl>
 
@@ -2144,7 +2183,7 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Feb 10, 2026</div>
+              Last updated on Feb 12, 2026</div>
           </div>
           <div class="right-details">
             
@@ -2199,6 +2238,7 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </li>
 <li><a class="reference internal" href="#process">process</a><ul>
 <li><a class="reference internal" href="#gdb-remote">gdb-remote</a></li>
+<li><a class="reference internal" href="#kdp-remote">kdp-remote</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#structured-data">structured-data</a><ul>
@@ -2212,6 +2252,10 @@ Values can be added to arrays and dictionaries with <code class="docutils litera
 </li>
 <li><a class="reference internal" href="#symbol-locator">symbol-locator</a><ul>
 <li><a class="reference internal" href="#debuginfod">debuginfod</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#trace">trace</a><ul>
+<li><a class="reference internal" href="#intel-pt">intel-pt</a></li>
 </ul>
 </li>
 </ul>
