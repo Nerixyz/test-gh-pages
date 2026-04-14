@@ -459,7 +459,7 @@ frame #0: 0x0000000100001830 dictionary`find_word + 16 at dictionary.c:105
 <span class="o">&gt;&gt;&gt;</span> <span class="n">root</span> <span class="o">=</span> <span class="n">lldb</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">FindVariable</span> <span class="p">(</span><span class="s2">&quot;dictionary&quot;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">current_path</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">path</span> <span class="o">=</span> <span class="n">tree_utils</span><span class="o">.</span><span class="n">DFS</span> <span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;Romeo&quot;</span><span class="p">,</span> <span class="n">current_path</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span> <span class="n">path</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 <span class="n">LLRRL</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="o">^</span><span class="n">D</span>
 <span class="p">(</span><span class="n">lldb</span><span class="p">)</span>
@@ -500,7 +500,7 @@ are searching for, and our current path. We assign whatever path the DFS
 function returns to the Python variable path.</p>
 <p>Finally, we want to see if the word was found or not, and if so we want to see
 the path through the tree to the word. So we do</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="n">path</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>From this we can see that the word “Romeo” was indeed found in the tree, and
@@ -560,7 +560,7 @@ decision to go right:</p>
    <span class="n">process</span> <span class="o">=</span> <span class="n">thread</span><span class="o">.</span><span class="n">GetProcess</span><span class="p">()</span>
    <span class="n">process</span><span class="o">.</span><span class="n">Continue</span><span class="p">()</span>
 <span class="k">else</span><span class="p">:</span>
-   <span class="nb">print</span> <span class="s2">&quot;Here is the problem; going right, should go left!&quot;</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Here is the problem; going right, should go left!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Just as a reminder, LLDB is going to take this script and wrap it up in a function, like this:</p>
@@ -572,7 +572,7 @@ decision to go right:</p>
       <span class="n">process</span> <span class="o">=</span> <span class="n">thread</span><span class="o">.</span><span class="n">GetProcess</span><span class="p">()</span>
       <span class="n">process</span><span class="o">.</span><span class="n">Continue</span><span class="p">()</span>
    <span class="k">else</span><span class="p">:</span>
-      <span class="nb">print</span> <span class="s2">&quot;Here is the problem; going right, should go left!&quot;</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Here is the problem; going right, should go left!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>LLDB will call the function, passing in the correct frame and breakpoint
@@ -639,7 +639,7 @@ want to set our breakpoints on lines 113 and 115:</p>
 <span class="o">&gt;</span>     <span class="n">process</span> <span class="o">=</span> <span class="n">thread</span><span class="o">.</span><span class="n">GetProcess</span><span class="p">()</span>
 <span class="o">&gt;</span>     <span class="n">process</span><span class="o">.</span><span class="n">Continue</span><span class="p">()</span>
 <span class="o">&gt;</span> <span class="k">else</span><span class="p">:</span>
-<span class="o">&gt;</span>     <span class="nb">print</span> <span class="s2">&quot;Here is the problem. Going left, should go right!&quot;</span>
+<span class="o">&gt;</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Here is the problem. Going left, should go right!&quot;</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">DONE</span>
 </pre></div>
 </div>
@@ -654,7 +654,7 @@ want to set our breakpoints on lines 113 and 115:</p>
 <span class="o">&gt;</span>     <span class="n">process</span> <span class="o">=</span> <span class="n">thread</span><span class="o">.</span><span class="n">GetProcess</span><span class="p">()</span>
 <span class="o">&gt;</span>     <span class="n">process</span><span class="o">.</span><span class="n">Continue</span><span class="p">()</span>
 <span class="o">&gt;</span> <span class="k">else</span><span class="p">:</span>
-<span class="o">&gt;</span>     <span class="nb">print</span> <span class="s2">&quot;Here is the problem. Going right, should go left!&quot;</span>
+<span class="o">&gt;</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Here is the problem. Going right, should go left!&quot;</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">DONE</span>
 </pre></div>
 </div>
@@ -690,7 +690,7 @@ search word, we see:</p>
 for is “romeo”. “romeo” comes after “dramatis” alphabetically, so it seems like
 going right would be the correct decision. Let’s ask Python what it thinks the
 path from the current node to our word is:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span><span class="w"> </span><span class="n">script</span><span class="w"> </span><span class="n">print</span><span class="w"> </span><span class="n">path</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span><span class="w"> </span><span class="n">script</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 <span class="n">LLRRL</span>
 </pre></div>
 </div>
@@ -755,7 +755,7 @@ available below.</p>
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Feb 12, 2026</div>
+              Last updated on Apr 14, 2026</div>
           </div>
           <div class="right-details">
             

@@ -378,7 +378,7 @@ to be performed once.</p>
 <section id="build-requirements">
 <h4>Build Requirements<a class="headerlink" href="#build-requirements" title="Link to this heading">#</a></h4>
 <p>Please follow the steps below if you only want to <strong>build</strong> lldb.</p>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Install <a class="reference external" href="https://visualstudio.microsoft.com">Visual Studio</a> with the
 “Desktop Development with C++” workload. Make sure that the latest Windows
 SDK and the Active Template Library (ATL) are installed.</p></li>
@@ -387,10 +387,20 @@ SDK and the Active Template Library (ATL) are installed.</p></li>
 <code class="docutils literal notranslate"><span class="pre">dirname</span></code> are available from your terminal.</p></li>
 <li><p>Install <a class="reference external" href="https://sourceforge.net/projects/ezwinports/files/">make</a> and
 verify that it’s in your <code class="docutils literal notranslate"><span class="pre">PATH</span></code>.</p></li>
-<li><p>Install <a class="reference external" href="https://www.python.org/downloads/windows/">Python 3</a> from the
-GUI installer. If you will be building LLDB in Debug mode, <strong>include the
-debug libraries</strong> during the install. Make sure <code class="docutils literal notranslate"><span class="pre">python</span></code> is added to your
-<code class="docutils literal notranslate"><span class="pre">PATH</span></code>.</p></li>
+<li><p>Install <a class="reference external" href="https://www.python.org/downloads/windows/">Python 3</a>. Either using
+the “Windows Installer” or “Python Install Manager”. Make sure <code class="docutils literal notranslate"><span class="pre">python</span></code> is
+added to your <code class="docutils literal notranslate"><span class="pre">PATH</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Building LLDB in debug mode requires a debug version of Python (because
+all parts of a debug build must use the debug C runtime).</p>
+<p>If you use the “Windows installer”, <strong>include the debug libraries</strong> during
+the install.</p>
+<p>The “Python Install Manager” has no way to install debug libraries, so you
+must <a class="reference external" href="https://devguide.python.org/getting-started/setup-building/">build</a>
+a debug version of Python yourself.</p>
+</div>
+</li>
 <li><p>Install <a class="reference external" href="http://www.swig.org/download.html">SWIG for Windows</a>. Make sure
 <code class="docutils literal notranslate"><span class="pre">swig</span></code> is added to your <code class="docutils literal notranslate"><span class="pre">PATH</span></code> and that <code class="docutils literal notranslate"><span class="pre">swig</span> <span class="pre">-swiglib</span></code> points to the
 correct directory.</p></li>
@@ -848,6 +858,35 @@ arm64 build:</p>
 <p>Note that currently only lldb-server is functional on android. The lldb client
 is not supported and unlikely to work.</p>
 </section>
+<section id="example-4-cross-compiling-for-freebsd-arm64-on-freebsd-host-using-distset">
+<h3>Example 4: Cross-compiling for FreeBSD arm64 on FreeBSD host using distset<a class="headerlink" href="#example-4-cross-compiling-for-freebsd-arm64-on-freebsd-host-using-distset" title="Link to this heading">#</a></h3>
+<p>Start by identifying the FreeBSD version you want to target — in this case,
+FreeBSD 15.0.</p>
+<p>Download and decompress the FreeBSD 15.0 distset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fetch</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">freebsd</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">arm64</span><span class="o">/</span><span class="mf">15.0</span><span class="o">-</span><span class="n">RELEASE</span><span class="o">/</span><span class="n">base</span><span class="o">.</span><span class="n">txz</span>
+<span class="n">sudo</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">sysroot</span><span class="o">/</span><span class="n">arm64</span>
+<span class="n">sudo</span> <span class="n">tar</span> <span class="o">-</span><span class="n">xJf</span> <span class="n">base</span><span class="o">.</span><span class="n">txz</span> <span class="o">-</span><span class="n">C</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">sysroot</span><span class="o">/</span><span class="n">arm64</span>
+</pre></div>
+</div>
+<p>Then configure with CMake as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">&lt;</span><span class="n">path</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">monorepo</span><span class="o">&gt;/</span><span class="n">llvm</span><span class="o">-</span><span class="n">project</span><span class="o">/</span><span class="n">llvm</span> <span class="o">-</span><span class="n">G</span> <span class="n">Ninja</span> \
+  <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span> \
+  <span class="o">-</span><span class="n">DLLVM_ENABLE_PROJECTS</span><span class="o">=</span><span class="s2">&quot;clang;lldb&quot;</span> \
+  <span class="o">-</span><span class="n">DCMAKE_SYSTEM_NAME</span><span class="o">=</span><span class="n">FreeBSD</span> \
+  <span class="o">-</span><span class="n">DCMAKE_SYSTEM_PROCESSOR</span><span class="o">=</span><span class="n">AArch64</span> \
+  <span class="o">-</span><span class="n">DCMAKE_ASM_FLAGS_INIT</span><span class="o">=</span><span class="s2">&quot;-target aarch64-unknown-freebsd15.0 --sysroot /path/to/sysroot/arm64&quot;</span> \
+  <span class="o">-</span><span class="n">DCMAKE_C_FLAGS_INIT</span><span class="o">=</span><span class="s2">&quot;-target aarch64-unknown-freebsd15.0 --sysroot /path/to/sysroot/arm64&quot;</span> \
+  <span class="o">-</span><span class="n">DCMAKE_CXX_FLAGS_INIT</span><span class="o">=</span><span class="s2">&quot;-target aarch64-unknown-freebsd15.0 --sysroot /path/to/sysroot/arm64&quot;</span> \
+  <span class="o">-</span><span class="n">DCMAKE_FIND_ROOT_PATH</span><span class="o">=</span><span class="s2">&quot;/path/to/sysroot/arm64&quot;</span> \
+  <span class="o">-</span><span class="n">DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM</span><span class="o">=</span><span class="n">NEVER</span> \
+  <span class="o">-</span><span class="n">DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY</span><span class="o">=</span><span class="n">ONLY</span> \
+  <span class="o">-</span><span class="n">DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE</span><span class="o">=</span><span class="n">ONLY</span> \
+  <span class="o">-</span><span class="n">DLLVM_DEFAULT_TARGET_TRIPLE</span><span class="o">=</span><span class="n">aarch64</span><span class="o">-</span><span class="n">unknown</span><span class="o">-</span><span class="n">freebsd15</span><span class="mf">.0</span> \
+  <span class="o">-</span><span class="n">DLLVM_HOST_TRIPLE</span><span class="o">=</span><span class="n">aarch64</span><span class="o">-</span><span class="n">unknown</span><span class="o">-</span><span class="n">freebsd15</span><span class="mf">.0</span> \
+  <span class="o">-</span><span class="n">DLLVM_TARGET_ARCH</span><span class="o">=</span><span class="n">AArch64</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="verifying-python-support">
 <h2>Verifying Python Support<a class="headerlink" href="#verifying-python-support" title="Link to this heading">#</a></h2>
@@ -933,7 +972,7 @@ signing certificate, you will need to authenticate once.</p>
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Feb 12, 2026</div>
+              Last updated on Apr 14, 2026</div>
           </div>
           <div class="right-details">
             
@@ -985,6 +1024,7 @@ signing certificate, you will need to authenticate once.</p>
 <li><a class="reference internal" href="#example-1-cross-compiling-for-linux-arm64-on-ubuntu-host">Example 1: Cross-compiling for linux arm64 on Ubuntu host</a></li>
 <li><a class="reference internal" href="#example-2-cross-compiling-for-linux-arm64-on-ubuntu-host-using-an-existing-host-build">Example 2: Cross-compiling for linux arm64 on Ubuntu host using an existing host build</a></li>
 <li><a class="reference internal" href="#example-3-cross-compiling-for-android-on-linux">Example 3: Cross-compiling for Android on Linux</a></li>
+<li><a class="reference internal" href="#example-4-cross-compiling-for-freebsd-arm64-on-freebsd-host-using-distset">Example 4: Cross-compiling for FreeBSD arm64 on FreeBSD host using distset</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#verifying-python-support">Verifying Python Support</a></li>

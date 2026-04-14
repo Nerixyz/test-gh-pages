@@ -1424,7 +1424,7 @@ instruct lldb to print the children of the resulting pointer.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span>Here<span class="w"> </span>is<span class="w"> </span>some<span class="w"> </span>text<span class="se">\n</span>
 </pre></div>
 </div>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>lldb<span class="o">)</span><span class="w"> </span>script<span class="w"> </span>print<span class="w"> </span><span class="s2">&quot;Here is some text&quot;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>lldb<span class="o">)</span><span class="w"> </span>script<span class="w"> </span>print<span class="o">(</span><span class="s2">&quot;Here is some text&quot;</span><span class="o">)</span>
 </pre></div>
 </div>
 </section>
@@ -1440,10 +1440,13 @@ file path instead of the build system’s file path.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>lldb<span class="o">)</span><span class="w"> </span>settings<span class="w"> </span><span class="nb">set</span><span class="w"> </span>target.source-map<span class="w"> </span>/buildbot/path<span class="w"> </span>/my/path
 </pre></div>
 </div>
-<p>Supply a catchall directory to search for source files in.</p>
+</section>
+<section id="supply-a-catchall-directory-to-search-for-source-files-in">
+<h3>Supply a catchall directory to search for source files in<a class="headerlink" href="#supply-a-catchall-directory-to-search-for-source-files-in" title="Link to this heading">#</a></h3>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span><span class="w"> </span>directory<span class="w"> </span>/my/path
 </pre></div>
 </div>
+<p>There is no equivalent LLDB command, use <code class="docutils literal notranslate"><span class="pre">target.source-map</span></code> instead.</p>
 </section>
 </section>
 </section>
@@ -1483,7 +1486,7 @@ file path instead of the build system’s file path.</p>
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Feb 12, 2026</div>
+              Last updated on Apr 14, 2026</div>
           </div>
           <div class="right-details">
             
@@ -1634,6 +1637,7 @@ file path instead of the build system’s file path.</p>
 <li><a class="reference internal" href="#search-command-help-for-a-keyword">Search command help for a keyword</a></li>
 <li><a class="reference internal" href="#echo-text-to-the-screen">Echo text to the screen</a></li>
 <li><a class="reference internal" href="#remap-source-file-pathnames-for-the-debug-session">Remap source file pathnames for the debug session</a></li>
+<li><a class="reference internal" href="#supply-a-catchall-directory-to-search-for-source-files-in">Supply a catchall directory to search for source files in</a></li>
 </ul>
 </li>
 </ul>

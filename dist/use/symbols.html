@@ -328,6 +328,14 @@ this default is set to an empty array:</p>
 <span class="o">%</span> <span class="n">defaults</span> <span class="n">write</span> <span class="n">com</span><span class="o">.</span><span class="n">apple</span><span class="o">.</span><span class="n">DebugSymbols</span> <span class="n">DBGSpotlightPaths</span> <span class="o">-</span><span class="n">array</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">dir1</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">dir2</span>
 </pre></div>
 </div>
+<p><strong>DBGSearchPaths</strong></p>
+<p>You can specify an ordered list of directories to use when manually searching
+for dSYM files. Each directory will be recursively searched for any dSYM
+bundles, and the the first UUID match will be returned.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ defaults write com.apple.DebugSymbols DBGSearchPaths -string /single/path/to/search
+$ defaults write com.apple.DebugSymbols DBGSearchPaths -array /path/to/search1 /path/to/search2
+</pre></div>
+</div>
 <section id="shell-script-property-list-format">
 <h2>Shell Script Property List Format<a class="headerlink" href="#shell-script-property-list-format" title="Link to this heading">#</a></h2>
 <p>Shell scripts that are specified with the <strong>DBGShellCommands</strong> defaults key
@@ -596,7 +604,7 @@ implement a smart symbol finding and caching with minimal overhead.</p>
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Feb 12, 2026</div>
+              Last updated on Apr 14, 2026</div>
           </div>
           <div class="right-details">
             

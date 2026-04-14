@@ -364,12 +364,12 @@ command from within LLDB:</p>
 <p>This feature was added in LLDB 22. If you are using an earlier version, you
 can use one of the methods below.</p>
 </div>
-<p>If your LLDB has a scripting langauge enabled, you can also use this command to
+<p>If your LLDB has a scripting language enabled, you can also use this command to
 print the same information:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">script</span> <span class="n">lldb</span><span class="o">.</span><span class="n">debugger</span><span class="o">.</span><span class="n">GetBuildConfiguration</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>This command will fail if no scripting langauge was enabled. In that case, you
+<p>This command will fail if no scripting language was enabled. In that case, you
 can instead check the shared library dependencies of LLDB.</p>
 <p>For example on Linux you can use the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ readelf -d &lt;path-to-lldb&gt; | grep NEEDED
@@ -553,7 +553,7 @@ layouts are stored in <code class="docutils literal notranslate"><span class="pr
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Feb 12, 2026</div>
+              Last updated on Apr 14, 2026</div>
           </div>
           <div class="right-details">
             

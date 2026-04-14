@@ -478,6 +478,66 @@ bytes.</p>
 expression evaluation and restored afterwards.</p>
 </section>
 </section>
+<section id="sme-only-systems">
+<h2>SME Only Systems<a class="headerlink" href="#sme-only-systems" title="Link to this heading">#</a></h2>
+<p>AArch64 systems may have both SVE and SME, or they can have only SME. If they
+only have SME, the system has the usual SVE state, but that state and SVE
+instructions may only be used while in streaming mode.</p>
+<p>The LLDB experience is very similar to SVE+SME systems, with a few changes.</p>
+<section id="registers">
+<h3>Registers<a class="headerlink" href="#registers" title="Link to this heading">#</a></h3>
+<p>When in streaming mode, registers act as they would on an SVE+SME system.
+Outside of streaming mode LLDB will show the <code class="docutils literal notranslate"><span class="pre">Z</span></code> registers as zero extended copies
+of the <code class="docutils literal notranslate"><span class="pre">V</span></code> registers.</p>
+<p>Writes to <code class="docutils literal notranslate"><span class="pre">Z</span></code> registers are allowed, but these are converted to <code class="docutils literal notranslate"><span class="pre">V</span></code> register writes
+and so only the bottom 128-bits will be applied. The size of the value
+written to a <code class="docutils literal notranslate"><span class="pre">Z</span></code> register must match the current streaming vector length, even if
+the process is in non-streaming mode.</p>
+<p>For an SME only system, <code class="docutils literal notranslate"><span class="pre">lldb-server</span></code> describes the system as having <code class="docutils literal notranslate"><span class="pre">Z</span></code>
+registers with <code class="docutils literal notranslate"><span class="pre">V</span></code> registers as subsets of those registers. We do not change the
+representation each time the mode changes.</p>
+<p>A consequence of this is that if the user writes to a <code class="docutils literal notranslate"><span class="pre">V</span></code> register while in
+non-streaming mode, it will be sent to <code class="docutils literal notranslate"><span class="pre">lldb-server</span></code> as a <code class="docutils literal notranslate"><span class="pre">Z</span></code> register write
+of a zero extended value. <code class="docutils literal notranslate"><span class="pre">lldb-server</span></code> will convert that back into a <code class="docutils literal notranslate"><span class="pre">V</span></code>
+register write with the value truncated to 128-bits.</p>
+<p>In streaming mode, it will be zero extended, sent as a <code class="docutils literal notranslate"><span class="pre">Z</span></code> write and written
+to the real streaming SVE <code class="docutils literal notranslate"><span class="pre">Z</span></code> register without truncation.</p>
+<p><code class="docutils literal notranslate"><span class="pre">P</span></code> registers will be shown as 0s in non-streaming mode. They cannot be
+written to in non-streaming mode.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ffr</span></code> register will also be shown as 0s in non-streaming mode. In streaming
+mode, use of <code class="docutils literal notranslate"><span class="pre">ffr</span></code> is forbidden so it will also show as 0s. It cannot be written
+to in either state.</p>
+<p>(in the former state, LLDB generates the fake value, in the latter state, the
+kernel tells <code class="docutils literal notranslate"><span class="pre">lldb-server</span></code> that the value is 0, the result is the same)</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ZA</span></code> and <code class="docutils literal notranslate"><span class="pre">ZT0</span></code> registers act as they would for an SVE+SME system.</p>
+<p>Since there is no non-streaming SVE, there is no non-streaming vector length.
+Therefore even in non-streaming mode, the value shown in <code class="docutils literal notranslate"><span class="pre">vg</span></code> will be the
+streaming vector length, and it will be equal to the value of <code class="docutils literal notranslate"><span class="pre">svg</span></code>.</p>
+</section>
+<section id="id3">
+<h3>Expression Evaluation<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>Some instructions are illegal to use in streaming mode, unless <code class="docutils literal notranslate"><span class="pre">FEAT_SMEFA64</span></code>
+is present.</p>
+<p>LLDB <strong>will not</strong> make any attempt to make expressions compatible with the
+current mode.</p>
+<p>If part of an expression is not compatible, it will
+result in a <code class="docutils literal notranslate"><span class="pre">SIGILL</span></code> that will be cleaned up as any other signal would be. All
+register, <code class="docutils literal notranslate"><span class="pre">ZA</span></code> and mode state will be restored as normal after expression
+evaluation.</p>
+<p>Note that to restore to a non-streaming state from a streaming state, LLDB uses
+a special part of the Linux Kernel’s
+<a class="reference external" href="https://docs.kernel.org/arch/arm64/sve.html">SVE ABI</a>. FPSIMD format data is
+written to the non-existent non-streaming SVE register set, with the vector
+length set to 0 to cause the process to exit streaming mode and apply those
+FPSIMD values to the <code class="docutils literal notranslate"><span class="pre">V</span></code> registers.</p>
+<p>This feature was added in version 6.19 of the Linux kernel. On older versions,
+LLDB will attempt the restore and it will fail. This will result in the mode
+and some register state not being restored.</p>
+<p>This feature is only used for this purpose. Otherwise, in non-streaming mode FP
+registers are accessed using the FP register set, and in streaming mode using
+the streaming SVE register set.</p>
+</section>
+</section>
 <section id="guarded-control-stack-extension-gcs">
 <h2>Guarded Control Stack Extension (GCS)<a class="headerlink" href="#guarded-control-stack-extension-gcs" title="Link to this heading">#</a></h2>
 <p>GCS support includes the following new registers:</p>
@@ -499,8 +559,8 @@ has a special attribute that LLDB will detect and presents like this:</p>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">shadow</span> <span class="pre">stack</span></code> is a generic term used in the kernel for secure stack
 extensions like GCS.</p>
-<section id="id3">
-<h3>Expression Evaluation<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<section id="id4">
+<h3>Expression Evaluation<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>To execute an expression when GCS is enabled, LLDB must push the return
 address of the expression wrapper (usually the entry point of the program)
 to the Guarded Control Stack. It does this by decrementing <code class="docutils literal notranslate"><span class="pre">gcspr_el0</span></code> and
@@ -567,7 +627,7 @@ is very unlikely to be able to progress.</p>
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Feb 12, 2026</div>
+              Last updated on Apr 14, 2026</div>
           </div>
           <div class="right-details">
             
@@ -608,8 +668,13 @@ is very unlikely to be able to progress.</p>
 <li><a class="reference internal" href="#id2">Expression Evaluation</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#guarded-control-stack-extension-gcs">Guarded Control Stack Extension (GCS)</a><ul>
+<li><a class="reference internal" href="#sme-only-systems">SME Only Systems</a><ul>
+<li><a class="reference internal" href="#registers">Registers</a></li>
 <li><a class="reference internal" href="#id3">Expression Evaluation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#guarded-control-stack-extension-gcs">Guarded Control Stack Extension (GCS)</a><ul>
+<li><a class="reference internal" href="#id4">Expression Evaluation</a></li>
 </ul>
 </li>
 </ul>

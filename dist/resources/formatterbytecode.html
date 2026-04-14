@@ -560,7 +560,7 @@ selectors. See <code class="docutils literal notranslate"><span class="pre">call
 <tr class="row-even"><td><p>0x12</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">get_child_with_name</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">String</span> <span class="pre">&#64;get_child_with_name</span> <span class="pre">-&gt;</span> <span class="pre">Object)</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">SBValue::GetChildAtIndex</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SBValue::GetChildMemberWithName</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>0x13</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">get_child_index</span></code></p></td>
@@ -581,6 +581,16 @@ selectors. See <code class="docutils literal notranslate"><span class="pre">call
 <td><p><code class="docutils literal notranslate"><span class="pre">cast</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">Type</span> <span class="pre">&#64;cast</span> <span class="pre">-&gt;</span> <span class="pre">Object)</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">SBValue::Cast</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>0x18</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">get_synthetic_value</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">&#64;get_synthetic_value</span> <span class="pre">-&gt;</span> <span class="pre">Object)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SBValue::GetSyntheticValue</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>0x19</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">get_non_synthetic_value</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(Object</span> <span class="pre">&#64;get_non_synthetic_value</span> <span class="pre">-&gt;</span> <span class="pre">Object)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SBValue::GetNonSyntheticValue</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>0x20</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">get_value</span></code></p></td>
@@ -779,7 +789,7 @@ selectors. See <code class="docutils literal notranslate"><span class="pre">call
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Feb 12, 2026</div>
+              Last updated on Apr 14, 2026</div>
           </div>
           <div class="right-details">
             

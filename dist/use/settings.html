@@ -390,6 +390,16 @@ not be present in all copies of LLDB.</p>
 </dd></dl>
 
 <dl class="lldbsetting">
+<dt class="sig sig-object" id="mark-hidden-frames">
+<span class="sig-name descname"><span class="pre">mark-hidden-frames</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#mark-hidden-frames" title="Link to this definition">#</a></dt>
+<dd><p>If true, LLDB will add a marker to delimit hidden frames in backtraces.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
 <dt class="sig sig-object" id="notify-void">
 <span class="sig-name descname"><span class="pre">notify-void</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#notify-void" title="Link to this definition">#</a></dt>
 <dd><p>Notify the user explicitly if an expression returns void (default: false).</p>
@@ -517,7 +527,7 @@ not be present in all copies of LLDB.</p>
 <dd><p>Whether to show progress using Operating System Command (OSC) Sequences in supporting terminal emulators.</p>
 <dl class="myst field-list">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
-<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">false</span></code></dd>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
 </dl>
 </dd></dl>
 
@@ -1060,6 +1070,19 @@ not be present in all copies of LLDB.</p>
 </section>
 <section id="process">
 <h3>process<a class="headerlink" href="#process" title="Link to this heading">#</a></h3>
+<section id="freebsd-kernel-core">
+<h4>freebsd-kernel-core<a class="headerlink" href="#freebsd-kernel-core" title="Link to this heading">#</a></h4>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="plugin.process.freebsd-kernel-core.read-only">
+<span class="sig-name descname"><span class="pre">plugin.process.freebsd-kernel-core.read-only</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#plugin.process.freebsd-kernel-core.read-only" title="Link to this definition">#</a></dt>
+<dd><p>Disable memory writes to the core. This is enabled by default for safety reasons.</p>
+<dl class="myst field-list">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
+</dl>
+</dd></dl>
+
+</section>
 <section id="gdb-remote">
 <h4>gdb-remote<a class="headerlink" href="#gdb-remote" title="Link to this heading">#</a></h4>
 <dl class="lldbsetting">
@@ -1313,12 +1336,8 @@ not be present in all copies of LLDB.</p>
 
 <dl class="lldbsetting">
 <dt class="sig sig-object" id="symbols.shared-cache-binary-loading">
-<span class="sig-name descname"><span class="pre">symbols.shared-cache-binary-loading</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#symbols.shared-cache-binary-loading" title="Link to this definition">#</a></dt>
-<dd><p>On macOS, load the binaries from a shared cache blob directly, instead of loading them from lldb’s own in-process shared cache.</p>
-<dl class="myst field-list">
-<dt class="field-odd">Default<span class="colon">:</span></dt>
-<dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
-</dl>
+<span class="sig-name descname"><span class="pre">symbols.shared-cache-binary-loading</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#symbols.shared-cache-binary-loading" title="Link to this definition">#</a></dt>
+<dd><p>On macOS, lldb can use its own in-memory shared cache, or operate on shared cache binaries directly, this setting controls which are used.</p>
 </dd></dl>
 
 </section>
@@ -1358,6 +1377,12 @@ not be present in all copies of LLDB.</p>
 <dt class="field-odd">Default<span class="colon">:</span></dt>
 <dd class="field-odd"><code class="docutils literal notranslate"><span class="pre">true</span></code></dd>
 </dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.auto-load-scripts-for-modules">
+<span class="sig-name descname"><span class="pre">target.auto-load-scripts-for-modules</span><span class="lldb-setting-type lldb-setting-type-dictionary"><span class="pre">Dictionary</span></span></span><a class="headerlink" href="#target.auto-load-scripts-for-modules" title="Link to this definition">#</a></dt>
+<dd><p>A list of module/image names and whether LLDB should auto-load scripting resources for it from safe paths.</p>
 </dd></dl>
 
 <dl class="lldbsetting">
@@ -2147,6 +2172,12 @@ not be present in all copies of LLDB.</p>
 </dl>
 </dd></dl>
 
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="testing.safe-auto-load-paths">
+<span class="sig-name descname"><span class="pre">testing.safe-auto-load-paths</span><span class="lldb-setting-type lldb-setting-type-filespeclist"><span class="pre">FileSpecList</span></span></span><a class="headerlink" href="#testing.safe-auto-load-paths" title="Link to this definition">#</a></dt>
+<dd><p>List of paths that LLDB will automatically load scripting resources from.</p>
+</dd></dl>
+
 </section>
 </section>
 
@@ -2185,7 +2216,7 @@ not be present in all copies of LLDB.</p>
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Feb 12, 2026</div>
+              Last updated on Apr 14, 2026</div>
           </div>
           <div class="right-details">
             
@@ -2238,6 +2269,7 @@ not be present in all copies of LLDB.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#process">process</a><ul>
+<li><a class="reference internal" href="#freebsd-kernel-core">freebsd-kernel-core</a></li>
 <li><a class="reference internal" href="#gdb-remote">gdb-remote</a></li>
 <li><a class="reference internal" href="#kdp-remote">kdp-remote</a></li>
 </ul>

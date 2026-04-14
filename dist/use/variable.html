@@ -1125,28 +1125,50 @@ adheres to a given interface (the word is italicized because Python has no
 explicit notion of interface, by that word we mean a given set of methods must
 be implemented by the Python class):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">SyntheticChildrenProvider</span><span class="p">:</span>
-   <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valobj</span><span class="p">,</span> <span class="n">internal_dict</span><span class="p">):</span>
-      <span class="n">this</span> <span class="n">call</span> <span class="n">should</span> <span class="n">initialize</span> <span class="n">the</span> <span class="n">Python</span> <span class="nb">object</span> <span class="n">using</span> <span class="n">valobj</span> <span class="k">as</span> <span class="n">the</span>
-      <span class="n">variable</span> <span class="n">to</span> <span class="n">provide</span> <span class="n">synthetic</span> <span class="n">children</span> <span class="k">for</span>
-   <span class="k">def</span><span class="w"> </span><span class="nf">num_children</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_children</span><span class="p">):</span>
-      <span class="n">this</span> <span class="n">call</span> <span class="n">should</span> <span class="k">return</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">children</span> <span class="n">that</span> <span class="n">you</span> <span class="n">want</span> <span class="n">your</span>
-      <span class="nb">object</span> <span class="n">to</span> <span class="n">have</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-   <span class="k">def</span><span class="w"> </span><span class="nf">get_child_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
-      <span class="n">this</span> <span class="n">call</span> <span class="n">should</span> <span class="k">return</span> <span class="n">the</span> <span class="n">index</span> <span class="n">of</span> <span class="n">the</span> <span class="n">synthetic</span> <span class="n">child</span> <span class="n">whose</span> <span class="n">name</span> <span class="ow">is</span>
-      <span class="n">given</span> <span class="k">as</span> <span class="n">argument</span>
-   <span class="k">def</span><span class="w"> </span><span class="nf">get_child_at_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">index</span><span class="p">):</span>
-      <span class="n">this</span> <span class="n">call</span> <span class="n">should</span> <span class="k">return</span> <span class="n">a</span> <span class="n">new</span> <span class="n">LLDB</span> <span class="n">SBValue</span> <span class="nb">object</span> <span class="n">representing</span> <span class="n">the</span>
-      <span class="n">child</span> <span class="n">at</span> <span class="n">the</span> <span class="n">index</span> <span class="n">given</span> <span class="k">as</span> <span class="n">argument</span>
-   <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-      <span class="n">this</span> <span class="n">call</span> <span class="n">should</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">update</span> <span class="n">the</span> <span class="n">internal</span> <span class="n">state</span> <span class="n">of</span> <span class="n">this</span> <span class="n">Python</span>
-      <span class="nb">object</span> <span class="n">whenever</span> <span class="n">the</span> <span class="n">state</span> <span class="n">of</span> <span class="n">the</span> <span class="n">variables</span> <span class="ow">in</span> <span class="n">LLDB</span> <span class="n">changes</span><span class="o">.</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-      <span class="n">Also</span><span class="p">,</span> <span class="n">this</span> <span class="n">method</span> <span class="ow">is</span> <span class="n">invoked</span> <span class="n">before</span> <span class="nb">any</span> <span class="n">other</span> <span class="n">method</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">interface</span><span class="o">.</span>
-   <span class="k">def</span><span class="w"> </span><span class="nf">has_children</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-      <span class="n">this</span> <span class="n">call</span> <span class="n">should</span> <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">this</span> <span class="nb">object</span> <span class="n">might</span> <span class="n">have</span> <span class="n">children</span><span class="p">,</span> <span class="ow">and</span>
-      <span class="kc">False</span> <span class="k">if</span> <span class="n">this</span> <span class="nb">object</span> <span class="n">can</span> <span class="n">be</span> <span class="n">guaranteed</span> <span class="ow">not</span> <span class="n">to</span> <span class="n">have</span> <span class="n">children</span><span class="o">.</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-   <span class="k">def</span><span class="w"> </span><span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-      <span class="n">this</span> <span class="n">call</span> <span class="n">can</span> <span class="k">return</span> <span class="n">an</span> <span class="n">SBValue</span> <span class="n">to</span> <span class="n">be</span> <span class="n">presented</span> <span class="k">as</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">the</span>
-      <span class="n">synthetic</span> <span class="n">value</span> <span class="n">under</span> <span class="n">consideration</span><span class="o">.</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+   <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valobj</span><span class="p">:</span> <span class="n">lldb</span><span class="o">.</span><span class="n">SBValue</span><span class="p">,</span> <span class="n">internal_dict</span><span class="p">):</span>
+<span class="w">      </span><span class="sd">&quot;&quot;&quot;&quot;</span>
+<span class="sd">      This call should initialize the Python object using valobj as the</span>
+<span class="sd">      variable to provide synthetic children for.</span>
+<span class="sd">      &quot;&quot;&quot;</span><span class="s2">&quot;</span>
+
+   <span class="k">def</span><span class="w"> </span><span class="nf">num_children</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_children</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">      </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      This call should return the number of children that you want your</span>
+<span class="sd">      object to have[1].</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+
+   <span class="k">def</span><span class="w"> </span><span class="nf">get_child_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">      </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      This call should return the index of the synthetic child whose name is</span>
+<span class="sd">      given as the argument. Array subscripting, names in the form &quot;[N]&quot;, is</span>
+<span class="sd">      automatically supported.</span>
+<span class="sd">      Return -1 if there is no child at the index.</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+
+   <span class="k">def</span><span class="w"> </span><span class="nf">get_child_at_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">lldb</span><span class="o">.</span><span class="n">SBValue</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">      </span><span class="sd">&quot;&quot;&quot;&quot;</span>
+<span class="sd">      This call should return a new LLDB SBValue object representing the</span>
+<span class="sd">      child at the index given as argument.</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+
+   <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">      </span><span class="sd">&quot;&quot;&quot;&quot;</span>
+<span class="sd">      This call should be used to update the internal state of this Python</span>
+<span class="sd">      object whenever the state of the variables in LLDB changes.[2]</span>
+<span class="sd">      Also, this method is invoked before any other method in the interface.</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+
+   <span class="k">def</span><span class="w"> </span><span class="nf">has_children</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">      </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      This call should return True if this object might have children, and</span>
+<span class="sd">      False if this object can be guaranteed not to have children.[3]</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+
+   <span class="k">def</span><span class="w"> </span><span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">lldb</span><span class="o">.</span><span class="n">SBValue</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">      </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      This call can return an SBValue to be presented as the value of the</span>
+<span class="sd">      synthetic value under consideration.[4]</span>
+<span class="sd">      &quot;&quot;&quot;</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
 <p>As a warning, exceptions that are thrown by python formatters are caught
@@ -1187,13 +1209,15 @@ synthetic value to be dereferenced without actually showing any
 synthetic children in the UI:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">SyntheticChildrenProvider</span><span class="p">:</span>
     <span class="p">[</span><span class="o">...</span><span class="p">]</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">num_children</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">num_children</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_child_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_child_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;$$dereference$$&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">0</span>
         <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_child_at_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_child_at_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">lldb</span><span class="o">.</span><span class="n">SBValue</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="o">&lt;</span><span class="n">valobj</span> <span class="n">resulting</span> <span class="kn">from</span><span class="w"> </span><span class="nn">dereference</span><span class="o">&gt;</span>
         <span class="k">return</span> <span class="kc">None</span>
@@ -1314,7 +1338,7 @@ summary function and a synthetic child provider that work for all
 is no common pattern in the name of these classes, so we can’t register the
 formatter neither by name nor by regular expression.</p>
 <p>In that case, you can write a recognizer function like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">is_generated_object</span><span class="p">(</span><span class="n">sbtype</span><span class="p">,</span> <span class="n">internal_dict</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">is_generated_object</span><span class="p">(</span><span class="n">sbtype</span><span class="p">:</span> <span class="n">lldb</span><span class="o">.</span><span class="n">SBType</span><span class="p">,</span> <span class="n">internal_dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
   <span class="k">for</span> <span class="n">base</span> <span class="ow">in</span> <span class="n">sbtype</span><span class="o">.</span><span class="n">get_bases_array</span><span class="p">():</span>
     <span class="k">if</span> <span class="n">base</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;GeneratedObject&quot;</span>
       <span class="k">return</span> <span class="kc">True</span>
@@ -1499,7 +1523,7 @@ formatter to apply.</p>
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Feb 12, 2026</div>
+              Last updated on Apr 14, 2026</div>
           </div>
           <div class="right-details">
             
