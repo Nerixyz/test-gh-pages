@@ -10,7 +10,7 @@
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
-    <link rel="stylesheet" type="text/css" href="../_static/lldb-setting.css?v=90455d01" />
+    <link rel="stylesheet" type="text/css" href="../_static/lldb-setting.css?v=bf28b315" />
     
     
 
@@ -444,19 +444,19 @@ good testing practices.</p>
 <dl>
 <dt><strong>Don’t unnecessarily launch the test executable.</strong></dt><dd><p>Launching a process and running to a breakpoint can often be the most
 expensive part of a test and should be avoided if possible. A large part
-of LLDB’s functionality is available directly after creating an <code class="xref any docutils literal notranslate"><span class="pre">SBTarget</span></code>
+of LLDB’s functionality is available directly after creating an <a class="reference internal" href="../python_api/lldb.SBTarget.html#lldb.SBTarget" title="lldb.SBTarget"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBTarget</span></code></a>
 of the test executable.</p>
 <p>The part of the SB API that can be tested with just a target includes
 everything that represents information about the executable and its
-debug information (e.g., <code class="xref any docutils literal notranslate"><span class="pre">SBTarget</span></code>, <code class="xref any docutils literal notranslate"><span class="pre">SBModule</span></code>, <code class="xref any docutils literal notranslate"><span class="pre">SBSymbolContext</span></code>,
-<code class="xref any docutils literal notranslate"><span class="pre">SBFunction</span></code>, <code class="xref any docutils literal notranslate"><span class="pre">SBInstruction</span></code>, <code class="xref any docutils literal notranslate"><span class="pre">SBCompileUnit</span></code>, etc.). For test executables
+debug information (e.g., <a class="reference internal" href="../python_api/lldb.SBTarget.html#lldb.SBTarget" title="lldb.SBTarget"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBTarget</span></code></a>, <a class="reference internal" href="../python_api/lldb.SBModule.html#lldb.SBModule" title="lldb.SBModule"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBModule</span></code></a>, <a class="reference internal" href="../python_api/lldb.SBSymbolContext.html#lldb.SBSymbolContext" title="lldb.SBSymbolContext"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBSymbolContext</span></code></a>,
+<a class="reference internal" href="../python_api/lldb.SBFunction.html#lldb.SBFunction" title="lldb.SBFunction"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBFunction</span></code></a>, <a class="reference internal" href="../python_api/lldb.SBInstruction.html#lldb.SBInstruction" title="lldb.SBInstruction"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBInstruction</span></code></a>, <a class="reference internal" href="../python_api/lldb.SBCompileUnit.html#lldb.SBCompileUnit" title="lldb.SBCompileUnit"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBCompileUnit</span></code></a>, etc.). For test executables
 written in languages with a type system that is mostly defined at compile
 time (e.g., C and C++) there is also usually no process necessary to test
-the <code class="xref any docutils literal notranslate"><span class="pre">SBType</span></code>-related parts of the API. With those languages it’s also
-possible to test <code class="xref any docutils literal notranslate"><span class="pre">SBValue</span></code> by running expressions with
-<code class="xref any docutils literal notranslate"><span class="pre">SBTarget.EvaluateExpression</span></code> or the <code class="docutils literal notranslate"><span class="pre">expect_expr</span></code> testing utility.</p>
+the <a class="reference internal" href="../python_api/lldb.SBType.html#lldb.SBType" title="lldb.SBType"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBType</span></code></a>-related parts of the API. With those languages it’s also
+possible to test <a class="reference internal" href="../python_api/lldb.SBValue.html#lldb.SBValue" title="lldb.SBValue"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBValue</span></code></a> by running expressions with
+<a class="reference internal" href="../python_api/lldb.SBTarget.html#lldb.SBTarget.EvaluateExpression" title="lldb.SBTarget.EvaluateExpression"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">SBTarget.EvaluateExpression</span></code></a> or the <code class="docutils literal notranslate"><span class="pre">expect_expr</span></code> testing utility.</p>
 <p>Functionality that always requires a running process is everything that
-tests the <code class="xref any docutils literal notranslate"><span class="pre">SBProcess</span></code>, <code class="xref any docutils literal notranslate"><span class="pre">SBThread</span></code>, and <code class="xref any docutils literal notranslate"><span class="pre">SBFrame</span></code> classes. The same is true
+tests the <a class="reference internal" href="../python_api/lldb.SBProcess.html#lldb.SBProcess" title="lldb.SBProcess"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBProcess</span></code></a>, <a class="reference internal" href="../python_api/lldb.SBThread.html#lldb.SBThread" title="lldb.SBThread"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBThread</span></code></a>, and <a class="reference internal" href="../python_api/lldb.SBFrame.html#lldb.SBFrame" title="lldb.SBFrame"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBFrame</span></code></a> classes. The same is true
 for tests that exercise breakpoints, watchpoints and sanitizers.
 Languages such as Objective-C that have a dependency on a runtime
 environment also always require a running process.</p>

@@ -10,7 +10,7 @@
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
-    <link rel="stylesheet" type="text/css" href="../_static/lldb-setting.css?v=90455d01" />
+    <link rel="stylesheet" type="text/css" href="../_static/lldb-setting.css?v=bf28b315" />
     
     
 
@@ -984,21 +984,21 @@ passed two parameters: <code class="docutils literal notranslate"><span class="p
 <p><code class="docutils literal notranslate"><span class="pre">internal_dict</span></code> is an internal support parameter used by LLDB and you should
 not touch it.</p>
 <p><code class="docutils literal notranslate"><span class="pre">valobj</span></code> is the object encapsulating the actual variable being displayed, and
-its type is <code class="xref any docutils literal notranslate"><span class="pre">SBValue</span></code>. Out of the many possible operations on an <code class="xref any docutils literal notranslate"><span class="pre">SBValue</span></code>, the
+its type is <a class="reference internal" href="../python_api/lldb.SBValue.html#lldb.SBValue" title="lldb.SBValue"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBValue</span></code></a>. Out of the many possible operations on an <a class="reference internal" href="../python_api/lldb.SBValue.html#lldb.SBValue" title="lldb.SBValue"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBValue</span></code></a>, the
 basic one is retrieve the children objects it contains (essentially, the fields
 of the object wrapped by it), by calling <code class="docutils literal notranslate"><span class="pre">GetChildMemberWithName()</span></code>, passing
 it the child’s name as a string.</p>
 <p>If the variable has a value, you can ask for it, and return it as a string
 using <code class="docutils literal notranslate"><span class="pre">GetValue()</span></code>, or as a signed/unsigned number using
 <code class="docutils literal notranslate"><span class="pre">GetValueAsSigned()</span></code>, <code class="docutils literal notranslate"><span class="pre">GetValueAsUnsigned()</span></code>. It is also possible to
-retrieve an <code class="xref any docutils literal notranslate"><span class="pre">SBData</span></code> object by calling <code class="docutils literal notranslate"><span class="pre">GetData()</span></code> and then read the object’s
-contents out of the <code class="xref any docutils literal notranslate"><span class="pre">SBData</span></code>.</p>
+retrieve an <a class="reference internal" href="../python_api/lldb.SBData.html#lldb.SBData" title="lldb.SBData"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBData</span></code></a> object by calling <code class="docutils literal notranslate"><span class="pre">GetData()</span></code> and then read the object’s
+contents out of the <a class="reference internal" href="../python_api/lldb.SBData.html#lldb.SBData" title="lldb.SBData"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBData</span></code></a>.</p>
 <p>If you need to delve into several levels of hierarchy, as you can do with
 summary strings, you can use the method <code class="docutils literal notranslate"><span class="pre">GetValueForExpressionPath()</span></code>,
 passing it an expression path just like those you could use for summary strings
 (one of the differences is that dereferencing a pointer does not occur by
 prefixing the path with a <code class="docutils literal notranslate"><span class="pre">*`</span></code>, but by calling the <code class="docutils literal notranslate"><span class="pre">Dereference()</span></code> method
-on the returned <code class="xref any docutils literal notranslate"><span class="pre">SBValue</span></code>). If you need to access array slices, you cannot do
+on the returned <a class="reference internal" href="../python_api/lldb.SBValue.html#lldb.SBValue" title="lldb.SBValue"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBValue</span></code></a>). If you need to access array slices, you cannot do
 that (yet) via this method call, and you must use <code class="docutils literal notranslate"><span class="pre">GetChildAtIndex()</span></code>
 querying it for the array items one by one. Also, handling custom formats is
 something you have to deal with on your own.</p>
@@ -1193,9 +1193,9 @@ show misleading information to the user.</p>
 <p>[3] This method is optional (since lldb 3.2.0). While implementing it in terms
 of num_children is acceptable, implementors are encouraged to look for
 optimized coding alternatives whenever reasonable.</p>
-<p>[4] This method is optional (since lldb 3.5.2). The <code class="xref any docutils literal notranslate"><span class="pre">SBValue</span></code> you return here
+<p>[4] This method is optional (since lldb 3.5.2). The <a class="reference internal" href="../python_api/lldb.SBValue.html#lldb.SBValue" title="lldb.SBValue"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBValue</span></code></a> you return here
 will most likely be a numeric type (int, float, …) as its value bytes will be
-used as-if they were the value of the root <code class="xref any docutils literal notranslate"><span class="pre">SBValue</span></code> proper.  As a shortcut for
+used as-if they were the value of the root <a class="reference internal" href="../python_api/lldb.SBValue.html#lldb.SBValue" title="lldb.SBValue"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBValue</span></code></a> proper.  As a shortcut for
 this, you can inherit from lldb.SBSyntheticValueProvider, and just define
 get_value as other methods are defaulted in the superclass as returning default
 no-children responses.</p>
@@ -1229,7 +1229,7 @@ those files (except bitfield/) is legacy code and is not maintained. You may
 especially want to begin looking at this example to get a feel for this
 feature, as it is a very easy and well commented example.</p>
 <p>The design pattern consistently used in synthetic providers shipping with LLDB
-is to use the __init__ to store the <code class="xref any docutils literal notranslate"><span class="pre">SBValue</span></code> instance as a part of self. The
+is to use the __init__ to store the <a class="reference internal" href="../python_api/lldb.SBValue.html#lldb.SBValue" title="lldb.SBValue"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBValue</span></code></a> instance as a part of self. The
 update function is then used to perform the actual initialization. Once a
 synthetic children provider is written, one must load it into LLDB before it
 can be used. Currently, one can use the LLDB script command to type Python code
