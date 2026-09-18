@@ -7,8 +7,9 @@
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
         <title>Tutorial - 🐛 LLDB</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=649a27d8" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="../_static/lldb-setting.css?v=bf28b315" />
     
@@ -155,25 +156,33 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Using LLDB</span></p>
+  <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="map.html">GDB to LLDB command map</a></li>
-<li class="toctree-l1"><a class="reference internal" href="formatting.html">Frame and Thread Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="variable.html">Variable Formatting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="symbolication.html">Symbolication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="symbols.html">Symbols on macOS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="remote.html">Remote Debugging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="intel_pt.html">Tracing with Intel Processor Trace</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ondemand.html">On Demand Symbols</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aarch64-linux.html">Using LLDB On AArch64 Linux</a></li>
-<li class="toctree-l1"><a class="reference internal" href="symbolfilejson.html">JSON Symbol File Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lldbdap.html">Getting started with <code class="docutils literal notranslate"><span class="pre">lldb-dap</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="mcp.html">Model Context Protocol (MCP)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="links.html">Links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../man/lldb.html">Man Page</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using LLDB</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="variable.html">Variable Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formatting.html">Frame and Thread Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repeat-commands.html">Repeat Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbolication.html">Symbolication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbols.html">Symbols on macOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ondemand.html">On Demand Symbols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remote.html">Remote Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">IDE &amp; Tool Integration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lldbdap.html">Getting started with <code class="docutils literal notranslate"><span class="pre">lldb-dap</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcp.html">Model Context Protocol (MCP)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Platform-Specific Topics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aarch64-linux.html">Using LLDB On AArch64 Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intel_pt.html">Tracing with Intel Processor Trace</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Scripting LLDB</span></p>
 <ul>
@@ -190,36 +199,162 @@
 <li class="toctree-l2"><a class="reference internal" href="tutorials/extending-target-stop-hooks.html">Extending Target Stop-Hooks</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../python_api.html">Python API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_extensions.html">Python Extensions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_api.html">Python API</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Python API</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.summary.html">summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.synthetic.html">synthetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBAddress.html">SBAddress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBAddressRange.html">SBAddressRange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBAddressRangeList.html">SBAddressRangeList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBAttachInfo.html">SBAttachInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBBlock.html">SBBlock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBBreakpoint.html">SBBreakpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBBreakpointList.html">SBBreakpointList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBBreakpointLocation.html">SBBreakpointLocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBBreakpointName.html">SBBreakpointName</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBBroadcaster.html">SBBroadcaster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBCommandInterpreter.html">SBCommandInterpreter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBCommandInterpreterRunOptions.html">SBCommandInterpreterRunOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBCommandReturnObject.html">SBCommandReturnObject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBCommunication.html">SBCommunication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBCompileUnit.html">SBCompileUnit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBData.html">SBData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBDebugger.html">SBDebugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBDeclaration.html">SBDeclaration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBEnvironment.html">SBEnvironment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBError.html">SBError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBEvent.html">SBEvent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBExecutionContext.html">SBExecutionContext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBExpressionOptions.html">SBExpressionOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFile.html">SBFile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFileSpec.html">SBFileSpec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFileSpecList.html">SBFileSpecList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFormat.html">SBFormat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFrame.html">SBFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFrameList.html">SBFrameList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFunction.html">SBFunction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBHostOS.html">SBHostOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBInstruction.html">SBInstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBInstructionList.html">SBInstructionList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBLanguageRuntime.html">SBLanguageRuntime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBLaunchInfo.html">SBLaunchInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBLineEntry.html">SBLineEntry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBListener.html">SBListener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBMemoryRegionInfo.html">SBMemoryRegionInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBMemoryRegionInfoList.html">SBMemoryRegionInfoList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBModule.html">SBModule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBModuleSpec.html">SBModuleSpec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBModuleSpecList.html">SBModuleSpecList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBMutex.html">SBMutex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBPlatform.html">SBPlatform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBPlatformConnectOptions.html">SBPlatformConnectOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBPlatformShellCommand.html">SBPlatformShellCommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBProcess.html">SBProcess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBProcessAddress.html">SBProcessAddress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBProcessInfo.html">SBProcessInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBProcessInfoList.html">SBProcessInfoList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBProgress.html">SBProgress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBProtocolServer.html">SBProtocolServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBQueue.html">SBQueue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBQueueItem.html">SBQueueItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBReproducer.html">SBReproducer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSaveCoreOptions.html">SBSaveCoreOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBScriptObject.html">SBScriptObject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSection.html">SBSection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSourceManager.html">SBSourceManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBStatisticsOptions.html">SBStatisticsOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBStream.html">SBStream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBStringList.html">SBStringList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBStructuredData.html">SBStructuredData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSymbol.html">SBSymbol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSymbolContext.html">SBSymbolContext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSymbolContextList.html">SBSymbolContextList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSyntheticValueProvider.html">SBSyntheticValueProvider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTarget.html">SBTarget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBThread.html">SBThread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBThreadCollection.html">SBThreadCollection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBThreadPlan.html">SBThreadPlan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTrace.html">SBTrace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTraceCursor.html">SBTraceCursor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBType.html">SBType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeCategory.html">SBTypeCategory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeEnumMember.html">SBTypeEnumMember</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeEnumMemberList.html">SBTypeEnumMemberList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeFilter.html">SBTypeFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeFormat.html">SBTypeFormat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeList.html">SBTypeList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeMember.html">SBTypeMember</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeMemberFunction.html">SBTypeMemberFunction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeNameSpecifier.html">SBTypeNameSpecifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeStaticField.html">SBTypeStaticField</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeSummary.html">SBTypeSummary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeSummaryOptions.html">SBTypeSummaryOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeSynthetic.html">SBTypeSynthetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBUnixSignals.html">SBUnixSignals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBValue.html">SBValue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBValueList.html">SBValueList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBVariablesOptions.html">SBVariablesOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBWatchpoint.html">SBWatchpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBWatchpointOptions.html">SBWatchpointOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.value.html">value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.value_iter.html">value_iter</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Developing LLDB</span></p>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_extensions.html">Python Extensions</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Python Extensions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.operating_system.OperatingSystem.html">OperatingSystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.parsed_cmd.LLDBOptionValueParser.html">LLDBOptionValueParser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.parsed_cmd.ParsedCommand.html">ParsedCommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_breakpoint.ScriptedBreakpointResolver.html">ScriptedBreakpointResolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_command.ScriptedCommand.html">ScriptedCommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_frame_provider.ScriptedFrameProvider.html">ScriptedFrameProvider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_hook.ScriptedHook.html">ScriptedHook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_platform.ScriptedPlatform.html">ScriptedPlatform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_process.PassthroughScriptedProcess.html">PassthroughScriptedProcess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_process.PassthroughScriptedThread.html">PassthroughScriptedThread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_process.ScriptedFrame.html">ScriptedFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_process.ScriptedProcess.html">ScriptedProcess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_process.ScriptedThread.html">ScriptedThread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_stackframe_recognizer.ScriptedStackFrameRecognizer.html">ScriptedStackFrameRecognizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_string_summary.ScriptedStringSummary.html">ScriptedStringSummary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_synthetic_children.ScriptedSyntheticChildren.html">ScriptedSyntheticChildren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_thread_plan.ScriptedThreadPlan.html">ScriptedThreadPlan</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to LLDB</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../resources/overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/lldbdap-contributing.html">Contributing to LLDB-DAP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/build.html">Building</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/test.html">Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/qemu-testing.html">Testing LLDB using QEMU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/debugging.html">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/fuzzing.html">Fuzzing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Architecture &amp; Internals</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/namespacelldb.html">Public C++ API</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/index.html">Private C++ API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/sbapi.html">Scripting Bridge API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/dataformatters.html">Data Formatters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/formatterbytecode.html">Formatter Bytecode</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../resources/extensions.html">DWARF Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../resources/lldbgdbremote.html">GDB Remote Protocol Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../resources/lldbplatformpackets.html">LLDB Platform Packets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/addinglanguagesupport.html">Adding Programming Language Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/addingtargetsupport.html">Adding Target Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/caveats.html">Caveats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/projects.html">Open Projects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../resources/lldbdap-contributing.html">Contributing to LLDB-DAP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../resources/addinglanguagesupport.html">Adding Programming Language Support</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/namespacelldb.html">Public C++ API</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/index.html">Private C++ API</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<p class="caption" role="heading"><span class="caption-text">Protocol &amp; Format Specifications</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources/lldbgdbremote.html">GDB Remote Protocol Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/lldbplatformpackets.html">LLDB Platform Packets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/extensions.html">DWARF Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbolfilejson.html">JSON Symbol File Format</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="links.html">Links</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/llvm/llvm-project">Source Code</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/llvm/llvm-project/releases">Releases</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://discord.gg/xS7Z362">Join the Discord</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://discord.com/channels/636084430946959380/636732809708306432">Discord Channel</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://discourse.llvm.org/c/subprojects/lldb/8">Discussion Forums</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://llvm.org/docs/DeveloperPolicy.html">Developer Policy</a></li>
@@ -245,7 +380,7 @@
         </a>
         <div class="content-icon-container">
           <div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/llvm/llvm-project/edit/main/lldb/docs/use/tutorial.rst" title="Edit this page">
+  <a class="muted-link" href="https://github.com/llvm/llvm-project/edit/main/lldb/docs/use/tutorial.md" title="Edit this page">
     <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
@@ -293,7 +428,7 @@ some arguments in LLDB that you would not in GDB.</p>
 <p>There is one other special quote character in LLDB - the backtick <code class="docutils literal notranslate"><span class="pre">`</span></code>.
 If you put backticks around an argument or option value, LLDB will run the text
 of the value through the expression parser, and the result of the expression
-will be passed to the command.  So for instance, if <code class="docutils literal notranslate"><span class="pre">len</span></code> is a local
+will be passed to the command. So for instance, if <code class="docutils literal notranslate"><span class="pre">len</span></code> is a local
 <code class="docutils literal notranslate"><span class="pre">int</span></code> variable with the value <code class="docutils literal notranslate"><span class="pre">5</span></code>, then the command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(lldb) memory read -c `len` 0x12345
 </pre></div>
@@ -583,12 +718,12 @@ for watchpoint manipulations. For instance, you might do the following to watch
 a variable called <code class="docutils literal notranslate"><span class="pre">global</span></code> for write operation, but only stop if the condition
 <code class="docutils literal notranslate"><span class="pre">(global==5)</span></code> is true:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">watch</span> <span class="nb">set</span> <span class="n">var</span> <span class="k">global</span>
-<span class="n">Watchpoint</span> <span class="n">created</span><span class="p">:</span> <span class="n">Watchpoint</span> <span class="mi">1</span><span class="p">:</span> <span class="n">addr</span> <span class="o">=</span> <span class="mh">0x100001018</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">4</span> <span class="n">state</span> <span class="o">=</span> <span class="n">enabled</span> <span class="nb">type</span> <span class="o">=</span> <span class="n">w</span>
+<span class="n">Watchpoint</span> <span class="n">created</span><span class="p">:</span> <span class="n">Watchpoint</span> <span class="mi">1</span><span class="p">:</span> <span class="n">addr</span> <span class="o">=</span> <span class="mh">0x100001018</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="n">enabled</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span> <span class="n">w</span>
    <span class="n">declare</span> <span class="o">@</span> <span class="s1">&#39;/Volumes/data/lldb/svn/ToT/test/functionalities/watchpoint/watchpoint_commands/condition/main.cpp:12&#39;</span>
 <span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">watch</span> <span class="n">modify</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;(global==5)&#39;</span>
 <span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">watch</span> <span class="nb">list</span>
 <span class="n">Current</span> <span class="n">watchpoints</span><span class="p">:</span>
-<span class="n">Watchpoint</span> <span class="mi">1</span><span class="p">:</span> <span class="n">addr</span> <span class="o">=</span> <span class="mh">0x100001018</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">4</span> <span class="n">state</span> <span class="o">=</span> <span class="n">enabled</span> <span class="nb">type</span> <span class="o">=</span> <span class="n">w</span>
+<span class="n">Watchpoint</span> <span class="mi">1</span><span class="p">:</span> <span class="n">addr</span> <span class="o">=</span> <span class="mh">0x100001018</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="n">enabled</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span> <span class="n">w</span>
    <span class="n">declare</span> <span class="o">@</span> <span class="s1">&#39;/Volumes/data/lldb/svn/ToT/test/functionalities/watchpoint/watchpoint_commands/condition/main.cpp:12&#39;</span>
    <span class="n">condition</span> <span class="o">=</span> <span class="s1">&#39;(global==5)&#39;</span>
 <span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">c</span>
@@ -617,7 +752,7 @@ a variable called <code class="docutils literal notranslate"><span class="pre">g
 <span class="p">(</span><span class="n">int32_t</span><span class="p">)</span> <span class="k">global</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">watch</span> <span class="nb">list</span> <span class="o">-</span><span class="n">v</span>
 <span class="n">Current</span> <span class="n">watchpoints</span><span class="p">:</span>
-<span class="n">Watchpoint</span> <span class="mi">1</span><span class="p">:</span> <span class="n">addr</span> <span class="o">=</span> <span class="mh">0x100001018</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">4</span> <span class="n">state</span> <span class="o">=</span> <span class="n">enabled</span> <span class="nb">type</span> <span class="o">=</span> <span class="n">w</span>
+<span class="n">Watchpoint</span> <span class="mi">1</span><span class="p">:</span> <span class="n">addr</span> <span class="o">=</span> <span class="mh">0x100001018</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="n">enabled</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span> <span class="n">w</span>
    <span class="n">declare</span> <span class="o">@</span> <span class="s1">&#39;/Volumes/data/lldb/svn/ToT/test/functionalities/watchpoint/watchpoint_commands/condition/main.cpp:12&#39;</span>
    <span class="n">condition</span> <span class="o">=</span> <span class="s1">&#39;(global==5)&#39;</span>
    <span class="n">hit_count</span> <span class="o">=</span> <span class="mi">5</span>     <span class="n">ignore_count</span> <span class="o">=</span> <span class="mi">0</span>
@@ -694,16 +829,16 @@ them to your <code class="docutils literal notranslate"><span class="pre">~/.lld
 in this frame or stops if it leaves the current frame. This is a pretty close
 equivalent to GDB’s <code class="docutils literal notranslate"><span class="pre">until</span></code> command.</p>
 <p>One other useful thing to note about the lldb stepping commands is that they
-are implemented as a stack of interruptible operations.  Until the operation -
+are implemented as a stack of interruptible operations. Until the operation -
 e.g. step to the next line - is completed, it will remain on the
-stack.  If the step over is interrupted and control returned to you,
+stack. If the step over is interrupted and control returned to you,
 any new stepping commands you issue won’t replace the step-over, but instead
 their operations will be pushed onto the stack after the original step over.
 Then each of them will be retired as they are completed, finally returning to the
 original step over operation.</p>
 <p>Suppose, for instance, you <code class="docutils literal notranslate"><span class="pre">step-over</span></code> a source line with a function call.
 If there is a breakpoint in that function, hitting the breakpoint will interrupt
-the step over.  At that point, you will likely want to examine the state at
+the step over. At that point, you will likely want to examine the state at
 the breakpoint, maybe stepping around in that frame, or stepping into other
 functions, running some expressions, etc.</p>
 <p>Because the original step-over has remained on the stack, when you’ve finished
@@ -712,17 +847,17 @@ operation, and you will arrive at the end of your starting source line in the
 original frame.</p>
 <p>This saves you from having to keep track of your original intention, and manually
 issuing the requisite number of <code class="docutils literal notranslate"><span class="pre">step-out</span></code> commands to get back to the frame
-you were stepping over.  The stack maintains that information for you.</p>
+you were stepping over. The stack maintains that information for you.</p>
 <p>Hand-called functions using the <code class="docutils literal notranslate"><span class="pre">expr</span></code> command are also implemented by
-operations on this same stack.  So if you are calling some code with the <code class="docutils literal notranslate"><span class="pre">expr</span></code> command,
+operations on this same stack. So if you are calling some code with the <code class="docutils literal notranslate"><span class="pre">expr</span></code> command,
 and hit a breakpoint during the evaluation of that code, you can examine
-the state where you stopped, and when you’re satisfied,  issue a
+the state where you stopped, and when you’re satisfied, issue a
 <code class="docutils literal notranslate"><span class="pre">continue</span></code> to finish the expression evaluation operation and print the function
 result.</p>
 <p>You can examine the state of the operations stack using the <code class="docutils literal notranslate"><span class="pre">thread</span> <span class="pre">plan</span> <span class="pre">list</span></code>
 command, and if, for instance, you decide you don’t actually want that outermost
 next to continue running, you can remove it with the <code class="docutils literal notranslate"><span class="pre">thread</span> <span class="pre">plan</span> <span class="pre">discard</span></code>
-command.  If you are interested in following this process in more detail, the
+command. If you are interested in following this process in more detail, the
 <code class="docutils literal notranslate"><span class="pre">lldb</span> <span class="pre">step</span></code> logging channel is useful source of information.</p>
 <p>A process, by default, will share the LLDB terminal with the inferior process.
 When in this mode, much like when debugging with GDB, when the process is
@@ -899,7 +1034,7 @@ We also have built-in aliases <code class="docutils literal notranslate"><span c
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Apr 15, 2026</div>
+              Last updated on Sep 18, 2026</div>
           </div>
           <div class="right-details">
             
@@ -941,7 +1076,7 @@ We also have built-in aliases <code class="docutils literal notranslate"><span c
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=d42a975f"></script>
+</div><script src="../_static/documentation_options.js?v=a9baa326"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=32e29ea5"></script>

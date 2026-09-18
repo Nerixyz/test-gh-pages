@@ -3,12 +3,13 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Troubleshooting" href="troubleshooting.html" /><link rel="prev" title="Model Context Protocol (MCP)" href="mcp.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Troubleshooting" href="troubleshooting.html" /><link rel="prev" title="GDB to LLDB command map" href="map.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
         <title>Settings - 🐛 LLDB</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=649a27d8" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="../_static/lldb-setting.css?v=bf28b315" />
     
@@ -155,25 +156,33 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Using LLDB</span></p>
+  <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="map.html">GDB to LLDB command map</a></li>
-<li class="toctree-l1"><a class="reference internal" href="formatting.html">Frame and Thread Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="variable.html">Variable Formatting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="symbolication.html">Symbolication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="symbols.html">Symbols on macOS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="remote.html">Remote Debugging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="intel_pt.html">Tracing with Intel Processor Trace</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ondemand.html">On Demand Symbols</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aarch64-linux.html">Using LLDB On AArch64 Linux</a></li>
-<li class="toctree-l1"><a class="reference internal" href="symbolfilejson.html">JSON Symbol File Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lldbdap.html">Getting started with <code class="docutils literal notranslate"><span class="pre">lldb-dap</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="mcp.html">Model Context Protocol (MCP)</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Settings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="links.html">Links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../man/lldb.html">Man Page</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using LLDB</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="variable.html">Variable Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formatting.html">Frame and Thread Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repeat-commands.html">Repeat Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbolication.html">Symbolication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbols.html">Symbols on macOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ondemand.html">On Demand Symbols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remote.html">Remote Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">IDE &amp; Tool Integration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lldbdap.html">Getting started with <code class="docutils literal notranslate"><span class="pre">lldb-dap</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcp.html">Model Context Protocol (MCP)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Platform-Specific Topics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aarch64-linux.html">Using LLDB On AArch64 Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intel_pt.html">Tracing with Intel Processor Trace</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Scripting LLDB</span></p>
 <ul>
@@ -190,36 +199,162 @@
 <li class="toctree-l2"><a class="reference internal" href="tutorials/extending-target-stop-hooks.html">Extending Target Stop-Hooks</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../python_api.html">Python API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_extensions.html">Python Extensions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_api.html">Python API</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Python API</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.summary.html">summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.synthetic.html">synthetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBAddress.html">SBAddress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBAddressRange.html">SBAddressRange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBAddressRangeList.html">SBAddressRangeList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBAttachInfo.html">SBAttachInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBBlock.html">SBBlock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBBreakpoint.html">SBBreakpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBBreakpointList.html">SBBreakpointList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBBreakpointLocation.html">SBBreakpointLocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBBreakpointName.html">SBBreakpointName</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBBroadcaster.html">SBBroadcaster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBCommandInterpreter.html">SBCommandInterpreter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBCommandInterpreterRunOptions.html">SBCommandInterpreterRunOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBCommandReturnObject.html">SBCommandReturnObject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBCommunication.html">SBCommunication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBCompileUnit.html">SBCompileUnit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBData.html">SBData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBDebugger.html">SBDebugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBDeclaration.html">SBDeclaration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBEnvironment.html">SBEnvironment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBError.html">SBError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBEvent.html">SBEvent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBExecutionContext.html">SBExecutionContext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBExpressionOptions.html">SBExpressionOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFile.html">SBFile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFileSpec.html">SBFileSpec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFileSpecList.html">SBFileSpecList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFormat.html">SBFormat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFrame.html">SBFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFrameList.html">SBFrameList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFunction.html">SBFunction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBHostOS.html">SBHostOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBInstruction.html">SBInstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBInstructionList.html">SBInstructionList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBLanguageRuntime.html">SBLanguageRuntime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBLaunchInfo.html">SBLaunchInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBLineEntry.html">SBLineEntry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBListener.html">SBListener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBMemoryRegionInfo.html">SBMemoryRegionInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBMemoryRegionInfoList.html">SBMemoryRegionInfoList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBModule.html">SBModule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBModuleSpec.html">SBModuleSpec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBModuleSpecList.html">SBModuleSpecList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBMutex.html">SBMutex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBPlatform.html">SBPlatform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBPlatformConnectOptions.html">SBPlatformConnectOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBPlatformShellCommand.html">SBPlatformShellCommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBProcess.html">SBProcess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBProcessAddress.html">SBProcessAddress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBProcessInfo.html">SBProcessInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBProcessInfoList.html">SBProcessInfoList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBProgress.html">SBProgress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBProtocolServer.html">SBProtocolServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBQueue.html">SBQueue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBQueueItem.html">SBQueueItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBReproducer.html">SBReproducer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSaveCoreOptions.html">SBSaveCoreOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBScriptObject.html">SBScriptObject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSection.html">SBSection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSourceManager.html">SBSourceManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBStatisticsOptions.html">SBStatisticsOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBStream.html">SBStream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBStringList.html">SBStringList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBStructuredData.html">SBStructuredData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSymbol.html">SBSymbol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSymbolContext.html">SBSymbolContext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSymbolContextList.html">SBSymbolContextList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSyntheticValueProvider.html">SBSyntheticValueProvider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTarget.html">SBTarget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBThread.html">SBThread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBThreadCollection.html">SBThreadCollection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBThreadPlan.html">SBThreadPlan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTrace.html">SBTrace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTraceCursor.html">SBTraceCursor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBType.html">SBType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeCategory.html">SBTypeCategory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeEnumMember.html">SBTypeEnumMember</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeEnumMemberList.html">SBTypeEnumMemberList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeFilter.html">SBTypeFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeFormat.html">SBTypeFormat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeList.html">SBTypeList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeMember.html">SBTypeMember</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeMemberFunction.html">SBTypeMemberFunction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeNameSpecifier.html">SBTypeNameSpecifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeStaticField.html">SBTypeStaticField</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeSummary.html">SBTypeSummary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeSummaryOptions.html">SBTypeSummaryOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeSynthetic.html">SBTypeSynthetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBUnixSignals.html">SBUnixSignals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBValue.html">SBValue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBValueList.html">SBValueList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBVariablesOptions.html">SBVariablesOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBWatchpoint.html">SBWatchpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBWatchpointOptions.html">SBWatchpointOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.value.html">value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.value_iter.html">value_iter</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Developing LLDB</span></p>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_extensions.html">Python Extensions</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Python Extensions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.operating_system.OperatingSystem.html">OperatingSystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.parsed_cmd.LLDBOptionValueParser.html">LLDBOptionValueParser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.parsed_cmd.ParsedCommand.html">ParsedCommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_breakpoint.ScriptedBreakpointResolver.html">ScriptedBreakpointResolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_command.ScriptedCommand.html">ScriptedCommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_frame_provider.ScriptedFrameProvider.html">ScriptedFrameProvider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_hook.ScriptedHook.html">ScriptedHook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_platform.ScriptedPlatform.html">ScriptedPlatform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_process.PassthroughScriptedProcess.html">PassthroughScriptedProcess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_process.PassthroughScriptedThread.html">PassthroughScriptedThread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_process.ScriptedFrame.html">ScriptedFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_process.ScriptedProcess.html">ScriptedProcess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_process.ScriptedThread.html">ScriptedThread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_stackframe_recognizer.ScriptedStackFrameRecognizer.html">ScriptedStackFrameRecognizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_string_summary.ScriptedStringSummary.html">ScriptedStringSummary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_synthetic_children.ScriptedSyntheticChildren.html">ScriptedSyntheticChildren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_thread_plan.ScriptedThreadPlan.html">ScriptedThreadPlan</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to LLDB</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../resources/overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/lldbdap-contributing.html">Contributing to LLDB-DAP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/build.html">Building</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/test.html">Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/qemu-testing.html">Testing LLDB using QEMU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/debugging.html">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/fuzzing.html">Fuzzing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Architecture &amp; Internals</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/namespacelldb.html">Public C++ API</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/index.html">Private C++ API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/sbapi.html">Scripting Bridge API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/dataformatters.html">Data Formatters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/formatterbytecode.html">Formatter Bytecode</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../resources/extensions.html">DWARF Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../resources/lldbgdbremote.html">GDB Remote Protocol Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../resources/lldbplatformpackets.html">LLDB Platform Packets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/addinglanguagesupport.html">Adding Programming Language Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/addingtargetsupport.html">Adding Target Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/caveats.html">Caveats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/projects.html">Open Projects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../resources/lldbdap-contributing.html">Contributing to LLDB-DAP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../resources/addinglanguagesupport.html">Adding Programming Language Support</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/namespacelldb.html">Public C++ API</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/index.html">Private C++ API</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<p class="caption" role="heading"><span class="caption-text">Protocol &amp; Format Specifications</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources/lldbgdbremote.html">GDB Remote Protocol Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/lldbplatformpackets.html">LLDB Platform Packets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/extensions.html">DWARF Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbolfilejson.html">JSON Symbol File Format</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="links.html">Links</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/llvm/llvm-project">Source Code</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/llvm/llvm-project/releases">Releases</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://discord.gg/xS7Z362">Join the Discord</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://discord.com/channels/636084430946959380/636732809708306432">Discord Channel</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://discourse.llvm.org/c/subprojects/lldb/8">Discussion Forums</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://llvm.org/docs/DeveloperPolicy.html">Developer Policy</a></li>
@@ -347,6 +482,18 @@ not be present in all copies of LLDB.</p>
 <dt class="sig sig-object" id="dwim-print-verbosity">
 <span class="sig-name descname"><span class="pre">dwim-print-verbosity</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#dwim-print-verbosity" title="Link to this definition">#</a></dt>
 <dd><p>The verbosity level used by dwim-print.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>none</strong> – Use no verbosity when running dwim-print.</p></li>
+<li><p><strong>expression</strong> – Use partial verbosity when running dwim-print - display a message when <code class="docutils literal notranslate"><span class="pre">expression</span></code> evaluation is used.</p></li>
+<li><p><strong>full</strong> – Use full verbosity when running dwim-print.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">none</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lldbsetting">
@@ -475,6 +622,18 @@ not be present in all copies of LLDB.</p>
 <dt class="sig sig-object" id="script-lang">
 <span class="sig-name descname"><span class="pre">script-lang</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#script-lang" title="Link to this definition">#</a></dt>
 <dd><p>The script language to be used for evaluating user-written scripts.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>none</strong> – Disable scripting languages.</p></li>
+<li><p><strong>python</strong> – Select python as the default scripting language.</p></li>
+<li><p><strong>default</strong> – Select the lldb default as the default scripting language.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">python</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lldbsetting">
@@ -490,11 +649,18 @@ not be present in all copies of LLDB.</p>
 
 <dl class="lldbsetting">
 <dt class="sig sig-object" id="show-autosuggestion">
-<span class="sig-name descname"><span class="pre">show-autosuggestion</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#show-autosuggestion" title="Link to this definition">#</a></dt>
-<dd><p>If true, LLDB will show suggestions to complete the command the user typed. Suggestions may be accepted using Ctrl-F.</p>
+<span class="sig-name descname"><span class="pre">show-autosuggestion</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#show-autosuggestion" title="Link to this definition">#</a></dt>
+<dd><p>Controls whether LLDB shows suggestions to complete the command the user typed. Suggestions may be accepted using Ctrl-F. Use ‘true’ to suggest from previously entered commands, ‘tab-mode’ to suggest the prefix that would be inserted by tab completion, or ‘false’ to disable suggestions.</p>
 <dl class="myst field-list simple">
-<dt class="field-odd">Default<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p>
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>false</strong> – Do not show any autosuggestion.</p></li>
+<li><p><strong>true</strong> – Show a suggestion sourced from previously entered commands.</p></li>
+<li><p><strong>tab-mode</strong> – Show the prefix that tab completion would insert for the current line.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -635,6 +801,19 @@ not be present in all copies of LLDB.</p>
 <dt class="sig sig-object" id="stop-disassembly-display">
 <span class="sig-name descname"><span class="pre">stop-disassembly-display</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#stop-disassembly-display" title="Link to this definition">#</a></dt>
 <dd><p>Control when to display disassembly when displaying a stopped context.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>never</strong> – Never show disassembly when displaying a stop context.</p></li>
+<li><p><strong>no-debuginfo</strong> – Show disassembly when there is no debug information.</p></li>
+<li><p><strong>no-source</strong> – Show disassembly when there is no source information, or the source file is missing when displaying a stop context.</p></li>
+<li><p><strong>always</strong> – Always show disassembly when displaying a stop context.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">no-debuginfo</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lldbsetting">
@@ -674,6 +853,19 @@ not be present in all copies of LLDB.</p>
 <dt class="sig sig-object" id="stop-show-column">
 <span class="sig-name descname"><span class="pre">stop-show-column</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#stop-show-column" title="Link to this definition">#</a></dt>
 <dd><p>If true, LLDB will use the column information from the debug info to mark the current position when displaying a stopped context.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ansi-or-caret</strong> – Highlight the stop column with ANSI terminal codes when color/ANSI mode is enabled; otherwise, fall back to using a text-only caret (^) as if “caret-only” mode was selected.</p></li>
+<li><p><strong>ansi</strong> – Highlight the stop column with ANSI terminal codes when running LLDB with color/ANSI enabled.</p></li>
+<li><p><strong>caret</strong> – Highlight the stop column with a caret character (^) underneath the stop column. This method introduces a new line in source listings that display thread stop locations.</p></li>
+<li><p><strong>none</strong> – Do not highlight the stop column.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">ansi-or-caret</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lldbsetting">
@@ -808,6 +1000,20 @@ not be present in all copies of LLDB.</p>
 </dl>
 </dd></dl>
 
+<section id="diagnostics">
+<h2>diagnostics<a class="headerlink" href="#diagnostics" title="Link to this heading">#</a></h2>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="diagnostics.collect-binaries">
+<span class="sig-name descname"><span class="pre">diagnostics.collect-binaries</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#diagnostics.collect-binaries" title="Link to this definition">#</a></dt>
+<dd><p>When enabled, a diagnostics bundle also collects the main executable, its symbol file, and the core file (when debugging one) to help reproduce the bug. These files can be large and may contain sensitive data (a core file captures process memory), so this is off by default.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 <section id="interpreter">
 <h2>interpreter<a class="headerlink" href="#interpreter" title="Link to this heading">#</a></h2>
 <dl class="lldbsetting">
@@ -961,6 +1167,17 @@ not be present in all copies of LLDB.</p>
 </dd></dl>
 
 <dl class="lldbsetting">
+<dt class="sig sig-object" id="platform.shell-expand-timeout">
+<span class="sig-name descname"><span class="pre">platform.shell-expand-timeout</span><span class="lldb-setting-type lldb-setting-type-uint64"><span class="pre">UInt64</span></span></span><a class="headerlink" href="#platform.shell-expand-timeout" title="Link to this definition">#</a></dt>
+<dd><p>The time in seconds to wait for the shell expansion of launch arguments to complete. A value of 0 disables the timeout.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">180</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
 <dt class="sig sig-object" id="platform.use-module-cache">
 <span class="sig-name descname"><span class="pre">platform.use-module-cache</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#platform.use-module-cache" title="Link to this definition">#</a></dt>
 <dd><p>Use module cache.</p>
@@ -1036,21 +1253,41 @@ not be present in all copies of LLDB.</p>
 <section id="wasm">
 <h4>wasm<a class="headerlink" href="#wasm" title="Link to this heading">#</a></h4>
 <dl class="lldbsetting">
+<dt class="sig sig-object" id="platform.plugin.wasm.env-arg">
+<span class="sig-name descname"><span class="pre">platform.plugin.wasm.env-arg</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">String</span></span></span><a class="headerlink" href="#platform.plugin.wasm.env-arg" title="Link to this definition">#</a></dt>
+<dd><p>Argument to the WebAssembly runtime to forward an environment variable to the inferior. A <code class="docutils literal notranslate"><span class="pre">key=value</span></code> pair is concatenated to this argument, once per variable in the inferior’s environment. For example: <code class="docutils literal notranslate"><span class="pre">--env=</span></code>. If empty, no environment is forwarded to the runtime.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
 <dt class="sig sig-object" id="platform.plugin.wasm.port-arg">
 <span class="sig-name descname"><span class="pre">platform.plugin.wasm.port-arg</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">String</span></span></span><a class="headerlink" href="#platform.plugin.wasm.port-arg" title="Link to this definition">#</a></dt>
-<dd><p>Argument to the WebAssembly runtime to specify the GDB remote port. The port number chosen by LLDB will be concatenated to this argument. For example: <code class="docutils literal notranslate"><span class="pre">-g=127.0.0.1:</span></code> or <code class="docutils literal notranslate"><span class="pre">--debugger-port</span> </code>.</p>
+<dd><p>Argument to the WebAssembly runtime to specify the GDB remote port. The port number chosen by LLDB will be concatenated to this argument, which therefore has to carry its value in the same argument. For example: <code class="docutils literal notranslate"><span class="pre">-g=127.0.0.1:</span></code> or <code class="docutils literal notranslate"><span class="pre">--debugger-port=</span></code>.</p>
 </dd></dl>
 
 <dl class="lldbsetting">
 <dt class="sig sig-object" id="platform.plugin.wasm.runtime-args">
 <span class="sig-name descname"><span class="pre">platform.plugin.wasm.runtime-args</span><span class="lldb-setting-type lldb-setting-type-args"><span class="pre">Args</span></span></span><a class="headerlink" href="#platform.plugin.wasm.runtime-args" title="Link to this definition">#</a></dt>
-<dd><p>Extra arguments to pass to the WebAssembly runtime. For the argument that specifies the GDB remote port, use port-arg instead.</p>
+<dd><p>Extra arguments to pass to the WebAssembly runtime. They precede the port argument, so a runtime that dispatches on a leading subcommand names it here. For the argument that specifies the GDB remote port, use port-arg instead.</p>
 </dd></dl>
 
 <dl class="lldbsetting">
 <dt class="sig sig-object" id="platform.plugin.wasm.runtime-path">
 <span class="sig-name descname"><span class="pre">platform.plugin.wasm.runtime-path</span><span class="lldb-setting-type lldb-setting-type-filespec"><span class="pre">FileSpec</span></span></span><a class="headerlink" href="#platform.plugin.wasm.runtime-path" title="Link to this definition">#</a></dt>
 <dd><p>Path to the WebAssembly runtime binary. If the path does not contain a directory separator, the filename is looked up in the PATH environment variable.</p>
+</dd></dl>
+
+</section>
+<section id="windows">
+<h4>windows<a class="headerlink" href="#windows" title="Link to this heading">#</a></h4>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="platform.plugin.windows.disable-debug-heap">
+<span class="sig-name descname"><span class="pre">platform.plugin.windows.disable-debug-heap</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#platform.plugin.windows.disable-debug-heap" title="Link to this definition">#</a></dt>
+<dd><p>Specifies that the debug heap should not be used for debugging. The Windows debug heap has additional checks for heap related bugs at the cost of a noticeable performance penalty. By enabling this setting, _NO_DEBUG_HEAP=1 will be added to the environment.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -1094,6 +1331,19 @@ not be present in all copies of LLDB.</p>
 <dt class="sig sig-object" id="plugin.dynamic-loader.darwin-kernel.scan-type">
 <span class="sig-name descname"><span class="pre">plugin.dynamic-loader.darwin-kernel.scan-type</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#plugin.dynamic-loader.darwin-kernel.scan-type" title="Link to this definition">#</a></dt>
 <dd><p>Control how many reads lldb will make while searching for a Darwin kernel on attach.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>none</strong> – Do not read memory looking for a Darwin kernel when attaching.</p></li>
+<li><p><strong>basic</strong> – Check for the Darwin kernel’s load addr in the lowglo page (boot-args=debug) only.</p></li>
+<li><p><strong>fast-scan</strong> – Scan near the pc value on attach to find the Darwin kernel’s load address.</p></li>
+<li><p><strong>exhaustive-scan</strong> – Scan through the entire potential address range of Darwin kernel (only on 32-bit targets).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">fast-scan</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -1106,6 +1356,18 @@ not be present in all copies of LLDB.</p>
 <dt class="sig sig-object" id="plugin.jit-loader.gdb.enable">
 <span class="sig-name descname"><span class="pre">plugin.jit-loader.gdb.enable</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#plugin.jit-loader.gdb.enable" title="Link to this definition">#</a></dt>
 <dd><p>Enable GDB’s JIT compilation interface (default: enabled on all platforms except macOS)</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>default</strong> – Enable JIT compilation interface for all platforms except macOS</p></li>
+<li><p><strong>on</strong> – Enable JIT compilation interface</p></li>
+<li><p><strong>off</strong> – Disable JIT compilation interface</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">default</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -1118,12 +1380,33 @@ not be present in all copies of LLDB.</p>
 <dt class="sig sig-object" id="plugin.object-file.pe-coff.abi">
 <span class="sig-name descname"><span class="pre">plugin.object-file.pe-coff.abi</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#plugin.object-file.pe-coff.abi" title="Link to this definition">#</a></dt>
 <dd><p>ABI to use when loading a PE/COFF module. This configures the C++ ABI used, which affects things like the handling of class layout. Accepted values are: <code class="docutils literal notranslate"><span class="pre">msvc</span></code> for the MSVC ABI, <code class="docutils literal notranslate"><span class="pre">gnu</span></code> for the MinGW / Itanium ABI, and <code class="docutils literal notranslate"><span class="pre">default</span></code> to follow the default target if it is a Windows triple or use the MSVC ABI by default.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>default</strong> – Use default target (if it is Windows) or MSVC</p></li>
+<li><p><strong>msvc</strong> – MSVC ABI</p></li>
+<li><p><strong>gnu</strong> – MinGW / Itanium ABI</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">default</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lldbsetting">
 <dt class="sig sig-object" id="plugin.object-file.pe-coff.module-abi">
 <span class="sig-name descname"><span class="pre">plugin.object-file.pe-coff.module-abi</span><span class="lldb-setting-type lldb-setting-type-dictionary"><span class="pre">Dictionary</span></span></span><a class="headerlink" href="#plugin.object-file.pe-coff.module-abi" title="Link to this definition">#</a></dt>
 <dd><p>A mapping of ABI override to use for specific modules. The module name is matched by its file name with extension. These versions are checked in sequence: exact, lowercase, exact with ‘.debug’ suffix stripped, lowercase with ‘.debug’ suffix stripped. Accepted values are: <code class="docutils literal notranslate"><span class="pre">msvc</span></code> for the MSVC ABI, <code class="docutils literal notranslate"><span class="pre">gnu</span></code> for the MinGW / Itanium ABI, and <code class="docutils literal notranslate"><span class="pre">default</span></code> to follow the default target if it is a Windows triple or use the MSVC ABI by default.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>default</strong> – Use default target (if it is Windows) or MSVC</p></li>
+<li><p><strong>msvc</strong> – MSVC ABI</p></li>
+<li><p><strong>gnu</strong> – MinGW / Itanium ABI</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -1146,6 +1429,17 @@ not be present in all copies of LLDB.</p>
 </section>
 <section id="gdb-remote">
 <h4>gdb-remote<a class="headerlink" href="#gdb-remote" title="Link to this heading">#</a></h4>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="plugin.process.gdb-remote.packet-test-delay">
+<span class="sig-name descname"><span class="pre">plugin.process.gdb-remote.packet-test-delay</span><span class="lldb-setting-type lldb-setting-type-uint64"><span class="pre">UInt64</span></span></span><a class="headerlink" href="#plugin.process.gdb-remote.packet-test-delay" title="Link to this definition">#</a></dt>
+<dd><p>Specify an artificial delay in milliseconds inserted before sending each packet, for testing purposes.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="lldbsetting">
 <dt class="sig sig-object" id="plugin.process.gdb-remote.packet-timeout">
 <span class="sig-name descname"><span class="pre">plugin.process.gdb-remote.packet-timeout</span><span class="lldb-setting-type lldb-setting-type-uint64"><span class="pre">UInt64</span></span></span><a class="headerlink" href="#plugin.process.gdb-remote.packet-timeout" title="Link to this definition">#</a></dt>
@@ -1246,6 +1540,18 @@ not be present in all copies of LLDB.</p>
 <dt class="sig sig-object" id="plugin.symbol-file.pdb.reader">
 <span class="sig-name descname"><span class="pre">plugin.symbol-file.pdb.reader</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#plugin.symbol-file.pdb.reader" title="Link to this definition">#</a></dt>
 <dd><p>Selects the reader for PDB symbol files. The native PDB reader that uses LLVM’s PDB support is always available (value: ‘native’). Secondly, the DIA PDB reader is only available if LLVM was compiled with Microsoft’s DIA SDK on Windows (value: ‘DIA’). By default, the DIA PDB reader is used if available. The LLDB_USE_NATIVE_PDB_READER environment variable can be used to switch to the native reader when this setting has the default value. Otherwise, the setting always has priority.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>default</strong> – Use native PDB reader unless LLDB_USE_NATIVE_PDB_READER environment is set to 0</p></li>
+<li><p><strong>dia</strong> – Use DIA PDB reader</p></li>
+<li><p><strong>native</strong> – Use native PDB reader</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">default</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -1275,6 +1581,38 @@ not be present in all copies of LLDB.</p>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p>
 </dd>
 </dl>
+</dd></dl>
+
+</section>
+<section id="symstore">
+<h4>symstore<a class="headerlink" href="#symstore" title="Link to this heading">#</a></h4>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="plugin.symbol-locator.symstore.cache">
+<span class="sig-name descname"><span class="pre">plugin.symbol-locator.symstore.cache</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">String</span></span></span><a class="headerlink" href="#plugin.symbol-locator.symstore.cache" title="Link to this definition">#</a></dt>
+<dd><p>Default cache directory for downloaded symbol files. Used when no cache is specified in _NT_SYMBOL_PATH.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="plugin.symbol-locator.symstore.timeout">
+<span class="sig-name descname"><span class="pre">plugin.symbol-locator.symstore.timeout</span><span class="lldb-setting-type lldb-setting-type-uint64"><span class="pre">UInt64</span></span></span><a class="headerlink" href="#plugin.symbol-locator.symstore.timeout" title="Link to this definition">#</a></dt>
+<dd><p>Timeout in seconds for send/receive in HTTP connections to symbol servers. A value of 0 indicates an infinite (no) timeout.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">60</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="plugin.symbol-locator.symstore.tls-cert-fingerprint">
+<span class="sig-name descname"><span class="pre">plugin.symbol-locator.symstore.tls-cert-fingerprint</span><span class="lldb-setting-type lldb-setting-type-string"><span class="pre">String</span></span></span><a class="headerlink" href="#plugin.symbol-locator.symstore.tls-cert-fingerprint" title="Link to this definition">#</a></dt>
+<dd><p>SHA-256 fingerprint (lowercase hex, no separators) of the symbol server’s TLS certificate. When set, LLDB will accept an HTTPS server that presents this self-signed certificate even if it is not trusted by the system certificate store (Windows only).</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="plugin.symbol-locator.symstore.urls">
+<span class="sig-name descname"><span class="pre">plugin.symbol-locator.symstore.urls</span><span class="lldb-setting-type lldb-setting-type-array"><span class="pre">Array</span></span></span><a class="headerlink" href="#plugin.symbol-locator.symstore.urls" title="Link to this definition">#</a></dt>
+<dd><p>List of local symstore directories to query after _NT_SYMBOL_PATH</p>
 </dd></dl>
 
 </section>
@@ -1314,6 +1652,18 @@ not be present in all copies of LLDB.</p>
 <dt class="sig sig-object" id="symbols.auto-download">
 <span class="sig-name descname"><span class="pre">symbols.auto-download</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#symbols.auto-download" title="Link to this definition">#</a></dt>
 <dd><p>On macOS, automatically download symbols with dsymForUUID (or an equivalent script/binary) for relevant images in the debug session.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>off</strong> – Disable automatically downloading symbols.</p></li>
+<li><p><strong>background</strong> – Download symbols in the background for images as they appear in the backtrace.</p></li>
+<li><p><strong>foreground</strong> – Download symbols in the foreground for images as they appear in the backtrace.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">off</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lldbsetting">
@@ -1415,6 +1765,19 @@ not be present in all copies of LLDB.</p>
 <dt class="sig sig-object" id="symbols.shared-cache-binary-loading">
 <span class="sig-name descname"><span class="pre">symbols.shared-cache-binary-loading</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#symbols.shared-cache-binary-loading" title="Link to this definition">#</a></dt>
 <dd><p>On macOS, lldb can use its own in-memory shared cache, or operate on shared cache binaries directly, this setting controls which are used.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>host-lldb-memory</strong> – Get binaries from the host lldb in-memory shared cache.</p></li>
+<li><p><strong>host-shared-cache</strong> – Get binaries from the host shared cache.</p></li>
+<li><p><strong>host-and-inferior-shared-cache</strong> – Get binaries from the host and inferior’s shared caches.</p></li>
+<li><p><strong>inferior-shared-cache-only</strong> – Get binaries from inferior’s shared cache only.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">host-and-inferior-shared-cache</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -1463,6 +1826,16 @@ not be present in all copies of LLDB.</p>
 <dt class="sig sig-object" id="target.auto-load-scripts-for-modules">
 <span class="sig-name descname"><span class="pre">target.auto-load-scripts-for-modules</span><span class="lldb-setting-type lldb-setting-type-dictionary"><span class="pre">Dictionary</span></span></span><a class="headerlink" href="#target.auto-load-scripts-for-modules" title="Link to this definition">#</a></dt>
 <dd><p>A list of module/image names and whether LLDB should auto-load scripting resources for it from safe paths.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>true</strong> – Load debug scripts inside symbol files</p></li>
+<li><p><strong>false</strong> – Do not load debug scripts inside symbol files.</p></li>
+<li><p><strong>warn</strong> – Warn about debug scripts inside symbol files but do not load them.</p></li>
+<li><p><strong>trusted</strong> – Load debug scripts inside trusted symbol files, and warn about scripts from untrusted symbol files.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lldbsetting">
@@ -1483,6 +1856,17 @@ not be present in all copies of LLDB.</p>
 <dl class="myst field-list simple">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.check-vo-ownership">
+<span class="sig-name descname"><span class="pre">target.check-vo-ownership</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#target.check-vo-ownership" title="Link to this definition">#</a></dt>
+<dd><p>Check that ValueObject children are managed by their parents.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1677,12 +2061,35 @@ not be present in all copies of LLDB.</p>
 <dt class="sig sig-object" id="target.hex-immediate-style">
 <span class="sig-name descname"><span class="pre">target.hex-immediate-style</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#target.hex-immediate-style" title="Link to this definition">#</a></dt>
 <dd><p>Which style to use for printing hexadecimal disassembly values.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>c</strong> – C-style (0xffff).</p></li>
+<li><p><strong>asm</strong> – Asm-style (0ffffh).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">c</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lldbsetting">
 <dt class="sig sig-object" id="target.import-std-module">
 <span class="sig-name descname"><span class="pre">target.import-std-module</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#target.import-std-module" title="Link to this definition">#</a></dt>
 <dd><p>Import the ‘std’ C++ module to improve expression parsing involving  C++ standard library types.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>false</strong> – Never import the ‘std’ C++ module in the expression parser.</p></li>
+<li><p><strong>fallback</strong> – Retry evaluating expressions with an imported ‘std’ C++ module if they failed to parse without the module. This allows evaluating more complex expressions involving C++ standard library types.</p></li>
+<li><p><strong>true</strong> – Always import the ‘std’ C++ module. This allows evaluating more complex expressions involving C++ standard library types. This feature is experimental.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lldbsetting">
@@ -1711,12 +2118,41 @@ not be present in all copies of LLDB.</p>
 <dt class="sig sig-object" id="target.inline-breakpoint-strategy">
 <span class="sig-name descname"><span class="pre">target.inline-breakpoint-strategy</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#target.inline-breakpoint-strategy" title="Link to this definition">#</a></dt>
 <dd><p>The strategy to use when settings breakpoints by file and line. Breakpoint locations can end up being inlined by the compiler, so that a compile unit ‘a.c’ might contain an inlined function from another source file. Usually this is limited to breakpoint locations from inlined functions from header or other include files, or more accurately non-implementation source files. Sometimes code might #include implementation files and cause inlined breakpoint locations in inlined implementation files. Always checking for inlined breakpoint locations can be expensive (memory and time), so if you have a project with many headers and find that setting breakpoints is slow, then you can change this setting to headers. This setting allows you to control exactly which strategy is used when setting file and line breakpoints.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>never</strong> – Never look for inline breakpoint locations (fastest). This setting should only be used if you know that no inlining occurs in your programs.</p></li>
+<li><p><strong>headers</strong> – Only check for inline breakpoint locations when setting breakpoints in header files, but not when setting breakpoint in implementation source files (default).</p></li>
+<li><p><strong>always</strong> – Always look for inline breakpoint locations when setting file and line breakpoints (slower but most accurate).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">always</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lldbsetting">
 <dt class="sig sig-object" id="target.input-path">
 <span class="sig-name descname"><span class="pre">target.input-path</span><span class="lldb-setting-type lldb-setting-type-filespec"><span class="pre">FileSpec</span></span></span><a class="headerlink" href="#target.input-path" title="Link to this definition">#</a></dt>
 <dd><p>The file/path to be used by the executable program for reading its standard input.</p>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.jit-engine">
+<span class="sig-name descname"><span class="pre">target.jit-engine</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#target.jit-engine" title="Link to this definition">#</a></dt>
+<dd><p>The LLVM execution engine to use for JITting expressions.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mcjit</strong> – Use LLVM’s MCJIT execution engine.</p></li>
+<li><p><strong>orc</strong> – Use LLVM’s ORC execution engine.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">mcjit</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lldbsetting">
@@ -1735,12 +2171,37 @@ not be present in all copies of LLDB.</p>
 <dt class="sig sig-object" id="target.load-cwd-lldbinit">
 <span class="sig-name descname"><span class="pre">target.load-cwd-lldbinit</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#target.load-cwd-lldbinit" title="Link to this definition">#</a></dt>
 <dd><p>Allow LLDB to .lldbinit files from the current directory automatically.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>true</strong> – Load .lldbinit files from current directory</p></li>
+<li><p><strong>false</strong> – Do not load .lldbinit files from current directory</p></li>
+<li><p><strong>warn</strong> – Warn about loading .lldbinit files from current directory</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">warn</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lldbsetting">
 <dt class="sig sig-object" id="target.load-script-from-symbol-file">
 <span class="sig-name descname"><span class="pre">target.load-script-from-symbol-file</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#target.load-script-from-symbol-file" title="Link to this definition">#</a></dt>
 <dd><p>Allow LLDB to load scripting resources embedded in symbol files when available.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>true</strong> – Load debug scripts inside symbol files</p></li>
+<li><p><strong>false</strong> – Do not load debug scripts inside symbol files.</p></li>
+<li><p><strong>warn</strong> – Warn about debug scripts inside symbol files but do not load them.</p></li>
+<li><p><strong>trusted</strong> – Load debug scripts inside trusted symbol files, and warn about scripts from untrusted symbol files.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">trusted</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lldbsetting">
@@ -1802,6 +2263,18 @@ not be present in all copies of LLDB.</p>
 <dt class="sig sig-object" id="target.memory-module-load-level">
 <span class="sig-name descname"><span class="pre">target.memory-module-load-level</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#target.memory-module-load-level" title="Link to this definition">#</a></dt>
 <dd><p>Loading modules from memory can be slow as reading the symbol tables and other data can take a long time depending on your connection to the debug target. This setting helps users control how much information gets loaded when loading modules from memory.’complete’ is the default value for this setting which will load all sections and symbols by reading them from memory (slowest, most accurate). ‘partial’ will load sections and attempt to find function bounds without downloading the symbol table (faster, still accurate, missing symbol names). ‘minimal’ is the fastest setting and will load section data with no symbols, but should rarely be used as stack frames in these memory regions will be inaccurate and not provide any context (fastest).</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>minimal</strong> – Load minimal information when loading modules from memory. Currently this setting loads sections only.</p></li>
+<li><p><strong>partial</strong> – Load partial information when loading modules from memory. Currently this setting loads sections and function bounds.</p></li>
+<li><p><strong>complete</strong> – Load complete information when loading modules from memory. Currently this setting loads sections and all symbols.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">complete</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lldbsetting">
@@ -1830,6 +2303,19 @@ not be present in all copies of LLDB.</p>
 <dt class="sig sig-object" id="target.objc-dynamic-class-extractor">
 <span class="sig-name descname"><span class="pre">target.objc-dynamic-class-extractor</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#target.objc-dynamic-class-extractor" title="Link to this definition">#</a></dt>
 <dd><p>Configure how LLDB parses dynamic Objective-C class metadata. By default LLDB will choose the most appropriate method for the target OS.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>auto</strong> – Automatically determine the most appropriate method for the target OS.</p></li>
+<li><p><strong>RealizedClassesStruct</strong> – Prefer using the realized classes struct.</p></li>
+<li><p><strong>CopyRealizedClassList</strong> – Prefer using the CopyRealizedClassList API.</p></li>
+<li><p><strong>GetRealizedClassList</strong> – Prefer using the GetRealizedClassList API.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">auto</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lldbsetting">
@@ -1859,6 +2345,18 @@ not be present in all copies of LLDB.</p>
 <dt class="sig sig-object" id="target.prefer-dynamic-value">
 <span class="sig-name descname"><span class="pre">target.prefer-dynamic-value</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#target.prefer-dynamic-value" title="Link to this definition">#</a></dt>
 <dd><p>Should printed values be shown as their dynamic value.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>no-dynamic-values</strong> – Don’t calculate the dynamic type of values</p></li>
+<li><p><strong>run-target</strong> – Calculate the dynamic type of values even if you have to run the target.</p></li>
+<li><p><strong>no-run-target</strong> – Calculate the dynamic type of values, but don’t run the target.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">no-run-target</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lldbsetting">
@@ -1978,6 +2476,18 @@ not be present in all copies of LLDB.</p>
 <dt class="sig sig-object" id="target.x86-disassembly-flavor">
 <span class="sig-name descname"><span class="pre">target.x86-disassembly-flavor</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#target.x86-disassembly-flavor" title="Link to this definition">#</a></dt>
 <dd><p>The default disassembly flavor to use for x86 or x86-64 targets.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>default</strong> – Disassembler default (currently att).</p></li>
+<li><p><strong>intel</strong> – Intel disassembler flavor.</p></li>
+<li><p><strong>att</strong> – AT&amp;T disassembler flavor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">default</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <section id="experimental">
@@ -2004,9 +2514,26 @@ not be present in all copies of LLDB.</p>
 </dl>
 </dd></dl>
 
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.experimental.use-DIL-for-creating-values">
+<span class="sig-name descname"><span class="pre">target.experimental.use-DIL-for-creating-values</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#target.experimental.use-DIL-for-creating-values" title="Link to this definition">#</a></dt>
+<dd><p>If true, use the DIL implementation in API SBValue::CreateValueFromExpression.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="id3">
 <h3>process<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.always-run-thread-names">
+<span class="sig-name descname"><span class="pre">target.process.always-run-thread-names</span><span class="lldb-setting-type lldb-setting-type-array"><span class="pre">Array</span></span></span><a class="headerlink" href="#target.process.always-run-thread-names" title="Link to this definition">#</a></dt>
+<dd><p>A list of thread names. Threads with any of these names will always be resumed when the process resumes, even when other threads are suspended during single-stepping operations.</p>
+</dd></dl>
+
 <dl class="lldbsetting">
 <dt class="sig sig-object" id="target.process.detach-keeps-stopped">
 <span class="sig-name descname"><span class="pre">target.process.detach-keeps-stopped</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#target.process.detach-keeps-stopped" title="Link to this definition">#</a></dt>
@@ -2050,6 +2577,17 @@ not be present in all copies of LLDB.</p>
 <dt class="sig sig-object" id="target.process.follow-fork-mode">
 <span class="sig-name descname"><span class="pre">target.process.follow-fork-mode</span><span class="lldb-setting-type lldb-setting-type-enum"><span class="pre">Enum</span></span></span><a class="headerlink" href="#target.process.follow-fork-mode" title="Link to this definition">#</a></dt>
 <dd><p>Debugger’s behavior upon fork or vfork.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Enumerations<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> – Continue tracing the parent process and detach the child.</p></li>
+<li><p><strong>child</strong> – Trace the child process and detach the parent.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">parent</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="lldbsetting">
@@ -2185,12 +2723,34 @@ not be present in all copies of LLDB.</p>
 </dd></dl>
 
 <dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.use-delayed-breakpoints">
+<span class="sig-name descname"><span class="pre">target.process.use-delayed-breakpoints</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#target.process.use-delayed-breakpoints" title="Link to this definition">#</a></dt>
+<dd><p>Specify whether updating breakpoints may be delayed until the process is about to resume.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
 <dt class="sig sig-object" id="target.process.utility-expression-timeout">
 <span class="sig-name descname"><span class="pre">target.process.utility-expression-timeout</span><span class="lldb-setting-type lldb-setting-type-uint64"><span class="pre">UInt64</span></span></span><a class="headerlink" href="#target.process.utility-expression-timeout" title="Link to this definition">#</a></dt>
 <dd><p>The time in seconds to wait for LLDB-internal utility expressions.</p>
 <dl class="myst field-list simple">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">15</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="lldbsetting">
+<dt class="sig sig-object" id="target.process.verify-memory-reads">
+<span class="sig-name descname"><span class="pre">target.process.verify-memory-reads</span><span class="lldb-setting-type lldb-setting-type-boolean"><span class="pre">Boolean</span></span></span><a class="headerlink" href="#target.process.verify-memory-reads" title="Link to this definition">#</a></dt>
+<dd><p>Read memory that goes through the memory cache a second time directly from the process and report any difference.  Debug builds only.</p>
+<dl class="myst field-list simple">
+<dt class="field-odd">Default<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2333,14 +2893,14 @@ not be present in all copies of LLDB.</p>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="mcp.html">
+          <a class="prev-page" href="map.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Model Context Protocol (MCP)</div>
+                <div class="title">GDB to LLDB command map</div>
                 
               </div>
             </a>
@@ -2354,7 +2914,7 @@ not be present in all copies of LLDB.</p>
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Apr 15, 2026</div>
+              Last updated on Sep 18, 2026</div>
           </div>
           <div class="right-details">
             
@@ -2376,6 +2936,7 @@ not be present in all copies of LLDB.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Settings</a><ul>
+<li><a class="reference internal" href="#diagnostics">diagnostics</a></li>
 <li><a class="reference internal" href="#interpreter">interpreter</a></li>
 <li><a class="reference internal" href="#language">language</a></li>
 <li><a class="reference internal" href="#platform">platform</a><ul>
@@ -2385,6 +2946,7 @@ not be present in all copies of LLDB.</p>
 <li><a class="reference internal" href="#qemu-user">qemu-user</a></li>
 <li><a class="reference internal" href="#remote-android">remote-android</a></li>
 <li><a class="reference internal" href="#wasm">wasm</a></li>
+<li><a class="reference internal" href="#windows">windows</a></li>
 </ul>
 </li>
 </ul>
@@ -2423,6 +2985,7 @@ not be present in all copies of LLDB.</p>
 </li>
 <li><a class="reference internal" href="#symbol-locator">symbol-locator</a><ul>
 <li><a class="reference internal" href="#debuginfod">debuginfod</a></li>
+<li><a class="reference internal" href="#symstore">symstore</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#trace">trace</a><ul>
@@ -2453,7 +3016,7 @@ not be present in all copies of LLDB.</p>
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=d42a975f"></script>
+</div><script src="../_static/documentation_options.js?v=a9baa326"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=32e29ea5"></script>

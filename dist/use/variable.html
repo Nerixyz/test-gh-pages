@@ -3,12 +3,13 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Symbolication" href="symbolication.html" /><link rel="prev" title="Frame and Thread Format" href="formatting.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Frame and Thread Format" href="formatting.html" /><link rel="prev" title="lldb – The Debugger" href="../man/lldb.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
         <title>Variable Formatting - 🐛 LLDB</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=649a27d8" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="../_static/lldb-setting.css?v=bf28b315" />
     
@@ -155,25 +156,33 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Using LLDB</span></p>
-<ul class="current">
+  <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="map.html">GDB to LLDB command map</a></li>
-<li class="toctree-l1"><a class="reference internal" href="formatting.html">Frame and Thread Format</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Variable Formatting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="symbolication.html">Symbolication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="symbols.html">Symbols on macOS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="remote.html">Remote Debugging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="intel_pt.html">Tracing with Intel Processor Trace</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ondemand.html">On Demand Symbols</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aarch64-linux.html">Using LLDB On AArch64 Linux</a></li>
-<li class="toctree-l1"><a class="reference internal" href="symbolfilejson.html">JSON Symbol File Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lldbdap.html">Getting started with <code class="docutils literal notranslate"><span class="pre">lldb-dap</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="mcp.html">Model Context Protocol (MCP)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="links.html">Links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../man/lldb.html">Man Page</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using LLDB</span></p>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Variable Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formatting.html">Frame and Thread Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repeat-commands.html">Repeat Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbolication.html">Symbolication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbols.html">Symbols on macOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ondemand.html">On Demand Symbols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remote.html">Remote Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">IDE &amp; Tool Integration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lldbdap.html">Getting started with <code class="docutils literal notranslate"><span class="pre">lldb-dap</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="mcp.html">Model Context Protocol (MCP)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Platform-Specific Topics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aarch64-linux.html">Using LLDB On AArch64 Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intel_pt.html">Tracing with Intel Processor Trace</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Scripting LLDB</span></p>
 <ul>
@@ -190,36 +199,162 @@
 <li class="toctree-l2"><a class="reference internal" href="tutorials/extending-target-stop-hooks.html">Extending Target Stop-Hooks</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../python_api.html">Python API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_extensions.html">Python Extensions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_api.html">Python API</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Python API</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.summary.html">summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.synthetic.html">synthetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBAddress.html">SBAddress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBAddressRange.html">SBAddressRange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBAddressRangeList.html">SBAddressRangeList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBAttachInfo.html">SBAttachInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBBlock.html">SBBlock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBBreakpoint.html">SBBreakpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBBreakpointList.html">SBBreakpointList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBBreakpointLocation.html">SBBreakpointLocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBBreakpointName.html">SBBreakpointName</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBBroadcaster.html">SBBroadcaster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBCommandInterpreter.html">SBCommandInterpreter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBCommandInterpreterRunOptions.html">SBCommandInterpreterRunOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBCommandReturnObject.html">SBCommandReturnObject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBCommunication.html">SBCommunication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBCompileUnit.html">SBCompileUnit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBData.html">SBData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBDebugger.html">SBDebugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBDeclaration.html">SBDeclaration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBEnvironment.html">SBEnvironment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBError.html">SBError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBEvent.html">SBEvent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBExecutionContext.html">SBExecutionContext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBExpressionOptions.html">SBExpressionOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFile.html">SBFile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFileSpec.html">SBFileSpec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFileSpecList.html">SBFileSpecList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFormat.html">SBFormat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFrame.html">SBFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFrameList.html">SBFrameList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFunction.html">SBFunction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBHostOS.html">SBHostOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBInstruction.html">SBInstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBInstructionList.html">SBInstructionList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBLanguageRuntime.html">SBLanguageRuntime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBLaunchInfo.html">SBLaunchInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBLineEntry.html">SBLineEntry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBListener.html">SBListener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBMemoryRegionInfo.html">SBMemoryRegionInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBMemoryRegionInfoList.html">SBMemoryRegionInfoList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBModule.html">SBModule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBModuleSpec.html">SBModuleSpec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBModuleSpecList.html">SBModuleSpecList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBMutex.html">SBMutex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBPlatform.html">SBPlatform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBPlatformConnectOptions.html">SBPlatformConnectOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBPlatformShellCommand.html">SBPlatformShellCommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBProcess.html">SBProcess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBProcessAddress.html">SBProcessAddress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBProcessInfo.html">SBProcessInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBProcessInfoList.html">SBProcessInfoList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBProgress.html">SBProgress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBProtocolServer.html">SBProtocolServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBQueue.html">SBQueue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBQueueItem.html">SBQueueItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBReproducer.html">SBReproducer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSaveCoreOptions.html">SBSaveCoreOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBScriptObject.html">SBScriptObject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSection.html">SBSection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSourceManager.html">SBSourceManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBStatisticsOptions.html">SBStatisticsOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBStream.html">SBStream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBStringList.html">SBStringList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBStructuredData.html">SBStructuredData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSymbol.html">SBSymbol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSymbolContext.html">SBSymbolContext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSymbolContextList.html">SBSymbolContextList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSyntheticValueProvider.html">SBSyntheticValueProvider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTarget.html">SBTarget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBThread.html">SBThread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBThreadCollection.html">SBThreadCollection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBThreadPlan.html">SBThreadPlan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTrace.html">SBTrace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTraceCursor.html">SBTraceCursor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBType.html">SBType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeCategory.html">SBTypeCategory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeEnumMember.html">SBTypeEnumMember</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeEnumMemberList.html">SBTypeEnumMemberList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeFilter.html">SBTypeFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeFormat.html">SBTypeFormat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeList.html">SBTypeList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeMember.html">SBTypeMember</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeMemberFunction.html">SBTypeMemberFunction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeNameSpecifier.html">SBTypeNameSpecifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeStaticField.html">SBTypeStaticField</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeSummary.html">SBTypeSummary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeSummaryOptions.html">SBTypeSummaryOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeSynthetic.html">SBTypeSynthetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBUnixSignals.html">SBUnixSignals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBValue.html">SBValue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBValueList.html">SBValueList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBVariablesOptions.html">SBVariablesOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBWatchpoint.html">SBWatchpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBWatchpointOptions.html">SBWatchpointOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.value.html">value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.value_iter.html">value_iter</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Developing LLDB</span></p>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_extensions.html">Python Extensions</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Python Extensions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.operating_system.OperatingSystem.html">OperatingSystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.parsed_cmd.LLDBOptionValueParser.html">LLDBOptionValueParser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.parsed_cmd.ParsedCommand.html">ParsedCommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_breakpoint.ScriptedBreakpointResolver.html">ScriptedBreakpointResolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_command.ScriptedCommand.html">ScriptedCommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_frame_provider.ScriptedFrameProvider.html">ScriptedFrameProvider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_hook.ScriptedHook.html">ScriptedHook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_platform.ScriptedPlatform.html">ScriptedPlatform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_process.PassthroughScriptedProcess.html">PassthroughScriptedProcess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_process.PassthroughScriptedThread.html">PassthroughScriptedThread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_process.ScriptedFrame.html">ScriptedFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_process.ScriptedProcess.html">ScriptedProcess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_process.ScriptedThread.html">ScriptedThread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_stackframe_recognizer.ScriptedStackFrameRecognizer.html">ScriptedStackFrameRecognizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_string_summary.ScriptedStringSummary.html">ScriptedStringSummary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_synthetic_children.ScriptedSyntheticChildren.html">ScriptedSyntheticChildren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_thread_plan.ScriptedThreadPlan.html">ScriptedThreadPlan</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to LLDB</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../resources/overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/lldbdap-contributing.html">Contributing to LLDB-DAP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/build.html">Building</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/test.html">Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/qemu-testing.html">Testing LLDB using QEMU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/debugging.html">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/fuzzing.html">Fuzzing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Architecture &amp; Internals</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/namespacelldb.html">Public C++ API</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/index.html">Private C++ API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/sbapi.html">Scripting Bridge API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/dataformatters.html">Data Formatters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/formatterbytecode.html">Formatter Bytecode</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../resources/extensions.html">DWARF Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../resources/lldbgdbremote.html">GDB Remote Protocol Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../resources/lldbplatformpackets.html">LLDB Platform Packets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/addinglanguagesupport.html">Adding Programming Language Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/addingtargetsupport.html">Adding Target Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/caveats.html">Caveats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resources/projects.html">Open Projects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../resources/lldbdap-contributing.html">Contributing to LLDB-DAP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../resources/addinglanguagesupport.html">Adding Programming Language Support</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/namespacelldb.html">Public C++ API</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/index.html">Private C++ API</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<p class="caption" role="heading"><span class="caption-text">Protocol &amp; Format Specifications</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources/lldbgdbremote.html">GDB Remote Protocol Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/lldbplatformpackets.html">LLDB Platform Packets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/extensions.html">DWARF Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbolfilejson.html">JSON Symbol File Format</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="links.html">Links</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/llvm/llvm-project">Source Code</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/llvm/llvm-project/releases">Releases</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://discord.gg/xS7Z362">Join the Discord</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://discord.com/channels/636084430946959380/636732809708306432">Discord Channel</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://discourse.llvm.org/c/subprojects/lldb/8">Discussion Forums</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://llvm.org/docs/DeveloperPolicy.html">Developer Policy</a></li>
@@ -245,7 +380,7 @@
         </a>
         <div class="content-icon-container">
           <div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/llvm/llvm-project/edit/main/lldb/docs/use/variable.rst" title="Edit this page">
+  <a class="muted-link" href="https://github.com/llvm/llvm-project/edit/main/lldb/docs/use/variable.md" title="Edit this page">
     <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
@@ -319,7 +454,7 @@ result in something like:</p>
 }
 </pre></div>
 </div>
-<p>which is very hard to make sense of.</p>
+<p>which is very hard to understand.</p>
 <p>Note: <code class="docutils literal notranslate"><span class="pre">frame</span> <span class="pre">variable</span> <span class="pre">&lt;var&gt;</span></code> prints out the variable <code class="docutils literal notranslate"><span class="pre">&lt;var&gt;</span></code> in the current
 frame.</p>
 <p>On the other hand, a proper formatter is able to produce the following output:</p>
@@ -337,7 +472,8 @@ frame.</p>
 <p>Note: you can also use <code class="docutils literal notranslate"><span class="pre">v</span> <span class="pre">&lt;var&gt;</span></code> instead of <code class="docutils literal notranslate"><span class="pre">frame</span> <span class="pre">variable</span> <span class="pre">&lt;var&gt;</span></code>.</p>
 <p>It’s worth mentioning that the <code class="docutils literal notranslate"><span class="pre">size=5</span></code> string is produced by a summary
 provider and the list of children is produced by a synthetic child provider.
-More information about these providers is available later in this document.</p>
+More information about these providers is available in <a class="reference internal" href="#type-summary"><span class="std std-ref">Type Summary</span></a> and
+<a class="reference internal" href="#synthetic-children"><span class="std std-ref">Synthetic Children</span></a>, respectively.</p>
 <p>There are several features related to data visualization: formats, summaries,
 filters, synthetic children.</p>
 <p>To reflect this, the type command has five subcommands:</p>
@@ -370,7 +506,7 @@ hex, you can add a format to the int type.</p>
 </pre></div>
 </div>
 <p>at the LLDB command line.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">--format</span></code> (which you can shorten to -f) option accepts a <a class="reference internal" href="#format-name">format
+<p>The <code class="docutils literal notranslate"><span class="pre">--format</span></code> (which you can shorten to <code class="docutils literal notranslate"><span class="pre">-f</span></code>) option accepts a <a class="reference internal" href="#format-name">format
 name</a>. Then, you provide one or more types to which you want the
 new format applied.</p>
 <p>A frequent scenario is that your program has a typedef for a numeric type that
@@ -402,13 +538,13 @@ far from unrealistic in large software systems).</p>
 </pre></div>
 </div>
 <p>This is because by default LLDB cascades formats through typedef chains. In
-order to avoid that you can use the option -C no to prevent cascading, thus
-making the two commands required to achieve your goal:</p>
+order to prevent cascading, use the option <code class="docutils literal notranslate"><span class="pre">-C</span></code> with the value <code class="docutils literal notranslate"><span class="pre">no</span></code> when
+defining the type format:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="nb">type</span> <span class="nb">format</span> <span class="n">add</span> <span class="o">-</span><span class="n">C</span> <span class="n">no</span> <span class="o">-</span><span class="n">f</span> <span class="nb">hex</span> <span class="n">A</span>
 <span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="nb">type</span> <span class="nb">format</span> <span class="n">add</span> <span class="o">-</span><span class="n">C</span> <span class="n">no</span> <span class="o">-</span><span class="n">f</span> <span class="n">uint8_t</span><span class="p">[]</span> <span class="n">C</span>
 </pre></div>
 </div>
-<p>which provides the desired output:</p>
+<p>Without cascading, the same command gives different results:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">frame</span> <span class="n">variable</span> <span class="o">-</span><span class="n">T</span>
 <span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="n">a</span> <span class="o">=</span> <span class="mh">0x00000001</span>
 <span class="p">(</span><span class="n">B</span><span class="p">)</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
@@ -416,7 +552,8 @@ making the two commands required to achieve your goal:</p>
 <span class="p">(</span><span class="n">D</span><span class="p">)</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">4</span>
 </pre></div>
 </div>
-<p>Note, that qualifiers such as const and volatile will be stripped when matching types for example:</p>
+<p>Note that qualifiers such as <code class="docutils literal notranslate"><span class="pre">const</span></code> and <code class="docutils literal notranslate"><span class="pre">volatile</span></code> will be stripped when
+matching types. For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">frame</span> <span class="n">var</span> <span class="n">x</span> <span class="n">y</span> <span class="n">z</span>
 <span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="p">(</span><span class="n">const</span> <span class="nb">int</span><span class="p">)</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
@@ -428,9 +565,13 @@ making the two commands required to achieve your goal:</p>
 <span class="p">(</span><span class="n">volatile</span> <span class="nb">int</span><span class="p">)</span> <span class="n">z</span> <span class="o">=</span> <span class="mh">0x00000004</span>
 </pre></div>
 </div>
-<p>Two additional options that you will want to look at are –skip-pointers (-p)
-and –skip-references (-r). These two options prevent LLDB from applying a
-format for type T to values of type T* and T&amp; respectively.</p>
+<p>Type formats <em>can</em> be applied to pointers and references by using the
+<code class="docutils literal notranslate"><span class="pre">pointer</span></code> “adjective” before the type in the <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">format</span></code> command.
+However, they specify the format to be applied to the pointer or reference
+and not the value being referenced or pointed to. Use <code class="docutils literal notranslate"><span class="pre">--skip-pointers</span></code> (<code class="docutils literal notranslate"><span class="pre">-p</span></code>)
+and <code class="docutils literal notranslate"><span class="pre">--skip-references</span></code> (<code class="docutils literal notranslate"><span class="pre">-r</span></code>) to change this behavior. These two
+options prevent LLDB from applying a format defined for type <code class="docutils literal notranslate"><span class="pre">T</span></code> to
+values of type <code class="docutils literal notranslate"><span class="pre">T*</span></code> and <code class="docutils literal notranslate"><span class="pre">T&amp;</span></code>, respectively.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="nb">type</span> <span class="nb">format</span> <span class="n">add</span> <span class="o">-</span><span class="n">f</span> <span class="n">float32</span><span class="p">[]</span> <span class="nb">int</span>
 <span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">frame</span> <span class="n">variable</span> <span class="n">pointer</span> <span class="o">*</span><span class="n">pointer</span> <span class="o">-</span><span class="n">T</span>
 <span class="p">(</span><span class="nb">int</span> <span class="o">*</span><span class="p">)</span> <span class="n">pointer</span> <span class="o">=</span> <span class="p">{</span><span class="mf">1.46991e-39</span> <span class="mf">1.4013e-45</span><span class="p">}</span>
@@ -441,27 +582,22 @@ format for type T to values of type T* and T&amp; respectively.</p>
 <span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">*</span><span class="n">pointer</span> <span class="o">=</span> <span class="p">{</span><span class="mf">1.53302e-42</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>While they can be applied to pointers and references, formats will make no
-attempt to dereference the pointer and extract the value before applying the
-format, which means you are effectively formatting the address stored in the
-pointer rather than the pointee value. For this reason, you may want to use the
--p option when defining formats.</p>
-<p>If you need to delete a custom format simply type type format delete followed
-by the name of the type to which the format applies.Even if you defined the
-same format for multiple types on the same command, type format delete will
-only remove the format for the type name passed as argument.</p>
-<p>To delete ALL formats, use <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">format</span> <span class="pre">clear</span></code>. To see all the formats
-defined, use type format list.</p>
-<p>If all you need to do, however, is display one variable in a custom format,
-while leaving the others of the same type untouched, you can simply type:</p>
+<p>If you need to delete a custom format type, use <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">format</span> <span class="pre">delete</span></code> followed
+by the name of the type for which to delete the format.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="nb">type</span> <span class="nb">format</span> <span class="n">delete</span> <span class="nb">int</span>
+</pre></div>
+</div>
+<p>To delete <em>all</em> formats, use <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">format</span> <span class="pre">clear</span></code>.</p>
+<p>To see all the formats defined, use <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">format</span> <span class="pre">list</span></code>.</p>
+<p>Instead of installing a type format for the entire debugging session, you
+can specify type formats in an ad hoc manner using the <code class="docutils literal notranslate"><span class="pre">-f</span></code>
+option to the <code class="docutils literal notranslate"><span class="pre">frame</span> <span class="pre">variable</span></code> command. For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">frame</span> <span class="n">variable</span> <span class="n">counter</span> <span class="o">-</span><span class="n">f</span> <span class="nb">hex</span>
 </pre></div>
 </div>
-<p>This has the effect of displaying the value of counter as an hexadecimal
-number, and will keep showing it this way until you either pick a different
-format or till you let your program run again.</p>
-<p>Finally, this is a list of formatting options available out of which you can
-pick:</p>
+<p>Will display the value of counter as an hexadecimal number.</p>
+<section id="type-formats">
+<h3>Type Formats<a class="headerlink" href="#type-formats" title="Link to this heading">#</a></h3>
 <div class="table-wrapper docutils container" id="format-name">
 <table class="docutils align-default" id="format-name">
 <tbody>
@@ -603,133 +739,175 @@ also the string this address is pointing to</p></td>
 </table>
 </div>
 </section>
+</section>
 <section id="type-summary">
-<h2>Type Summary<a class="headerlink" href="#type-summary" title="Link to this heading">#</a></h2>
-<p>Type formats work by showing a different kind of display for the value of a
-variable. However, they only work for basic types. When you want to display a
-class or struct in a custom format, you cannot do that using formats.</p>
-<p>A different feature, type summaries, works by extracting information from
-classes, structures, … (aggregate types) and arranging it in a user-defined
-format, as in the following example:</p>
-<p>before adding a summary…</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">frame</span> <span class="n">variable</span> <span class="o">-</span><span class="n">T</span> <span class="n">one</span>
-<span class="p">(</span><span class="n">i_am_cool</span><span class="p">)</span> <span class="n">one</span> <span class="o">=</span> <span class="p">{</span>
-   <span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
-   <span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">3.14159</span>
-   <span class="p">(</span><span class="n">char</span><span class="p">)</span> <span class="n">z</span> <span class="o">=</span> <span class="s1">&#39;E&#39;</span>
+<span id="id1"></span><h2>Type Summary<a class="headerlink" href="#type-summary" title="Link to this heading">#</a></h2>
+<p>Type formats specify the way to format a variable/value with a fundamental type.
+When you want to display a variable/value for a user-defined type,<a class="footnote-reference brackets" href="#footnote-1" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> you need
+another tool, type summaries.</p>
+<p>Type summaries work by extracting information from aggregate types and arranging it
+in a user-defined format. Consider the following example:</p>
+<p>Before adding a type summary, for a C++ program with a <code class="docutils literal notranslate"><span class="pre">struct</span></code> declared like</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>LLDB will format a variable that is an instance of the <code class="docutils literal notranslate"><span class="pre">Person</span></code> type as</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">frame</span> <span class="n">variable</span> <span class="o">-</span><span class="n">T</span> <span class="n">p</span>
+<span class="p">(</span><span class="n">Person</span><span class="p">)</span> <span class="n">p</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="p">(</span><span class="n">std</span><span class="p">::</span><span class="n">string</span><span class="p">)</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Jaime&quot;</span>
+   <span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">44</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>after adding a summary…</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">frame</span> <span class="n">variable</span> <span class="n">one</span>
-<span class="p">(</span><span class="n">i_am_cool</span><span class="p">)</span> <span class="n">one</span> <span class="o">=</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">3.14159</span><span class="p">,</span> <span class="n">char</span> <span class="o">=</span> <span class="mi">69</span>
+<p>Using a type summary, the LLDB user can specify that an instance of
+the <code class="docutils literal notranslate"><span class="pre">Person</span></code> type be formatted as</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">frame</span> <span class="n">variable</span> <span class="o">-</span><span class="n">T</span> <span class="n">p</span>
+<span class="p">(</span><span class="n">Person</span><span class="p">)</span> <span class="n">p</span> <span class="o">=</span> <span class="n">The</span> <span class="n">person</span> <span class="ow">is</span> <span class="n">named</span> <span class="s2">&quot;Jaime&quot;</span> <span class="ow">and</span> <span class="ow">is</span> <span class="mi">44</span> <span class="n">years</span> <span class="n">old</span><span class="o">.</span>
 </pre></div>
 </div>
-<p>There are two ways to use type summaries: the first one is to bind a summary
-string to the type; the second is to write a Python script that returns the
-string to be used as summary. Both options are enabled by the type summary add
-command.</p>
-<p>The command to obtain the output shown in the example is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="nb">type</span> <span class="n">summary</span> <span class="n">add</span> <span class="o">--</span><span class="n">summary</span><span class="o">-</span><span class="n">string</span> <span class="s2">&quot;int = $</span><span class="si">{var.x}</span><span class="s2">, float = $</span><span class="si">{var.y}</span><span class="s2">, char = ${var.z</span><span class="si">%u</span><span class="s2">}&quot;</span> <span class="n">i_am_cool</span>
+<p>There are two methods for specifying type summaries:
+1. by binding a Summary String to the type; and
+2. by writing and registering a Python script that returns the Summary String for a type.</p>
+<p>Method (1) was used to format the <code class="docutils literal notranslate"><span class="pre">Person</span></code> type shown above:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="nb">type</span> <span class="n">summary</span> <span class="n">add</span> <span class="o">--</span><span class="n">summary</span><span class="o">-</span><span class="n">string</span> <span class="s2">&quot;The person is named $</span><span class="si">{var.name}</span><span class="s2"> and is $</span><span class="si">{var.age}</span><span class="s2"> years old.&quot;</span> <span class="n">Person</span>
 </pre></div>
 </div>
-<p>Initially, we will focus on summary strings, and then describe the Python
-binding mechanism.</p>
 </section>
 <section id="summary-format-matching-on-pointers">
 <h2>Summary Format Matching On Pointers<a class="headerlink" href="#summary-format-matching-on-pointers" title="Link to this heading">#</a></h2>
-<p>A summary formatter for a type <code class="docutils literal notranslate"><span class="pre">T</span></code> might or might not be appropriate to use
-for pointers to that type. If the formatter is only appropriate for the type and
-not its pointers, use the <code class="docutils literal notranslate"><span class="pre">-p</span></code> option to restrict it to match SBValues of type
-<code class="docutils literal notranslate"><span class="pre">T</span></code>. If you want the formatter to also match pointers to the type, you can use
-the <code class="docutils literal notranslate"><span class="pre">-d</span></code> option to specify how many pointer layers the formatter should match.
-The default value is 1, so if you don’t specify <code class="docutils literal notranslate"><span class="pre">-p</span></code> or <code class="docutils literal notranslate"><span class="pre">-d</span></code>, your formatter
-will be used on SBValues of type <code class="docutils literal notranslate"><span class="pre">T</span></code> and <code class="docutils literal notranslate"><span class="pre">T*</span></code>. If you want to also match
-<code class="docutils literal notranslate"><span class="pre">T**</span></code> set <code class="docutils literal notranslate"><span class="pre">-d</span></code> to 2, etc. In all cases, the SBValue passed to the summary
-formatter will be the matched ValueObject. lldb doesn’t dereference the matched
-value down to the SBValue of type <code class="docutils literal notranslate"><span class="pre">T</span></code> before passing it to your formatter.</p>
+<p>A summary formatter for a type <code class="docutils literal notranslate"><span class="pre">T</span></code> may not be appropriate to use
+for pointers to that type.</p>
+<ul class="simple">
+<li><p>If the formatter is only appropriate for the type and
+not its pointers, use the <code class="docutils literal notranslate"><span class="pre">-p</span></code> option to <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">summary</span></code> to restrict it to match
+values of type <code class="docutils literal notranslate"><span class="pre">T</span></code>.</p></li>
+<li><p>If the formatter is appropriate for the type and its pointers,
+use the <code class="docutils literal notranslate"><span class="pre">-d</span> <span class="pre">&lt;number&gt;</span></code> option to <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">summary</span></code> to specify the number of
+pointer indirections the formatter should match. The default value is 1. If you want
+to also match <code class="docutils literal notranslate"><span class="pre">T**</span></code> set <code class="docutils literal notranslate"><span class="pre">-d</span></code> to 2, and so on.</p></li>
+</ul>
+<p>In all cases, the value passed to the summary formatter for interpolation
+into the Summary String (see <a class="reference internal" href="#summary-strings"><span class="std std-ref">Summary Strings</span></a>) will be dereferenced to the type <code class="docutils literal notranslate"><span class="pre">T</span></code>
+if the type <code class="docutils literal notranslate"><span class="pre">T</span></code> is reached in at most the number of dereferences you specify
+to the <code class="docutils literal notranslate"><span class="pre">-d</span></code> option (or once (1), when using the default).</p>
+<p>For example, assume that the <code class="docutils literal notranslate"><span class="pre">Person</span></code> struct is in the scope of a C++
+program with the following declarations:</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">Person</span><span class="w"> </span><span class="n">p</span><span class="p">{.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Jaime&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44</span><span class="p">};</span>
+<span class="n">Person</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">{</span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">{.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Jaime&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">44</span><span class="p">}};</span>
+<span class="n">Person</span><span class="w"> </span><span class="o">**</span><span class="n">r</span><span class="p">{</span><span class="o">&amp;</span><span class="n">q</span><span class="p">};</span>
+</pre></div>
+</div>
+<p>And the following Summary String has been bound to <code class="docutils literal notranslate"><span class="pre">Person</span></code> type using the <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">summary</span></code>
+command shown here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="nb">type</span> <span class="n">summary</span> <span class="n">add</span> <span class="o">--</span><span class="n">summary</span><span class="o">-</span><span class="n">string</span> <span class="s2">&quot;The person is named $</span><span class="si">{var.name}</span><span class="s2"> and is $</span><span class="si">{var.age}</span><span class="s2"> years old.&quot;</span> <span class="n">Person</span>
+</pre></div>
+</div>
+<p>Then LLDB will produce output which, at first, is unexpected:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">frame</span> <span class="n">var</span> <span class="n">p</span>
+<span class="p">(</span><span class="n">Person</span><span class="p">)</span> <span class="n">The</span> <span class="n">person</span> <span class="ow">is</span> <span class="n">named</span> <span class="s2">&quot;Jaime&quot;</span> <span class="ow">and</span> <span class="ow">is</span> <span class="mi">44</span> <span class="n">years</span> <span class="n">old</span><span class="o">.</span>
+<span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">frame</span> <span class="n">var</span> <span class="n">q</span>
+<span class="p">(</span><span class="n">Person</span> <span class="o">*</span><span class="p">)</span> <span class="mh">0x00000000004172b0</span> <span class="n">The</span> <span class="n">person</span> <span class="ow">is</span> <span class="n">named</span> <span class="s2">&quot;Jaime&quot;</span> <span class="ow">and</span> <span class="ow">is</span> <span class="mi">44</span> <span class="n">years</span> <span class="n">old</span><span class="o">.</span>
+<span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">frame</span> <span class="n">var</span> <span class="n">r</span>
+<span class="p">(</span><span class="n">Person</span> <span class="o">**</span><span class="p">)</span> <span class="mh">0x00007fffffffd658</span> <span class="n">error</span><span class="p">:</span> <span class="n">summary</span> <span class="n">string</span> <span class="n">parsing</span> <span class="n">error</span>
+</pre></div>
+</div>
+<p>Upon closer inspection, LLDB is doing exactly as instructed. <code class="docutils literal notranslate"><span class="pre">p</span></code> has type <code class="docutils literal notranslate"><span class="pre">T</span></code>
+and needs to be dereferenced 0 times to reach type <code class="docutils literal notranslate"><span class="pre">T</span></code>. <code class="docutils literal notranslate"><span class="pre">q</span></code>
+has type <code class="docutils literal notranslate"><span class="pre">*T</span></code> and needs to be dereferenced 1 time to reach type <code class="docutils literal notranslate"><span class="pre">T</span></code>. Because
+the Summary String was installed with the default <code class="docutils literal notranslate"><span class="pre">-d</span></code> value of 1, the summary formatter
+will use <code class="docutils literal notranslate"><span class="pre">*q</span></code> for interpolation.</p>
+<p>However, <code class="docutils literal notranslate"><span class="pre">r</span></code> has type <code class="docutils literal notranslate"><span class="pre">**T</span></code> and needs to be dereferenced 2 times to reach <code class="docutils literal notranslate"><span class="pre">T</span></code>. Because
+the Summary String was installed with the default <code class="docutils literal notranslate"><span class="pre">-d</span></code> value of 1, the summary formatter
+will use <code class="docutils literal notranslate"><span class="pre">*r</span></code> for interpolation. Because <code class="docutils literal notranslate"><span class="pre">*r</span></code> has type <code class="docutils literal notranslate"><span class="pre">*T</span></code> (and not <code class="docutils literal notranslate"><span class="pre">T</span></code>), the error
+above is reasonable.</p>
 </section>
 <section id="summary-strings">
-<h2>Summary Strings<a class="headerlink" href="#summary-strings" title="Link to this heading">#</a></h2>
-<p>Summary strings are written using a simple control language, exemplified by the
-snippet above. A summary string contains a sequence of tokens that are
-processed by LLDB to generate the summary.</p>
-<p>Summary strings can contain plain text, control characters and special
-variables that have access to information about the current object and the
-overall program state.</p>
+<span id="id3"></span><h2>Summary Strings<a class="headerlink" href="#summary-strings" title="Link to this heading">#</a></h2>
+<p>A Summary String contains a sequence of tokens that are processed by LLDB to
+generate the summary for a user-defined type. Summary Strings are written in
+an LLDB-specific control language.<a class="footnote-reference brackets" href="#footnote-2" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
+<p>Summary Strings can contain</p>
+<ul class="simple">
+<li><p>references to the instance of the user-defined type being formatted by the
+Summary String</p></li>
+<li><p>plain text,</p></li>
+<li><p>control characters, and</p></li>
+<li><p>special variables that have access to information about the current object
+and the overall program state.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">${var}</span></code> can be used refer to the variable being formatted by the Summary String.</p>
 <p>Plain text is any sequence of characters that doesn’t contain a <code class="docutils literal notranslate"><span class="pre">{</span></code>, <code class="docutils literal notranslate"><span class="pre">}</span></code>, <code class="docutils literal notranslate"><span class="pre">$</span></code>,
 or <code class="docutils literal notranslate"><span class="pre">\</span></code> character, which are the syntax control characters.</p>
-<p>The special variables are found in between a “${” prefix, and end with a “}”
-suffix. Variables can be a simple name or they can refer to complex objects
-that have subitems themselves. In other words, a variable looks like
-<code class="docutils literal notranslate"><span class="pre">${object}</span></code> or <code class="docutils literal notranslate"><span class="pre">${object.child.otherchild}</span></code>. A variable can also be
-prefixed or suffixed with other symbols meant to change the way its value is
-handled. An example is <code class="docutils literal notranslate"><span class="pre">${*var.int_pointer[0-3]}</span></code>.</p>
-<p>Basically, the syntax is the same one described Frame and Thread Formatting
-plus additional symbols specific for summary strings. The main of them is
-${var, which is used refer to the variable that a summary is being created for.</p>
-<p>The simplest thing you can do is grab a member variable of a class or structure
-by typing its expression path. In the previous example, the expression path for
-the field float y is simply .y. Thus, to ask the summary string to display y
-you would type ${var.y}.</p>
-<p>If you have code like the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">A</span> <span class="p">{</span>
-   <span class="nb">int</span> <span class="n">x</span><span class="p">;</span>
-   <span class="nb">int</span> <span class="n">y</span><span class="p">;</span>
+<p>Special variables can be used between <code class="docutils literal notranslate"><span class="pre">${</span></code> prefix, and <code class="docutils literal notranslate"><span class="pre">}</span></code> suffix. For example,
+<code class="docutils literal notranslate"><span class="pre">var</span></code> could be used to refer to the instance of the variable being
+formatted by the Summary String. Children of variables can be accessed using the
+variable itself (e.g. <code class="docutils literal notranslate"><span class="pre">${var.child.otherchild}</span></code> or <code class="docutils literal notranslate"><span class="pre">${file.basename}</span></code>). A variable
+can also be prefixed or suffixed with other symbols to change the way its value is
+handled. For example, <code class="docutils literal notranslate"><span class="pre">${*var.int_pointer[0-3]}</span></code>.</p>
+<p>The simplest thing you can do is access a member variable of a class or structure
+by typing its expression path. The expression path for a field named <code class="docutils literal notranslate"><span class="pre">y</span></code> in a
+user-defined type is simply <code class="docutils literal notranslate"><span class="pre">.y</span></code>. Thus, to ask the Summary String to display
+field <code class="docutils literal notranslate"><span class="pre">y</span></code> of an instance of <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">A</span></code> (below) you would type <code class="docutils literal notranslate"><span class="pre">${var.y}</span></code>.</p>
+<p>If you have code in a C++ program with the following declarations:</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">A</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
 <span class="p">};</span>
-<span class="n">struct</span> <span class="n">B</span> <span class="p">{</span>
-   <span class="n">A</span> <span class="n">x</span><span class="p">;</span>
-   <span class="n">A</span> <span class="n">y</span><span class="p">;</span>
-   <span class="nb">int</span> <span class="o">*</span><span class="n">z</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">B</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">A</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">   </span><span class="n">A</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">z</span><span class="p">;</span>
 <span class="p">};</span>
 </pre></div>
 </div>
-<p>the expression path for the y member of the x member of an object of type B
-would be .x.y and you would type <code class="docutils literal notranslate"><span class="pre">${var.x.y}</span></code> to display it in a summary
-string for type B.</p>
-<p>By default, a summary defined for type T, also works for types T* and T&amp; (you
-can disable this behavior if desired). For this reason, expression paths do not
-differentiate between . and -&gt;, and the above expression path .x.y would be
-just as good if you were displaying a B*, or even if the actual definition of B
-were:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">B</span> <span class="p">{</span>
-   <span class="n">A</span> <span class="o">*</span><span class="n">x</span><span class="p">;</span>
-   <span class="n">A</span> <span class="n">y</span><span class="p">;</span>
-   <span class="nb">int</span> <span class="o">*</span><span class="n">z</span><span class="p">;</span>
+<p>And were writing a Summary String to format an instance of <code class="docutils literal notranslate"><span class="pre">B</span></code>, the expression
+path for the <code class="docutils literal notranslate"><span class="pre">y</span></code> member of the <code class="docutils literal notranslate"><span class="pre">x</span></code> member would be <code class="docutils literal notranslate"><span class="pre">.x.y</span></code> and you would
+use <code class="docutils literal notranslate"><span class="pre">${var.x.y}</span></code> in the Summary String.</p>
+<p>By default, a summary defined for type <code class="docutils literal notranslate"><span class="pre">T</span></code>, also works for types <code class="docutils literal notranslate"><span class="pre">T*</span></code> and <code class="docutils literal notranslate"><span class="pre">T&amp;</span></code>
+(as mentioned above, you can disable this behavior if desired). For this reason,
+expression paths do not differentiate between <code class="docutils literal notranslate"><span class="pre">.</span></code> and <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code>, and the above
+expression path <code class="docutils literal notranslate"><span class="pre">.x.y</span></code> would be valid for displaying a value with type <code class="docutils literal notranslate"><span class="pre">B*</span></code>,
+<code class="docutils literal notranslate"><span class="pre">B</span></code> or even if the actual declaration of <code class="docutils literal notranslate"><span class="pre">B</span></code> were instead:</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">B</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="p">;</span>
+<span class="w">   </span><span class="n">A</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">z</span><span class="p">;</span>
 <span class="p">};</span>
 </pre></div>
 </div>
-<p>This is unlike the behavior of frame variable which, on the contrary, will
-enforce the distinction. As hinted above, the rationale for this choice is that
-waiving this distinction enables you to write a summary string once for type T
-and use it for both T and T* instances. As a summary string is mostly about
+<p>This behavior differs from <code class="docutils literal notranslate"><span class="pre">frame</span> <span class="pre">variable</span></code> which does enforce the distinction
+between <code class="docutils literal notranslate"><span class="pre">T</span></code> and <code class="docutils literal notranslate"><span class="pre">T*</span></code>. The rationale for this choice is that ignoring this
+distinction enables you to write a Summary String once for type <code class="docutils literal notranslate"><span class="pre">T</span></code> and use
+it for both <code class="docutils literal notranslate"><span class="pre">T</span></code> and <code class="docutils literal notranslate"><span class="pre">T*</span></code> instances. As a Summary String is mostly about
 extracting nested members’ information, a pointer to an object is just as good
-as the object itself for the purpose.</p>
-<p>If you need to access the value of the integer pointed to by B::z, you cannot
-simply say ${var.z} because that symbol refers to the pointer z. In order to
-dereference it and get the pointed value, you should say <code class="docutils literal notranslate"><span class="pre">${*var.z}</span></code>. The
-<code class="docutils literal notranslate"><span class="pre">${*var</span></code> tells LLDB to get the object that the expression paths leads to, and
-then dereference it. In this example is it equivalent to <code class="docutils literal notranslate"><span class="pre">*(bObject.z)</span></code> in
-C/C++ syntax. Because <code class="docutils literal notranslate"><span class="pre">.</span></code> and <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code> operators can both be used, there is no
-need to have dereferences in the middle of an expression path (e.g. you do not
-need to type <code class="docutils literal notranslate"><span class="pre">${*(var.x).x}</span></code>) to read A::x as contained in <code class="docutils literal notranslate"><span class="pre">*(B::x)</span></code>. To
-achieve that effect you can simply write <code class="docutils literal notranslate"><span class="pre">${var.x-&gt;x}</span></code>, or even
-<code class="docutils literal notranslate"><span class="pre">${var.x.x}</span></code>. The <code class="docutils literal notranslate"><span class="pre">*</span></code> operator only binds to the result of the whole
-expression path, rather than piecewise, and there is no way to use parentheses
-to change that behavior.</p>
-<p>Of course, a summary string can contain more than one ${var specifier, and can
-use <code class="docutils literal notranslate"><span class="pre">${var</span></code> and <code class="docutils literal notranslate"><span class="pre">${*var</span></code> specifiers together.</p>
+as the object itself for that purpose.</p>
+<p>If you need to access the value of the integer pointed to by <code class="docutils literal notranslate"><span class="pre">B::z</span></code>, your
+Summary String cannot simply use expression path <code class="docutils literal notranslate"><span class="pre">.z</span></code> because that symbol
+refers to the pointer <code class="docutils literal notranslate"><span class="pre">z</span></code>. To access the value of the integer pointed to by
+<code class="docutils literal notranslate"><span class="pre">B::z</span></code> in your Summary String, you should use the same expression path but
+dereference it: <code class="docutils literal notranslate"><span class="pre">${*var.z}</span></code>. The <code class="docutils literal notranslate"><span class="pre">*</span></code> tells LLDB to get the object that
+the expression path leads to and then dereference it. In this example, it is
+equivalent to <code class="docutils literal notranslate"><span class="pre">*(bObject.z)</span></code> in C/C++ syntax. Because <code class="docutils literal notranslate"><span class="pre">.</span></code> and <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code>
+operators can be used interchangeably, there is no need to have dereferences
+in the middle of an expression path. For example, you do not need to type
+<code class="docutils literal notranslate"><span class="pre">${*(var.x).x}</span></code> to read <code class="docutils literal notranslate"><span class="pre">A::x</span></code> as contained in <code class="docutils literal notranslate"><span class="pre">*(B::x)</span></code>. Instead, you
+can simply write <code class="docutils literal notranslate"><span class="pre">${var.x-&gt;x}</span></code>, or even <code class="docutils literal notranslate"><span class="pre">${var.x.x}</span></code>. The <code class="docutils literal notranslate"><span class="pre">*</span></code> operator
+only binds to the result of the whole expression path, rather than piecewise,
+and there is no way to use parentheses to change that behavior.</p>
 </section>
 <section id="formatting-summary-elements">
 <h2>Formatting Summary Elements<a class="headerlink" href="#formatting-summary-elements" title="Link to this heading">#</a></h2>
 <p>An expression path can include formatting codes. Much like the type formats
 discussed previously, you can also customize the way variables are displayed in
-summary strings, regardless of the format they have applied to their types. To
+Summary Strings, regardless of the format they have applied to their types. To
 do that, you can use %format inside an expression path, as in ${var.x-&gt;x%u},
 which would display the value of x as an unsigned integer.</p>
 <p>Additionally, custom output can be achieved by using an LLVM format string,
 commencing with the <code class="docutils literal notranslate"><span class="pre">:</span></code> marker. To illustrate, compare <code class="docutils literal notranslate"><span class="pre">${var.byte%x}</span></code> and
-<code class="docutils literal notranslate"><span class="pre">${var.byte:x-}</span></code>. The former uses lldb’s builtin hex formatting (<code class="docutils literal notranslate"><span class="pre">x</span></code>),
+<code class="docutils literal notranslate"><span class="pre">${var.byte:x-}</span></code>. The former uses LLDB’s builtin hex formatting (<code class="docutils literal notranslate"><span class="pre">x</span></code>),
 which unconditionally inserts a <code class="docutils literal notranslate"><span class="pre">0x</span></code> prefix, and also zero pads the value to
 match the size of the type. The latter uses <code class="docutils literal notranslate"><span class="pre">llvm::formatv</span></code> formatting
 (<code class="docutils literal notranslate"><span class="pre">:x-</span></code>), and will print only the hex value, with no <code class="docutils literal notranslate"><span class="pre">0x</span></code> prefix, and no
@@ -777,7 +955,7 @@ themselves, but which carry a special meaning when used in this context:</p>
 </tbody>
 </table>
 </div>
-<p>Since lldb 3.7.0, you can also specify <code class="docutils literal notranslate"><span class="pre">${script.var:pythonFuncName}</span></code>.</p>
+<p>Since LLDB 3.7.0, you can also specify <code class="docutils literal notranslate"><span class="pre">${script.var:pythonFuncName}</span></code>.</p>
 <p>It is expected that the function name you use specifies a function whose
 signature is the same as a Python summary function. The return string from the
 function will be placed verbatim in the output.</p>
@@ -790,7 +968,7 @@ syntax. For example the following:</p>
 </section>
 <section id="element-inlining">
 <h2>Element Inlining<a class="headerlink" href="#element-inlining" title="Link to this heading">#</a></h2>
-<p>Option –inline-children (-c) to type summary add tells LLDB not to look for a summary string, but instead to just print a listing of all the object’s children on one line.</p>
+<p>Option –inline-children (-c) to type summary add tells LLDB not to look for a Summary String, but instead to just print a listing of all the object’s children on one line.</p>
 <p>As an example, given a type pair:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">frame</span> <span class="n">variable</span> <span class="o">--</span><span class="n">show</span><span class="o">-</span><span class="n">types</span> <span class="n">a_pair</span>
 <span class="p">(</span><span class="n">pair</span><span class="p">)</span> <span class="n">a_pair</span> <span class="o">=</span> <span class="p">{</span>
@@ -836,7 +1014,7 @@ hard to read for real-life scenarios.</p>
 <p>To cope with the issue, LLDB supports native bitfield formatting in summary
 strings. If your expression paths leads to a so-called scalar type (the usual
 int, float, char, double, short, long, long long, double, long double and
-unsigned variants), you can ask LLDB to only grab some bits out of the value
+unsigned variants), you can ask LLDB to only access some bits out of the value
 and display them in any format you like. If you only need one bit you can use
 the [n], just like indexing an array. To extract multiple bits, you can use a
 slice-like syntax: [n-m], e.g.</p>
@@ -853,8 +1031,11 @@ slice-like syntax: [n-m], e.g.</p>
 extracting bitfields out of a float object.</p>
 <p>When typing a range, the extremes n and m are always included, and the order of
 the indices is irrelevant.</p>
-<p>LLDB also allows to use a similar syntax to display array members inside a summary string. For instance, you may want to display all arrays of a given type using a more compact notation than the default, and then just delve into individual array members that prove interesting to your debugging task. You can tell LLDB to format arrays in special ways, possibly independent of the way the array members’ datatype is formatted.
-e.g.</p>
+<p>LLDB also allows to use a similar syntax to display array members inside a Summary String.
+For instance, you may want to display all arrays of a given type using a more compact
+notation than the default, and then just delve into individual array members that prove
+interesting to your debugging task. You can tell LLDB to format arrays in special ways,
+possibly independent of the way the array members’ datatype is formatted. For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">frame</span> <span class="n">variable</span> <span class="n">sarray</span>
 <span class="p">(</span><span class="n">Simple</span> <span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="n">sarray</span> <span class="o">=</span> <span class="p">{</span>
    <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
@@ -880,7 +1061,10 @@ e.g.</p>
 <span class="p">(</span><span class="n">Simple</span> <span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="n">sarray</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>The [] symbol amounts to: if var is an array and I know its size, apply this summary string to every element of the array. Here, we are asking LLDB to display .x for every element of the array, and in fact this is what happens. If you find some of those integers anomalous, you can then inspect that one item in greater detail, without the array format getting in the way:</p>
+<p>The [] symbol amounts to: if <code class="docutils literal notranslate"><span class="pre">var</span></code> is an array and I know its size, apply this Summary String
+to every element of the array. Here, we are asking LLDB to display <code class="docutils literal notranslate"><span class="pre">.x</span></code> for every element of
+the array, and in fact this is what happens. If you find some of those integers anomalous,
+you can then inspect that one item in greater detail, without the array format getting in the way:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">frame</span> <span class="n">variable</span> <span class="n">sarray</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="p">(</span><span class="n">Simple</span><span class="p">)</span> <span class="n">sarray</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
    <span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
@@ -912,7 +1096,7 @@ square brackets, as in:</p>
 </div>
 <p>This syntax works for char* as well as for char[] because LLDB can rely on the
 final 0 terminator to know when the string has ended.</p>
-<p>LLDB has default summary strings for char* and char[] that use this special
+<p>LLDB has default Summary Strings for char* and char[] that use this special
 case. On debugger startup, the following are defined automatically:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="nb">type</span> <span class="n">summary</span> <span class="n">add</span> <span class="o">--</span><span class="n">summary</span><span class="o">-</span><span class="n">string</span> <span class="s2">&quot;${var</span><span class="si">%s</span><span class="s2">}&quot;</span> <span class="s2">&quot;char *&quot;</span>
 <span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="nb">type</span> <span class="n">summary</span> <span class="n">add</span> <span class="o">--</span><span class="n">summary</span><span class="o">-</span><span class="n">string</span> <span class="s2">&quot;${var</span><span class="si">%s</span><span class="s2">}&quot;</span> <span class="o">-</span><span class="n">x</span> <span class="s2">&quot;char \[[0-9]+]&quot;</span>
@@ -931,16 +1115,16 @@ the square brackets operator to get the expected output.</p>
 </section>
 <section id="python-scripting">
 <h2>Python Scripting<a class="headerlink" href="#python-scripting" title="Link to this heading">#</a></h2>
-<p>Most of the times, summary strings prove good enough for the job of summarizing
+<p>Most of the times, Summary Strings prove good enough for the job of summarizing
 the contents of a variable. However, as soon as you need to do more than
-picking some values and rearranging them for display, summary strings stop
-being an effective tool. This is because summary strings lack the power to
+picking some values and rearranging them for display, Summary Strings stop
+being an effective tool. This is because Summary Strings lack the power to
 actually perform any kind of computation on the value of variables.</p>
 <p>To solve this issue, you can bind some Python scripting code as a summary for
-your datatype, and that script has the ability to both extract children
-variables as the summary strings do and to perform active computation on the
+your datatype, and that script has the ability to both extract child
+variables as the Summary Strings do, and to perform active computation on the
 extracted values. As a small example, let’s say we have a Rectangle class:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Rectangle</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Rectangle</span>
 <span class="p">{</span>
 <span class="n">private</span><span class="p">:</span>
    <span class="nb">int</span> <span class="n">height</span><span class="p">;</span>
@@ -954,14 +1138,14 @@ extracted values. As a small example, let’s say we have a Rectangle class:</p>
 <span class="p">};</span>
 </pre></div>
 </div>
-<p>Summary strings are effective to reduce the screen real estate used by the
+<p>Summary Strings are effective to reduce the screen real estate used by the
 default viewing mode, but are not effective if we want to display the area and
 perimeter of Rectangle objects</p>
 <p>To obtain this, we can simply attach a small Python script to the Rectangle
 class, as shown in this example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="nb">type</span> <span class="n">summary</span> <span class="n">add</span> <span class="o">-</span><span class="n">P</span> <span class="n">Rectangle</span>
 <span class="n">Enter</span> <span class="n">your</span> <span class="n">Python</span> <span class="n">command</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span> <span class="n">Type</span> <span class="s1">&#39;DONE&#39;</span> <span class="n">to</span> <span class="n">end</span><span class="o">.</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">function</span> <span class="p">(</span><span class="n">valobj</span><span class="p">,</span><span class="n">internal_dict</span><span class="p">,</span><span class="n">options</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">function</span> <span class="p">(</span><span class="n">valobj</span><span class="p">,</span><span class="n">internal_dict</span><span class="p">,</span><span class="n">options</span><span class="p">):</span>
    <span class="n">height_val</span> <span class="o">=</span> <span class="n">valobj</span><span class="o">.</span><span class="n">GetChildMemberWithName</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">)</span>
    <span class="n">width_val</span> <span class="o">=</span> <span class="n">valobj</span><span class="o">.</span><span class="n">GetChildMemberWithName</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">)</span>
    <span class="n">height</span> <span class="o">=</span> <span class="n">height_val</span><span class="o">.</span><span class="n">GetValueAsUnsigned</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -984,21 +1168,21 @@ passed two parameters: <code class="docutils literal notranslate"><span class="p
 <p><code class="docutils literal notranslate"><span class="pre">internal_dict</span></code> is an internal support parameter used by LLDB and you should
 not touch it.</p>
 <p><code class="docutils literal notranslate"><span class="pre">valobj</span></code> is the object encapsulating the actual variable being displayed, and
-its type is <code class="xref any docutils literal notranslate"><span class="pre">SBValue</span></code>. Out of the many possible operations on an <code class="xref any docutils literal notranslate"><span class="pre">SBValue</span></code>, the
+its type is <a class="reference internal" href="../python_api/lldb.SBValue.html#lldb.SBValue" title="lldb.SBValue"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBValue</span></code></a>. Out of the many possible operations on an <a class="reference internal" href="../python_api/lldb.SBValue.html#lldb.SBValue" title="lldb.SBValue"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBValue</span></code></a>, the
 basic one is retrieve the children objects it contains (essentially, the fields
 of the object wrapped by it), by calling <code class="docutils literal notranslate"><span class="pre">GetChildMemberWithName()</span></code>, passing
 it the child’s name as a string.</p>
 <p>If the variable has a value, you can ask for it, and return it as a string
 using <code class="docutils literal notranslate"><span class="pre">GetValue()</span></code>, or as a signed/unsigned number using
 <code class="docutils literal notranslate"><span class="pre">GetValueAsSigned()</span></code>, <code class="docutils literal notranslate"><span class="pre">GetValueAsUnsigned()</span></code>. It is also possible to
-retrieve an <code class="xref any docutils literal notranslate"><span class="pre">SBData</span></code> object by calling <code class="docutils literal notranslate"><span class="pre">GetData()</span></code> and then read the object’s
-contents out of the <code class="xref any docutils literal notranslate"><span class="pre">SBData</span></code>.</p>
+retrieve an <a class="reference internal" href="../python_api/lldb.SBData.html#lldb.SBData" title="lldb.SBData"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBData</span></code></a> object by calling <code class="docutils literal notranslate"><span class="pre">GetData()</span></code> and then read the object’s
+contents out of the <a class="reference internal" href="../python_api/lldb.SBData.html#lldb.SBData" title="lldb.SBData"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBData</span></code></a>.</p>
 <p>If you need to delve into several levels of hierarchy, as you can do with
-summary strings, you can use the method <code class="docutils literal notranslate"><span class="pre">GetValueForExpressionPath()</span></code>,
-passing it an expression path just like those you could use for summary strings
+Summary Strings, you can use the method <code class="docutils literal notranslate"><span class="pre">GetValueForExpressionPath()</span></code>,
+passing it an expression path just like those you could use for Summary Strings
 (one of the differences is that dereferencing a pointer does not occur by
 prefixing the path with a <code class="docutils literal notranslate"><span class="pre">*`</span></code>, but by calling the <code class="docutils literal notranslate"><span class="pre">Dereference()</span></code> method
-on the returned <code class="xref any docutils literal notranslate"><span class="pre">SBValue</span></code>). If you need to access array slices, you cannot do
+on the returned <a class="reference internal" href="../python_api/lldb.SBValue.html#lldb.SBValue" title="lldb.SBValue"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBValue</span></code></a>). If you need to access array slices, you cannot do
 that (yet) via this method call, and you must use <code class="docutils literal notranslate"><span class="pre">GetChildAtIndex()</span></code>
 querying it for the array items one by one. Also, handling custom formats is
 something you have to deal with on your own.</p>
@@ -1023,11 +1207,14 @@ define (or have already defined) the function in the interactive interpreter,
 or somehow loaded it from a file, using the command script import command.
 LLDB will emit a warning if it is unable to find the function you passed, but
 will still register the binding.</p></li>
+<li><p>using the <code class="docutils literal notranslate"><span class="pre">&#64;lldb.summary</span></code> decorator on a function definition. This combines
+the definition and registration into a single step. See
+<a class="reference internal" href="#decorator-formatters"><span class="std std-ref">Decorator-Based Formatter Registration</span></a> for details.</p></li>
 </ul>
 </section>
 <section id="regular-expression-typenames">
 <h2>Regular Expression Typenames<a class="headerlink" href="#regular-expression-typenames" title="Link to this heading">#</a></h2>
-<p>As you noticed, in order to associate the custom summary string to the array
+<p>As you noticed, in order to associate the custom Summary String to the array
 types, one must give the array size as part of the typename. This can long
 become tiresome when using arrays of different sizes, Simple [3], Simple [9],
 Simple [12], …</p>
@@ -1059,7 +1246,7 @@ implementation.</p>
 <p>For a given type, there may be different meaningful summary representations.
 However, currently, only one summary can be associated to a type at each
 moment. If you need to temporarily override the association for a variable,
-without changing the summary string for to its type, you can use named
+without changing the Summary String for to its type, you can use named
 summaries.</p>
 <p>Named summaries work by attaching a name to a summary when creating it. Then,
 when there is a need to attach the summary to a variable, the frame variable
@@ -1074,7 +1261,7 @@ given instead of the default one.</p>
 </div>
 <p>When defining a named summary, binding it to one or more types becomes
 optional. Even if you bind the named summary to a type, and later change the
-summary string for that type, the named summary will not be changed by that.
+Summary String for that type, the named summary will not be changed by that.
 You can delete named summaries by using the type summary delete command, as if
 the summary name was the datatype that the summary is applied to</p>
 <p>A summary attached to a variable using the –summary option, has the same
@@ -1082,7 +1269,7 @@ semantics that a custom format attached using the -f option has: it stays
 attached till you attach a new one, or till you let your program run again.</p>
 </section>
 <section id="synthetic-children">
-<h2>Synthetic Children<a class="headerlink" href="#synthetic-children" title="Link to this heading">#</a></h2>
+<span id="id5"></span><h2>Synthetic Children<a class="headerlink" href="#synthetic-children" title="Link to this heading">#</a></h2>
 <p>Summaries work well when one is able to navigate through an expression path. In
 order for LLDB to do so, appropriate debugging information must be available.</p>
 <p>Some types are opaque, i.e. no knowledge of their internals is provided. When
@@ -1124,20 +1311,20 @@ vector items as children for the std::vector object.</p>
 adheres to a given interface (the word is italicized because Python has no
 explicit notion of interface, by that word we mean a given set of methods must
 be implemented by the Python class):</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">SyntheticChildrenProvider</span><span class="p">:</span>
-   <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valobj</span><span class="p">:</span> <span class="n">lldb</span><span class="o">.</span><span class="n">SBValue</span><span class="p">,</span> <span class="n">internal_dict</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SyntheticChildrenProvider</span><span class="p">:</span>
+   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valobj</span><span class="p">:</span> <span class="n">lldb</span><span class="o">.</span><span class="n">SBValue</span><span class="p">,</span> <span class="n">internal_dict</span><span class="p">):</span>
 <span class="w">      </span><span class="sd">&quot;&quot;&quot;&quot;</span>
 <span class="sd">      This call should initialize the Python object using valobj as the</span>
 <span class="sd">      variable to provide synthetic children for.</span>
 <span class="sd">      &quot;&quot;&quot;</span><span class="s2">&quot;</span>
 
-   <span class="k">def</span><span class="w"> </span><span class="nf">num_children</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_children</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+   <span class="k">def</span> <span class="nf">num_children</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_children</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">      </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">      This call should return the number of children that you want your</span>
 <span class="sd">      object to have[1].</span>
 <span class="sd">      &quot;&quot;&quot;</span>
 
-   <span class="k">def</span><span class="w"> </span><span class="nf">get_child_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+   <span class="k">def</span> <span class="nf">get_child_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">      </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">      This call should return the index of the synthetic child whose name is</span>
 <span class="sd">      given as the argument. Array subscripting, names in the form &quot;[N]&quot;, is</span>
@@ -1145,26 +1332,26 @@ be implemented by the Python class):</p>
 <span class="sd">      Return -1 if there is no child at the index.</span>
 <span class="sd">      &quot;&quot;&quot;</span>
 
-   <span class="k">def</span><span class="w"> </span><span class="nf">get_child_at_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">lldb</span><span class="o">.</span><span class="n">SBValue</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+   <span class="k">def</span> <span class="nf">get_child_at_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">lldb</span><span class="o">.</span><span class="n">SBValue</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">      </span><span class="sd">&quot;&quot;&quot;&quot;</span>
 <span class="sd">      This call should return a new LLDB SBValue object representing the</span>
 <span class="sd">      child at the index given as argument.</span>
 <span class="sd">      &quot;&quot;&quot;</span>
 
-   <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+   <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">      </span><span class="sd">&quot;&quot;&quot;&quot;</span>
 <span class="sd">      This call should be used to update the internal state of this Python</span>
 <span class="sd">      object whenever the state of the variables in LLDB changes.[2]</span>
 <span class="sd">      Also, this method is invoked before any other method in the interface.</span>
 <span class="sd">      &quot;&quot;&quot;</span>
 
-   <span class="k">def</span><span class="w"> </span><span class="nf">has_children</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+   <span class="k">def</span> <span class="nf">has_children</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">      </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">      This call should return True if this object might have children, and</span>
 <span class="sd">      False if this object can be guaranteed not to have children.[3]</span>
 <span class="sd">      &quot;&quot;&quot;</span>
 
-   <span class="k">def</span><span class="w"> </span><span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">lldb</span><span class="o">.</span><span class="n">SBValue</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+   <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">lldb</span><span class="o">.</span><span class="n">SBValue</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">      </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">      This call can return an SBValue to be presented as the value of the</span>
 <span class="sd">      synthetic value under consideration.[4]</span>
@@ -1176,26 +1363,26 @@ silently by LLDB and should be handled appropriately by the formatter itself.
 Being more specific, in case of exceptions, LLDB might assume that the given
 object has no children or it might skip printing some children, as they are
 printed one by one.</p>
-<p>[1] The <code class="docutils literal notranslate"><span class="pre">max_children</span></code> argument is optional (since lldb 3.8.0) and indicates the
-maximum number of children that lldb is interested in (at this moment). If the
+<p>[1] The <code class="docutils literal notranslate"><span class="pre">max_children</span></code> argument is optional (since LLDB 3.8.0) and indicates the
+maximum number of children that LLDB is interested in (at this moment). If the
 computation of the number of children is expensive (for example, requires
 traversing a linked list to determine its size) your implementation may return
 <code class="docutils literal notranslate"><span class="pre">max_children</span></code> rather than the actual number. If the computation is cheap (e.g., the
 number is stored as a field of the object), then you can always return the true
 number of children (that is, ignore the <code class="docutils literal notranslate"><span class="pre">max_children</span></code> argument).</p>
-<p>[2] This method is optional. Also, a boolean value must be returned (since lldb
+<p>[2] This method is optional. Also, a boolean value must be returned (since LLDB
 3.1.0). If <code class="docutils literal notranslate"><span class="pre">False</span></code> is returned, then whenever the process reaches a new stop,
 this method will be invoked again to generate an updated list of the children
 for a given variable. Otherwise, if <code class="docutils literal notranslate"><span class="pre">True</span></code> is returned, then the value is
 cached and this method won’t be called again, effectively freezing the state of
 the value in subsequent stops. Beware that returning <code class="docutils literal notranslate"><span class="pre">True</span></code> incorrectly could
 show misleading information to the user.</p>
-<p>[3] This method is optional (since lldb 3.2.0). While implementing it in terms
+<p>[3] This method is optional (since LLDB 3.2.0). While implementing it in terms
 of num_children is acceptable, implementors are encouraged to look for
 optimized coding alternatives whenever reasonable.</p>
-<p>[4] This method is optional (since lldb 3.5.2). The <code class="xref any docutils literal notranslate"><span class="pre">SBValue</span></code> you return here
+<p>[4] This method is optional (since LLDB 3.5.2). The <a class="reference internal" href="../python_api/lldb.SBValue.html#lldb.SBValue" title="lldb.SBValue"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBValue</span></code></a> you return here
 will most likely be a numeric type (int, float, …) as its value bytes will be
-used as-if they were the value of the root <code class="xref any docutils literal notranslate"><span class="pre">SBValue</span></code> proper.  As a shortcut for
+used as-if they were the value of the root <a class="reference internal" href="../python_api/lldb.SBValue.html#lldb.SBValue" title="lldb.SBValue"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBValue</span></code></a> proper. As a shortcut for
 this, you can inherit from lldb.SBSyntheticValueProvider, and just define
 get_value as other methods are defaulted in the superclass as returning default
 no-children responses.</p>
@@ -1207,19 +1394,19 @@ including it in the range of children displayed by LLDB. For example,
 this subset of a synthetic children provider class would allow the
 synthetic value to be dereferenced without actually showing any
 synthetic children in the UI:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">SyntheticChildrenProvider</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SyntheticChildrenProvider</span><span class="p">:</span>
     <span class="p">[</span><span class="o">...</span><span class="p">]</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">num_children</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">num_children</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_child_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">get_child_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;$$dereference$$&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">0</span>
         <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_child_at_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">lldb</span><span class="o">.</span><span class="n">SBValue</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">get_child_at_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">lldb</span><span class="o">.</span><span class="n">SBValue</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">return</span> <span class="o">&lt;</span><span class="n">valobj</span> <span class="n">resulting</span> <span class="kn">from</span><span class="w"> </span><span class="nn">dereference</span><span class="o">&gt;</span>
+            <span class="k">return</span> <span class="o">&lt;</span><span class="n">valobj</span> <span class="n">resulting</span> <span class="kn">from</span> <span class="nn">dereference</span><span class="o">&gt;</span>
         <span class="k">return</span> <span class="kc">None</span>
 </pre></div>
 </div>
@@ -1229,7 +1416,7 @@ those files (except bitfield/) is legacy code and is not maintained. You may
 especially want to begin looking at this example to get a feel for this
 feature, as it is a very easy and well commented example.</p>
 <p>The design pattern consistently used in synthetic providers shipping with LLDB
-is to use the __init__ to store the <code class="xref any docutils literal notranslate"><span class="pre">SBValue</span></code> instance as a part of self. The
+is to use the __init__ to store the <a class="reference internal" href="../python_api/lldb.SBValue.html#lldb.SBValue" title="lldb.SBValue"><code class="xref any py py-class docutils literal notranslate"><span class="pre">SBValue</span></code></a> instance as a part of self. The
 update function is then used to perform the actual initialization. Once a
 synthetic children provider is written, one must load it into LLDB before it
 can be used. Currently, one can use the LLDB script command to type Python code
@@ -1241,8 +1428,8 @@ adding it.</p>
 provider class Foo_Provider is available, in a Python module contained in file
 ~/Foo_Tools.py. The following interaction sets Foo_Provider as a synthetic
 children provider in LLDB:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">command</span> <span class="n">script</span> <span class="kn">import</span><span class="w"> </span><span class="o">~/</span><span class="n">Foo_Tools</span><span class="o">.</span><span class="n">py</span>
-<span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="nb">type</span> <span class="n">synthetic</span> <span class="n">add</span> <span class="n">Foo</span> <span class="o">--</span><span class="n">python</span><span class="o">-</span><span class="k">class</span><span class="w"> </span><span class="nc">Foo_Tools</span><span class="o">.</span><span class="n">Foo_Provider</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">command</span> <span class="n">script</span> <span class="kn">import</span> <span class="o">~/</span><span class="n">Foo_Tools</span><span class="o">.</span><span class="n">py</span>
+<span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="nb">type</span> <span class="n">synthetic</span> <span class="n">add</span> <span class="n">Foo</span> <span class="o">--</span><span class="n">python</span><span class="o">-</span><span class="k">class</span> <span class="nc">Foo_Tools</span><span class="o">.</span><span class="n">Foo_Provider</span>
 <span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="n">frame</span> <span class="n">variable</span> <span class="n">a_foo</span>
 <span class="p">(</span><span class="n">Foo</span><span class="p">)</span> <span class="n">a_foo</span> <span class="o">=</span> <span class="p">{</span>
    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
@@ -1250,10 +1437,13 @@ children provider in LLDB:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>As an alternative to the two-step import-then-register pattern above, you can
+use the <code class="docutils literal notranslate"><span class="pre">&#64;lldb.synthetic</span></code> decorator to combine both steps. See
+<a class="reference internal" href="#decorator-formatters"><span class="std std-ref">Decorator-Based Formatter Registration</span></a> for details.</p>
 <p>LLDB has synthetic children providers for a core subset of STL classes, both in
 the version provided by libstdcpp and by libcxx, as well as for several
 Foundation classes.</p>
-<p>Synthetic children extend summary strings by enabling a new special variable:
+<p>Synthetic children extend Summary Strings by enabling a new special variable:
 <code class="docutils literal notranslate"><span class="pre">${svar</span></code>.</p>
 <p>This symbol tells LLDB to refer expression paths to the synthetic children
 instead of the real ones. For instance,</p>
@@ -1268,8 +1458,8 @@ instead of the real ones. For instance,</p>
 </pre></div>
 </div>
 <p>It’s important to mention that LLDB invokes the synthetic child provider before
-invoking the summary string provider, which allows the latter to have access to
-the actual displayable children. This applies to both inlined summary strings
+invoking the Summary String provider, which allows the latter to have access to
+the actual displayable children. This applies to both inlined Summary Strings
 and python-based summary providers.</p>
 <p>As a warning, when programmatically accessing the children or children count of
 a variable that has a synthetic child provider, notice that LLDB hides the
@@ -1280,7 +1470,7 @@ won’t show <code class="docutils literal notranslate"><span class="pre">__begi
 instead the children calculated by the provider. In case the actual raw
 children are needed, a call to <code class="docutils literal notranslate"><span class="pre">value.GetNonSyntheticValue()</span></code> is enough to
 get a raw version of the value. It is import to remember this when implementing
-summary string providers, as they run after the synthetic child provider.</p>
+Summary String providers, as they run after the synthetic child provider.</p>
 <p>In some cases, if LLDB is unable to use the real object to get a child
 specified in an expression path, it will automatically refer to the synthetic
 children. While in summaries it is best to always use ${svar to make your
@@ -1303,6 +1493,83 @@ expression:</p>
 or other special provisions and the expression command chooses to ignore
 synthetic children in the interest of equivalency with code you asked to have
 compiled from source.</p>
+</section>
+<section id="decorator-based-formatter-registration">
+<span id="decorator-formatters"></span><h2>Decorator-Based Formatter Registration<a class="headerlink" href="#decorator-based-formatter-registration" title="Link to this heading">#</a></h2>
+<p>Beginning in version 23, LLDB provides Python decorators that combine the
+definition and registration of formatters into a single step. When a module
+using these decorators is loaded via <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">script</span> <span class="pre">import</span></code>, the formatters
+are automatically registered.</p>
+<section id="lldb-summary">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;lldb.summary</span></code><a class="headerlink" href="#lldb-summary" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">&#64;lldb.summary</span></code> decorator registers a Python function as a type summary
+provider:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lldb</span>
+
+<span class="nd">@lldb</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="s2">&quot;Person&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">PersonSummary</span><span class="p">(</span><span class="n">valobj</span><span class="p">:</span> <span class="n">lldb</span><span class="o">.</span><span class="n">SBValue</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">valobj</span><span class="o">.</span><span class="n">GetChildMemberWithName</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">GetSummary</span><span class="p">()</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="n">valobj</span><span class="o">.</span><span class="n">GetChildMemberWithName</span><span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">GetValueAsUnsigned</span><span class="p">()</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;name=</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">, age=</span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>This is equivalent to defining the function and then running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="nb">type</span> <span class="n">summary</span> <span class="n">add</span> <span class="o">--</span><span class="n">python</span><span class="o">-</span><span class="n">function</span> <span class="n">module</span><span class="o">.</span><span class="n">PersonSummary</span> <span class="n">Person</span>
+</pre></div>
+</div>
+</section>
+<section id="lldb-synthetic">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;lldb.synthetic</span></code><a class="headerlink" href="#lldb-synthetic" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">&#64;lldb.synthetic</span></code> decorator registers a Python class as a synthetic child
+provider:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lldb</span>
+
+<span class="nd">@lldb</span><span class="o">.</span><span class="n">synthetic</span><span class="p">(</span><span class="s2">&quot;Person&quot;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">PersonChildren</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valobj</span><span class="p">:</span> <span class="n">lldb</span><span class="o">.</span><span class="n">SBValue</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">valobj</span> <span class="o">=</span> <span class="n">valobj</span>
+
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">valobj</span><span class="o">.</span><span class="n">GetChildMemberWithName</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">valobj</span><span class="o">.</span><span class="n">GetChildMemberWithName</span><span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">num_children</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">2</span>
+
+    <span class="k">def</span> <span class="nf">get_child_at_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">lldb</span><span class="o">.</span><span class="n">SBValue</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">age</span>
+        <span class="k">return</span> <span class="n">lldb</span><span class="o">.</span><span class="n">SBValue</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This is equivalent to defining the class and then running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="nb">type</span> <span class="n">synthetic</span> <span class="n">add</span> <span class="o">--</span><span class="n">python</span><span class="o">-</span><span class="k">class</span> <span class="nc">module</span><span class="o">.</span><span class="n">PersonChildren</span> <span class="n">Person</span>
+</pre></div>
+</div>
+</section>
+<section id="passing-options">
+<h3>Passing Options<a class="headerlink" href="#passing-options" title="Link to this heading">#</a></h3>
+<p>Both decorators accept keyword arguments that map to command-line flags of the
+corresponding <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">summary</span> <span class="pre">add</span></code> or <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">synthetic</span> <span class="pre">add</span></code> commands.
+Underscores in keyword names are converted to hyphens. A value of <code class="docutils literal notranslate"><span class="pre">True</span></code>
+produces a bare flag; any other value is passed as the flag’s argument.</p>
+<p>For example, to register a summary for a regex type pattern with the expand
+flag:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@lldb</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="s2">&quot;^std::vector&lt;.+&gt;$&quot;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">VectorSummary</span><span class="p">(</span><span class="n">valobj</span><span class="p">,</span> <span class="n">internal_dict</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>This is equivalent to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="nb">type</span> <span class="n">summary</span> <span class="n">add</span> <span class="o">--</span><span class="n">python</span><span class="o">-</span><span class="n">function</span> <span class="n">module</span><span class="o">.</span><span class="n">VectorSummary</span> <span class="o">--</span><span class="n">regex</span> <span class="o">--</span><span class="n">expand</span> <span class="s2">&quot;^std::vector&lt;.+&gt;$&quot;</span>
+</pre></div>
+</div>
+<p>Other commonly used options include <code class="docutils literal notranslate"><span class="pre">category</span></code> to place the formatter in a
+specific category.</p>
+</section>
 </section>
 <section id="filters">
 <h2>Filters<a class="headerlink" href="#filters" title="Link to this heading">#</a></h2>
@@ -1338,7 +1605,7 @@ summary function and a synthetic child provider that work for all
 is no common pattern in the name of these classes, so we can’t register the
 formatter neither by name nor by regular expression.</p>
 <p>In that case, you can write a recognizer function like this:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">is_generated_object</span><span class="p">(</span><span class="n">sbtype</span><span class="p">:</span> <span class="n">lldb</span><span class="o">.</span><span class="n">SBType</span><span class="p">,</span> <span class="n">internal_dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_generated_object</span><span class="p">(</span><span class="n">sbtype</span><span class="p">:</span> <span class="n">lldb</span><span class="o">.</span><span class="n">SBType</span><span class="p">,</span> <span class="n">internal_dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
   <span class="k">for</span> <span class="n">base</span> <span class="ow">in</span> <span class="n">sbtype</span><span class="o">.</span><span class="n">get_bases_array</span><span class="p">():</span>
     <span class="k">if</span> <span class="n">base</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;GeneratedObject&quot;</span>
       <span class="k">return</span> <span class="kc">True</span>
@@ -1348,7 +1615,40 @@ formatter neither by name nor by regular expression.</p>
 <p>And pass this function to <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">summary</span> <span class="pre">add</span></code> and <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">synthetic</span> <span class="pre">add</span></code> using
 the flag <code class="docutils literal notranslate"><span class="pre">--recognizer-function</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="nb">type</span> <span class="n">summary</span> <span class="n">add</span> <span class="o">--</span><span class="n">expand</span> <span class="o">--</span><span class="n">python</span><span class="o">-</span><span class="n">function</span> <span class="n">my_summary_function</span> <span class="o">--</span><span class="n">recognizer</span><span class="o">-</span><span class="n">function</span> <span class="n">is_generated_object</span>
-<span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="nb">type</span> <span class="n">synthetic</span> <span class="n">add</span> <span class="o">--</span><span class="n">python</span><span class="o">-</span><span class="k">class</span><span class="w"> </span><span class="nc">my_child_provider</span> <span class="o">--</span><span class="n">recognizer</span><span class="o">-</span><span class="n">function</span> <span class="n">is_generated_object</span>
+<span class="p">(</span><span class="n">lldb</span><span class="p">)</span> <span class="nb">type</span> <span class="n">synthetic</span> <span class="n">add</span> <span class="o">--</span><span class="n">python</span><span class="o">-</span><span class="k">class</span> <span class="nc">my_child_provider</span> <span class="o">--</span><span class="n">recognizer</span><span class="o">-</span><span class="n">function</span> <span class="n">is_generated_object</span>
+</pre></div>
+</div>
+</section>
+<section id="api-attached-synthetic-child-provider">
+<h2>API-attached synthetic child provider<a class="headerlink" href="#api-attached-synthetic-child-provider" title="Link to this heading">#</a></h2>
+<p>In some situations, a value’s type or a program’s debug information do not contain
+sufficient information to determine the appropriate synthetic child provider.</p>
+<p>In these cases, you may use <a class="reference internal" href="../python_api/lldb.SBValue.html#lldb.SBValue.SetTypeSynthetic" title="lldb.SBValue.SetTypeSynthetic"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">SBValue.SetTypeSynthetic</span></code></a> to manually attach
+(or override the system’s choice of) a synthetic child provider for a value.</p>
+<p>This can be done even without a corresponding registration with the <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">synthetic</span> <span class="pre">add</span></code>
+command.</p>
+<p>The attached provider instance can be retrieved with <a class="reference internal" href="../python_api/lldb.SBValue.html#lldb.SBValue.GetTypeSyntheticImplementation" title="lldb.SBValue.GetTypeSyntheticImplementation"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">SBValue.GetTypeSyntheticImplementation</span></code></a>
+for further customization or inspection.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lldb</span>
+
+<span class="k">class</span> <span class="nc">FooSyntheticChildren</span><span class="p">:</span>
+   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valobj</span><span class="p">:</span> <span class="n">lldb</span><span class="o">.</span><span class="n">SBValue</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+     <span class="bp">self</span><span class="o">.</span><span class="n">valobj</span> <span class="o">=</span> <span class="n">valobj</span>
+     <span class="bp">self</span><span class="o">.</span><span class="n">bar</span> <span class="o">=</span> <span class="kc">None</span>
+
+   <span class="o">...</span>
+
+<span class="n">value</span> <span class="o">=</span> <span class="n">lldb</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">FindVariable</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">)</span>
+<span class="n">value</span><span class="o">.</span><span class="n">SetTypeSynthetic</span><span class="p">(</span>
+   <span class="n">lldb</span><span class="o">.</span><span class="n">SBTypeSynthetic</span><span class="o">.</span><span class="n">CreateWithClassName</span><span class="p">(</span>
+      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">.FooSyntheticChildren&quot;</span>
+   <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">impl</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">GetTypeSyntheticImplementation</span><span class="p">()</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">impl</span><span class="p">,</span> <span class="n">FooSyntheticChildren</span><span class="p">)</span>
+
+<span class="n">impl</span><span class="o">.</span><span class="n">bar</span> <span class="o">=</span> <span class="mi">42</span>
 </pre></div>
 </div>
 </section>
@@ -1451,7 +1751,7 @@ not-empty category.</p>
 </section>
 <section id="finding-formatters-101">
 <h2>Finding Formatters 101<a class="headerlink" href="#finding-formatters-101" title="Link to this heading">#</a></h2>
-<p>Searching for a formatter (including formats, since lldb 3.4.0) given a
+<p>Searching for a formatter (including formats, since LLDB 3.4.0) given a
 variable goes through a rather intricate set of rules. Namely, what happens is
 that LLDB starts looking in each enabled category, according to the order in
 which they were enabled (latest enabled first). In each category, LLDB does the
@@ -1485,6 +1785,19 @@ through typedef chains, but also through inheritance chains. This feature has
 been removed since it significantly degrades performance. You need to set up
 your formatters for every type in inheritance chains to which you want the
 formatter to apply.</p>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="footnote-1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>These types of variables go by different names depending on the language. In C++, in
+particular, they are known as compound types.</p>
+</aside>
+<aside class="footnote brackets" id="footnote-2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">2</a><span class="fn-bracket">]</span></span>
+<p>If you are familiar with the syntax for Frame and Thread Formatting
+you will feel right at home with the syntax for Summary Strings.</p>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -1493,23 +1806,23 @@ formatter to apply.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="symbolication.html">
+          <a class="next-page" href="formatting.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Symbolication</div>
+                <div class="title">Frame and Thread Format</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="formatting.html">
+          <a class="prev-page" href="../man/lldb.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Frame and Thread Format</div>
+                <div class="title">lldb – The Debugger</div>
                 
               </div>
             </a>
@@ -1523,7 +1836,7 @@ formatter to apply.</p>
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Apr 15, 2026</div>
+              Last updated on Sep 18, 2026</div>
           </div>
           <div class="right-details">
             
@@ -1545,7 +1858,10 @@ formatter to apply.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Variable Formatting</a><ul>
-<li><a class="reference internal" href="#type-format">Type Format</a></li>
+<li><a class="reference internal" href="#type-format">Type Format</a><ul>
+<li><a class="reference internal" href="#type-formats">Type Formats</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#type-summary">Type Summary</a></li>
 <li><a class="reference internal" href="#summary-format-matching-on-pointers">Summary Format Matching On Pointers</a></li>
 <li><a class="reference internal" href="#summary-strings">Summary Strings</a></li>
@@ -1556,8 +1872,15 @@ formatter to apply.</p>
 <li><a class="reference internal" href="#regular-expression-typenames">Regular Expression Typenames</a></li>
 <li><a class="reference internal" href="#names-summaries">Names Summaries</a></li>
 <li><a class="reference internal" href="#synthetic-children">Synthetic Children</a></li>
+<li><a class="reference internal" href="#decorator-based-formatter-registration">Decorator-Based Formatter Registration</a><ul>
+<li><a class="reference internal" href="#lldb-summary"><code class="docutils literal notranslate"><span class="pre">&#64;lldb.summary</span></code></a></li>
+<li><a class="reference internal" href="#lldb-synthetic"><code class="docutils literal notranslate"><span class="pre">&#64;lldb.synthetic</span></code></a></li>
+<li><a class="reference internal" href="#passing-options">Passing Options</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#filters">Filters</a></li>
 <li><a class="reference internal" href="#callback-based-type-matching">Callback-based type matching</a></li>
+<li><a class="reference internal" href="#api-attached-synthetic-child-provider">API-attached synthetic child provider</a></li>
 <li><a class="reference internal" href="#objective-c-dynamic-type-discovery">Objective-C Dynamic Type Discovery</a></li>
 <li><a class="reference internal" href="#categories">Categories</a></li>
 <li><a class="reference internal" href="#finding-formatters-101">Finding Formatters 101</a></li>
@@ -1572,7 +1895,7 @@ formatter to apply.</p>
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=d42a975f"></script>
+</div><script src="../_static/documentation_options.js?v=a9baa326"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=32e29ea5"></script>

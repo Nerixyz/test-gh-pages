@@ -3,12 +3,13 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="LLDB Platform Packets" href="lldbplatformpackets.html" /><link rel="prev" title="DWARF Extensions" href="extensions.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="LLDB Platform Packets" href="lldbplatformpackets.html" /><link rel="prev" title="Open Projects" href="projects.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
         <title>GDB Remote Protocol Extensions - 🐛 LLDB</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=649a27d8" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="../_static/lldb-setting.css?v=bf28b315" />
     
@@ -155,25 +156,33 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Using LLDB</span></p>
+  <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../use/tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../use/map.html">GDB to LLDB command map</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../use/formatting.html">Frame and Thread Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../use/variable.html">Variable Formatting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../use/symbolication.html">Symbolication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../use/symbols.html">Symbols on macOS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../use/remote.html">Remote Debugging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../use/intel_pt.html">Tracing with Intel Processor Trace</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../use/ondemand.html">On Demand Symbols</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../use/aarch64-linux.html">Using LLDB On AArch64 Linux</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../use/symbolfilejson.html">JSON Symbol File Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../use/lldbdap.html">Getting started with <code class="docutils literal notranslate"><span class="pre">lldb-dap</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../use/mcp.html">Model Context Protocol (MCP)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../use/settings.html">Settings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../use/troubleshooting.html">Troubleshooting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../use/links.html">Links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../man/lldb.html">Man Page</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using LLDB</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../use/variable.html">Variable Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../use/formatting.html">Frame and Thread Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../use/repeat-commands.html">Repeat Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../use/symbolication.html">Symbolication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../use/symbols.html">Symbols on macOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../use/ondemand.html">On Demand Symbols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../use/remote.html">Remote Debugging</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">IDE &amp; Tool Integration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../use/lldbdap.html">Getting started with <code class="docutils literal notranslate"><span class="pre">lldb-dap</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../use/mcp.html">Model Context Protocol (MCP)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Platform-Specific Topics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../use/aarch64-linux.html">Using LLDB On AArch64 Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../use/intel_pt.html">Tracing with Intel Processor Trace</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Scripting LLDB</span></p>
 <ul>
@@ -190,36 +199,162 @@
 <li class="toctree-l2"><a class="reference internal" href="../use/tutorials/extending-target-stop-hooks.html">Extending Target Stop-Hooks</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../python_api.html">Python API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_extensions.html">Python Extensions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_api.html">Python API</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Python API</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.summary.html">summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.synthetic.html">synthetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBAddress.html">SBAddress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBAddressRange.html">SBAddressRange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBAddressRangeList.html">SBAddressRangeList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBAttachInfo.html">SBAttachInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBBlock.html">SBBlock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBBreakpoint.html">SBBreakpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBBreakpointList.html">SBBreakpointList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBBreakpointLocation.html">SBBreakpointLocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBBreakpointName.html">SBBreakpointName</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBBroadcaster.html">SBBroadcaster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBCommandInterpreter.html">SBCommandInterpreter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBCommandInterpreterRunOptions.html">SBCommandInterpreterRunOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBCommandReturnObject.html">SBCommandReturnObject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBCommunication.html">SBCommunication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBCompileUnit.html">SBCompileUnit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBData.html">SBData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBDebugger.html">SBDebugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBDeclaration.html">SBDeclaration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBEnvironment.html">SBEnvironment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBError.html">SBError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBEvent.html">SBEvent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBExecutionContext.html">SBExecutionContext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBExpressionOptions.html">SBExpressionOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFile.html">SBFile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFileSpec.html">SBFileSpec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFileSpecList.html">SBFileSpecList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFormat.html">SBFormat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFrame.html">SBFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFrameList.html">SBFrameList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBFunction.html">SBFunction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBHostOS.html">SBHostOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBInstruction.html">SBInstruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBInstructionList.html">SBInstructionList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBLanguageRuntime.html">SBLanguageRuntime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBLaunchInfo.html">SBLaunchInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBLineEntry.html">SBLineEntry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBListener.html">SBListener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBMemoryRegionInfo.html">SBMemoryRegionInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBMemoryRegionInfoList.html">SBMemoryRegionInfoList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBModule.html">SBModule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBModuleSpec.html">SBModuleSpec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBModuleSpecList.html">SBModuleSpecList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBMutex.html">SBMutex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBPlatform.html">SBPlatform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBPlatformConnectOptions.html">SBPlatformConnectOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBPlatformShellCommand.html">SBPlatformShellCommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBProcess.html">SBProcess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBProcessAddress.html">SBProcessAddress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBProcessInfo.html">SBProcessInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBProcessInfoList.html">SBProcessInfoList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBProgress.html">SBProgress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBProtocolServer.html">SBProtocolServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBQueue.html">SBQueue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBQueueItem.html">SBQueueItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBReproducer.html">SBReproducer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSaveCoreOptions.html">SBSaveCoreOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBScriptObject.html">SBScriptObject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSection.html">SBSection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSourceManager.html">SBSourceManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBStatisticsOptions.html">SBStatisticsOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBStream.html">SBStream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBStringList.html">SBStringList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBStructuredData.html">SBStructuredData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSymbol.html">SBSymbol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSymbolContext.html">SBSymbolContext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSymbolContextList.html">SBSymbolContextList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBSyntheticValueProvider.html">SBSyntheticValueProvider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTarget.html">SBTarget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBThread.html">SBThread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBThreadCollection.html">SBThreadCollection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBThreadPlan.html">SBThreadPlan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTrace.html">SBTrace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTraceCursor.html">SBTraceCursor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBType.html">SBType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeCategory.html">SBTypeCategory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeEnumMember.html">SBTypeEnumMember</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeEnumMemberList.html">SBTypeEnumMemberList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeFilter.html">SBTypeFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeFormat.html">SBTypeFormat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeList.html">SBTypeList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeMember.html">SBTypeMember</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeMemberFunction.html">SBTypeMemberFunction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeNameSpecifier.html">SBTypeNameSpecifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeStaticField.html">SBTypeStaticField</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeSummary.html">SBTypeSummary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeSummaryOptions.html">SBTypeSummaryOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBTypeSynthetic.html">SBTypeSynthetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBUnixSignals.html">SBUnixSignals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBValue.html">SBValue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBValueList.html">SBValueList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBVariablesOptions.html">SBVariablesOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBWatchpoint.html">SBWatchpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.SBWatchpointOptions.html">SBWatchpointOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.value.html">value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.value_iter.html">value_iter</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Developing LLDB</span></p>
-<ul class="current">
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_extensions.html">Python Extensions</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Python Extensions</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.operating_system.OperatingSystem.html">OperatingSystem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.parsed_cmd.LLDBOptionValueParser.html">LLDBOptionValueParser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.parsed_cmd.ParsedCommand.html">ParsedCommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_breakpoint.ScriptedBreakpointResolver.html">ScriptedBreakpointResolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_command.ScriptedCommand.html">ScriptedCommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_frame_provider.ScriptedFrameProvider.html">ScriptedFrameProvider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_hook.ScriptedHook.html">ScriptedHook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_platform.ScriptedPlatform.html">ScriptedPlatform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_process.PassthroughScriptedProcess.html">PassthroughScriptedProcess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_process.PassthroughScriptedThread.html">PassthroughScriptedThread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_process.ScriptedFrame.html">ScriptedFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_process.ScriptedProcess.html">ScriptedProcess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_process.ScriptedThread.html">ScriptedThread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_stackframe_recognizer.ScriptedStackFrameRecognizer.html">ScriptedStackFrameRecognizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_string_summary.ScriptedStringSummary.html">ScriptedStringSummary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_synthetic_children.ScriptedSyntheticChildren.html">ScriptedSyntheticChildren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_api/lldb.plugins.scripted_thread_plan.ScriptedThreadPlan.html">ScriptedThreadPlan</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing to LLDB</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lldbdap-contributing.html">Contributing to LLDB-DAP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="build.html">Building</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test.html">Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qemu-testing.html">Testing LLDB using QEMU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fuzzing.html">Fuzzing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Architecture &amp; Internals</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/namespacelldb.html">Public C++ API</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/index.html">Private C++ API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sbapi.html">Scripting Bridge API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataformatters.html">Data Formatters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="formatterbytecode.html">Formatter Bytecode</a></li>
-<li class="toctree-l1"><a class="reference internal" href="extensions.html">DWARF Extensions</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">GDB Remote Protocol Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lldbplatformpackets.html">LLDB Platform Packets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addinglanguagesupport.html">Adding Programming Language Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addingtargetsupport.html">Adding Target Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caveats.html">Caveats</a></li>
 <li class="toctree-l1"><a class="reference internal" href="projects.html">Open Projects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lldbdap-contributing.html">Contributing to LLDB-DAP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="addinglanguagesupport.html">Adding Programming Language Support</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/namespacelldb.html">Public C++ API</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://lldb.llvm.org/cpp_reference/index.html">Private C++ API</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">External Links</span></p>
+<p class="caption" role="heading"><span class="caption-text">Protocol &amp; Format Specifications</span></p>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">GDB Remote Protocol Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lldbplatformpackets.html">LLDB Platform Packets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">DWARF Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../use/symbolfilejson.html">JSON Symbol File Format</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../use/links.html">Links</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/llvm/llvm-project">Source Code</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/llvm/llvm-project/releases">Releases</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://discord.gg/xS7Z362">Join the Discord</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://discord.com/channels/636084430946959380/636732809708306432">Discord Channel</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://discourse.llvm.org/c/subprojects/lldb/8">Discussion Forums</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://llvm.org/docs/DeveloperPolicy.html">Developer Policy</a></li>
@@ -396,11 +531,24 @@ binary images formatted the same way.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jGetLoadedDynamicLibrariesInfos</span><span class="p">:{</span><span class="s2">&quot;fetch_all_solibs&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>with an optional <code class="docutils literal notranslate"><span class="pre">&quot;report_load_commands&quot;:false</span></code> which can be added, asking
-that only the dyld SPI information (load addresses, filenames) be returned.
-The default behavior is that debugserver scans the mach-o header and load
-commands of each binary, and returns it in the JSON reply.</p>
-<p>And the second requests information about a list of shared libraries, given their load addresses:</p>
+<p>There are two additional keys that can be specified: the older
+<code class="docutils literal notranslate"><span class="pre">&quot;report_load_commands&quot;:false</span></code> which specifies that the detailed
+information about the binary should not be included (the Mach-O
+header and load commands), and the newer key that supplants
+<code class="docutils literal notranslate"><span class="pre">report_load_commands</span></code>, <code class="docutils literal notranslate"><span class="pre">information-level</span></code> which takes a string
+argument that is one of <code class="docutils literal notranslate"><span class="pre">address-only</span></code>, <code class="docutils literal notranslate"><span class="pre">address-name</span></code>,
+<code class="docutils literal notranslate"><span class="pre">address-name-uuid</span></code>, <code class="docutils literal notranslate"><span class="pre">full</span></code>.  <code class="docutils literal notranslate"><span class="pre">full</span></code> will include the details of
+the mach header and segment virtual addresses for the binaries.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;report_load_commands&quot;:false</span></code> is equivalent to
+<code class="docutils literal notranslate"><span class="pre">&quot;information-level&quot;:&quot;address-only&quot;</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">information-level</span></code> allows the caller to limit the amount of data
+being returned to one of (address, address+name, address+name+uuid,
+full).  When we first attach to a process, we may want to fetch the
+binary addresses for all binaries loaded in the process, and then
+fetch detailed information in batches, to keep the size of the
+packets from becoming too large.</p>
+<p>And the second form of jGetLoadedDynamicLibrariesInfos
+requests information about a list of binaries, given their load addresses:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jGetLoadedDynamicLibrariesInfos</span><span class="p">:{</span><span class="s2">&quot;solib_addresses&quot;</span><span class="p">:[</span><span class="mi">8382824135</span><span class="p">,</span><span class="mi">3258302053</span><span class="p">,</span><span class="mi">830202858503</span><span class="p">]}</span>
 </pre></div>
 </div>
@@ -849,6 +997,50 @@ do live tracing. Specifically, the name of the plug-in should match the name
 of the tracing technology returned by this packet.</p>
 </section>
 </section>
+<section id="jmultibreakpoint">
+<h2>jMultiBreakpoint<a class="headerlink" href="#jmultibreakpoint" title="Link to this heading">#</a></h2>
+<p>This packet allows setting and removing multiple breakpoints in one go. It
+lists multiple <code class="docutils literal notranslate"><span class="pre">Z</span></code> and <code class="docutils literal notranslate"><span class="pre">z</span></code> packets using a JSON array of strings.
+Formally:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$jMultiBreakpoint:{&quot;breakpoint_requests&quot; : [&quot;request&quot;[,&quot;request&quot;]*]}
+</pre></div>
+</div>
+<p>Where each <code class="docutils literal notranslate"><span class="pre">request</span></code> is one of:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">z0,addr,kind</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">z1,addr,kind</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">z2,addr,kind</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">z3,addr,kind</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">z4,addr,kind</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Z0,addr,kind[;cond_list…][;cmds:persist,cmd_list…]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Z1,addr,kind[;cond_list…][;cmds:persist,cmd_list…]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Z2,addr,kind</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Z3,addr,kind</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Z4,addr,kind</span></code></p></li>
+</ul>
+<p>Each field has the same meaning as the corresponding packet in the GDB Remote
+Protocol.</p>
+<p>For example, the packet below is a request to set one breakpoint and to remove
+two others:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$jMultiBreakpoint: {&quot;breakpoint_requests&quot;: [&quot;Z0,1025783e8,4&quot;, &quot;z0,1025783ec,4&quot;, &quot;z0,1025783e8,4&quot;]}
+</pre></div>
+</div>
+<p>The same address may be specified multiple times.</p>
+<p>The stub must execute the sequence of <code class="docutils literal notranslate"><span class="pre">request</span></code>s in the order they
+appear in the <code class="docutils literal notranslate"><span class="pre">jMultiBreakpoint</span></code> packet. This is not an atomic operation:
+individual requests may fail, and the stub must process subsequent requests
+regardless of previous failures.</p>
+<p>The reply consists of a JSON dictionary with a single entry, <code class="docutils literal notranslate"><span class="pre">results</span></code>, which
+is an array of strings, with the same contents allowed by a reply to a <code class="docutils literal notranslate"><span class="pre">z</span></code> or
+<code class="docutils literal notranslate"><span class="pre">Z</span></code> packet.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;OK&quot;</span><span class="p">,</span> <span class="s2">&quot;E03&quot;</span><span class="p">,</span> <span class="s2">&quot;OK&quot;</span><span class="p">]}</span>
+</pre></div>
+</div>
+<p>A stub that supports this packet must include <code class="docutils literal notranslate"><span class="pre">jMultiBreakpoint+</span></code> in the reply
+to <code class="docutils literal notranslate"><span class="pre">qSupported</span></code>.</p>
+<p><strong>Priority To Implement:</strong> Low. This is a performance optimization, reducing
+the number of packets sent when manipulating breakpoints.</p>
+</section>
 <section id="jthreadextendedinfo">
 <h2>jThreadExtendedInfo<a class="headerlink" href="#jthreadextendedinfo" title="Link to this heading">#</a></h2>
 <p>This packet, which takes its arguments as JSON and sends its reply as
@@ -948,16 +1140,95 @@ hex. The packet also contains expedited memory in the <code class="docutils lite
 server to expedite memory that the client is likely to use (e.g., areas around the
 stack pointer, which are needed for computing backtraces) and it reduces the packet
 count.</p>
+<p>When a thread has hit the binaries-loaded lldb internal breakpoint
+(if the server can detect that), the server may expedite information
+about the binaries that have been loaded, to reduce packet traffic
+that would immediately follow.  The key <code class="docutils literal notranslate"><span class="pre">added-binaries</span></code> will have
+a value of an array of binary addresses.  The key <code class="docutils literal notranslate"><span class="pre">detailed-binaries-info</span></code>
+will have a value of a JSON dictionary which is the reply that
+<code class="docutils literal notranslate"><span class="pre">jGetLoadedDynamicLibrariesInfos</span></code> would return for these binaries,
+so lldb doesn’t need to request it.</p>
 <p>On macOS with debugserver, we expedite the frame pointer backchain for a thread
 (up to 256 entries) by reading 2 pointers worth of bytes at the frame pointer (for
 the previous FP and PC), and follow the backchain. Most backtraces on macOS and
-iOS now don’t require us to read any memory!</p>
+iOS now don’t require us to read any memory.</p>
+<p>An expedited register may have an empty string as its value (<code class="docutils literal notranslate"><span class="pre">&quot;21&quot;:&quot;&quot;</span></code>)
+which indicates that the register cannot be read at this current
+stop point, and lldb should not try to read the register value with
+a separate <code class="docutils literal notranslate"><span class="pre">p</span></code> read-register request, it will not succeed.</p>
 <p><strong>Priority To Implement:</strong> Low</p>
 <p>This is a performance optimization, which speeds up debugging by avoiding
 multiple round-trips for retrieving thread information. The information from this
 packet can be retrieved using a combination of <code class="docutils literal notranslate"><span class="pre">qThreadStopInfo</span></code> and <code class="docutils literal notranslate"><span class="pre">m</span></code> packets.</p>
+</section>
+<section id="jaddressspacesinfo">
+<h2>jAddressSpacesInfo<a class="headerlink" href="#jaddressspacesinfo" title="Link to this heading">#</a></h2>
+<p>Ask the server for the address spaces the process exposes.</p>
+<p>Most processes have a single, flat address space, but some (such as GPUs) have
+multiple address spaces where the same numeric address refers to different
+storage depending on the address space (for example global, local, private or
+generic memory). This packet lets the client discover those address spaces.</p>
+<p>This packet requires the <code class="docutils literal notranslate"><span class="pre">address-spaces+</span></code> feature from <code class="docutils literal notranslate"><span class="pre">qSupported</span></code>, which a
+server only advertises when its process exposes address spaces.</p>
+<p>The response is a JSON array of dictionaries, one per address space:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="p">[</span>
+      <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;global&quot;</span><span class="p">,</span><span class="s2">&quot;space_id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;is_thread_specific&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;local&quot;</span><span class="p">,</span><span class="s2">&quot;space_id&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;is_thread_specific&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">}</span>
+    <span class="p">]</span>
+</pre></div>
+</div>
+<p>Each dictionary has the following keys:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: the human readable name of the address space.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">space_id</span></code>: the integer identifier of the address space.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_thread_specific</span></code>: true if the address space is thread specific.</p></li>
+</ul>
+<p>The client only sends this packet when the server advertised <code class="docutils literal notranslate"><span class="pre">address-spaces+</span></code>
+in its <code class="docutils literal notranslate"><span class="pre">qSupported</span></code> response. If a server that advertised the feature has no
+address spaces to report, it replies with an unsupported (empty) response.</p>
+<p><strong>Priority To Implement:</strong> Required for targets that use address spaces, not
+needed for targets that don’t need address spaces.</p>
+</section>
+<section id="address-spaces-qsupported-feature">
+<h2>address-spaces (qSupported feature)<a class="headerlink" href="#address-spaces-qsupported-feature" title="Link to this heading">#</a></h2>
+<p>A server advertises <code class="docutils literal notranslate"><span class="pre">address-spaces+</span></code> in its <code class="docutils literal notranslate"><span class="pre">qSupported</span></code> response when its
+process exposes address spaces. This single feature implies both the
+<code class="docutils literal notranslate"><span class="pre">jAddressSpacesInfo</span></code> packet and the optional <code class="docutils literal notranslate"><span class="pre">address_space:&lt;hex-id&gt;;</span></code> suffix on
+the memory packets described below.</p>
+<section id="the-address-space-suffix">
+<h3>The <code class="docutils literal notranslate"><span class="pre">address_space</span></code> suffix<a class="headerlink" href="#the-address-space-suffix" title="Link to this heading">#</a></h3>
+<p>To read from a specific address space, the client appends an optional
+<code class="docutils literal notranslate"><span class="pre">address_space:&lt;hex-id&gt;;</span></code> key-value suffix to the existing memory packets rather
+than introducing a dedicated packet, where <code class="docutils literal notranslate"><span class="pre">&lt;hex-id&gt;</span></code> is the address space id
+reported by <code class="docutils literal notranslate"><span class="pre">jAddressSpacesInfo</span></code>, in base 16 like the other numeric values in
+these packets. An id of <code class="docutils literal notranslate"><span class="pre">0</span></code>, or the absence of the suffix, means the default
+address space and behaves exactly as before, so address-space-unaware stubs and
+reads are unaffected.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>send packet: $x1000,4;address_space:1a;
+read packet: $&lt;binary encoding of the 4 bytes at 0x1000 in address space 0x1a&gt;
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">jAddressSpacesInfo</span></code> reported the address space as <code class="docutils literal notranslate"><span class="pre">is_thread_specific</span></code>, a
+<code class="docutils literal notranslate"><span class="pre">thread:&lt;hex-tid&gt;;</span></code> key-value pair is appended to identify the thread the
+address belongs to. It is only sent for thread specific address spaces.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>send packet: $x1000,4;address_space:1a;thread:1a2b;
+read packet: $&lt;binary encoding of the 4 bytes at 0x1000 in address space 0x1a of thread 0x1a2b&gt;
+</pre></div>
+</div>
+<p>Packets that currently accept the suffix:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">m</span></code> / <code class="docutils literal notranslate"><span class="pre">x</span></code>: read memory from a specific address space.</p></li>
+</ul>
+<p>Because the suffix is an optional key-value pair on the existing packets, the
+same mechanism can be extended to other address-bearing packets (memory writes
+<code class="docutils literal notranslate"><span class="pre">M</span></code> / <code class="docutils literal notranslate"><span class="pre">X</span></code>, breakpoints <code class="docutils literal notranslate"><span class="pre">z</span></code> / <code class="docutils literal notranslate"><span class="pre">Z</span></code>, etc.) as the need arises, without introducing
+new packets or bifurcating the address-space-aware and unaware code paths.</p>
+<p><strong>Priority To Implement:</strong> Required for targets that expose more than one
+address space, not needed for targets that have a single address space.</p>
+</section>
+</section>
 <section id="multimemread">
-<h3>MultiMemRead<a class="headerlink" href="#multimemread" title="Link to this heading">#</a></h3>
+<h2>MultiMemRead<a class="headerlink" href="#multimemread" title="Link to this heading">#</a></h2>
 <p>Read memory from multiple memory ranges.</p>
 <p>This packet has one argument:</p>
 <ul class="simple">
@@ -997,7 +1268,6 @@ read packet: $0;
 <p>In the example above, a read of zero bytes was requested.</p>
 <p><strong>Priority to Implement:</strong> Only required for performance, the debugger will
 fall back to doing separate read requests if this packet is unavailable.</p>
-</section>
 </section>
 <section id="qenvironment-name-value">
 <h2>QEnvironment:NAME=VALUE<a class="headerlink" href="#qenvironment-name-value" title="Link to this heading">#</a></h2>
@@ -1230,6 +1500,37 @@ you might also want to specify where stdin/out/err go:</p>
 a target after making a connection to a GDB server that isn’t already connected to
 an inferior process.</p>
 </section>
+<section id="qsetstdiowindowsize-cols-n-rows-n">
+<h2>QSetSTDIOWindowSize:cols=&lt;N&gt;;rows=&lt;N&gt;<a class="headerlink" href="#qsetstdiowindowsize-cols-n-rows-n" title="Link to this heading">#</a></h2>
+<p>Set the terminal window size for the inferior’s stdio pseudo-terminal prior to
+sending a launch args (<code class="docutils literal notranslate"><span class="pre">A</span></code>) packet.</p>
+<p>When launching a program whose stdio is connected to a pseudo-terminal (PTY),
+this packet specifies the initial terminal dimensions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">QSetSTDIOWindowSize</span><span class="p">:</span><span class="n">cols</span><span class="o">=&lt;</span><span class="n">N</span><span class="o">&gt;</span><span class="p">;</span><span class="n">rows</span><span class="o">=&lt;</span><span class="n">N</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Both <code class="docutils literal notranslate"><span class="pre">cols</span></code> and <code class="docutils literal notranslate"><span class="pre">rows</span></code> must be unsigned 16-bit integers. They must either both
+be non-zero, or both be zero. Any other combination (e.g. <code class="docutils literal notranslate"><span class="pre">cols=80;rows=0</span></code>) is
+treated as a malformed packet. This packet must be sent <em>prior</em> to the launch
+args (<code class="docutils literal notranslate"><span class="pre">A</span></code>) packet; sending it after the inferior has been launched has no
+effect.</p>
+<p>On the server side, the dimensions are stored and applied to the PTY at launch
+time. On POSIX this is done via <code class="docutils literal notranslate"><span class="pre">TIOCSWINSZ</span></code>; on Windows via <code class="docutils literal notranslate"><span class="pre">ConPTY</span></code> resize.
+If both dimensions are zero, the server uses pipes instead of a PTY on all platforms.</p>
+<p>The response is either:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OK</span></code>: dimensions accepted; they will be applied to the PTY when the
+inferior is launched.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENN</span></code>: malformed packet.</p></li>
+<li><p>Empty/<code class="docutils literal notranslate"><span class="pre">+</span></code>: packet not supported; the client silently ignores this.</p></li>
+</ul>
+<p><strong>Priority To Implement:</strong> Low. Only needed when the inferior’s stdio is
+connected to a PTY distinct from the terminal hosting lldb (for example, with
+<code class="docutils literal notranslate"><span class="pre">lldb-dap</span></code>, or when the debuggee is launched in its own terminal) and the
+client wants that PTY to reflect the correct window size  (e.g. for proper
+line-wrapping or full-screen TUI apps). This setting does not affect the terminal
+hosting the lldb CLI itself.</p>
+</section>
 <section id="qsetworkingdir-ascii-hex-path">
 <h2>QSetWorkingDir:&lt;ascii-hex-path&gt;<a class="headerlink" href="#qsetworkingdir-ascii-hex-path" title="Link to this heading">#</a></h2>
 <p>Set the working directory prior to sending an “A” packet.</p>
@@ -1352,8 +1653,8 @@ already has a thread selected (see the <code class="docutils literal notranslate
 GDB remote protocol documentation) yet the remote GDB server actually
 has another thread selected.</p>
 </section>
-<section id="qattachorwaitsupported">
-<h2>qAttachOrWaitSupported<a class="headerlink" href="#qattachorwaitsupported" title="Link to this heading">#</a></h2>
+<section id="qvattachorwaitsupported">
+<h2>qVAttachOrWaitSupported<a class="headerlink" href="#qvattachorwaitsupported" title="Link to this heading">#</a></h2>
 <p>This is a binary “is it supported” query. Return OK if you support
 <code class="docutils literal notranslate"><span class="pre">vAttachOrWait</span></code>.</p>
 <p><strong>Priority To Implement:</strong> Low. This is required if you support <code class="docutils literal notranslate"><span class="pre">vAttachOrWait</span></code>,
@@ -1407,7 +1708,7 @@ A boolean value that specifies if processes should
 be listed for all users, not just the user that the
 platform is running as</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">triple</span></code> - <code class="docutils literal notranslate"><span class="pre">string</span></code> -
-An ASCII triple string (<code class="docutils literal notranslate"><span class="pre">x86_64</span></code>, <code class="docutils literal notranslate"><span class="pre">x86_64-apple-macosx</span></code>, <code class="docutils literal notranslate"><span class="pre">armv7-apple-ios</span></code>)</p></li>
+An ASCII triple string (for example <code class="docutils literal notranslate"><span class="pre">x86_64</span></code>, <code class="docutils literal notranslate"><span class="pre">x86_64-apple-macosx</span></code>, <code class="docutils literal notranslate"><span class="pre">armv7-apple-ios</span></code>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">args</span></code> - <code class="docutils literal notranslate"><span class="pre">string</span></code> -
 A string value containing the process arguments separated by the character <code class="docutils literal notranslate"><span class="pre">-</span></code>,
 where each argument is hex-encoded. It includes <code class="docutils literal notranslate"><span class="pre">argv[0]</span></code>.</p></li>
@@ -1417,14 +1718,19 @@ values with colons and each pair is terminated with a semi colon. For a list
 of the key/value pairs in the response see the <code class="docutils literal notranslate"><span class="pre">qProcessInfoPID</span></code> packet
 documentation.</p>
 <p>Sample packet/response:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>send packet: $qfProcessInfo#00
-read packet: $pid:60001;ppid:59948;uid:7746;gid:11;euid:7746;egid:11;name:6c6c6462;triple:x86_64-apple-macosx;#00
-send packet: $qsProcessInfo#00
-read packet: $pid:59992;ppid:192;uid:7746;gid:11;euid:7746;egid:11;name:6d64776f726b6572;triple:x86_64-apple-macosx;#00
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>send packet: $qfProcessInfo:name_match:contains;name:656d616373;all_users:0;#21
+read packet: $pid:4086;ppid:2681;uid:1000;gid:1000;euid:1000;egid:1000;name:2f7573722f62696e2f656d6163732d67746b;args:656d616373-2d2d6461656d6f6e;triple:7838365f36342d2d6c696e75782d676e75;#07
+send packet: $qsProcessInfo#4f
+read packet: $pid:146456;ppid:1;uid:1000;gid:1000;euid:1000;egid:1000;name:2f7573722f62696e2f656d6163732d67746b;args:2f7573722f62696e2f656d616373;triple:7838365f36342d2d6c696e75782d676e75;#e2
 send packet: $qsProcessInfo#00
 read packet: $E04#00
+send packet: $qfProcessInfo:name_match:contains;name:616263;all_users:0;triple:arm64-unknown-linux-gnu;#da
+read packet: $E03#a8
 </pre></div>
 </div>
+<p>Note that triples in this packet are normal strings, but triples
+received in response are hex encoded strings.  This difference was
+unintentional but cannot be changed at this point.</p>
 <p><strong>Priority To Implement:</strong> Required</p>
 </section>
 <section id="qgdbserverversion">
@@ -1483,20 +1789,21 @@ read packet: $cputype:16777223;cpusubtype:3;ostype:darwin;vendor:apple;endian:li
 </div>
 <p>Key value pairs are one of:</p>
 <ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">arch</span></code>: a string for the architecture, not needed if “triple” is specified</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cputype</span></code>: is a number that is the mach-o CPU type that is being debugged (base 10)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cpusubtype</span></code>: is a number that is the mach-o CPU subtype type that is being debugged (base 10)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">triple</span></code>: a string for the target triple (x86_64-apple-macosx) that can be used to specify arch + vendor + os in one entry</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">triple</span></code>: an ASCII hex encoded string for the target triple (for example, hex encoding of <code class="docutils literal notranslate"><span class="pre">x86_64-apple-macosx</span></code>) that can be used to specify arch + vendor + os in one entry</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">vendor</span></code>: a string for the vendor (apple), not needed if “triple” is specified</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ostype</span></code>: a string for the OS being debugged (macosx, linux, freebsd, ios, watchos), not needed if “triple” is specified</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">endian</span></code>: is one of “little”, “big”, or “pdp”</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ptrsize</span></code>: an unsigned number that represents how big pointers are in bytes on the debug target</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">hostname</span></code>: the hostname of the host that is running the GDB server if available</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">os_build</span></code>: a string for the OS build for the remote host as a string value</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">os_kernel</span></code>: a string describing the kernel version</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hostname</span></code>: optional, a hex encoded string of the hostname of the host that is running the GDB server</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">os_build</span></code>: a hex encoded string for the OS build for the remote host as a string value</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">os_kernel</span></code>: a hex encoded string describing the kernel version</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">os_version</span></code>: a version string that represents the current OS version (10.8.2)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">watchpoint_exceptions_received</span></code>: one of “before” or “after” to specify if a watchpoint is triggered before or after the pc when it stops</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">default_packet_timeout</span></code>: an unsigned number that specifies the default timeout in seconds</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">distribution_id</span></code>: optional. For linux, specifies distribution id (e.g. ubuntu, fedora, etc.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">distribution_id</span></code>: optional hex encoded string. For linux, specifies distribution id (e.g. ubuntu, fedora, etc.)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">osmajor</span></code>: optional, specifies the major version number of the OS (e.g. for macOS 10.12.2, it would be 10)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">osminor</span></code>: optional, specifies the minor version number of the OS (e.g. for macOS 10.12.2, it would be 12)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ospatch</span></code>: optional, specifies the patch level number of the OS (e.g. for macOS 10.12.2, it would be 2)</p></li>
@@ -1609,6 +1916,8 @@ listed (<code class="docutils literal notranslate"><span class="pre">dirty-pages
 this memory region.  The <em>absence</em> of this key means
 that this stub cannot determine dirty pages.</p>
 </li>
+<li><p><code class="docutils literal notranslate"><span class="pre">protection-key:&lt;key&gt;;</span></code> - where <code class="docutils literal notranslate"><span class="pre">&lt;key&gt;</span></code> is an unsigned integer memory
+protection key.</p></li>
 </ul>
 <p>If the address requested is not in a mapped region (e.g. we’ve jumped through
 a NULL pointer and are at 0x0) currently lldb expects to get back the size
@@ -1761,7 +2070,7 @@ values with colons and each pair is terminated with a semi colon.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">euid</span></code> - <code class="docutils literal notranslate"><span class="pre">integer</span></code> - A string value containing the decimal effective user ID</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">egid</span></code> - <code class="docutils literal notranslate"><span class="pre">integer</span></code> - A string value containing the decimal effective group ID</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> - <code class="docutils literal notranslate"><span class="pre">ascii-hex</span></code> - An ASCII hex string that contains the name of the process</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">triple</span></code> - <code class="docutils literal notranslate"><span class="pre">string</span></code> - A target triple (<code class="docutils literal notranslate"><span class="pre">x86_64-apple-macosx</span></code>, <code class="docutils literal notranslate"><span class="pre">armv7-apple-ios</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">triple</span></code> - <code class="docutils literal notranslate"><span class="pre">ascii-hex</span></code> - An ASCII hex string that contains the target triple (for example, <code class="docutils literal notranslate"><span class="pre">x86_64-apple-macosx</span></code>, <code class="docutils literal notranslate"><span class="pre">armv7-apple-ios</span></code>)</p></li>
 </ul>
 <p>Sample packet/response:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>send packet: $qProcessInfoPID:60050#00
@@ -2139,9 +2448,9 @@ symbol:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">read</span> <span class="n">packet</span><span class="p">:</span> <span class="n">qSymbol</span><span class="p">:</span><span class="mi">6578616</span><span class="n">D706C65</span>
 </pre></div>
 </div>
-<p>This should be looked up by LLDB then sent back to the server. Include the name
-again, with the vaue as a hex number:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">read</span> <span class="n">packet</span><span class="p">:</span> <span class="n">qSymbol</span><span class="p">:</span><span class="mi">6578616</span><span class="n">D706C65</span><span class="p">:</span><span class="n">CAFEF00D</span>
+<p>This should be looked up by LLDB then sent back to the server. Include the value
+as a hex number, then the name of the symbol:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">read</span> <span class="n">packet</span><span class="p">:</span> <span class="n">qSymbol</span><span class="p">:</span><span class="n">CAFEF00D</span><span class="p">:</span><span class="mi">6578616</span><span class="n">D706C65</span>
 </pre></div>
 </div>
 <p>If LLDB cannot find the value, it should respond with only the name. Note that
@@ -2210,15 +2519,27 @@ signal number that describes why the program stopped. This is
 followed by a series of key/value pairs:</p>
 <ul>
 <li><p>If key is a hex number, it is a register number and value is
-the hex value of the register in debuggee endian byte order.</p></li>
+the hex value of the register in debuggee endian byte order.
+An empty value indicates that the register cannot be fetched
+at this stop point; lldb will not succeed if it sends a separate
+read-register packet.</p></li>
 <li><p>If key == “thread”, then the value is the big endian hex
 thread-id of the stopped thread.</p></li>
 <li><p>If key == “core”, then value is a hex number of the core on
 which the stop was detected.</p></li>
 <li><p>If key == “watch” or key == “rwatch” or key == “awatch”, then
 value is the data address in big endian hex</p></li>
-<li><p>If key == “library”, then value is ignore and “qXfer:libraries:read”
-packets should be used to detect any newly loaded shared libraries</p></li>
+<li><p>If key == “library”, then value is ignored and <code class="docutils literal notranslate"><span class="pre">qXfer:libraries:read</span></code>
+packets should be used to detect any newly loaded shared libraries.
+The server emits this whenever one or more shared libraries have been
+loaded or unloaded since the last stop. On Linux/SVR4 systems
+lldb-server does not emit <code class="docutils literal notranslate"><span class="pre">library:</span></code>, since the dynamic loader is
+observable via a breakpoint on <code class="docutils literal notranslate"><span class="pre">_dl_debug_state</span></code>. Instead, the BP hit
+serves as the notification (and clients use <code class="docutils literal notranslate"><span class="pre">qXfer:libraries-svr4:read</span></code>).
+On Windows, where the kernel raises <code class="docutils literal notranslate"><span class="pre">LOAD_DLL_DEBUG_EVENT</span></code> /
+<code class="docutils literal notranslate"><span class="pre">UNLOAD_DLL_DEBUG_EVENT</span></code> directly, lldb-server tracks pending events via
+<code class="docutils literal notranslate"><span class="pre">NativeProcessProtocol::HasPendingLibraryEvents()</span></code> and emits <code class="docutils literal notranslate"><span class="pre">library:1;</span></code>
+in the next stop reply.</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">WAA</span></code> - <code class="docutils literal notranslate"><span class="pre">W</span></code> means the process exited and <code class="docutils literal notranslate"><span class="pre">AA</span></code> is the exit status.</p></li>
@@ -2365,6 +2686,19 @@ and high memory, and therefore a different number of bits used for addressing.</
 Specifies how many bits in addresses in high memory are significant for
 addressing, base 10.  AArch64 can have different page table setups for low and
 high memory, and therefore a different number of bits used for addressing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">added-binaries</span></code> when the remote stub knows that a thread has stopped
+at a binaries-loaded breakpoint notification, and it can retrieve the list
+of binaries that have just been loaded, it may send the list of base16
+addresses (no 0x prefix) for all of the binaries, to save lldb the need
+to read it from memory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">detailed-binaries-info</span></code> when the remote stub knows that a thread
+has stopped at a binaries-loaded breakpoint notification, it may
+be able to gather detailed information about the newly loaded
+binaries, the information jGetLoadedDynamicLibrariesInfos would
+return.  If this key is present, the information for all binaries
+being added at this stop are provided.  The value is asciihex
+encoded JSON.  It must be asciihex encoded in case a filename
+includes one of the gdb RSP packet metacharacters or a semicolon.</p></li>
 </ul>
 </section>
 <section id="best-practices">
@@ -2582,6 +2916,18 @@ value of errno if unlink failed.</p>
 <p>The packet below are supported by the
 <a class="reference external" href="https://github.com/bytecodealliance/wasm-micro-runtime">WAMR</a> and
 <a class="reference external" href="https://v8.dev">V8</a> Wasm runtimes.</p>
+<p>An address is 64 bits wide: an address space tag in bits 63:62, the id of the
+module instance the address belongs to in bits 61:32, and a 32-bit offset into
+that space. The tag is 0 for linear memory and 1 for the object space, which
+holds the module image, so bit 63 is always clear on the wire. A stub therefore
+reports the load address of an instance in <code class="docutils literal notranslate"><span class="pre">qXfer:libraries:read</span></code> as
+<code class="docutils literal notranslate"><span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">62)</span> <span class="pre">|</span> <span class="pre">(&lt;instance</span> <span class="pre">id&gt;</span> <span class="pre">&lt;&lt;</span> <span class="pre">32)</span></code>, the base of its module in the object space,
+and the same id appears in the PCs returned by <code class="docutils literal notranslate"><span class="pre">qWasmCallStack</span></code>. An id is unique
+among live instances, and zero is an id like any other. LLDB keys a module on
+the name it is reported under, so each instance needs a name of its own.</p>
+<p>An address the running code computed, such as one relative to a frame base,
+carries no id, and a stub serves it from the instance the current thread is
+executing.</p>
 <section id="qwasmcallstack">
 <h3>qWasmCallStack<a class="headerlink" href="#qwasmcallstack" title="Link to this heading">#</a></h3>
 <p>Get the Wasm call stack for the given thread id. This returns a hex-encoded
@@ -2598,15 +2944,46 @@ stack traces.</p>
 </section>
 <section id="qwasmglobal">
 <h3>qWasmGlobal<a class="headerlink" href="#qwasmglobal" title="Link to this heading">#</a></h3>
-<p>Get the value of a Wasm global variable for the given frame index at the given
-variable index. The indexes are encoded as base 10. The result is a hex-encoded
-little-endian value of the global.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>send packet: $qWasmGlobal:0;2#cb
+<p>Get the value of a Wasm global variable at the given variable index. The indexes
+are encoded as base 10. The result is a hex-encoded little-endian value of the
+whole global, or <code class="docutils literal notranslate"><span class="pre">E&lt;nn&gt;</span></code>.</p>
+<p>A global index space belongs to a module instance, so an index only names a
+global together with the module instance to read it from. A stub that advertises
+<code class="docutils literal notranslate"><span class="pre">qWasmInstance+</span></code> requires that module instance to be named explicitly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>send packet: $qWasmGlobal:2;instance:16;#32
 read packet: $e0030100#b9
 </pre></div>
 </div>
+<p>A stub that does not advertise <code class="docutils literal notranslate"><span class="pre">qWasmInstance+</span></code> is given a frame index instead,
+which only reaches the module instance that frame is executing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>send packet: $qWasmGlobal:0;2#31
+read packet: $e0030100#b9
+</pre></div>
+</div>
+<p>A stub tells the two apart by the presence of the <code class="docutils literal notranslate"><span class="pre">instance:</span></code> key, the only key
+this packet takes. Where it is absent, the first field is a frame index rather
+than a global index. An unrecognized instance id must be answered with an error
+rather than with another instance’s global.</p>
 <p><strong>Priority to Implement:</strong> Only required for Wasm support. Necessary to show
 variables.</p>
+</section>
+<section id="qwasminstance-qsupported-feature">
+<h3>qWasmInstance (qSupported feature)<a class="headerlink" href="#qwasminstance-qsupported-feature" title="Link to this heading">#</a></h3>
+<p>A stub advertises <code class="docutils literal notranslate"><span class="pre">qWasmInstance+</span></code> when a query may name the module instance it
+is about, rather than only the instance some frame is executing. LLDB needs this
+to read a global of an instance with no frame on the stack, which it finds by
+name in the debug info of a module.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">send</span> <span class="n">packet</span><span class="p">:</span> <span class="n">qSupported</span><span class="p">:</span><span class="n">xmlRegisters</span><span class="o">=</span><span class="n">i386</span><span class="p">,</span><span class="n">arm</span><span class="p">,</span><span class="n">mips</span>
+<span class="n">read</span> <span class="n">packet</span><span class="p">:</span> <span class="n">qXfer</span><span class="p">:</span><span class="n">libraries</span><span class="p">:</span><span class="n">read</span><span class="o">+</span><span class="p">;</span><span class="n">qWasmInstance</span><span class="o">+</span><span class="p">;</span><span class="n">PacketSize</span><span class="o">=</span><span class="mi">1000</span>
+</pre></div>
+</div>
+<p>An instance is named with a <code class="docutils literal notranslate"><span class="pre">;instance:&lt;id&gt;;</span></code> suffix in place of a frame index,
+in which the id is encoded as base 10. <code class="docutils literal notranslate"><span class="pre">qWasmGlobal</span></code> is the only packet that
+carries it today, because a global is the only Wasm state with no address to
+identify its instance. A later query for instance-scoped state carries the same
+suffix rather than adding a packet of its own.</p>
+<p><strong>Priority to Implement:</strong> Only required for Wasm support. Necessary to show the
+globals of a module instance that has no active frame.</p>
 </section>
 <section id="qwasmlocal">
 <h3>qWasmLocal<a class="headerlink" href="#qwasmlocal" title="Link to this heading">#</a></h3>
@@ -2648,6 +3025,10 @@ expect the format used by GDB.</p>
 </pre></div>
 </div>
 <p>where both <code class="docutils literal notranslate"><span class="pre">ADDRESS</span></code> and <code class="docutils literal notranslate"><span class="pre">LENGTH</span></code> are big-endian base 16 values.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">x</span></code> packet may also carry an optional <code class="docutils literal notranslate"><span class="pre">address_space:&lt;hex-id&gt;;</span></code> suffix to read
+from a non-default address space, followed by <code class="docutils literal notranslate"><span class="pre">thread:&lt;hex-tid&gt;;</span></code> when that
+address space is thread specific; see
+<a class="reference internal" href="#address-spaces-qsupported-feature">the address-spaces feature</a>.</p>
 <p>To test if this packet is available, send a addr/len of 0:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x0</span><span class="p">,</span><span class="mi">0</span>
 </pre></div>
@@ -2665,6 +3046,365 @@ omitting them will work fine; these numbers are always base 16.</p>
 <p>The length of the payload is not provided.  A reliable, 8-bit clean,
 transport layer is assumed.</p>
 </section>
+<section id="accelerator-packets">
+<h2>Accelerator Packets<a class="headerlink" href="#accelerator-packets" title="Link to this heading">#</a></h2>
+<p>The packets below support debugging hardware accelerators (e.g. GPUs,
+FPGAs) alongside the native host process via accelerator plugins installed
+in lldb-server.</p>
+<p>An accelerator plugin drives the client by returning a list of
+<code class="docutils literal notranslate"><span class="pre">AcceleratorActions</span></code> (currently just breakpoints to set in the native
+process). The client can receive <code class="docutils literal notranslate"><span class="pre">AcceleratorActions</span></code> at two points:</p>
+<ol class="arabic simple">
+<li><p>Once, in response to the <code class="docutils literal notranslate"><span class="pre">jAcceleratorPluginInitialize</span></code> packet sent when
+the native process is launched or attached.</p></li>
+<li><p>In response to a <code class="docutils literal notranslate"><span class="pre">jAcceleratorPluginBreakpointHit</span></code> packet, when a
+breakpoint the plugin previously requested is hit. The hit response may
+carry a further set of <code class="docutils literal notranslate"><span class="pre">AcceleratorActions</span></code>.</p></li>
+</ol>
+<p>Each set of <code class="docutils literal notranslate"><span class="pre">AcceleratorActions</span></code> is tagged with a <code class="docutils literal notranslate"><span class="pre">plugin_name</span></code> and an
+<code class="docutils literal notranslate"><span class="pre">identifier</span></code> that is unique within that plugin, so the client can ignore a
+set it has already processed if the same actions are delivered again.</p>
+<section id="jacceleratorplugininitialize">
+<h3>jAcceleratorPluginInitialize<a class="headerlink" href="#jacceleratorplugininitialize" title="Link to this heading">#</a></h3>
+<p>This packet requests initialization data from all accelerator plugins
+installed in lldb-server. Accelerator plugins allow lldb-server to support
+debugging of hardware accelerators (e.g. GPUs, FPGAs) alongside the native
+host process.</p>
+<p>This packet requires the <code class="docutils literal notranslate"><span class="pre">accelerator-plugins+</span></code> feature from <code class="docutils literal notranslate"><span class="pre">qSupported</span></code>.
+It should be sent early in the session, after <code class="docutils literal notranslate"><span class="pre">qSupported</span></code> but before
+launching or attaching to an inferior process. If the hardware accelerator
+is not present, launching or attaching to the accelerator debug session
+will fail.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LLDB</span> <span class="n">SENDS</span><span class="p">:</span>    <span class="n">jAcceleratorPluginInitialize</span>
+<span class="n">STUB</span> <span class="n">REPLIES</span><span class="p">:</span>  <span class="p">[</span><span class="o">&lt;</span><span class="n">accelerator_action</span><span class="o">&gt;</span><span class="p">,</span><span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Each <code class="docutils literal notranslate"><span class="pre">accelerator_action</span></code> is a JSON object with the following required fields:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plugin_name</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Unique name identifying the accelerator plugin (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;mock&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;amdgpu&quot;</span></code>). Each installed plugin has a globally unique name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">session_name</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Human-readable label for the accelerator target, stored on the Target object to distinguish it from the CPU target (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;AMD</span> <span class="pre">GPU</span> <span class="pre">Session&quot;</span></code>). May be empty.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">identifier</span></code></p></td>
+<td><p>integer</p></td>
+<td><p>Identifier for this action, unique within the scope of its <code class="docutils literal notranslate"><span class="pre">plugin_name</span></code>. To refer to a specific action, use the combination of <code class="docutils literal notranslate"><span class="pre">plugin_name</span></code> and <code class="docutils literal notranslate"><span class="pre">identifier</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>There can be multiple accelerator plugins installed, each with a globally
+unique <code class="docutils literal notranslate"><span class="pre">plugin_name</span></code>. The response is a JSON array with one entry per
+installed plugin.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LLDB</span> <span class="n">SENDS</span><span class="p">:</span>    <span class="n">jAcceleratorPluginInitialize</span>
+<span class="n">STUB</span> <span class="n">REPLIES</span><span class="p">:</span>  <span class="p">[{</span><span class="s2">&quot;plugin_name&quot;</span><span class="p">:</span><span class="s2">&quot;amdgpu&quot;</span><span class="p">,</span><span class="s2">&quot;session_name&quot;</span><span class="p">:</span><span class="s2">&quot;AMD GPU Session&quot;</span><span class="p">,</span><span class="s2">&quot;identifier&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">}]</span>
+</pre></div>
+</div>
+<p>If no accelerator plugins are installed, the server does not advertise the
+<code class="docutils literal notranslate"><span class="pre">accelerator-plugins+</span></code> feature and this packet should not be sent.</p>
+<p>Each <code class="docutils literal notranslate"><span class="pre">accelerator_action</span></code> may include a <code class="docutils literal notranslate"><span class="pre">breakpoints</span></code> array requesting
+breakpoints to be set in the native process. The client sets each of these
+as an internal breakpoint and sends a <code class="docutils literal notranslate"><span class="pre">jAcceleratorPluginBreakpointHit</span></code>
+packet when one is hit. Each breakpoint object has the following fields:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">identifier</span></code></p></td>
+<td><p>integer</p></td>
+<td><p>Identifier for this breakpoint, unique within the plugin. It is echoed back in the <code class="docutils literal notranslate"><span class="pre">jAcceleratorPluginBreakpointHit</span></code> packet so the plugin knows which breakpoint was hit.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">by_name</span></code></p></td>
+<td><p>object</p></td>
+<td><p>Set the breakpoint by function name. Contains <code class="docutils literal notranslate"><span class="pre">function_name</span></code> (string) and an optional <code class="docutils literal notranslate"><span class="pre">shlib</span></code> (string) to scope the breakpoint to a single shared library.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">by_address</span></code></p></td>
+<td><p>object</p></td>
+<td><p>Set the breakpoint by load address. Contains <code class="docutils literal notranslate"><span class="pre">load_address</span></code> (integer).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">symbol_names</span></code></p></td>
+<td><p>array</p></td>
+<td><p>Symbol names whose load addresses the client should resolve and deliver in the <code class="docutils literal notranslate"><span class="pre">jAcceleratorPluginBreakpointHit</span></code> packet when this breakpoint is hit. May be empty.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Exactly one of <code class="docutils literal notranslate"><span class="pre">by_name</span></code> or <code class="docutils literal notranslate"><span class="pre">by_address</span></code> must be provided for each
+breakpoint.</p>
+<p>An <code class="docutils literal notranslate"><span class="pre">accelerator_action</span></code> may also include a <code class="docutils literal notranslate"><span class="pre">connect_info</span></code> object asking the
+client to create a new target and connect to a separate GDB server that
+serves the accelerator’s state (for example a GPU debug stub). It has the
+following fields:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">connect_url</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Connection URL to connect to, as used by <code class="docutils literal notranslate"><span class="pre">process</span> <span class="pre">connect</span> <span class="pre">&lt;url&gt;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">platform_name</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Name of the platform to select when creating the accelerator target. The platform must be able to handle <code class="docutils literal notranslate"><span class="pre">triple</span></code> and is used to connect to the accelerator’s GDB server.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">triple</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Target triple for the accelerator target, used to ensure the architecture is compatible with <code class="docutils literal notranslate"><span class="pre">platform_name</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exe_path</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Optional path to the executable to use when creating the accelerator target. If omitted, an empty target is created.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">synchronous</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>If true, connect synchronously: the client blocks until the accelerator process is connected and stopped before continuing. If false, the connection is made asynchronously.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Priority To Implement:</strong> Required for hardware accelerator debugging
+support. Not needed for non-hardware-accelerator debugging.</p>
+</section>
+<section id="jacceleratorpluginbreakpointhit">
+<h3>jAcceleratorPluginBreakpointHit<a class="headerlink" href="#jacceleratorpluginbreakpointhit" title="Link to this heading">#</a></h3>
+<p>Sent by the client when a breakpoint requested by an accelerator plugin
+is hit in the native process. This packet requires the
+<code class="docutils literal notranslate"><span class="pre">accelerator-plugins+</span></code> feature from <code class="docutils literal notranslate"><span class="pre">qSupported</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LLDB</span> <span class="n">SENDS</span><span class="p">:</span>    <span class="n">jAcceleratorPluginBreakpointHit</span><span class="p">:</span><span class="o">&lt;</span><span class="n">json</span><span class="o">&gt;</span>
+<span class="n">STUB</span> <span class="n">REPLIES</span><span class="p">:</span>  <span class="o">&lt;</span><span class="n">json_response</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The request JSON has the following fields:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plugin_name</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Name of the plugin that requested the breakpoint.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">breakpoint</span></code></p></td>
+<td><p>object</p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">AcceleratorBreakpointInfo</span></code> that was hit, including its <code class="docutils literal notranslate"><span class="pre">identifier</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">symbol_values</span></code></p></td>
+<td><p>array</p></td>
+<td><p>Array of <code class="docutils literal notranslate"><span class="pre">{&quot;name&quot;:</span> <span class="pre">&quot;&lt;name&gt;&quot;,</span> <span class="pre">&quot;value&quot;:</span> <span class="pre">&lt;addr&gt;}</span></code>, one entry for each name in the breakpoint’s <code class="docutils literal notranslate"><span class="pre">symbol_names</span></code>. <code class="docutils literal notranslate"><span class="pre">value</span></code> is the resolved load address, or <code class="docutils literal notranslate"><span class="pre">null</span></code> if the client could not find the symbol or convert it to a load address.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The response JSON has the following fields:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">disable_bp</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>If true, the client should disable this breakpoint.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">auto_resume_native</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>If true, the native process should automatically resume after handling the hit.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">actions</span></code></p></td>
+<td><p>object</p></td>
+<td><p>Optional <code class="docutils literal notranslate"><span class="pre">AcceleratorActions</span></code> for the client to perform.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LLDB</span> <span class="n">SENDS</span><span class="p">:</span>    <span class="n">jAcceleratorPluginBreakpointHit</span><span class="p">:{</span><span class="s2">&quot;plugin_name&quot;</span><span class="p">:</span><span class="s2">&quot;mock&quot;</span><span class="p">,</span><span class="s2">&quot;breakpoint&quot;</span><span class="p">:{</span><span class="s2">&quot;identifier&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;symbol_names&quot;</span><span class="p">:[]},</span><span class="s2">&quot;symbol_values&quot;</span><span class="p">:[]}</span>
+<span class="n">STUB</span> <span class="n">REPLIES</span><span class="p">:</span>  <span class="p">{</span><span class="s2">&quot;disable_bp&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span><span class="s2">&quot;auto_resume_native&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;actions&quot;</span><span class="p">:{</span><span class="s2">&quot;plugin_name&quot;</span><span class="p">:</span><span class="s2">&quot;mock&quot;</span><span class="p">,</span><span class="s2">&quot;session_name&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;identifier&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;breakpoints&quot;</span><span class="p">:[{</span><span class="s2">&quot;identifier&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;by_name&quot;</span><span class="p">:{</span><span class="s2">&quot;function_name&quot;</span><span class="p">:</span><span class="s2">&quot;exit&quot;</span><span class="p">},</span><span class="s2">&quot;symbol_names&quot;</span><span class="p">:[]}]}}</span>
+</pre></div>
+</div>
+<p><strong>Priority To Implement:</strong> Required for hardware accelerator debugging
+support. Not needed for non-hardware-accelerator debugging.</p>
+</section>
+<section id="jacceleratorplugingetdynamicloaderlibraryinfo">
+<h3>jAcceleratorPluginGetDynamicLoaderLibraryInfo<a class="headerlink" href="#jacceleratorplugingetdynamicloaderlibraryinfo" title="Link to this heading">#</a></h3>
+<p>Requests shared library information from an accelerator plugin. The client
+sends this packet when it needs to load or update the accelerator’s shared
+library list. This packet requires the <code class="docutils literal notranslate"><span class="pre">accelerator-plugins+</span></code> feature from
+<code class="docutils literal notranslate"><span class="pre">qSupported</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LLDB</span> <span class="n">SENDS</span><span class="p">:</span>    <span class="n">jAcceleratorPluginGetDynamicLoaderLibraryInfo</span><span class="p">:</span><span class="o">&lt;</span><span class="n">json</span><span class="o">&gt;</span>
+<span class="n">STUB</span> <span class="n">REPLIES</span><span class="p">:</span>  <span class="o">&lt;</span><span class="n">json_response</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The request JSON has the following fields:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">plugin_name</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Name of the accelerator plugin to query.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">full</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>If true, return every library the plugin knows about. If false, return only what changed since the last query.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A plugin may track thousands of code objects, so <code class="docutils literal notranslate"><span class="pre">full</span></code> lets a client that is
+already up to date ask only for the delta instead of re-receiving the whole
+list on every stop. It is the plugin that decides what “changed since the last
+query” means, and the plugin that keeps that state.</p>
+<p>Because that state lives in the plugin and is not per-client, a client cannot
+assume it starts from a known point: an earlier client may have consumed the
+pending changes with <code class="docutils literal notranslate"><span class="pre">full=false</span></code>. The first query of a session must therefore
+use <code class="docutils literal notranslate"><span class="pre">full=true</span></code>, and a client should also use it whenever it discards its own
+module list and needs to rebuild it.</p>
+<p>The response JSON is an object with a single <code class="docutils literal notranslate"><span class="pre">library_infos</span></code> key, holding an
+array of library info objects:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pathname</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Path to the object file, or a unique name for the module when it has no file on disk.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">load</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>True when the library is being loaded, false when it is being unloaded.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">load_address</span></code></p></td>
+<td><p>int</p></td>
+<td><p>(optional) Base address the whole object file is slid to.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">loaded_sections</span></code></p></td>
+<td><p>array</p></td>
+<td><p>(optional) Per-section load addresses, for object files whose sections load at independent addresses. Each entry has <code class="docutils literal notranslate"><span class="pre">names</span></code> (the section name, or a path of nested section names to descend) and <code class="docutils literal notranslate"><span class="pre">load_address</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">uuid</span></code></p></td>
+<td><p>string</p></td>
+<td><p>(optional) UUID of the object file, if the plugin knows it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">native_memory_address</span></code></p></td>
+<td><p>int</p></td>
+<td><p>(optional) Address <strong>in the native (host) process</strong> where the object file image can be read, for a library that only exists in memory.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">native_memory_size</span></code></p></td>
+<td><p>int</p></td>
+<td><p>(optional) Size of that in-memory image.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">file_offset</span></code></p></td>
+<td><p>int</p></td>
+<td><p>(optional) Byte offset of the object file within <code class="docutils literal notranslate"><span class="pre">pathname</span></code>, for a library embedded in a containing file.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">file_size</span></code></p></td>
+<td><p>int</p></td>
+<td><p>(optional) Size of the object file within that containing file.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">load_address</span></code>, <code class="docutils literal notranslate"><span class="pre">loaded_sections</span></code> and neither-of-the-two are three different
+requests, and are resolved in that order:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">load_address</span></code> present: slide the whole object file to that address.</p></li>
+<li><p>otherwise <code class="docutils literal notranslate"><span class="pre">loaded_sections</span></code> non-empty: load only the named sections, each at
+its own address.</p></li>
+<li><p>otherwise: load at the file addresses with no slide.</p></li>
+</ul>
+<p>An absent <code class="docutils literal notranslate"><span class="pre">loaded_sections</span></code> and an empty <code class="docutils literal notranslate"><span class="pre">loaded_sections</span></code> therefore mean the
+same thing here: no per-section addresses were supplied. A plugin that wants
+sections loaded must send a non-empty array.</p>
+<p>A module that only exists in the accelerator’s memory has no file on disk, so
+<code class="docutils literal notranslate"><span class="pre">pathname</span></code> carries a unique name for it instead of a path. That name is what
+identifies the module in the target.</p>
+<p>Load <code class="docutils literal notranslate"><span class="pre">/path/to/lib.so</span></code> at address 2130706432:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LLDB</span> <span class="n">SENDS</span><span class="p">:</span>    <span class="n">jAcceleratorPluginGetDynamicLoaderLibraryInfo</span><span class="p">:{</span><span class="s2">&quot;plugin_name&quot;</span><span class="p">:</span><span class="s2">&quot;mock&quot;</span><span class="p">,</span><span class="s2">&quot;full&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">}</span>
+<span class="n">STUB</span> <span class="n">REPLIES</span><span class="p">:</span>  <span class="p">{</span>
+  <span class="s2">&quot;library_infos&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;pathname&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/lib.so&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;load&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+      <span class="s2">&quot;load_address&quot;</span><span class="p">:</span> <span class="mi">2130706432</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Load only <code class="docutils literal notranslate"><span class="pre">.text</span></code> from <code class="docutils literal notranslate"><span class="pre">PT_LOAD[1]</span></code> and <code class="docutils literal notranslate"><span class="pre">.data</span></code> from <code class="docutils literal notranslate"><span class="pre">PT_LOAD[3]</span></code> in
+<code class="docutils literal notranslate"><span class="pre">/path/to/lib.so</span></code>, each at its own address:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LLDB</span> <span class="n">SENDS</span><span class="p">:</span>    <span class="n">jAcceleratorPluginGetDynamicLoaderLibraryInfo</span><span class="p">:{</span><span class="s2">&quot;plugin_name&quot;</span><span class="p">:</span><span class="s2">&quot;mock&quot;</span><span class="p">,</span><span class="s2">&quot;full&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">}</span>
+<span class="n">STUB</span> <span class="n">REPLIES</span><span class="p">:</span>  <span class="p">{</span>
+  <span class="s2">&quot;library_infos&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;pathname&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/lib.so&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;load&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+      <span class="s2">&quot;loaded_sections&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;names&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;PT_LOAD[1]&quot;</span><span class="p">,</span> <span class="s2">&quot;.text&quot;</span><span class="p">],</span> <span class="s2">&quot;load_address&quot;</span><span class="p">:</span> <span class="mi">2130706432</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;names&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;PT_LOAD[3]&quot;</span><span class="p">,</span> <span class="s2">&quot;.data&quot;</span><span class="p">],</span> <span class="s2">&quot;load_address&quot;</span><span class="p">:</span> <span class="mi">2130707432</span><span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Load <code class="docutils literal notranslate"><span class="pre">/path/to/lib.so</span></code> at the file addresses found in the object file, with no
+slide:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LLDB</span> <span class="n">SENDS</span><span class="p">:</span>    <span class="n">jAcceleratorPluginGetDynamicLoaderLibraryInfo</span><span class="p">:{</span><span class="s2">&quot;plugin_name&quot;</span><span class="p">:</span><span class="s2">&quot;mock&quot;</span><span class="p">,</span><span class="s2">&quot;full&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">}</span>
+<span class="n">STUB</span> <span class="n">REPLIES</span><span class="p">:</span>  <span class="p">{</span>
+  <span class="s2">&quot;library_infos&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;pathname&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/lib.so&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;load&quot;</span><span class="p">:</span> <span class="n">true</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Priority To Implement:</strong> Required for hardware accelerator debugging
+support. Not needed for non-hardware-accelerator debugging.</p>
+</section>
+</section>
 </section>
 
         </article>
@@ -2681,14 +3421,14 @@ transport layer is assumed.</p>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="extensions.html">
+          <a class="prev-page" href="projects.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">DWARF Extensions</div>
+                <div class="title">Open Projects</div>
                 
               </div>
             </a>
@@ -2702,7 +3442,7 @@ transport layer is assumed.</p>
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Apr 15, 2026</div>
+              Last updated on Sep 18, 2026</div>
           </div>
           <div class="right-details">
             
@@ -2760,11 +3500,15 @@ transport layer is assumed.</p>
 <li><a class="reference internal" href="#id5">Output Schema</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#jmultibreakpoint">jMultiBreakpoint</a></li>
 <li><a class="reference internal" href="#jthreadextendedinfo">jThreadExtendedInfo</a></li>
-<li><a class="reference internal" href="#jthreadsinfo">jThreadsInfo</a><ul>
-<li><a class="reference internal" href="#multimemread">MultiMemRead</a></li>
+<li><a class="reference internal" href="#jthreadsinfo">jThreadsInfo</a></li>
+<li><a class="reference internal" href="#jaddressspacesinfo">jAddressSpacesInfo</a></li>
+<li><a class="reference internal" href="#address-spaces-qsupported-feature">address-spaces (qSupported feature)</a><ul>
+<li><a class="reference internal" href="#the-address-space-suffix">The <code class="docutils literal notranslate"><span class="pre">address_space</span></code> suffix</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#multimemread">MultiMemRead</a></li>
 <li><a class="reference internal" href="#qenvironment-name-value">QEnvironment:NAME=VALUE</a></li>
 <li><a class="reference internal" href="#qenvironmenthexencoded-hex-encoding-name-value">QEnvironmentHexEncoded:HEX-ENCODING(NAME=VALUE)</a></li>
 <li><a class="reference internal" href="#qenablecompression">QEnableCompression</a></li>
@@ -2776,11 +3520,12 @@ transport layer is assumed.</p>
 <li><a class="reference internal" href="#qsetdetachonerror">QSetDetachOnError</a></li>
 <li><a class="reference internal" href="#qsetdisableaslr-bool">QSetDisableASLR:&lt;bool&gt;</a></li>
 <li><a class="reference internal" href="#qsetstdin-ascii-hex-path-qsetstdout-ascii-hex-path-qsetstderr-ascii-hex-path">QSetSTDIN:&lt;ascii-hex-path&gt; / QSetSTDOUT:&lt;ascii-hex-path&gt; / QSetSTDERR:&lt;ascii-hex-path&gt;</a></li>
+<li><a class="reference internal" href="#qsetstdiowindowsize-cols-n-rows-n">QSetSTDIOWindowSize:cols=&lt;N&gt;;rows=&lt;N&gt;</a></li>
 <li><a class="reference internal" href="#qsetworkingdir-ascii-hex-path">QSetWorkingDir:&lt;ascii-hex-path&gt;</a></li>
 <li><a class="reference internal" href="#qstartnoackmode">QStartNoAckMode</a></li>
 <li><a class="reference internal" href="#qsupported">QSupported</a></li>
 <li><a class="reference internal" href="#qthreadsuffixsupported">QThreadSuffixSupported</a></li>
-<li><a class="reference internal" href="#qattachorwaitsupported">qAttachOrWaitSupported</a></li>
+<li><a class="reference internal" href="#qvattachorwaitsupported">qVAttachOrWaitSupported</a></li>
 <li><a class="reference internal" href="#qfileloadaddress-file-path">qFileLoadAddress:&lt;file_path&gt;</a></li>
 <li><a class="reference internal" href="#qfprocessinfo-qsprocessinfo-platform-extension">qfProcessInfo / qsProcessInfo (Platform Extension)</a></li>
 <li><a class="reference internal" href="#qgdbserverversion">qGDBServerVersion</a></li>
@@ -2828,11 +3573,18 @@ transport layer is assumed.</p>
 <li><a class="reference internal" href="#wasm-packets">Wasm Packets</a><ul>
 <li><a class="reference internal" href="#qwasmcallstack">qWasmCallStack</a></li>
 <li><a class="reference internal" href="#qwasmglobal">qWasmGlobal</a></li>
+<li><a class="reference internal" href="#qwasminstance-qsupported-feature">qWasmInstance (qSupported feature)</a></li>
 <li><a class="reference internal" href="#qwasmlocal">qWasmLocal</a></li>
 <li><a class="reference internal" href="#qwasmstackvalue">qWasmStackValue</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#x-binary-memory-read">“x” - Binary memory read</a></li>
+<li><a class="reference internal" href="#accelerator-packets">Accelerator Packets</a><ul>
+<li><a class="reference internal" href="#jacceleratorplugininitialize">jAcceleratorPluginInitialize</a></li>
+<li><a class="reference internal" href="#jacceleratorpluginbreakpointhit">jAcceleratorPluginBreakpointHit</a></li>
+<li><a class="reference internal" href="#jacceleratorplugingetdynamicloaderlibraryinfo">jAcceleratorPluginGetDynamicLoaderLibraryInfo</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2844,7 +3596,7 @@ transport layer is assumed.</p>
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=d42a975f"></script>
+</div><script src="../_static/documentation_options.js?v=a9baa326"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
